@@ -1,0 +1,25 @@
+{
+  "name": "jpdegreeassignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install",
+    "lint": "npx prettier --write '**/*.java'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kuon-dev/JPDegreeAssignment.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kuon-dev/JPDegreeAssignment/issues"
+  },
+  "homepage": "https://github.com/Kuon-dev/JPDegreeAssignment#readme",
+  "devDependencies": {
+    "husky": "^8.0.1",
+    "prettier-plugin-java": "^1.6.2"
+  }
+}
