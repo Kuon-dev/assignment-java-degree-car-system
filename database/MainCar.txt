@@ -1,0 +1,4 @@
+["WLA-0019", "Proton", "Axia", "UNAVAILABLE", "2019", "20", "Gasoline"]
+["WLA-4851", "Proton", "Axia", "UNAVAILABLE", "2019", "20", "Gasoline"]
+["SLW-0211", "Ford", "F-150", "UNAVAILABLE", "2015", "20", "Diesel"]
+["PT-0995", "Tesla", "Model-S", "AVAILABLE", "2020", "50", "Electrical"]
