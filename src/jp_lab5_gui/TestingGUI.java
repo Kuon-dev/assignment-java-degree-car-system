@@ -200,6 +200,8 @@ public class TestingGUI extends javax.swing.JFrame {
     String name;
     name = EnterTxt.getText();
     ViewTxt.setText(name);
+
+
   } //GEN-LAST:event_ClickButActionPerformed
 
   /**
