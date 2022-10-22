@@ -1,5 +1,7 @@
 package jp_lab5_gui;
 
+import java.nio.file.Path;
+
 public class GeneralUser {
   int userId;
   String userName;
@@ -28,6 +30,12 @@ public class GeneralUser {
 
   public String getPassword(){
     return userPassword;
+  }
+
+  public void userLogin(String name, String password){
+    FileMutation reader = new FileMutation();
+    String cwd = Path.of("").toAbsolutePath().toString();
+    reader.readFile( cwd + "/Database/MainAdmin.txt");
   }
 
 }

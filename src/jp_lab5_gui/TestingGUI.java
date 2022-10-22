@@ -206,6 +206,7 @@ public class TestingGUI extends javax.swing.JFrame {
     newAdmin.setName(name);
 
     ViewTxt.setText(newAdmin.getName());
+    newAdmin.userLogin(name, "Test");
 
 
 

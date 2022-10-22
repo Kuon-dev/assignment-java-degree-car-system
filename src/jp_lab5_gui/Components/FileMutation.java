@@ -1,3 +1,5 @@
+package jp_lab5_gui;
+
 import java.util.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -8,7 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class FileMutation {
-  public static void ReadFile(String path) {
+  public static void readFile(String path) {
     try {
       File file = new File(path);
       BufferedReader br = new BufferedReader(new FileReader(file));
