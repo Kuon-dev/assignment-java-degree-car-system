@@ -39,3 +39,4 @@ LSP/
 # Project specific #
 node_modules/
 docs/
+output.txt
