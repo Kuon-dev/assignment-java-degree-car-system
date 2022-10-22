@@ -1,15 +1,16 @@
-package jp_lab5_gui.Classes;
+package jp_lab5_gui;
 
 public class GeneralUser {
-  private int userId;
+  int userId;
   String userName;
+  String userPassword;
 
   // getter setters
-  public void setId(String usrInput){
+  public void setId(int usrInput){
     this.userId = usrInput;  
   }
 
-  public String getId(){
+  public int getId(){
     return userId;
   }
 
@@ -20,4 +21,13 @@ public class GeneralUser {
   public String getName(){
     return userName;
   }
+
+  public void setPassword(String usrInput){
+    this.userPassword = usrInput;  
+  }
+
+  public String getPassword(){
+    return userPassword;
+  }
+
 }

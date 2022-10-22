@@ -201,8 +201,11 @@ public class TestingGUI extends javax.swing.JFrame {
 
     Validator v = new Validator();
     name = EnterTxt.getText();
-    String validName = v.testValidator(name);
-    ViewTxt.setText(validName);
+
+    UserAdmin newAdmin = new UserAdmin();
+    newAdmin.setName(name);
+
+    ViewTxt.setText(newAdmin.getName());
 
 
 
