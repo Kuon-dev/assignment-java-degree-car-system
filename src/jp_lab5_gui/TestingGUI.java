@@ -198,8 +198,22 @@ public class TestingGUI extends javax.swing.JFrame {
 
   private void ClickButActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ClickButActionPerformed
     String name;
+
+    Validator v = new Validator();
     name = EnterTxt.getText();
-    ViewTxt.setText(name);
+
+    UserAdmin newAdmin = new UserAdmin();
+    newAdmin.setName(name);
+
+    ViewTxt.setText(newAdmin.getName());
+    Boolean correct = newAdmin.userLogin(name, "Test", "test", "admin");
+    System.out.println(correct);
+
+    Boolean correct2 = newAdmin.userLogin(name, "12345", "12345", "admin");
+    System.out.println(correct2);
+
+
+
   } //GEN-LAST:event_ClickButActionPerformed
 
   /**
