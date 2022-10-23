@@ -8,7 +8,7 @@ public class GeneralUser {
   int userId;
   String userName;
   String userPassword;
-  private static String cwd = Path.of("").toAbsolutePath().toString();
+  private String cwd = Path.of("").toAbsolutePath().toString();
 
   // getter setters
   public void setId(int usrInput){
@@ -35,11 +35,12 @@ public class GeneralUser {
     return userPassword;
   }
 
-  public Boolean userLogin(String inputName, String inputPassword, String path, String type){
+  public Boolean userLogin(String inputName, String inputPassword, String path){
     FileMutation mutation = new FileMutation();
     String demoPath = ( cwd + "/Database/MainAdmin.txt");
+    String destination = cwd + path;
 
-    List<ArrayList<String>> result = mutation.readFile(demoPath);
+    List<ArrayList<String>> result = mutation.readFile(destination);
     for (int i = 0; i < result.size(); i++) {
       // 0 - ID
       // 1 - Name
@@ -54,6 +55,23 @@ public class GeneralUser {
       }
     }
     return false; 
+  }
+
+  public void userRegister(ArrayList<String> data, String path){
+    FileMutation mutation = new FileMutation();
+    String destination = cwd + path;
+
+    // get latest ID
+    List<ArrayList<String>> result = mutation.readFile(destination);
+    ArrayList<String> lastResult = new ArrayList<>(result.get(result.size() - 1));
+    int latestId = Integer.parseInt(lastResult.get(0)) + 1;
+
+    ArrayList<String> userData = new ArrayList<>();
+    userData.add(String.valueOf(latestId));
+    userData.add(data.get(0));
+    userData.add(data.get(1));
+    
+    mutation.addFile(userData, destination);
   }
 }
 
