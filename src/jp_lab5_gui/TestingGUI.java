@@ -206,7 +206,11 @@ public class TestingGUI extends javax.swing.JFrame {
     newAdmin.setName(name);
 
     ViewTxt.setText(newAdmin.getName());
-    newAdmin.userLogin(name, "Test");
+    Boolean correct = newAdmin.userLogin(name, "Test", "test", "admin");
+    System.out.println(correct);
+
+    Boolean correct2 = newAdmin.userLogin(name, "12345", "12345", "admin");
+    System.out.println(correct2);
 
 
 

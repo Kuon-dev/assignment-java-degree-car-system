@@ -10,23 +10,27 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class FileMutation {
-  public static void readFile(String path) {
+  public static List<ArrayList<String>> readFile(String path) {
+    List<ArrayList<String>> tempArr = new ArrayList();
     try {
       File file = new File(path);
       BufferedReader br = new BufferedReader(new FileReader(file));
 
+
       String st;
       while ((st = br.readLine()) != null) {
-          String new_value1, new_value2;
+          String filteredString1, filteredString2;
           //System.out.println(st);
-          new_value1 = st.replace("[", "");
-          new_value2 = new_value1.replace("]", "");
-          List<String> myList = new ArrayList<>(Arrays.asList(new_value2.split(", ")));
-          System.out.println(myList);
+          filteredString1 = st.replace("[", "");
+          filteredString2 = filteredString1.replace("]", "");
+          ArrayList<String> eachLine = new ArrayList<>(Arrays.asList(filteredString2.split(", ")));
+          tempArr.add(eachLine);
+        
         // return an array instead
 
       }
       br.close();
+      return tempArr;
     }
     catch(FileNotFoundException e) {
       System.out.println("An error occured");
@@ -36,6 +40,10 @@ public class FileMutation {
       System.out.println("An error occured");
       e.printStackTrace();
 
+    }
+
+    finally{
+      return tempArr;
     }
 
   }
