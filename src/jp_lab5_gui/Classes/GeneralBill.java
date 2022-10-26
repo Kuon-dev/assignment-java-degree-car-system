@@ -1,9 +1,11 @@
+
 package jp_lab5_gui;
+import java.util.Date;
 
 public class GeneralBill {
   public int receipt_id, customer_id;
   public String bank;
-  public datetime booking_date;
+  public Date booking_date;
 
   // get set
   public int getReceiptId() {
@@ -30,11 +32,11 @@ public class GeneralBill {
     this.bank = bank;
   }
 
-  public datetime getBookingDate() {
+  public Date getBookingDate() {
     return booking_date;
   }
 
-  public void setBookingDate(datetime booking_date) {
+  public void setBookingDate(Date booking_date) {
     this.booking_date = booking_date;
   }
 

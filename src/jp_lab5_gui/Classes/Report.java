@@ -1,15 +1,16 @@
 package jp_lab5_gui;
+import java.util.Date;
 
-public class Report {
-  public datetime date;
+public class Report extends Booking {
+  public Date date;
   public double sales;
 
   // get set
-  public datetime getDate() {
+  public Date getDate() {
     return date;
   }
 
-  public void setDate(datetime date){
+  public void setDate(Date date){
     this.date = date;
   }
 

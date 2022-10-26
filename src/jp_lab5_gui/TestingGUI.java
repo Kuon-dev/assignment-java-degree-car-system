@@ -214,6 +214,8 @@ public class TestingGUI extends javax.swing.JFrame {
     Boolean correctCredentials = newAdmin.userLogin(name, "12345", "/Database/MainAdmin.txt");
     System.out.println("Correct Credentials should be TRUE if Robert is entered: " + correctCredentials);
 
+    UserAdmin createNewAdmin = new UserAdmin.admin(11, "SA", "a", "b", "c", "d");
+    createNewAdmin.display();
     ArrayList<String> testingData = new ArrayList<>();
     testingData.add(name);
     testingData.add("12345");

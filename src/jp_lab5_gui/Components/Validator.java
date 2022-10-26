@@ -9,6 +9,9 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.io.IOException;
 
+// regex
+import java.util.regex.*;  
+
 public class Validator {
 
   public static String testValidator(String input){
@@ -37,7 +40,7 @@ public class Validator {
     Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
   public static Boolean emailValidator(String email){
-    Matcher matcher = emaiLRegex.matcher(email);
+    Matcher matcher = emailRegex.matcher(email);
     return matcher.find();
   }
 
@@ -65,12 +68,12 @@ public class Validator {
       // check for any strings 
       int validCard = Integer.parseInt(formattedCard);
       // luhn's algo
-      int nDigits = cardNo.length();
+      int nDigits = inputCard.length();
    
       int nSum = 0;
       boolean isSecond = false;
       for (int i = nDigits - 1; i >= 0; i--){
-          int d = cardNo.charAt(i) - '0';
+          int d = inputCard.charAt(i) - '0';
           if (isSecond == true)
               d = d * 2;
           // We add two digits to handle

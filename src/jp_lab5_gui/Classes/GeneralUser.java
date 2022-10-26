@@ -35,8 +35,11 @@ public class GeneralUser {
     return user_password;
   }
 
-  public int generateUserId() {
-    List<ArrayList<String>> result = mutation.readFile(destination);
+  public int generateUserId(String path) {
+    FileMutation getter = new FileMutation();
+    String destination = cwd + path;
+
+    List<ArrayList<String>> result = getter.readFile(destination);
     ArrayList<String> last_result = new ArrayList<>(result.get(result.size() - 1));
     return Integer.parseInt(last_result.get(0)) + 1;
   }
@@ -63,7 +66,7 @@ public class GeneralUser {
 
     // get latest ID
     ArrayList<String> user_data = new ArrayList<>();
-    int latest_id = generateUserId();
+    int latest_id = generateUserId(path);
 
     // put ID in first
     user_data.add(String.valueOf(latest_id));
@@ -83,7 +86,7 @@ public class GeneralUser {
 
   public List<ArrayList<String>> viewCar(){
     FileMutation getCars = new FileMutation();
-    return getCars.readFile(destination);
+    return getCars.readFile("/Database/MainCar.txt");
   }
 }
 

@@ -1,25 +1,26 @@
 package jp_lab5_gui;
+import java.util.Date;
 
 public class Booking extends GeneralBill {
-  public datetime start_date, end_date;  
+  public Date start_date, end_date;  
   public int days;
   public float price;
   public String car_no_plate;
 
   // get set
-  public datetime getStartDate() {
+  public Date getStartDate() {
     return start_date;
   }
 
-  public void setStartDate(datetime date) {
+  public void setStartDate(Date date) {
     this.start_date = date;
   }
 
-  public datetime getEndDate(){
+  public Date getEndDate(){
     return end_date;
   }
 
-  public void setEndDate(datetime date) {
+  public void setEndDate(Date date) {
     this.end_date = date;
   }
 
