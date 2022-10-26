@@ -3,7 +3,7 @@ package jp_lab5_gui;
 
 public class Bill {
   public String acc_holder;
-  public float amount;
+  public double amount;
 
   public String getAccHolders() { 
     return acc_holder;
