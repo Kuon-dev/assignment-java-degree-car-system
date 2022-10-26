@@ -4,6 +4,8 @@
  */
 package jp_lab5_gui;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Lim Li Ping
@@ -202,17 +204,23 @@ public class TestingGUI extends javax.swing.JFrame {
     Validator v = new Validator();
     name = EnterTxt.getText();
 
-    UserAdmin newAdmin = new UserAdmin();
+    UserAdmin newAdmin = new UserAdmin(121, name, "a", "b", "c", "d");
     newAdmin.setName(name);
 
     ViewTxt.setText(newAdmin.getName());
-    Boolean correct = newAdmin.userLogin(name, "Test", "test", "admin");
-    System.out.println(correct);
+    Boolean incorrectCredentials = newAdmin.userLogin(name, "Test", "/Database/MainAdmin.txt");
+    System.out.println("incorrectCredentials should be FALSE: " + incorrectCredentials);
 
-    Boolean correct2 = newAdmin.userLogin(name, "12345", "12345", "admin");
-    System.out.println(correct2);
+    Boolean correctCredentials = newAdmin.userLogin(name, "12345", "/Database/MainAdmin.txt");
+    System.out.println("Correct Credentials should be TRUE if Robert is entered: " + correctCredentials);
 
-
+    UserAdmin createNewAdmin = new UserAdmin(11, name, "a", "b", "c", "d");
+    createNewAdmin.displayAdmin();
+    ArrayList<String> testingData = new ArrayList<>();
+    testingData.add(name);
+    testingData.add("12345");
+    System.out.println(String.join(",", testingData));
+    newAdmin.userRegister(testingData, "/Database/MainAdmin.txt");
 
   } //GEN-LAST:event_ClickButActionPerformed
 

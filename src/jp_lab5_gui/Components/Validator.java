@@ -9,6 +9,9 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.io.IOException;
 
+// regex
+import java.util.regex.*;  
+
 public class Validator {
 
   public static String testValidator(String input){
@@ -32,10 +35,13 @@ public class Validator {
     }
   }
 
-
   // check if the email is valid
+  public static final Pattern emailRegex = 
+    Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+
   public static Boolean emailValidator(String email){
-    return true;
+    Matcher matcher = emailRegex.matcher(email);
+    return matcher.find();
   }
 
   // check if the phone number is valid
@@ -43,7 +49,7 @@ public class Validator {
     try {
       if (phnum.isEmpty()) return false;
       String newPh = phnum.replace("-", "");
-      int validPh = Integer.parseInt(newPh);
+      Integer.parseInt(newPh);
       return true;
     }
     catch (NumberFormatException e) {
@@ -62,9 +68,23 @@ public class Validator {
       // check for any strings 
       int validCard = Integer.parseInt(formattedCard);
       // luhn's algo
-
-      // finally return true
-      return true;
+      int nDigits = inputCard.length();
+   
+      int nSum = 0;
+      boolean isSecond = false;
+      for (int i = nDigits - 1; i >= 0; i--){
+          int d = inputCard.charAt(i) - '0';
+          if (isSecond == true)
+              d = d * 2;
+          // We add two digits to handle
+          // cases that make two digits
+          // after doubling
+          nSum += d / 10;
+          nSum += d % 10;
+   
+          isSecond = !isSecond;
+      }
+      return (nSum % 10 == 0);
     }
     catch (NumberFormatException e) {
       return false;
