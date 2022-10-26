@@ -1,3 +1,4 @@
+
 package jp_lab5_gui;
 
 public class UserAdmin extends GeneralUser {
@@ -5,7 +6,7 @@ public class UserAdmin extends GeneralUser {
   String admin_phnum;
   String admin_position;
 
-  public admin(
+  public UserAdmin(
     int user_id, 
     String user_name, 
     String user_password, 

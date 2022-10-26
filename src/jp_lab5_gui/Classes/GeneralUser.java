@@ -4,7 +4,7 @@ import java.nio.file.Path;
 import java.util.*;
 
 
-public class GeneralUser {
+abstract public class GeneralUser {
   int user_id;
   String user_name;
   String user_password;
@@ -50,6 +50,7 @@ public class GeneralUser {
     String destination = cwd + path;
 
     List<ArrayList<String>> result = mutation.readFile(destination);
+    // result is a 2d array
     for (int i = 0; i < result.size(); i++) {
       user_name = result.get(i).get(1);
       user_password = result.get(i).get(2);

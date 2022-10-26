@@ -204,7 +204,7 @@ public class TestingGUI extends javax.swing.JFrame {
     Validator v = new Validator();
     name = EnterTxt.getText();
 
-    UserAdmin newAdmin = new UserAdmin();
+    UserAdmin newAdmin = new UserAdmin(121, name, "a", "b", "c", "d");
     newAdmin.setName(name);
 
     ViewTxt.setText(newAdmin.getName());
@@ -214,8 +214,8 @@ public class TestingGUI extends javax.swing.JFrame {
     Boolean correctCredentials = newAdmin.userLogin(name, "12345", "/Database/MainAdmin.txt");
     System.out.println("Correct Credentials should be TRUE if Robert is entered: " + correctCredentials);
 
-    UserAdmin createNewAdmin = new UserAdmin.admin(11, "SA", "a", "b", "c", "d");
-    createNewAdmin.display();
+    UserAdmin createNewAdmin = new UserAdmin(11, name, "a", "b", "c", "d");
+    createNewAdmin.displayAdmin();
     ArrayList<String> testingData = new ArrayList<>();
     testingData.add(name);
     testingData.add("12345");
