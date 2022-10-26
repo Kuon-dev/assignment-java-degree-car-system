@@ -32,11 +32,11 @@ public class Booking extends GeneralBill {
     this.days = days;
   }
 
-  public float getPrice(){
+  public double getPrice(){
     return price;
   }
 
-  public void setPrice(float price) {
+  public void setPrice(double price) {
     this.price = price;
   }
 

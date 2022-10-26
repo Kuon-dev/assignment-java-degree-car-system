@@ -13,11 +13,11 @@ public class Bill {
     this.acc_holder = acc;
   }
 
-  public float getAmount() {
+  public double getAmount() {
     return amount;
   }
 
-  public void setAmount(float amount){
+  public void setAmount(double amount){
     this.amount = amount;
   }
 }
