@@ -10,6 +10,7 @@ import java.text.ParseException;
 import java.io.IOException;
 
 // regex
+// add comment
 import java.util.regex.*;  
 
 public class Validator {
@@ -19,6 +20,7 @@ public class Validator {
     return input; 
   }
 
+  // check for empty input
   public static Boolean notEmptyString (String input){
     return (!(input.isEmpty()));
   }
@@ -27,7 +29,7 @@ public class Validator {
   public static Boolean isNumber(String input){
     try {
       if (input == "") return false;
-      int num = Integer.parseInt(input);
+      Integer.parseInt(input);
       return true;
     }  
     catch(NumberFormatException e) {
