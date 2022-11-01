@@ -3,7 +3,7 @@ package jp_lab5_gui;
 
 public class Bill {
   public String acc_holder;
-  public float amount;
+  public double amount;
 
   public String getAccHolders() { 
     return acc_holder;
@@ -13,11 +13,11 @@ public class Bill {
     this.acc_holder = acc;
   }
 
-  public float getAmount() {
+  public double getAmount() {
     return amount;
   }
 
-  public void setAmount(float amount){
+  public void setAmount(double amount){
     this.amount = amount;
   }
 }

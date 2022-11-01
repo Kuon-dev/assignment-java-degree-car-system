@@ -4,7 +4,7 @@ import java.util.Date;
 public class Booking extends GeneralBill {
   public Date start_date, end_date;  
   public int days;
-  public float price;
+  public double price;
   public String car_no_plate;
 
   // get set
@@ -32,11 +32,11 @@ public class Booking extends GeneralBill {
     this.days = days;
   }
 
-  public float getPrice(){
+  public double getPrice(){
     return price;
   }
 
-  public void setPrice(float price) {
+  public void setPrice(double price) {
     this.price = price;
   }
 
