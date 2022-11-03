@@ -1,14 +1,14 @@
-package jp_lab5_gui;
+package carrentalsystem;
 
 import java.nio.file.Path;
 import java.util.*;
 
-public abstract class GeneralUser {
+public class GeneralUser {
 
   int user_id;
   String user_name;
   String user_password;
-  private String cwd = Path.of("").toAbsolutePath().toString();
+  private static String cwd = Path.of("").toAbsolutePath().toString();
 
   // getter setters
   public void setId(int user_input) {
