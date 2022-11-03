@@ -4,17 +4,26 @@
  */
 package carrentalsystem;
 
+import java.util.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Lim Li Ping
  */
 public class RegisterAdmin extends javax.swing.JFrame {
 
+  private ArrayList<String> currentAdminData;
+
   /**
    * Creates new form RegisterAdmin
    */
   public RegisterAdmin() {
     initComponents();
+  }
+
+  public void setCurrentAdminData(ArrayList<String> data) {
+    this.currentAdminData = data;
   }
 
   /**
