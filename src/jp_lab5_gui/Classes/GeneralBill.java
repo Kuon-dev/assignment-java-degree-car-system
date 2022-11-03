@@ -1,8 +1,9 @@
-
 package jp_lab5_gui;
+
 import java.util.Date;
 
 public class GeneralBill {
+
   public int receipt_id, customer_id;
   public String bank;
   public Date booking_date;
@@ -12,7 +13,7 @@ public class GeneralBill {
     return receipt_id;
   }
 
-  public void setReceiptId(int receipt){
+  public void setReceiptId(int receipt) {
     this.receipt_id = receipt;
   }
 
@@ -20,7 +21,7 @@ public class GeneralBill {
     return customer_id;
   }
 
-  public void setCustomerId(int customer_id){
+  public void setCustomerId(int customer_id) {
     this.customer_id = customer_id;
   }
 
@@ -28,7 +29,7 @@ public class GeneralBill {
     return bank;
   }
 
-  public void setBank(String bank){
+  public void setBank(String bank) {
     this.bank = bank;
   }
 
@@ -39,5 +40,4 @@ public class GeneralBill {
   public void setBookingDate(Date booking_date) {
     this.booking_date = booking_date;
   }
-
 }

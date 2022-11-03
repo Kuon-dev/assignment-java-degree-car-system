@@ -10,13 +10,12 @@ package carrentalsystem;
  */
 public class CarRentalSystem {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        //Call the sign in form
-        LoginMenu login = new LoginMenu();
-        login.setVisible(true);
-    }
-    
+  /**
+   * @param args the command line arguments
+   */
+  public static void main(String[] args) {
+    //Call the sign in form
+    LoginMenu login = new LoginMenu();
+    login.setVisible(true);
+  }
 }
