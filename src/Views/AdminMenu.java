@@ -4,17 +4,22 @@
  */
 package carrentalsystem;
 
+import java.util.*;
 /**
  *
  * @author Lim Li Ping
  */
 public class AdminMenu extends javax.swing.JFrame {
-
+  private ArrayList<String> currentAdminData;
   /**
    * Creates new form AdminMenu
    */
   public AdminMenu() {
     initComponents();
+  }
+
+  public void setCurrentAdminData(ArrayList<String> data){
+    this.currentAdminData = data;
   }
 
   /**
@@ -254,6 +259,7 @@ public class AdminMenu extends javax.swing.JFrame {
 
   private void LoginBtn5ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_LoginBtn5ActionPerformed
     // TODO add your handling code here:
+    System.out.println(currentAdminData);
   } //GEN-LAST:event_LoginBtn5ActionPerformed
 
   private void ExitBtn1ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ExitBtn1ActionPerformed

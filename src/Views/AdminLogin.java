@@ -5,6 +5,7 @@
 package carrentalsystem;
 
 import javax.swing.JOptionPane;
+import java.util.*;
 
 /**
  *
@@ -269,17 +270,17 @@ public class AdminLogin extends javax.swing.JFrame {
     UserAdmin adminUser = new UserAdmin(0, null, null, null, null, null);
     Validator valid = new Validator();
 
-    adminUser.setName(adminName);
-    adminUser.setPassword(adminPassword);
-
     Boolean loginCheck = adminUser.userLogin(
       adminName,
       adminPassword,
       adminDbPath
     );
-    System.out.println(loginCheck);
     if (loginCheck) {
       AdminMenu menu = new AdminMenu();
+      // fetch current user data
+      adminUser.getUserData(adminName, adminDbPath);
+      // pass data to admin menu
+      menu.setCurrentAdminData(adminUser.getUserData(adminName, adminDbPath));
       menu.setVisible(true);
       dispose();
     }
@@ -292,12 +293,7 @@ public class AdminLogin extends javax.swing.JFrame {
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
-      System.out.println(adminName + " " + adminPassword);
-      System.out.println(AdminIDTxt.getText());
-      System.out.println(PswTxt1.getText());
     } else {
-      //Check if the data input correct
-      //Check if data not found
       //Display incorrect data input message
       JOptionPane.showMessageDialog(
         this,
