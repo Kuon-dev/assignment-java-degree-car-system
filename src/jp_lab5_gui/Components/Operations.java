@@ -7,6 +7,7 @@ public class Operations {
     return cost * days * 1.06;
   }
 
+  // calculate the difference of the days
   public int calculateDays(Date start, Date end){
     return 5; 
   }

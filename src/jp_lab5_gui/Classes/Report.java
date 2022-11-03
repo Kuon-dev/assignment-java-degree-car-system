@@ -1,7 +1,9 @@
 package jp_lab5_gui;
+
 import java.util.Date;
 
 public class Report extends Booking {
+
   public Date date;
   public double sales;
 
@@ -10,11 +12,11 @@ public class Report extends Booking {
     return date;
   }
 
-  public void setDate(Date date){
+  public void setDate(Date date) {
     this.date = date;
   }
 
-  public double getSales() { 
+  public double getSales() {
     return sales;
   }
 

@@ -1,8 +1,10 @@
 package jp_lab5_gui;
+
 import java.util.Date;
 
 public class Booking extends GeneralBill {
-  public Date start_date, end_date;  
+
+  public Date start_date, end_date;
   public int days;
   public double price;
   public String car_no_plate;
@@ -16,7 +18,7 @@ public class Booking extends GeneralBill {
     this.start_date = date;
   }
 
-  public Date getEndDate(){
+  public Date getEndDate() {
     return end_date;
   }
 
@@ -24,7 +26,7 @@ public class Booking extends GeneralBill {
     this.end_date = date;
   }
 
-  public int getDays(){
+  public int getDays() {
     return days;
   }
 
@@ -32,7 +34,7 @@ public class Booking extends GeneralBill {
     this.days = days;
   }
 
-  public double getPrice(){
+  public double getPrice() {
     return price;
   }
 
@@ -44,8 +46,7 @@ public class Booking extends GeneralBill {
     return car_no_plate;
   }
 
-  public void setCarNoplate(String plate){
+  public void setCarNoplate(String plate) {
     this.car_no_plate = plate;
   }
-
 }

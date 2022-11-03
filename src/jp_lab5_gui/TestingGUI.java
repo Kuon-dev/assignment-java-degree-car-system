@@ -208,11 +208,24 @@ public class TestingGUI extends javax.swing.JFrame {
     newAdmin.setName(name);
 
     ViewTxt.setText(newAdmin.getName());
-    Boolean incorrectCredentials = newAdmin.userLogin(name, "Test", "/Database/MainAdmin.txt");
-    System.out.println("incorrectCredentials should be FALSE: " + incorrectCredentials);
+    Boolean incorrectCredentials = newAdmin.userLogin(
+      name,
+      "Test",
+      "/Database/MainAdmin.txt"
+    );
+    System.out.println(
+      "incorrectCredentials should be FALSE: " + incorrectCredentials
+    );
 
-    Boolean correctCredentials = newAdmin.userLogin(name, "12345", "/Database/MainAdmin.txt");
-    System.out.println("Correct Credentials should be TRUE if Robert is entered: " + correctCredentials);
+    Boolean correctCredentials = newAdmin.userLogin(
+      name,
+      "12345",
+      "/Database/MainAdmin.txt"
+    );
+    System.out.println(
+      "Correct Credentials should be TRUE if Robert is entered: " +
+      correctCredentials
+    );
 
     UserAdmin createNewAdmin = new UserAdmin(11, name, "a", "b", "c", "d");
     createNewAdmin.displayAdmin();
@@ -221,7 +234,6 @@ public class TestingGUI extends javax.swing.JFrame {
     testingData.add("12345");
     System.out.println(String.join(",", testingData));
     newAdmin.userRegister(testingData, "/Database/MainAdmin.txt");
-
   } //GEN-LAST:event_ClickButActionPerformed
 
   /**
