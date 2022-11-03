@@ -5,12 +5,15 @@
 package carrentalsystem;
 
 import java.util.*;
+
 /**
  *
  * @author Lim Li Ping
  */
 public class AdminMenu extends javax.swing.JFrame {
+
   private ArrayList<String> currentAdminData;
+
   /**
    * Creates new form AdminMenu
    */
@@ -18,7 +21,7 @@ public class AdminMenu extends javax.swing.JFrame {
     initComponents();
   }
 
-  public void setCurrentAdminData(ArrayList<String> data){
+  public void setCurrentAdminData(ArrayList<String> data) {
     this.currentAdminData = data;
   }
 

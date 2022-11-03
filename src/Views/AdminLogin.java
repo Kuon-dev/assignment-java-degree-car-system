@@ -4,8 +4,8 @@
  */
 package carrentalsystem;
 
-import javax.swing.JOptionPane;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 /**
  *

@@ -113,17 +113,18 @@ public class GeneralUser {
     List<ArrayList<String>> result = getters.readFile(destination);
     for (int i = 0; i < result.size(); i++) {
       ArrayList<String> currentLine = result.get(i);
-      for (int j = 0; j < currentLine.size(); j++){
+      for (int j = 0; j < currentLine.size(); j++) {
         if (currentLine.get(j).equalsIgnoreCase(targetUser)) {
           userObj = currentLine;
           return userObj;
         }
       }
     }
-    if (userObj.isEmpty())
-      // somehow the user is able to login, but inable to fetch data
-      // shouldn't happen at all
-      System.out.println("Something went wrong");
-  return userObj;
+    if (
+      userObj.isEmpty()
+    ) // somehow the user is able to login, but inable to fetch data
+    // shouldn't happen at all
+    System.out.println("Something went wrong");
+    return userObj;
   }
 }
