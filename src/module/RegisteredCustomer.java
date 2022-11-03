@@ -1,6 +1,7 @@
 package carrentalsystem;
 
 public class RegisteredCustomer extends GeneralUser {
+
   public String IC;
 
   public RegisteredCustomer(

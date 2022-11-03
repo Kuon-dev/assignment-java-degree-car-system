@@ -1,12 +1,12 @@
 {
-  "name": "jpdegreeassignment",
+  "name": "Car Rental System",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "CarRentalSystem",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install",
-    "lint": "npx prettier --write '**/*.java' --ignore-unknown --no-error-on-unmatched-pattern"
+    "lint": "npx prettier --write \"**/*.java\" --ignore-unknown --no-error-on-unmatched-pattern"
   },
   "repository": {
     "type": "git",

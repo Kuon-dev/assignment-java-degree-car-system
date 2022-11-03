@@ -263,7 +263,7 @@ public class AdminLogin extends javax.swing.JFrame {
     adminName = AdminIDTxt.getText();
     adminPassword = PswTxt1.getText();
 
-    String adminDbPath =  "/Database/MainAdmin.txt";
+    String adminDbPath = "/Database/MainAdmin.txt";
 
     //Set data stored in variables
     UserAdmin adminUser = new UserAdmin(0, null, null, null, null, null);
@@ -272,7 +272,11 @@ public class AdminLogin extends javax.swing.JFrame {
     adminUser.setName(adminName);
     adminUser.setPassword(adminPassword);
 
-    Boolean loginCheck = adminUser.userLogin(adminName, adminPassword, adminDbPath);
+    Boolean loginCheck = adminUser.userLogin(
+      adminName,
+      adminPassword,
+      adminDbPath
+    );
     System.out.println(loginCheck);
     if (loginCheck) {
       AdminMenu menu = new AdminMenu();
@@ -291,10 +295,9 @@ public class AdminLogin extends javax.swing.JFrame {
       System.out.println(adminName + " " + adminPassword);
       System.out.println(AdminIDTxt.getText());
       System.out.println(PswTxt1.getText());
-    }
-    else {
-    //Check if the data input correct
-    //Check if data not found
+    } else {
+      //Check if the data input correct
+      //Check if data not found
       //Display incorrect data input message
       JOptionPane.showMessageDialog(
         this,
@@ -302,12 +305,10 @@ public class AdminLogin extends javax.swing.JFrame {
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
-    this.AdminIDTxt.setText("");
-    this.PswTxt.setText("");
-
+      this.AdminIDTxt.setText("");
+      this.PswTxt.setText("");
     }
-
-      //Clear the JTextField
+    //Clear the JTextField
   } //GEN-LAST:event_LoginBtn1ActionPerformed
 
   /**
