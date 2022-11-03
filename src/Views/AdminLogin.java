@@ -4,6 +4,7 @@
  */
 package carrentalsystem;
 
+import java.util.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -263,19 +264,23 @@ public class AdminLogin extends javax.swing.JFrame {
     adminName = AdminIDTxt.getText();
     adminPassword = PswTxt1.getText();
 
-    String adminDbPath =  "/Database/MainAdmin.txt";
+    String adminDbPath = "/Database/MainAdmin.txt";
 
     //Set data stored in variables
     UserAdmin adminUser = new UserAdmin(0, null, null, null, null, null);
     Validator valid = new Validator();
 
-    adminUser.setName(adminName);
-    adminUser.setPassword(adminPassword);
-
-    Boolean loginCheck = adminUser.userLogin(adminName, adminPassword, adminDbPath);
-    System.out.println(loginCheck);
+    Boolean loginCheck = adminUser.userLogin(
+      adminName,
+      adminPassword,
+      adminDbPath
+    );
     if (loginCheck) {
       AdminMenu menu = new AdminMenu();
+      // fetch current user data
+      adminUser.getUserData(adminName, adminDbPath);
+      // pass data to admin menu
+      menu.setCurrentAdminData(adminUser.getUserData(adminName, adminDbPath));
       menu.setVisible(true);
       dispose();
     }
@@ -288,13 +293,7 @@ public class AdminLogin extends javax.swing.JFrame {
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
-      System.out.println(adminName + " " + adminPassword);
-      System.out.println(AdminIDTxt.getText());
-      System.out.println(PswTxt1.getText());
-    }
-    else {
-    //Check if the data input correct
-    //Check if data not found
+    } else {
       //Display incorrect data input message
       JOptionPane.showMessageDialog(
         this,
@@ -302,12 +301,10 @@ public class AdminLogin extends javax.swing.JFrame {
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
-    this.AdminIDTxt.setText("");
-    this.PswTxt.setText("");
-
+      this.AdminIDTxt.setText("");
+      this.PswTxt.setText("");
     }
-
-      //Clear the JTextField
+    //Clear the JTextField
   } //GEN-LAST:event_LoginBtn1ActionPerformed
 
   /**

@@ -4,17 +4,26 @@
  */
 package carrentalsystem;
 
+import java.util.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Lim Li Ping
  */
 public class RegisterAdmin extends javax.swing.JFrame {
 
+  private ArrayList<String> currentAdminData;
+
   /**
    * Creates new form RegisterAdmin
    */
   public RegisterAdmin() {
     initComponents();
+  }
+
+  public void setCurrentAdminData(ArrayList<String> data) {
+    this.currentAdminData = data;
   }
 
   /**
@@ -446,7 +455,13 @@ public class RegisterAdmin extends javax.swing.JFrame {
     exit.exitsystem();
   } //GEN-LAST:event_ExitBtn2ActionPerformed
 
-  private void LoginBtn2ActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_LoginBtn2ActionPerformed //GEN-LAST:event_LoginBtn2ActionPerformed
+  private void LoginBtn2ActionPerformed(java.awt.event.ActionEvent evt) {
+
+    System.out.println(CustIDTxt.getText());
+    System.out.println("Register acc btn maybe");
+    
+
+  }
 
   private void CustIDTxtActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_CustIDTxtActionPerformed
     // TODO add your handling code here:
