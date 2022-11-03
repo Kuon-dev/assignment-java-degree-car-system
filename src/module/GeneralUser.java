@@ -122,8 +122,7 @@ public class GeneralUser {
     }
     if (
       userObj.isEmpty()
-    ) // shouldn't happen at all // somehow the user is able to login, but inable to fetch data
-    System.out.println("Something went wrong");
+    ) System.out.println("Something went wrong"); // shouldn't happen at all // somehow the user is able to login, but inable to fetch data
     return userObj;
   }
 }

@@ -251,7 +251,6 @@ public class AdminMenu extends javax.swing.JFrame {
     RegisterAdmin registerMenu = new RegisterAdmin();
     registerMenu.setVisible(true);
     dispose();
-
   } //GEN-FIRST:event_LoginBtn1ActionPerformed //GEN-LAST:event_LoginBtn1ActionPerformed
 
   private void ManageCarBtnActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ManageCarBtnActionPerformed
@@ -261,17 +260,17 @@ public class AdminMenu extends javax.swing.JFrame {
   private void LoginBtn3ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_LoginBtn3ActionPerformed
     // TODO manage booking
     System.out.println("This is action 3 btn");
-  } 
+  }
 
   private void LoginBtn4ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_LoginBtn4ActionPerformed
-    // TODO manage personal info 
+    // TODO manage personal info
     System.out.println("This is action 4 btn");
-  } 
+  }
 
   private void LoginBtn5ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_LoginBtn5ActionPerformed
     // TODO sales report
     System.out.println(currentAdminData);
-  } 
+  }
 
   private void ExitBtn1ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ExitBtn1ActionPerformed
     //Call the exit system function
