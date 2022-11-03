@@ -1,9 +1,11 @@
-package jp_lab5_gui;
+package carrentalsystem;
 
 public class RegisteredCustomer extends GeneralUser {
+  public String IC;
 
   public RegisteredCustomer(
     int user_id,
+    String IC,
     String user_name,
     String user_password
   ) {

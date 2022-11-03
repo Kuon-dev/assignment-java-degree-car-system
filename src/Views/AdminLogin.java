@@ -257,25 +257,30 @@ public class AdminLogin extends javax.swing.JFrame {
   } //GEN-LAST:event_ExitBtn1ActionPerformed
 
   private void LoginBtn1ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_LoginBtn1ActionPerformed
-    String AdminID, Password, admin;
+    String adminName, adminPassword, admin;
 
     //Retrieve data input
-    AdminID = StaffIDTxt.getText();
-    Password = PswTxt.getText();
+    adminName = AdminIDTxt.getText();
+    adminPassword = PswTxt1.getText();
+
+    String adminDbPath =  "/Database/MainAdmin.txt";
 
     //Set data stored in variables
-    String staffid = "Admin";
-    String pass = "Admin123";
+    UserAdmin adminUser = new UserAdmin(0, null, null, null, null, null);
+    Validator valid = new Validator();
 
-    //Check if the data input correct
-    if (AdminID.equals(staffid) && Password.equals(pass)) {
-      //If data correct then go to main menu
+    adminUser.setName(adminName);
+    adminUser.setPassword(adminPassword);
+
+    Boolean loginCheck = adminUser.userLogin(adminName, adminPassword, adminDbPath);
+    System.out.println(loginCheck);
+    if (loginCheck) {
       AdminMenu menu = new AdminMenu();
       menu.setVisible(true);
       dispose();
     }
     //Check if data input is empty
-    else if (AdminID.equals("") || Password.equals("")) {
+    else if (adminName.isEmpty() || adminPassword.isEmpty()) {
       //If data input is empty then display login failed
       JOptionPane.showMessageDialog(
         this,
@@ -283,13 +288,13 @@ public class AdminLogin extends javax.swing.JFrame {
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
-
-      //Clear the JTextField
-      this.AdminIDTxt.setText("");
-      this.PswTxt.setText("");
+      System.out.println(adminName + " " + adminPassword);
+      System.out.println(AdminIDTxt.getText());
+      System.out.println(PswTxt1.getText());
     }
-    //Check if data not found
     else {
+    //Check if the data input correct
+    //Check if data not found
       //Display incorrect data input message
       JOptionPane.showMessageDialog(
         this,
@@ -297,11 +302,12 @@ public class AdminLogin extends javax.swing.JFrame {
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
+    this.AdminIDTxt.setText("");
+    this.PswTxt.setText("");
+
+    }
 
       //Clear the JTextField
-      this.AdminIDTxt.setText("");
-      this.PswTxt.setText("");
-    }
   } //GEN-LAST:event_LoginBtn1ActionPerformed
 
   /**

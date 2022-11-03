@@ -1,4 +1,4 @@
-package jp_lab5_gui;
+package carrentalsystem;
 
 import java.io.IOException;
 import java.text.DateFormat;

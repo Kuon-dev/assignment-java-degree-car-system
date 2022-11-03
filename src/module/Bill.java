@@ -1,4 +1,4 @@
-package jp_lab5_gui;
+package carrentalsystem;
 
 public class Bill {
 
