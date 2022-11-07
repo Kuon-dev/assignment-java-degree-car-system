@@ -62,52 +62,20 @@ public class GeneralUser {
     String inputPassword,
     String path
   ) {
-    FileController mutation = new FileController();
-    // this is just a demo usage, not intended for production use
-    // String demo_path = (cwd + "/Database/MainAdmin.txt");
-    String destination = cwd + path;
 
-    List<ArrayList<String>> result = mutation.readFile(destination);
-    // result is a 2d array
-    for (int i = 0; i < result.size(); i++) {
-      name = result.get(i).get(1);
-      userPassword = result.get(i).get(2);
+    GeneralGetters getters = new GeneralGetters();
+    ArrayList<UserAdmin> admins = getters.getAllAdmin();
+    for (int i = 0; i < admins.size(); i++) {
+      String adminName = admins.get(i).getName();
+      String adminPassword = admins.get(i).getPassword();
       if (
-        name.equalsIgnoreCase(inputName) && userPassword.equals(inputPassword)
-      ) {
+        userName.equalsIgnoreCase(inputName) && userPassword.equals(inputPassword))
         return true;
-      }
     }
     return false;
   }
 
-  public void userRegister(ArrayList<String> data, String path) {
-    FileController mutation = new FileController();
-    String destination = cwd + path;
-
-    // get latest ID
-    ArrayList<String> userData = new ArrayList<>();
-    int latest_id = generateUserId(path);
-
-    // put ID in first
-    userData.add(String.valueOf(latest_id));
-    // then take user input add it to user data
-    for (String userInput : data) {
-      // 0 - ID
-      // 1 - Name
-      // 2 - Password
-      // 3 - Email (admin)
-      // 4 - phnum (admin)
-      // 5 - position (admin)
-      userData.add(userInput);
-    }
-
-    mutation.addFile(userData, destination);
-  }
-
-  public List<ArrayList<String>> viewCar() {
-    FileController getCars = new FileController();
-    return getCars.readFile("/Database/MainCar.txt");
+  public void userRegister() {
   }
 
   public ArrayList<String> getUserData(String targetUser, String path) {

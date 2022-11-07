@@ -267,7 +267,7 @@ public class AdminLogin extends javax.swing.JFrame {
     String adminDbPath = "/Database/MainAdmin.txt";
 
     //Set data stored in variables
-    UserAdmin adminUser = new UserAdmin(0, null, null, null, null, null);
+    UserAdmin adminUser = new UserAdmin("001", null, null, null, null, null);
     Validator valid = new Validator();
 
     Boolean loginCheck = adminUser.userLogin(

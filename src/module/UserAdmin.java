@@ -12,16 +12,12 @@ public class UserAdmin extends GeneralUser {
     String adminPhNum,
     String adminPostion
   ) {
-    this.adminID = adminID;
-    this.adminName = adminName;
-    this.adminPassword = user_password;
-    this.adminEmail = adminEmail;
-    this.adminPhNum = adminPhNum;
+    this.userID = adminID;
+    this.userName = adminName;
+    this.userPassword = adminPassword;
+    this.userEmail = adminEmail;
+    this.userPhNum = adminPhNum;
     this.adminPostion = adminPostion;
-  }
-
-  public void displayAdmin() {
-    System.out.println(adminID + " " + adminName);
   }
 
   // getter & setter
