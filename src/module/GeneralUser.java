@@ -62,21 +62,20 @@ public class GeneralUser {
     String inputPassword,
     String path
   ) {
-
     GeneralGetters getters = new GeneralGetters();
     ArrayList<UserAdmin> admins = getters.getAllAdmin();
     for (int i = 0; i < admins.size(); i++) {
       String adminName = admins.get(i).getName();
       String adminPassword = admins.get(i).getPassword();
       if (
-        userName.equalsIgnoreCase(inputName) && userPassword.equals(inputPassword))
-        return true;
+        userName.equalsIgnoreCase(inputName) &&
+        userPassword.equals(inputPassword)
+      ) return true;
     }
     return false;
   }
 
-  public void userRegister() {
-  }
+  public void userRegister() {}
 
   public ArrayList<String> getUserData(String targetUser, String path) {
     FileController getters = new FileController();

@@ -25,7 +25,14 @@ public class GeneralGetters {
     List<ArrayList<String>> data = f.readFile(adminDatabase);
     ArrayList<UserAdmin> users = new ArrayList<UserAdmin>();
     for (ArrayList<String> user : data) {
-      UserAdmin a = new UserAdmin(user.get(0), user.get(1), user.get(2), user.get(3), user.get(4), user.get(5));
+      UserAdmin a = new UserAdmin(
+        user.get(0),
+        user.get(1),
+        user.get(2),
+        user.get(3),
+        user.get(4),
+        user.get(5)
+      );
       users.add(a);
     }
     return users;
