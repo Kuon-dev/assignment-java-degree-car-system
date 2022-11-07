@@ -13,16 +13,6 @@ import java.util.regex.*;
 
 public class Validator {
 
-  public static String testValidator(String input) {
-    // make sure this file is working, can be removed later on
-    return input;
-  }
-
-  // check for empty input
-  public static Boolean notEmptyString(String input) {
-    return (!(input.isEmpty()));
-  }
-
   // check if a string is a number
   public static Boolean isNumber(String input) {
     try {
