@@ -8,12 +8,12 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Path;
 import java.util.*;
 
-import java.nio.file.Path;
-
 public class GeneralMutation {
+
   private String cwd = Path.of("").toAbsolutePath().toString();
-  private String adminDatabase = cwd + "/Database/MainAdmin.txt"; 
+  private String adminDatabase = cwd + "/Database/MainAdmin.txt";
   private String customerDatabse = cwd + "/Database/MainCustomer.txt";
 }

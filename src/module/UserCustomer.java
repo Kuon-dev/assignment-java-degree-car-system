@@ -16,11 +16,11 @@ public class UserCustomer extends GeneralUser {
     this.userEmail = custEmail;
   }
 
-  public String getIC(){
+  public String getIC() {
     return this.IC;
   }
 
-  public void setIC(String IC){
+  public void setIC(String IC) {
     this.IC = IC;
   }
 }

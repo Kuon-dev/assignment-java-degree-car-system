@@ -46,7 +46,7 @@ public class GeneralUser {
     return userEmail;
   }
 
-  public void setPhNum(String phnum){
+  public void setPhNum(String phnum) {
     this.userPhNum = phnum;
   }
 
@@ -56,7 +56,7 @@ public class GeneralUser {
 
   // Shared functions
   // -----------------------------------------------------------------------------
-  
+
   public Boolean userLogin(
     String inputName,
     String inputPassword,
@@ -73,8 +73,7 @@ public class GeneralUser {
       name = result.get(i).get(1);
       userPassword = result.get(i).get(2);
       if (
-        name.equalsIgnoreCase(inputName) &&
-        userPassword.equals(inputPassword)
+        name.equalsIgnoreCase(inputName) && userPassword.equals(inputPassword)
       ) {
         return true;
       }
