@@ -32,4 +32,86 @@ public class GeneralMutation {
     Boolean status = f.addFile(userData, adminDatabase);
     return status;
   }
+
+  public Boolean editExistingAdmin(UserAdmin admin) {
+    ArrayList<String> userData = new ArrayList<>();
+    userData.add(admin.getId());
+    userData.add(admin.getName());
+    userData.add(admin.getPassword());
+    userData.add(admin.getEmail());
+    userData.add(admin.getPhNum());
+    userData.add(admin.getPosition());
+
+    FileController f = new FileController();
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<UserAdmin> admins = g.getAllAdmin();
+    for (let i = 0; i < admins.size(); i++) {
+      if (users.getID() == admin.getID()) {
+        f.modifyFile(userData, adminDatabase, i);
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public Boolean deleteExistingAdmin(UserAdmin admin) {
+    FileController f = new FileController();
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<UserAdmin> admins = g.getAllAdmin();
+    for (let i = 0; i < admins.size(); i++) {
+      if (admins.getID() == admin.getID()) {
+        f.deleteFile(adminDatabase, i);
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public Boolean addNewCustomer(UserCustomer customer) {
+    ArrayList<String> userData = new ArrayList<>();
+    userData.add(customer.getId());
+    userData.add(customer.getName());
+    userData.add(customer.getPassword());
+    userData.add(customer.getEmail());
+    userData.add(customer.getPhNum());
+    userData.add(customer.getPosition());
+
+    FileController f = new FileController();
+    Boolean status = f.addFile(userData, customerDatabse);
+    return status;
+  }
+
+  public Boolean editExistingCustomer(UserCustomer customer) {
+    ArrayList<String> userData = new ArrayList<>();
+    userData.add(customer.getId());
+    userData.add(customer.getName());
+    userData.add(customer.getPassword());
+    userData.add(customer.getEmail());
+    userData.add(customer.getPhNum());
+    userData.add(customer.getPosition());
+
+    FileController f = new FileController();
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<UserAdmin> cust = g.getAllCustomer();
+    for (let i = 0; i < cust.size(); i++) {
+      if (users.getID() == admin.getID()) {
+        f.modifyFile(userData, customerDatabse, i);
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public Boolean deleteExistingCustomer(UserCustomer customer) {
+    FileController f = new FileController();
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<UserAdmin> customers = g.getAllAdmin();
+    for (let i = 0; i < customers.size(); i++) {
+      if (customers.getID() == customer.getID()) {
+        f.deleteFile(adminDatabase, i);
+        return true;
+      }
+    }
+    return false;
+  }
 }
