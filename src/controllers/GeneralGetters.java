@@ -18,6 +18,7 @@ public class GeneralGetters {
   private String cwd = Path.of("").toAbsolutePath().toString();
   private String adminDatabase = cwd + "/Database/MainAdmin.txt";
   private String customerDatabse = cwd + "/Database/MainCustomer.txt";
+  private String carDatabase = cwd + "/Database/MainCar.txt";
 
   public ArrayList<UserAdmin> getAllAdmin() {
     FileController f = new FileController();
@@ -57,10 +58,30 @@ public class GeneralGetters {
         user.get(0),
         user.get(1),
         user.get(2),
-        user.get(3)
+        user.get(3),
+        user.get(4)
       );
       users.add(c);
     }
     return users;
+  }
+
+  public ArrayList<GeneralCar> getAllCar() {
+    FileController f = new FileController();
+    List<ArrayList<String>> data = f.readFile(carDatabase);
+    ArrayList<GeneralCar> allCars = new ArrayList<GeneralCar>();
+    for (ArrayList<String> car : data) {
+      GeneralCar c = new GeneralCar(
+        car.get(0),
+        car.get(1),
+        car.get(2),
+        car.get(3),
+        Integer.parseInt(car.get(4)),
+        Double.parseDouble(car.get(5)),
+        car.get(6)
+      );
+      allCars.add(c);
+    }
+    return allCars;
   }
 }

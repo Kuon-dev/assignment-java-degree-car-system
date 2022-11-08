@@ -256,7 +256,7 @@ public class AdminMenu extends javax.swing.JFrame {
   private void LoginBtn1ActionPerformed(java.awt.event.ActionEvent evt) {
     // TODO register account
     //
-    System.out.println(adminData);
+    System.out.println(adminData.getName());
     RegisterAdmin registerMenu = new RegisterAdmin();
     registerMenu.setVisible(true);
     dispose();

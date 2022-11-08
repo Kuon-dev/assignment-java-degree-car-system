@@ -1,10 +1,28 @@
-package jp_lab5_gui;
+package carrentalsystem;
 
 public class GeneralCar {
 
   public String carNoPlate, brand, model, status, typeOfFuel;
   public int year;
   public double price;
+
+  public GeneralCar(
+    String carNoPlate,
+    String brand,
+    String model,
+    String status,
+    int year,
+    double price,
+    String typeOfFuel
+  ) {
+    this.carNoPlate = carNoPlate;
+    this.brand = brand;
+    this.model = model;
+    this.status = status;
+    this.year = year;
+    this.price = price;
+    this.typeOfFuel = typeOfFuel;
+  }
 
   // get set
   // -------------------------------------

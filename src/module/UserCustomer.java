@@ -8,12 +8,14 @@ public class UserCustomer extends GeneralUser {
     String custIC,
     String custName,
     String custPassword,
-    String custEmail
+    String custEmail,
+    String custPhNum
   ) {
     this.IC = custIC;
     this.userName = custName;
     this.userPassword = custPassword;
     this.userEmail = custEmail;
+    this.userPhNum = custPhNum;
   }
 
   public String getIC() {
@@ -22,5 +24,11 @@ public class UserCustomer extends GeneralUser {
 
   public void setIC(String IC) {
     this.IC = IC;
+  }
+
+  public Boolean registerNewCustomer(UserCustomer customer) {
+    GeneralMutation m = new GeneralMutation();
+
+    return m.addNewCustomer(customer);
   }
 }
