@@ -3,6 +3,7 @@ package carrentalsystem;
 import java.util.Date;
 
 public class GeneralRecord {
+
   public String receiptID, bank;
   public Date bookingDate;
   public double amount;
@@ -30,11 +31,11 @@ public class GeneralRecord {
     return bank;
   }
 
-  public void setBank(String bank){
+  public void setBank(String bank) {
     this.bank = bank;
   }
 
-  public double getAmount(){
+  public double getAmount() {
     return amount;
   }
 
@@ -43,13 +44,12 @@ public class GeneralRecord {
   }
 
   public UserCustomer getCustomer() {
-    return customer;	
+    return customer;
   }
 
   public void setCustomer(UserCustomer customer) {
-    this.customer = customer;	
+    this.customer = customer;
   }
-
   // ----------------------
 
 }

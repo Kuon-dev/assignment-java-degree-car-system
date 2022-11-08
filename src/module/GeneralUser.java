@@ -64,21 +64,20 @@ public class GeneralUser {
   ) {
     GeneralGetters getters = new GeneralGetters();
 
-    if (role == "admin"){
+    if (role == "admin") {
       ArrayList<UserAdmin> user = getters.getAllAdmin();
       System.out.println(user);
-        for (int i = 0; i < user.size(); i++) {
-          String userName = user.get(i).getName();
-          String userPassword = user.get(i).getPassword();
-          if (
-            userName.equalsIgnoreCase(inputName) &&
-            userPassword.equals(inputPassword)
-          ) return true;
-        }
+      for (int i = 0; i < user.size(); i++) {
+        String userName = user.get(i).getName();
+        String userPassword = user.get(i).getPassword();
+        if (
+          userName.equalsIgnoreCase(inputName) &&
+          userPassword.equals(inputPassword)
+        ) return true;
+      }
     }
-
     // customer
-    else{
+    else {
       ArrayList<UserCustomer> user = getters.getAllCustomer();
       for (int i = 0; i < user.size(); i++) {
         String userName = user.get(i).getName();
