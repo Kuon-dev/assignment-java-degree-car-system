@@ -22,6 +22,25 @@ public class ManageCar extends javax.swing.JFrame {
    */
   public ManageCar() {
     initComponents();
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    model.setRowCount(0);
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<GeneralCar> allCars = g.getAllCar();
+    System.out.println(allCars);
+
+    for (GeneralCar car : allCars) {
+      Object[] eachCar = {
+        car.getCarNoPlate(),
+        car.getBrand(),
+        car.getModel(),
+        car.getYear(),
+        car.getFuelType(),
+        car.getPrice(),
+        car.getState(),
+      };
+
+      model.addRow(eachCar);
+    }
   }
 
   /**
@@ -751,31 +770,74 @@ public class ManageCar extends javax.swing.JFrame {
     dispose();
   } //GEN-LAST:event_MenuButActionPerformed
 
-  private void searchActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_searchActionPerformed //GEN-LAST:event_searchActionPerformed
+  private void searchActionPerformed(java.awt.event.ActionEvent evt) {
+    // search
+    System.out.println("Search btn clicked");
+  } //GEN-FIRST:event_searchActionPerformed //GEN-LAST:event_searchActionPerformed
 
-  private void BookBtnActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_BookBtnActionPerformed //GEN-LAST:event_BookBtnActionPerformed
+  private void BookBtnActionPerformed(java.awt.event.ActionEvent evt) {
+    // add btn
+    System.out.println("book btn clicked");
+  } //GEN-FIRST:event_BookBtnActionPerformed //GEN-LAST:event_BookBtnActionPerformed
 
-  private void clearButActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_clearButActionPerformed //GEN-LAST:event_clearButActionPerformed
+  //
 
-  private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {} //GEN-FIRST:event_jTable1MouseClicked //GEN-LAST:event_jTable1MouseClicked
+  private void clearButActionPerformed(java.awt.event.ActionEvent evt) {
+    // clear
+    System.out.println("clear btn clicked");
+  } //GEN-FIRST:event_clearButActionPerformed //GEN-LAST:event_clearButActionPerformed
 
-  private void DayStayActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_DayStayActionPerformed //GEN-LAST:event_DayStayActionPerformed
+  private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {
+    System.out.println("table btn clicked");
+  } //GEN-FIRST:event_jTable1MouseClicked //GEN-LAST:event_jTable1MouseClicked
+
+  private void DayStayActionPerformed(java.awt.event.ActionEvent evt) {
+    System.out.println("day stay btn clicked");
+  } //GEN-FIRST:event_DayStayActionPerformed //GEN-LAST:event_DayStayActionPerformed
 
   private void CarNoPlateActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_CarNoPlateActionPerformed
     // TODO add your handling code here:
+    //
+    System.out.println("car plate btn clicked");
   } //GEN-LAST:event_CarNoPlateActionPerformed
 
   private void RoomIDComponentAdded(java.awt.event.ContainerEvent evt) {} //GEN-FIRST:event_RoomIDComponentAdded //GEN-LAST:event_RoomIDComponentAdded
 
   private void RoomIDItemStateChanged(java.awt.event.ItemEvent evt) {} //GEN-FIRST:event_RoomIDItemStateChanged //GEN-LAST:event_RoomIDItemStateChanged
 
-  private void RoomIDActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_RoomIDActionPerformed //GEN-LAST:event_RoomIDActionPerformed
+  private void RoomIDActionPerformed(java.awt.event.ActionEvent evt) {
+    System.out.println("room id clicked");
+  } //GEN-FIRST:event_RoomIDActionPerformed //GEN-LAST:event_RoomIDActionPerformed
 
   private void EndDateActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_EndDateActionPerformed
     // TODO add your handling code here:
+    //
+    System.out.println("end date clicked");
   } //GEN-LAST:event_EndDateActionPerformed
 
-  private void viewrecordsActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_viewrecordsActionPerformed //GEN-LAST:event_viewrecordsActionPerformed
+  private void viewrecordsActionPerformed(java.awt.event.ActionEvent evt) {
+    System.out.println("view record action clicked");
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    model.setRowCount(0);
+
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<GeneralCar> allCars = g.getAllCar();
+    System.out.println(allCars);
+
+    for (GeneralCar car : allCars) {
+      Object[] eachCar = {
+        car.getCarNoPlate(),
+        car.getBrand(),
+        car.getModel(),
+        car.getYear(),
+        car.getFuelType(),
+        car.getPrice(),
+        car.getState(),
+      };
+
+      model.addRow(eachCar);
+    }
+  } //GEN-FIRST:event_viewrecordsActionPerformed //GEN-LAST:event_viewrecordsActionPerformed
 
   private void updateActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_updateActionPerformed //GEN-LAST:event_updateActionPerformed
 
@@ -783,10 +845,13 @@ public class ManageCar extends javax.swing.JFrame {
 
   private void EndDate1ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_EndDate1ActionPerformed
     // TODO add your handling code here:
+    System.out.println("end date 1 btn click");
   } //GEN-LAST:event_EndDate1ActionPerformed
 
   private void EndDate2ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_EndDate2ActionPerformed
     // TODO add your handling code here:
+    //
+    System.out.println("end date 2 btn click");
   } //GEN-LAST:event_EndDate2ActionPerformed
 
   private void RoomID1ComponentAdded(java.awt.event.ContainerEvent evt) { //GEN-FIRST:event_RoomID1ComponentAdded
@@ -799,6 +864,8 @@ public class ManageCar extends javax.swing.JFrame {
 
   private void RoomID1ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_RoomID1ActionPerformed
     // TODO add your handling code here:
+    //
+    System.out.println("room id 1 btn click");
   } //GEN-LAST:event_RoomID1ActionPerformed
 
   /**

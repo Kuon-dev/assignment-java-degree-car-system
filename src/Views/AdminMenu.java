@@ -264,7 +264,10 @@ public class AdminMenu extends javax.swing.JFrame {
 
   private void ManageCarBtnActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ManageCarBtnActionPerformed
     // TODO add your handling code here:
-  } //GEN-LAST:event_ManageCarBtnActionPerformed
+    ManageCar manageCarMenu = new ManageCar();
+    manageCarMenu.setVisible(true);
+    dispose();
+  }
 
   private void LoginBtn3ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_LoginBtn3ActionPerformed
     // TODO manage booking
