@@ -45,9 +45,9 @@ public class GeneralMutation {
     FileController f = new FileController();
     GeneralGetters g = new GeneralGetters();
     ArrayList<UserAdmin> admins = g.getAllAdmin();
-    for (let i = 0; i < admins.size(); i++) {
-      if (users.getID() == admin.getID()) {
-        f.modifyFile(userData, adminDatabase, i);
+    for (int i = 0; i < admins.size(); i++) {
+      if (admins.get(i).getId() == admin.getId()) {
+        f.modifyFile(userData, adminDatabase, Integer.toString(i));
         return true;
       }
     }
@@ -58,9 +58,9 @@ public class GeneralMutation {
     FileController f = new FileController();
     GeneralGetters g = new GeneralGetters();
     ArrayList<UserAdmin> admins = g.getAllAdmin();
-    for (let i = 0; i < admins.size(); i++) {
-      if (admins.getID() == admin.getID()) {
-        f.deleteFile(adminDatabase, i);
+    for (int i = 0; i < admins.size(); i++) {
+      if (admins.get(i).getId() == admin.getId()) {
+        f.deleteFile(adminDatabase, Integer.toString(i));
         return true;
       }
     }
@@ -74,7 +74,6 @@ public class GeneralMutation {
     userData.add(customer.getPassword());
     userData.add(customer.getEmail());
     userData.add(customer.getPhNum());
-    userData.add(customer.getPosition());
 
     FileController f = new FileController();
     Boolean status = f.addFile(userData, customerDatabse);
@@ -88,14 +87,13 @@ public class GeneralMutation {
     userData.add(customer.getPassword());
     userData.add(customer.getEmail());
     userData.add(customer.getPhNum());
-    userData.add(customer.getPosition());
 
     FileController f = new FileController();
     GeneralGetters g = new GeneralGetters();
-    ArrayList<UserAdmin> cust = g.getAllCustomer();
-    for (let i = 0; i < cust.size(); i++) {
-      if (users.getID() == admin.getID()) {
-        f.modifyFile(userData, customerDatabse, i);
+    ArrayList<UserCustomer> cust = g.getAllCustomer();
+    for (int i = 0; i < cust.size(); i++) {
+      if (cust.get(i).getId() == customer.getId()) {
+        f.modifyFile(userData, customerDatabse, Integer.toString(i));
         return true;
       }
     }
@@ -105,10 +103,10 @@ public class GeneralMutation {
   public Boolean deleteExistingCustomer(UserCustomer customer) {
     FileController f = new FileController();
     GeneralGetters g = new GeneralGetters();
-    ArrayList<UserAdmin> customers = g.getAllAdmin();
-    for (let i = 0; i < customers.size(); i++) {
-      if (customers.getID() == customer.getID()) {
-        f.deleteFile(adminDatabase, i);
+    ArrayList<UserCustomer> customers = g.getAllCustomer();
+    for (int i = 0; i < customers.size(); i++) {
+      if (customers.get(i).getId() == customer.getId()) {
+        f.deleteFile(adminDatabase, Integer.toString(i));
         return true;
       }
     }

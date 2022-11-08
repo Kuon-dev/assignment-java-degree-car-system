@@ -28,4 +28,15 @@ public class UserAdmin extends GeneralUser {
   public void setPosition(String position) {
     this.adminPostion = position;
   }
+
+  // methods
+  // -------------------------
+  public Boolean registerNewAdmin(UserAdmin admin) {
+    FileController f = new FileController();
+    GeneralGetters g = new GeneralGetters();
+    // check if the IDs are taken
+    GeneralMutation m = new GeneralMutation();
+
+    return m.addNewAdmin(admin);
+  }
 }

@@ -38,6 +38,15 @@ public class GeneralGetters {
     return users;
   }
 
+  public UserAdmin getSpecificAdmin(String id) {
+    ArrayList<UserAdmin> allAdmins = getAllAdmin();
+    for (UserAdmin admin : allAdmins) {
+      if (admin.getId() == id) return admin;
+    }
+    // this shouldn't happen anyway
+    return allAdmins.get(0);
+  }
+
   public ArrayList<UserCustomer> getAllCustomer() {
     FileController f = new FileController();
 

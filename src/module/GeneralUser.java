@@ -92,8 +92,6 @@ public class GeneralUser {
     return false;
   }
 
-  public void userRegister() {}
-
   public ArrayList<String> getUserData(String targetUser, String path) {
     FileController getters = new FileController();
     String destination = cwd + path;
