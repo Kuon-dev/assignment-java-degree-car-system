@@ -37,4 +37,23 @@ public class GeneralGetters {
     }
     return users;
   }
+
+  public ArrayList<UserCustomer> getAllCustomer() {
+    FileController f = new FileController();
+
+    List<ArrayList<String>> data = f.readFile(customerDatabse);
+    ArrayList<UserCustomer> users = new ArrayList<UserCustomer>();
+    for (ArrayList<String> user : data) {
+      UserCustomer c = new UserCustomer(
+        user.get(0),
+        user.get(1),
+        user.get(2),
+        user.get(3)
+      );
+      users.add(c);
+    }
+    return users;
+  }
+
+
 }

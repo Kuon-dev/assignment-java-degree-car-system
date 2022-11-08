@@ -7,6 +7,7 @@ public class GeneralCar {
   public double price;
 
   // get set
+  // -------------------------------------
   public String getCarNoPlate() {
     return carNoPlate;
   }
@@ -63,4 +64,5 @@ public class GeneralCar {
     this.price = price;
   }
   //
+  // -------------------------------------
 }

@@ -60,18 +60,36 @@ public class GeneralUser {
   public Boolean userLogin(
     String inputName,
     String inputPassword,
-    String path
+    String role
   ) {
     GeneralGetters getters = new GeneralGetters();
-    ArrayList<UserAdmin> admins = getters.getAllAdmin();
-    for (int i = 0; i < admins.size(); i++) {
-      String adminName = admins.get(i).getName();
-      String adminPassword = admins.get(i).getPassword();
-      if (
-        userName.equalsIgnoreCase(inputName) &&
-        userPassword.equals(inputPassword)
-      ) return true;
+
+    if (role == "admin"){
+      ArrayList<UserAdmin> user = getters.getAllAdmin();
+      System.out.println(user);
+        for (int i = 0; i < user.size(); i++) {
+          String userName = user.get(i).getName();
+          String userPassword = user.get(i).getPassword();
+          if (
+            userName.equalsIgnoreCase(inputName) &&
+            userPassword.equals(inputPassword)
+          ) return true;
+        }
     }
+
+    // customer
+    else{
+      ArrayList<UserCustomer> user = getters.getAllCustomer();
+      for (int i = 0; i < user.size(); i++) {
+        String userName = user.get(i).getName();
+        String userPassword = user.get(i).getPassword();
+        if (
+          userName.equalsIgnoreCase(inputName) &&
+          userPassword.equals(inputPassword)
+        ) return true;
+      }
+    }
+
     return false;
   }
 
