@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 
-public class FileMutation {
+public class FileController {
 
   public static List<ArrayList<String>> readFile(String path) {
     List<ArrayList<String>> tempArr = new ArrayList();

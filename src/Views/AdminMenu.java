@@ -12,7 +12,14 @@ import java.util.*;
  */
 public class AdminMenu extends javax.swing.JFrame {
 
-  private ArrayList<String> currentAdminData;
+  private UserAdmin adminData = new UserAdmin(
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  );
 
   /**
    * Creates new form AdminMenu
@@ -21,8 +28,8 @@ public class AdminMenu extends javax.swing.JFrame {
     initComponents();
   }
 
-  public void setCurrentAdminData(ArrayList<String> data) {
-    this.currentAdminData = data;
+  public void setCurrentAdminData(UserAdmin data) {
+    this.adminData = data;
   }
 
   /**
@@ -248,6 +255,8 @@ public class AdminMenu extends javax.swing.JFrame {
 
   private void LoginBtn1ActionPerformed(java.awt.event.ActionEvent evt) {
     // TODO register account
+    //
+    System.out.println(adminData);
     RegisterAdmin registerMenu = new RegisterAdmin();
     registerMenu.setVisible(true);
     dispose();
@@ -269,7 +278,6 @@ public class AdminMenu extends javax.swing.JFrame {
 
   private void LoginBtn5ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_LoginBtn5ActionPerformed
     // TODO sales report
-    System.out.println(currentAdminData);
   }
 
   private void ExitBtn1ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ExitBtn1ActionPerformed

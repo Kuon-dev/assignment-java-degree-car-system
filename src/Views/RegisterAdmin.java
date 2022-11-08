@@ -456,11 +456,8 @@ public class RegisterAdmin extends javax.swing.JFrame {
   } //GEN-LAST:event_ExitBtn2ActionPerformed
 
   private void LoginBtn2ActionPerformed(java.awt.event.ActionEvent evt) {
-
     System.out.println(CustIDTxt.getText());
     System.out.println("Register acc btn maybe");
-    
-
   }
 
   private void CustIDTxtActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_CustIDTxtActionPerformed

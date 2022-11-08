@@ -2,17 +2,18 @@ package jp_lab5_gui;
 
 public class GeneralCar {
 
-  public String car_no_plate, brand, model, status, type_of_fuel;
+  public String carNoPlate, brand, model, status, typeOfFuel;
   public int year;
   public double price;
 
   // get set
+  // -------------------------------------
   public String getCarNoPlate() {
-    return car_no_plate;
+    return carNoPlate;
   }
 
   public void setCarNoplate(String plate) {
-    this.car_no_plate = plate;
+    this.carNoPlate = plate;
   }
 
   public String getBrand() {
@@ -40,11 +41,11 @@ public class GeneralCar {
   }
 
   public String getFuelType() {
-    return type_of_fuel;
+    return typeOfFuel;
   }
 
   public void setFuelType(String type) {
-    this.type_of_fuel = type;
+    this.typeOfFuel = type;
   }
 
   public int getYear() {
@@ -63,4 +64,5 @@ public class GeneralCar {
     this.price = price;
   }
   //
+  // -------------------------------------
 }

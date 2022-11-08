@@ -264,23 +264,17 @@ public class AdminLogin extends javax.swing.JFrame {
     adminName = AdminIDTxt.getText();
     adminPassword = PswTxt1.getText();
 
-    String adminDbPath = "/Database/MainAdmin.txt";
-
     //Set data stored in variables
-    UserAdmin adminUser = new UserAdmin(0, null, null, null, null, null);
+    UserAdmin adminUser = new UserAdmin("001", null, null, null, null, null);
     Validator valid = new Validator();
 
-    Boolean loginCheck = adminUser.userLogin(
-      adminName,
-      adminPassword,
-      adminDbPath
-    );
+    Boolean loginCheck = adminUser.userLogin(adminName, adminPassword, "admin");
     if (loginCheck) {
       AdminMenu menu = new AdminMenu();
+      GeneralGetters g = new GeneralGetters();
       // fetch current user data
-      adminUser.getUserData(adminName, adminDbPath);
       // pass data to admin menu
-      menu.setCurrentAdminData(adminUser.getUserData(adminName, adminDbPath));
+      menu.setCurrentAdminData(g.getSpecificAdmin("0"));
       menu.setVisible(true);
       dispose();
     }

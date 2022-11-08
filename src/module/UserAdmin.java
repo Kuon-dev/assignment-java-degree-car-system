@@ -2,52 +2,41 @@ package carrentalsystem;
 
 public class UserAdmin extends GeneralUser {
 
-  String admin_email;
-  String admin_phnum;
-  String admin_position;
+  String adminPostion;
 
   public UserAdmin(
-    int user_id,
-    String user_name,
-    String user_password,
-    String admin_email,
-    String admin_phnum,
-    String admin_position
+    String adminID,
+    String adminName,
+    String adminPassword,
+    String adminEmail,
+    String adminPhNum,
+    String adminPostion
   ) {
-    this.user_id = user_id;
-    this.user_name = user_name;
-    this.user_password = user_password;
-    this.admin_email = admin_email;
-    this.admin_phnum = admin_phnum;
-    this.admin_position = admin_position;
-  }
-
-  public void displayAdmin() {
-    System.out.println(user_id + " " + user_name);
+    this.userID = adminID;
+    this.userName = adminName;
+    this.userPassword = adminPassword;
+    this.userEmail = adminEmail;
+    this.userPhNum = adminPhNum;
+    this.adminPostion = adminPostion;
   }
 
   // getter & setter
-  public String getEmail() {
-    return admin_email;
-  }
-
-  public void setEmail(String user_input) {
-    this.admin_email = user_input;
-  }
-
-  public String getPhnum() {
-    return admin_phnum;
-  }
-
-  public void setPhnum(String user_input) {
-    this.admin_phnum = user_input;
-  }
-
   public String getPosition() {
-    return admin_position;
+    return adminPostion;
   }
 
-  public void setPosition(String user_input) {
-    this.admin_position = user_input;
+  public void setPosition(String position) {
+    this.adminPostion = position;
+  }
+
+  // methods
+  // -------------------------
+  public Boolean registerNewAdmin(UserAdmin admin) {
+    FileController f = new FileController();
+    GeneralGetters g = new GeneralGetters();
+    // check if the IDs are taken
+    GeneralMutation m = new GeneralMutation();
+
+    return m.addNewAdmin(admin);
   }
 }
