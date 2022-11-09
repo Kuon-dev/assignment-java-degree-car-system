@@ -19,7 +19,7 @@ public class GeneralMutation {
   private String cwd = Path.of("").toAbsolutePath().toString();
   private String adminDatabase = cwd + "/Database/MainAdmin.txt";
   private String customerDatabse = cwd + "/Database/MainCustomer.txt";
-  private String carDatabse = cwd + "/Database/MainCar.txt";
+  private String carDatabase = cwd + "/Database/MainCar.txt";
 
   public Boolean addNewAdmin(UserAdmin admin) {
     ArrayList<String> userData = new ArrayList<>();
@@ -144,7 +144,7 @@ public class GeneralMutation {
     GeneralGetters g = new GeneralGetters();
     ArrayList<GeneralCar> allCars = g.getAllCar();
     for (int i = 0; i < allCars.size(); i++) {
-      if (allCars.get(i).getId() == car.getId()) {
+      if (allCars.get(i).getCarNoPlate() == car.getCarNoPlate()) {
         f.modifyFile(carData, carDatabase, Integer.toString(i));
         return true;
       }
@@ -158,9 +158,9 @@ public class GeneralMutation {
 
     ArrayList<GeneralCar> allCars = g.getAllCar();
 
-    for (int i = 0; i < customers.size(); i++) {
-      if (allCars.get(i).getId() == car.getId()) {
-        f.deleteFile(carData, carDatabase, Integer.toString(i));
+    for (int i = 0; i < allCars.size(); i++) {
+      if (allCars.get(i).getCarNoPlate() == car.getCarNoPlate()) {
+        f.deleteFile(carDatabase, Integer.toString(i));
         return true;
       }
     }

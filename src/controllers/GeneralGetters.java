@@ -90,42 +90,33 @@ public class GeneralGetters {
     ArrayList<GeneralCar> allCars = getAllCar();
 
     ArrayList<GeneralCar> filteredCars = new ArrayList<GeneralCar>();
-    for (ArrayList<String> car : data) {
-      GeneralCar c = new GeneralCar(
-        car.get(0),
-        car.get(1),
-        car.get(2),
-        car.get(3),
-        Integer.parseInt(car.get(4)),
-        Double.parseDouble(car.get(5)),
-        car.get(6)
-      );
+    for (GeneralCar c : allCars) {
       if (
         carQuery.getCarNoPlate() != null &&
-        carQuery.getCarNoPlate() == c.getCarNoPlate()
+        carQuery.getCarNoPlate().equalsIgnoreCase(c.getCarNoPlate())
       ) {
-        filtereCars.add(c);
+        filteredCars.add(c);
       }
       if (carQuery.getBrand() != null && carQuery.getBrand() == c.getBrand()) {
-        filtereCars.add(c);
+        filteredCars.add(c);
       }
       if (carQuery.getModel() != null && carQuery.getModel() == c.getModel()) {
-        filtereCars.add(c);
+        filteredCars.add(c);
       }
       if (carQuery.getState() != null && carQuery.getState() == c.getState()) {
-        filtereCars.add(c);
+        filteredCars.add(c);
       }
       if (carQuery.getYear() != 0 && carQuery.getYear() == c.getYear()) {
-        filtereCars.add(c);
+        filteredCars.add(c);
       }
       if (carQuery.getPrice() != 0 && carQuery.getPrice() == c.getPrice()) {
-        filtereCars.add(c);
+        filteredCars.add(c);
       }
       if (
         carQuery.getFuelType() != null &&
         carQuery.getFuelType() == c.getFuelType()
       ) {
-        filtereCars.add(c);
+        filteredCars.add(c);
       }
     }
     return filteredCars;

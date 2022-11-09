@@ -22,13 +22,14 @@ public class ManageCar extends javax.swing.JFrame {
    */
   public ManageCar() {
     initComponents();
+    GeneralGetters g = new GeneralGetters();
+    updateTableInformation(g.getAllCar());
+  }
+
+  public void updateTableInformation(ArrayList<GeneralCar> data) {
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
     model.setRowCount(0);
-    GeneralGetters g = new GeneralGetters();
-    ArrayList<GeneralCar> allCars = g.getAllCar();
-    System.out.println(allCars);
-
-    for (GeneralCar car : allCars) {
+    for (GeneralCar car : data) {
       Object[] eachCar = {
         car.getCarNoPlate(),
         car.getBrand(),
@@ -42,6 +43,16 @@ public class ManageCar extends javax.swing.JFrame {
       model.addRow(eachCar);
     }
   }
+
+  public GeneralCar tableSelectedCar = new GeneralCar(
+    null,
+    null,
+    null,
+    null,
+    0,
+    0,
+    null
+  );
 
   /**
    * This method is called from within the constructor to initialize the form.
@@ -772,10 +783,10 @@ public class ManageCar extends javax.swing.JFrame {
 
   private void searchActionPerformed(java.awt.event.ActionEvent evt) {
     // search
-    System.out.println("Search btn clicked");
+    GeneralGetters getter = new GeneralGetters();
     String carPlate = CarNoPlate.getText();
     GeneralCar carQuery = new GeneralCar(
-      !CarNoPlate.getText().isEmpty() ? carNoPlate.getText() : null, // plate
+      !CarNoPlate.getText().isEmpty() ? CarNoPlate.getText() : null, // plate
       null, // brand
       null, // model
       null, // status
@@ -783,23 +794,58 @@ public class ManageCar extends javax.swing.JFrame {
       0, // price
       null
     ); // fuel type
+    ArrayList<GeneralCar> queryList = (getter.getSpecificCar(carQuery));
+
+    updateTableInformation(queryList);
   } //GEN-FIRST:event_searchActionPerformed //GEN-LAST:event_searchActionPerformed
 
   private void BookBtnActionPerformed(java.awt.event.ActionEvent evt) {
     // add btn
     System.out.println("book btn clicked");
+    GeneralMutation m = new GeneralMutation();
+    if (!tableSelectedCar.getCarNoPlate().isEmpty()) m.addNewCar(
+      tableSelectedCar
+    );
   } //GEN-FIRST:event_BookBtnActionPerformed //GEN-LAST:event_BookBtnActionPerformed
 
   //
 
   private void clearButActionPerformed(java.awt.event.ActionEvent evt) {
     // clear
-    System.out.println("clear btn clicked");
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    model.setRowCount(0);
+
+    tableSelectedCar.clearData();
   } //GEN-FIRST:event_clearButActionPerformed //GEN-LAST:event_clearButActionPerformed
 
   private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {
-    System.out.println("table btn clicked");
-  } //GEN-FIRST:event_jTable1MouseClicked //GEN-LAST:event_jTable1MouseClicked
+    // select car based on table GUI
+    GeneralGetters g = new GeneralGetters();
+    JTable source = ((JTable) evt.getSource());
+    int rowIndex = (source.getSelectedRow());
+    int columnCount = (source.getModel().getColumnCount());
+
+    ArrayList<Object> fetchedCarData = new ArrayList<>();
+    for (int i = 0; i < columnCount; i++) {
+      //((source.getModel().getValueAt(rowIndex, i)).getClass());
+      fetchedCarData.add((source.getModel().getValueAt(rowIndex, i)));
+    }
+    tableSelectedCar.setCarNoplate(fetchedCarData.get(0).toString());
+    tableSelectedCar.setBrand(fetchedCarData.get(1).toString());
+    tableSelectedCar.setModel(fetchedCarData.get(2).toString());
+    tableSelectedCar.setYear(
+      Integer.parseInt(fetchedCarData.get(3).toString())
+    );
+    tableSelectedCar.setFuelType(fetchedCarData.get(4).toString());
+    tableSelectedCar.setPrice(
+      Double.parseDouble(fetchedCarData.get(5).toString())
+    );
+    tableSelectedCar.setState(fetchedCarData.get(6).toString());
+
+    System.out.println(tableSelectedCar.getCarNoPlate());
+    //source.getModel().getValueAt(rowIndex);
+
+  }
 
   private void DayStayActionPerformed(java.awt.event.ActionEvent evt) {
     System.out.println("day stay btn clicked");

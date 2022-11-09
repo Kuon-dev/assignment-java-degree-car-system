@@ -81,6 +81,16 @@ public class GeneralCar {
   public void setPrice(double price) {
     this.price = price;
   }
+
   //
   // -------------------------------------
+  public void clearData() {
+    setCarNoplate(null);
+    setYear(0);
+    setBrand(null);
+    setState(null);
+    setFuelType(null);
+    setModel(null);
+    setPrice(0);
+  }
 }
