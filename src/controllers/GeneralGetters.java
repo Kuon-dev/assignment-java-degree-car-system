@@ -1,6 +1,7 @@
 package carrentalsystem;
 
 import carrentalsystem.FileController;
+import carrentalsystem.GeneralCar;
 import carrentalsystem.UserAdmin;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -83,5 +84,50 @@ public class GeneralGetters {
       allCars.add(c);
     }
     return allCars;
+  }
+
+  public ArrayList<GeneralCar> getSpecificCar(GeneralCar carQuery) {
+    ArrayList<GeneralCar> allCars = getAllCar();
+
+    ArrayList<GeneralCar> filteredCars = new ArrayList<GeneralCar>();
+    for (ArrayList<String> car : data) {
+      GeneralCar c = new GeneralCar(
+        car.get(0),
+        car.get(1),
+        car.get(2),
+        car.get(3),
+        Integer.parseInt(car.get(4)),
+        Double.parseDouble(car.get(5)),
+        car.get(6)
+      );
+      if (
+        carQuery.getCarNoPlate() != null &&
+        carQuery.getCarNoPlate() == c.getCarNoPlate()
+      ) {
+        filtereCars.add(c);
+      }
+      if (carQuery.getBrand() != null && carQuery.getBrand() == c.getBrand()) {
+        filtereCars.add(c);
+      }
+      if (carQuery.getModel() != null && carQuery.getModel() == c.getModel()) {
+        filtereCars.add(c);
+      }
+      if (carQuery.getState() != null && carQuery.getState() == c.getState()) {
+        filtereCars.add(c);
+      }
+      if (carQuery.getYear() != 0 && carQuery.getYear() == c.getYear()) {
+        filtereCars.add(c);
+      }
+      if (carQuery.getPrice() != 0 && carQuery.getPrice() == c.getPrice()) {
+        filtereCars.add(c);
+      }
+      if (
+        carQuery.getFuelType() != null &&
+        carQuery.getFuelType() == c.getFuelType()
+      ) {
+        filtereCars.add(c);
+      }
+    }
+    return filteredCars;
   }
 }

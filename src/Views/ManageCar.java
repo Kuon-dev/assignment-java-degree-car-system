@@ -773,6 +773,16 @@ public class ManageCar extends javax.swing.JFrame {
   private void searchActionPerformed(java.awt.event.ActionEvent evt) {
     // search
     System.out.println("Search btn clicked");
+    String carPlate = CarNoPlate.getText();
+    GeneralCar carQuery = new GeneralCar(
+      !CarNoPlate.getText().isEmpty() ? carNoPlate.getText() : null, // plate
+      null, // brand
+      null, // model
+      null, // status
+      0, // year
+      0, // price
+      null
+    ); // fuel type
   } //GEN-FIRST:event_searchActionPerformed //GEN-LAST:event_searchActionPerformed
 
   private void BookBtnActionPerformed(java.awt.event.ActionEvent evt) {
