@@ -803,12 +803,17 @@ public class ManageCar extends javax.swing.JFrame {
     // add btn
     System.out.println("book btn clicked");
     GeneralMutation m = new GeneralMutation();
-    if (!tableSelectedCar.getCarNoPlate().isEmpty()) m.addNewCar(
-      tableSelectedCar
+    GeneralCar newCar = new GeneralCar(
+      CarNoPlate.getText(), // plate
+      DayStay.getText(), // brand
+      EndDate.getText(), // model
+      RoomID1.getSelectedItem().toString().toUpperCase(), // status
+      Integer.parseInt(EndDate1.getText()), // year
+      Double.parseDouble(EndDate2.getText()), // price
+      RoomID.getSelectedItem().toString() // fuel
     );
-  } //GEN-FIRST:event_BookBtnActionPerformed //GEN-LAST:event_BookBtnActionPerformed
-
-  //
+    m.addNewCar(newCar);
+  }
 
   private void clearButActionPerformed(java.awt.event.ActionEvent evt) {
     // clear
@@ -844,7 +849,6 @@ public class ManageCar extends javax.swing.JFrame {
 
     System.out.println(tableSelectedCar.getCarNoPlate());
     //source.getModel().getValueAt(rowIndex);
-
   }
 
   private void DayStayActionPerformed(java.awt.event.ActionEvent evt) {
@@ -866,8 +870,6 @@ public class ManageCar extends javax.swing.JFrame {
   } //GEN-FIRST:event_RoomIDActionPerformed //GEN-LAST:event_RoomIDActionPerformed
 
   private void EndDateActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_EndDateActionPerformed
-    // TODO add your handling code here:
-    //
     System.out.println("end date clicked");
   } //GEN-LAST:event_EndDateActionPerformed
 
