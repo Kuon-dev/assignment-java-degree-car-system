@@ -1,6 +1,7 @@
 package carrentalsystem;
 
 import carrentalsystem.FileController;
+import carrentalsystem.GeneralCar;
 import carrentalsystem.UserAdmin;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -18,6 +19,7 @@ public class GeneralMutation {
   private String cwd = Path.of("").toAbsolutePath().toString();
   private String adminDatabase = cwd + "/Database/MainAdmin.txt";
   private String customerDatabse = cwd + "/Database/MainCustomer.txt";
+  private String carDatabase = cwd + "/Database/MainCar.txt";
 
   public Boolean addNewAdmin(UserAdmin admin) {
     ArrayList<String> userData = new ArrayList<>();
@@ -104,12 +106,67 @@ public class GeneralMutation {
     FileController f = new FileController();
     GeneralGetters g = new GeneralGetters();
     ArrayList<UserCustomer> customers = g.getAllCustomer();
+
     for (int i = 0; i < customers.size(); i++) {
       if (customers.get(i).getId() == customer.getId()) {
         f.deleteFile(adminDatabase, Integer.toString(i));
         return true;
       }
     }
+    return false;
+  }
+
+  public Boolean addNewCar(GeneralCar car) {
+    ArrayList<String> carData = new ArrayList<>();
+    carData.add(car.getCarNoPlate());
+    carData.add(car.getBrand());
+    carData.add(car.getModel());
+    carData.add(car.getState());
+    carData.add(String.valueOf(car.getYear()));
+    carData.add(String.valueOf(car.getPrice()));
+    carData.add(car.getFuelType());
+
+    FileController f = new FileController();
+    return f.addFile(carData, carDatabase);
+  }
+
+  public Boolean editExistingCar(GeneralCar oldCar, GeneralCar newCar) {
+    ArrayList<String> carData = new ArrayList<>();
+    carData.add(newCar.getCarNoPlate());
+    carData.add(newCar.getBrand());
+    carData.add(newCar.getModel());
+    carData.add(newCar.getState());
+    carData.add(String.valueOf(newCar.getYear()));
+    carData.add(String.valueOf(newCar.getPrice()));
+    carData.add(newCar.getFuelType());
+
+    FileController f = new FileController();
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<GeneralCar> allCars = g.getAllCar();
+    for (int i = 0; i < allCars.size(); i++) {
+      if (
+        allCars.get(i).getCarNoPlate().equalsIgnoreCase(oldCar.getCarNoPlate())
+      ) {
+        return f.modifyFile(carData, carDatabase, Integer.toString(i));
+      }
+    }
+    return false;
+  }
+
+  public Boolean deleteExistingCar(GeneralCar car) {
+    FileController f = new FileController();
+    GeneralGetters g = new GeneralGetters();
+
+    ArrayList<GeneralCar> allCars = g.getAllCar();
+
+    for (int i = 0; i < allCars.size(); i++) {
+      if (
+        allCars.get(i).getCarNoPlate().equalsIgnoreCase(car.getCarNoPlate())
+      ) {
+        return f.deleteFile(carDatabase, Integer.toString(i));
+      }
+    }
+    System.out.println("end of loop");
     return false;
   }
 }

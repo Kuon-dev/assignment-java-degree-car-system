@@ -4,6 +4,9 @@
  */
 package carrentalsystem;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Lim Li Ping
@@ -15,6 +18,26 @@ public class ViewCar extends javax.swing.JFrame {
    */
   public ViewCar() {
     initComponents();
+
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    model.setRowCount(0);
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<GeneralCar> allCars = g.getAllCar();
+    System.out.println(allCars);
+
+    for (GeneralCar car : allCars) {
+      Object[] eachCar = {
+        car.getCarNoPlate(),
+        car.getBrand(),
+        car.getModel(),
+        car.getYear(),
+        car.getFuelType(),
+        car.getPrice(),
+        car.getState(),
+      };
+
+      model.addRow(eachCar);
+    }
   }
 
   /**

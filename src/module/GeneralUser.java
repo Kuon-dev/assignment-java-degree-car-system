@@ -66,7 +66,6 @@ public class GeneralUser {
 
     if (role == "admin") {
       ArrayList<UserAdmin> user = getters.getAllAdmin();
-      System.out.println(user);
       for (int i = 0; i < user.size(); i++) {
         String userName = user.get(i).getName();
         String userPassword = user.get(i).getPassword();

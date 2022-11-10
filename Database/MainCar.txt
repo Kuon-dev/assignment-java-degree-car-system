@@ -1,4 +1,6 @@
-["WLA-0019", "Proton", "Axia", "UNAVAILABLE", "2019", "20", "Gasoline"]
-["WLA-4851", "Proton", "Axia", "UNAVAILABLE", "2019", "20", "Gasoline"]
-["SLW-0211", "Ford", "F-150", "UNAVAILABLE", "2015", "20", "Diesel"]
-["PT-0995", "Tesla", "Model-S", "AVAILABLE", "2020", "50", "Electrical"]
+WLA-1110, Proton, Axia, AVAILABLE, 2018, 45.0, Petron
+WLA-4851, Proton, Axia, UNAVAILABLE, 2019, 20, Petron
+SLW-0211, Ford, F-150, UNAVAILABLE, 2015, 20, Diesel
+PT-0995, Tesla, Model-S, AVAILABLE, 2020, 50, Diesel
+BNM-6132, Perdua, MyVi, Available, 2009, 30.0, Petron
+[WLA-1110, Proton, Axia, AVAILABLE, 2018, 45.0, Petron]

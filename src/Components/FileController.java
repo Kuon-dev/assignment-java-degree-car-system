@@ -72,23 +72,30 @@ public class FileController {
     try {
       // to check if the file is modified or not
       Boolean hasModified = false;
-      FileWriter fw = new FileWriter(path, true);
-      BufferedWriter bw = new BufferedWriter(fw);
-
-      // to delete
-      PrintWriter pr = new PrintWriter(path);
 
       List<ArrayList<String>> data = readFile(path);
       ArrayList<String> newData = new ArrayList<>();
 
-      for (ArrayList<String> line : data) {
-        if (line.get(0) == index) {
+      File file = new File(path);
+      BufferedWriter fw = new BufferedWriter(new FileWriter(file, true));
+
+      // to delete
+      PrintWriter pr = new PrintWriter(path);
+      for (int i = 0; i < data.size(); i++) {
+        String line = String.join(", ", data.get(i));
+        System.out.println(line);
+        if (
+          line.equalsIgnoreCase(
+            String.join(", ", data.get((Integer.parseInt(index))))
+          )
+        ) {
           newData.add(String.join(", ", contents));
           hasModified = true;
         } else {
-          newData.add(String.join(", ", line));
+          newData.add(line);
         }
       }
+      System.out.println(newData);
       pr.write("");
       pr.close();
 
@@ -112,21 +119,28 @@ public class FileController {
     // same as modifyFile but only one small difference
     try {
       Boolean hasModified = false;
-      FileWriter fw = new FileWriter(path, true);
-      BufferedWriter bw = new BufferedWriter(fw);
 
-      PrintWriter pr = new PrintWriter(path);
+      File file = new File(path);
+      BufferedWriter fw = new BufferedWriter(new FileWriter(file, true));
 
       List<ArrayList<String>> data = readFile(path);
       ArrayList<String> newData = new ArrayList<>();
 
-      for (ArrayList<String> line : data) {
-        if (line.get(0) == index) {
+      for (int i = 0; i < data.size(); i++) {
+        String line = String.join(", ", data.get(i));
+        System.out.println(line);
+        if (
+          line.equalsIgnoreCase(
+            String.join(", ", data.get((Integer.parseInt(index))))
+          )
+        ) {
+          System.out.println("modified");
           hasModified = true;
         } else {
-          newData.add(String.join(", ", line));
+          newData.add(line);
         }
       }
+      PrintWriter pr = new PrintWriter(path);
       pr.write("");
       pr.close();
 
