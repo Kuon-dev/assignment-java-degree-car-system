@@ -17,7 +17,7 @@ public class Validator {
   public static Boolean isNumber(String input) {
     try {
       if (input == "") return false;
-      Integer.parseInt(input);
+      Double.parseDouble(input);
       return true;
     } catch (NumberFormatException e) {
       return false;

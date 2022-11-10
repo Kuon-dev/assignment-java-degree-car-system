@@ -9,6 +9,7 @@ import java.math.BigInteger;
 import java.text.*;
 import java.util.*;
 import javax.swing.*;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,6 +26,16 @@ public class ManageCar extends javax.swing.JFrame {
     GeneralGetters g = new GeneralGetters();
     updateTableInformation(g.getAllCar());
   }
+
+  public GeneralCar tableSelectedCar = new GeneralCar(
+    null,
+    null,
+    null,
+    null,
+    0,
+    0,
+    null
+  );
 
   public void updateTableInformation(ArrayList<GeneralCar> data) {
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -44,15 +55,40 @@ public class ManageCar extends javax.swing.JFrame {
     }
   }
 
-  public GeneralCar tableSelectedCar = new GeneralCar(
-    null,
-    null,
-    null,
-    null,
-    0,
-    0,
-    null
-  );
+  public Boolean sanitizeInput() {
+    Validator v = new Validator();
+    ArrayList<String> inputData = new ArrayList<>();
+    inputData.add(CarNoPlate.getText()); // plate
+    inputData.add(DayStay.getText()); // brand
+    inputData.add(EndDate.getText()); // model
+    inputData.add(RoomID1.getSelectedItem().toString().toUpperCase()); // status
+    inputData.add(EndDate1.getText()); // year
+    inputData.add(EndDate2.getText()); // price
+    inputData.add(RoomID.getSelectedItem().toString()); // fuel
+
+    for (int i = 0; i < inputData.size(); i++) {
+      if (inputData.get(i).isEmpty()) {
+        JOptionPane.showMessageDialog(
+          this,
+          "Please fill in all the data before submitting",
+          "Error Message",
+          JOptionPane.ERROR_MESSAGE
+        );
+        return false;
+      }
+    }
+    if (!v.isNumber(inputData.get(4)) || !v.isNumber(inputData.get(5))) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Please input a valid number",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      return false;
+    }
+
+    return true;
+  }
 
   /**
    * This method is called from within the constructor to initialize the form.
@@ -800,9 +836,11 @@ public class ManageCar extends javax.swing.JFrame {
   } //GEN-FIRST:event_searchActionPerformed //GEN-LAST:event_searchActionPerformed
 
   private void BookBtnActionPerformed(java.awt.event.ActionEvent evt) {
-    // add btn
-    System.out.println("book btn clicked");
+    // add car btn
+    // if there is an invalid input, stop the function
+    if (!sanitizeInput()) return;
     GeneralMutation m = new GeneralMutation();
+
     GeneralCar newCar = new GeneralCar(
       CarNoPlate.getText(), // plate
       DayStay.getText(), // brand
@@ -812,7 +850,17 @@ public class ManageCar extends javax.swing.JFrame {
       Double.parseDouble(EndDate2.getText()), // price
       RoomID.getSelectedItem().toString() // fuel
     );
-    m.addNewCar(newCar);
+    if (m.addNewCar(newCar)) JOptionPane.showMessageDialog(
+      this,
+      "Record Added Successfully",
+      "Information",
+      JOptionPane.INFORMATION_MESSAGE
+    ); else JOptionPane.showMessageDialog(
+      this,
+      "Failed to add car",
+      "Error Message",
+      JOptionPane.ERROR_MESSAGE
+    );
   }
 
   private void clearButActionPerformed(java.awt.event.ActionEvent evt) {
@@ -846,8 +894,6 @@ public class ManageCar extends javax.swing.JFrame {
       Double.parseDouble(fetchedCarData.get(5).toString())
     );
     tableSelectedCar.setState(fetchedCarData.get(6).toString());
-
-    System.out.println(tableSelectedCar.getCarNoPlate());
     //source.getModel().getValueAt(rowIndex);
   }
 
@@ -874,13 +920,11 @@ public class ManageCar extends javax.swing.JFrame {
   } //GEN-LAST:event_EndDateActionPerformed
 
   private void viewrecordsActionPerformed(java.awt.event.ActionEvent evt) {
-    System.out.println("view record action clicked");
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
     model.setRowCount(0);
 
     GeneralGetters g = new GeneralGetters();
     ArrayList<GeneralCar> allCars = g.getAllCar();
-    System.out.println(allCars);
 
     for (GeneralCar car : allCars) {
       Object[] eachCar = {
@@ -897,9 +941,65 @@ public class ManageCar extends javax.swing.JFrame {
     }
   } //GEN-FIRST:event_viewrecordsActionPerformed //GEN-LAST:event_viewrecordsActionPerformed
 
-  private void updateActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_updateActionPerformed //GEN-LAST:event_updateActionPerformed
+  private void updateActionPerformed(java.awt.event.ActionEvent evt) {
+    if (!sanitizeInput()) return;
+    if (tableSelectedCar.getCarNoPlate() == null) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Please select a car to edit",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+    }
+    GeneralMutation m = new GeneralMutation();
+    GeneralCar newCar = new GeneralCar(
+      CarNoPlate.getText(), // plate
+      DayStay.getText(), // brand
+      EndDate.getText(), // model
+      RoomID1.getSelectedItem().toString().toUpperCase(), // status
+      Integer.parseInt(EndDate1.getText()), // year
+      Double.parseDouble(EndDate2.getText()), // price
+      RoomID.getSelectedItem().toString() // fuel
+    );
 
-  private void deleteActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_deleteActionPerformed //GEN-LAST:event_deleteActionPerformed
+    if (
+      m.editExistingCar(tableSelectedCar, newCar)
+    ) JOptionPane.showMessageDialog(
+      this,
+      "Record Added Successfully",
+      "Information",
+      JOptionPane.INFORMATION_MESSAGE
+    ); else JOptionPane.showMessageDialog(
+      this,
+      "Failed to modify car",
+      "Error Message",
+      JOptionPane.ERROR_MESSAGE
+    );
+  }
+
+  private void deleteActionPerformed(java.awt.event.ActionEvent evt) {
+    if (tableSelectedCar.getCarNoPlate() == null) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Please select a car to delete",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      return;
+    }
+    GeneralMutation m = new GeneralMutation();
+    if (m.deleteExistingCar(tableSelectedCar)) JOptionPane.showMessageDialog(
+      this,
+      "Record Deleted Successfully",
+      "Information",
+      JOptionPane.INFORMATION_MESSAGE
+    ); else JOptionPane.showMessageDialog(
+      this,
+      "Failed to delete car",
+      "Error Message",
+      JOptionPane.ERROR_MESSAGE
+    );
+  } //GEN-FIRST:event_deleteActionPerformed //GEN-LAST:event_deleteActionPerformed
 
   private void EndDate1ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_EndDate1ActionPerformed
     // TODO add your handling code here:
