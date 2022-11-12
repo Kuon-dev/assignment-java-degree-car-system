@@ -1,8 +1,8 @@
-package jp_lab5_gui;
+package carrentalsystem;
 
 import java.util.Date;
 
-public class GeneralBill {
+public class RecordBill {
 
   public int receipt_id, customer_id;
   public String bank;

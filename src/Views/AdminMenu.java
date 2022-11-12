@@ -271,12 +271,16 @@ public class AdminMenu extends javax.swing.JFrame {
 
   private void LoginBtn3ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_LoginBtn3ActionPerformed
     // TODO manage booking
-    System.out.println("This is action 3 btn");
+    ManageBooking manageBookMenu = new ManageBooking();
+    manageBookMenu.setVisible(true);
+    dispose();
   }
 
   private void LoginBtn4ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_LoginBtn4ActionPerformed
     // TODO manage personal info
-    System.out.println("This is action 4 btn");
+    ManageAccountAdmin adminAcc = new ManageAccountAdmin();
+    adminAcc.setVisible(true);
+    dispose();
   }
 
   private void LoginBtn5ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_LoginBtn5ActionPerformed
