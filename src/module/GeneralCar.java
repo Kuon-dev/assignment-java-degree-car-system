@@ -30,7 +30,7 @@ public class GeneralCar {
     return carNoPlate;
   }
 
-  public void setCarNoplate(String plate) {
+  public void setCarNoPlate(String plate) {
     this.carNoPlate = plate;
   }
 
@@ -85,7 +85,7 @@ public class GeneralCar {
   //
   // -------------------------------------
   public void clearData() {
-    setCarNoplate(null);
+    setCarNoPlate(null);
     setYear(0);
     setBrand(null);
     setState(null);

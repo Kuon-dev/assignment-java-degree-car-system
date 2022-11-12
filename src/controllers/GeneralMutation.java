@@ -20,6 +20,8 @@ public class GeneralMutation {
   private String adminDatabase = cwd + "/Database/MainAdmin.txt";
   private String customerDatabse = cwd + "/Database/MainCustomer.txt";
   private String carDatabase = cwd + "/Database/MainCar.txt";
+  private FileController f = new FileController();
+  private GeneralGetters g = new GeneralGetters();
 
   public Boolean addNewAdmin(UserAdmin admin) {
     ArrayList<String> userData = new ArrayList<>();
@@ -30,7 +32,6 @@ public class GeneralMutation {
     userData.add(admin.getPhNum());
     userData.add(admin.getPosition());
 
-    FileController f = new FileController();
     Boolean status = f.addFile(userData, adminDatabase);
     return status;
   }
@@ -44,11 +45,9 @@ public class GeneralMutation {
     userData.add(admin.getPhNum());
     userData.add(admin.getPosition());
 
-    FileController f = new FileController();
-    GeneralGetters g = new GeneralGetters();
     ArrayList<UserAdmin> admins = g.getAllAdmin();
     for (int i = 0; i < admins.size(); i++) {
-      if (admins.get(i).getId() == admin.getId()) {
+      if (admins.get(i).getId().equalsIgnoreCase(admin.getId())) {
         f.modifyFile(userData, adminDatabase, Integer.toString(i));
         return true;
       }
@@ -57,11 +56,9 @@ public class GeneralMutation {
   }
 
   public Boolean deleteExistingAdmin(UserAdmin admin) {
-    FileController f = new FileController();
-    GeneralGetters g = new GeneralGetters();
     ArrayList<UserAdmin> admins = g.getAllAdmin();
     for (int i = 0; i < admins.size(); i++) {
-      if (admins.get(i).getId() == admin.getId()) {
+      if (admins.get(i).getId().equalsIgnoreCase(admin.getId())) {
         f.deleteFile(adminDatabase, Integer.toString(i));
         return true;
       }
@@ -77,7 +74,6 @@ public class GeneralMutation {
     userData.add(customer.getEmail());
     userData.add(customer.getPhNum());
 
-    FileController f = new FileController();
     Boolean status = f.addFile(userData, customerDatabse);
     return status;
   }
@@ -90,11 +86,9 @@ public class GeneralMutation {
     userData.add(customer.getEmail());
     userData.add(customer.getPhNum());
 
-    FileController f = new FileController();
-    GeneralGetters g = new GeneralGetters();
     ArrayList<UserCustomer> cust = g.getAllCustomer();
     for (int i = 0; i < cust.size(); i++) {
-      if (cust.get(i).getId() == customer.getId()) {
+      if (cust.get(i).getId().equalsIgnoreCase(customer.getId())) {
         f.modifyFile(userData, customerDatabse, Integer.toString(i));
         return true;
       }
@@ -103,12 +97,10 @@ public class GeneralMutation {
   }
 
   public Boolean deleteExistingCustomer(UserCustomer customer) {
-    FileController f = new FileController();
-    GeneralGetters g = new GeneralGetters();
     ArrayList<UserCustomer> customers = g.getAllCustomer();
 
     for (int i = 0; i < customers.size(); i++) {
-      if (customers.get(i).getId() == customer.getId()) {
+      if (customers.get(i).getId().equalsIgnoreCase(customer.getId())) {
         f.deleteFile(adminDatabase, Integer.toString(i));
         return true;
       }
@@ -126,7 +118,6 @@ public class GeneralMutation {
     carData.add(String.valueOf(car.getPrice()));
     carData.add(car.getFuelType());
 
-    FileController f = new FileController();
     return f.addFile(carData, carDatabase);
   }
 
@@ -140,8 +131,6 @@ public class GeneralMutation {
     carData.add(String.valueOf(newCar.getPrice()));
     carData.add(newCar.getFuelType());
 
-    FileController f = new FileController();
-    GeneralGetters g = new GeneralGetters();
     ArrayList<GeneralCar> allCars = g.getAllCar();
     for (int i = 0; i < allCars.size(); i++) {
       if (
@@ -154,9 +143,6 @@ public class GeneralMutation {
   }
 
   public Boolean deleteExistingCar(GeneralCar car) {
-    FileController f = new FileController();
-    GeneralGetters g = new GeneralGetters();
-
     ArrayList<GeneralCar> allCars = g.getAllCar();
 
     for (int i = 0; i < allCars.size(); i++) {
@@ -167,6 +153,11 @@ public class GeneralMutation {
       }
     }
     System.out.println("end of loop");
+    return false;
+  }
+
+  public Boolean addNewBooking(RecordBooking booking) {
+    ArrayList<RecordBooking> records = g.getAllBooking();
     return false;
   }
 }

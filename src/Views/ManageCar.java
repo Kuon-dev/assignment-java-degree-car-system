@@ -883,7 +883,7 @@ public class ManageCar extends javax.swing.JFrame {
       //((source.getModel().getValueAt(rowIndex, i)).getClass());
       fetchedCarData.add((source.getModel().getValueAt(rowIndex, i)));
     }
-    tableSelectedCar.setCarNoplate(fetchedCarData.get(0).toString());
+    tableSelectedCar.setCarNoPlate(fetchedCarData.get(0).toString());
     tableSelectedCar.setBrand(fetchedCarData.get(1).toString());
     tableSelectedCar.setModel(fetchedCarData.get(2).toString());
     tableSelectedCar.setYear(

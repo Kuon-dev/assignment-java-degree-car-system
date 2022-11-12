@@ -1,6 +1,7 @@
 package carrentalsystem;
 
 import java.util.Date;
+import java.util.Random;
 
 public class RecordBooking {
 
@@ -45,7 +46,7 @@ public class RecordBooking {
     return car;
   }
 
-  public void setCar() {
+  public void setCar(GeneralCar car) {
     this.car = car;
   }
 
@@ -96,6 +97,26 @@ public class RecordBooking {
   public void setReturnDate(Date returnDate) {
     this.returnDate = returnDate;
   }
+
   // ----------------------
 
+  public String generateReceiptID() {
+    String availableChar =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+      "abcdefghijklmnopqrstuvwxyz" +
+      "0123456789";
+
+    StringBuilder sb = new StringBuilder();
+    Random random = new Random();
+    for (int i = 0; i < 15; i++) {
+      // generate random index number
+      int index = random.nextInt(availableChar.length());
+      // get character specified by index
+      char randomChar = availableChar.charAt(index);
+      // append the character to string builder
+      sb.append(randomChar);
+    }
+
+    return sb.toString();
+  }
 }
