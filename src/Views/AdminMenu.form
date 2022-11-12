@@ -23,27 +23,8 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="LoginBtn4" min="-2" pref="275" max="-2" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="LoginBtn3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
-                      <Component id="LoginBtn1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
-                      <Component id="LoginBtn5" min="-2" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="ExitBtn1" min="-2" pref="73" max="-2" attributes="0"/>
@@ -55,16 +36,21 @@
               </Group>
               <EmptySpace pref="57" max="32767" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="AdminLoginLab" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="ManageCarBtn" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
+              <Component id="AdminLoginLab" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="LoginBtn4" pref="275" max="32767" attributes="0"/>
+                  <Component id="LoginBtn3" max="32767" attributes="0"/>
+                  <Component id="LoginBtn1" max="32767" attributes="0"/>
+                  <Component id="LoginBtn5" alignment="0" max="32767" attributes="0"/>
+                  <Component id="ManageCarBtn" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -77,17 +63,17 @@
               <Component id="Title" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="AdminLoginLab" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="13" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="ManageCarBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="LoginBtn5" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="LoginBtn1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
               <Component id="LoginBtn3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="LoginBtn4" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="LoginBtn4" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="19" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

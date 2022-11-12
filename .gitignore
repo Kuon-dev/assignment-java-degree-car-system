@@ -40,3 +40,4 @@ LSP/
 node_modules/
 docs/
 output.txt
+/target/
