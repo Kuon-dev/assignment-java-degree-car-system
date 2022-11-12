@@ -5,6 +5,7 @@
 package carrentalsystem;
 
 import java.util.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -45,7 +46,16 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
 
     // if there's an empty input, return false
     for (String d : data) {
-      if (d.isEmpty()) return false;
+      if (d.isEmpty()) {
+        JOptionPane.showMessageDialog(
+          this,
+          "Fill in all the inputs",
+          "Information",
+          JOptionPane.INFORMATION_MESSAGE
+        );
+
+        return false;
+      }
     }
     return true;
   }
@@ -502,7 +512,32 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
     pack();
   } // </editor-fold>//GEN-END:initComponents
 
-  private void LoginBtn2ActionPerformed(java.awt.event.ActionEvent evt) {}
+  private void LoginBtn2ActionPerformed(java.awt.event.ActionEvent evt) {
+    GeneralMutation m = new GeneralMutation();
+    if (!sanitizeInput()) return;
+    UserAdmin newAdminData = new UserAdmin(
+      ID.getText(),
+      Name.getText(),
+      Password.getText(),
+      Email.getText(),
+      PhNum.getText(),
+      Position.getSelectedItem().toString()
+    );
+    if (m.editExistingAdmin(currentAdminData, newAdminData)) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Record Added Successfully",
+        "Information",
+        JOptionPane.INFORMATION_MESSAGE
+      );
+      setCurrentAdminData(newAdminData);
+    } else JOptionPane.showMessageDialog(
+      this,
+      "Failed to add admin data",
+      "Error Message",
+      JOptionPane.ERROR_MESSAGE
+    );
+  }
 
   private void EmailActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_EmailActionPerformed
     // TODO add your handling code here:

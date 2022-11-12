@@ -41,18 +41,18 @@ public class GeneralMutation {
     return status;
   }
 
-  public Boolean editExistingAdmin(UserAdmin admin) {
+  public Boolean editExistingAdmin(UserAdmin oldAdmin, UserAdmin newAdmin) {
     ArrayList<String> userData = new ArrayList<>();
-    userData.add(admin.getId());
-    userData.add(admin.getName());
-    userData.add(admin.getPassword());
-    userData.add(admin.getEmail());
-    userData.add(admin.getPhNum());
-    userData.add(admin.getPosition());
+    userData.add(newAdmin.getId());
+    userData.add(newAdmin.getName());
+    userData.add(newAdmin.getPassword());
+    userData.add(newAdmin.getEmail());
+    userData.add(newAdmin.getPhNum());
+    userData.add(newAdmin.getPosition());
 
     ArrayList<UserAdmin> admins = g.getAllAdmin();
     for (int i = 0; i < admins.size(); i++) {
-      if (admins.get(i).getId().equalsIgnoreCase(admin.getId())) {
+      if (admins.get(i).getId().equalsIgnoreCase(oldAdmin.getId())) {
         f.modifyFile(userData, adminDatabase, Integer.toString(i));
         return true;
       }
@@ -83,17 +83,20 @@ public class GeneralMutation {
     return status;
   }
 
-  public Boolean editExistingCustomer(UserCustomer customer) {
+  public Boolean editExistingCustomer(
+    UserCustomer oldCustomer,
+    UserCustomer newCustomer
+  ) {
     ArrayList<String> userData = new ArrayList<>();
-    userData.add(customer.getId());
-    userData.add(customer.getName());
-    userData.add(customer.getPassword());
-    userData.add(customer.getEmail());
-    userData.add(customer.getPhNum());
+    userData.add(newCustomer.getId());
+    userData.add(newCustomer.getName());
+    userData.add(newCustomer.getPassword());
+    userData.add(newCustomer.getEmail());
+    userData.add(newCustomer.getPhNum());
 
     ArrayList<UserCustomer> cust = g.getAllCustomer();
     for (int i = 0; i < cust.size(); i++) {
-      if (cust.get(i).getId().equalsIgnoreCase(customer.getId())) {
+      if (cust.get(i).getId().equalsIgnoreCase(oldCustomer.getId())) {
         f.modifyFile(userData, customerDatabse, Integer.toString(i));
         return true;
       }

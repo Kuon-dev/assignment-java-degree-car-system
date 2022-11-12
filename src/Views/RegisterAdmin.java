@@ -33,6 +33,31 @@ public class RegisterAdmin extends javax.swing.JFrame {
     this.currentAdminData = data;
   }
 
+  private Boolean sanitizeInput() {
+    ArrayList<String> data = new ArrayList<>();
+    data.add(ID.getText());
+    data.add(Name.getText());
+    data.add(Email.getText());
+    data.add(PhNum.getText());
+    data.add(Position.getSelectedItem().toString());
+    data.add(Password.getText());
+    data.add(ConfPass.getText());
+
+    // if there's an empty input, return false
+    for (String d : data) {
+      if (d.isEmpty()) {
+        JOptionPane.showMessageDialog(
+          this,
+          "Fill in all the inputs",
+          "Information",
+          JOptionPane.INFORMATION_MESSAGE
+        );
+        return false;
+      }
+    }
+    return true;
+  }
+
   /**
    * This method is called from within the constructor to initialize the form.
    * WARNING: Do NOT modify this code. The content of this method is always
@@ -492,9 +517,29 @@ public class RegisterAdmin extends javax.swing.JFrame {
     // TODO add your handling code here:
   } //GEN-LAST:event_EmailActionPerformed
 
-  private void SaveChangesActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_SaveChangesActionPerformed
-    // TODO add your handling code here:
-  } //GEN-LAST:event_SaveChangesActionPerformed
+  private void SaveChangesActionPerformed(java.awt.event.ActionEvent evt) {
+    GeneralMutation m = new GeneralMutation();
+    if (!sanitizeInput()) return;
+    UserAdmin newAdminData = new UserAdmin(
+      ID.getText(),
+      Name.getText(),
+      Password.getText(),
+      Email.getText(),
+      PhNum.getText(),
+      Position.getSelectedItem().toString()
+    );
+    if (m.addNewAdmin(newAdminData)) JOptionPane.showMessageDialog(
+      this,
+      "Record Added Successfully",
+      "Information",
+      JOptionPane.INFORMATION_MESSAGE
+    ); else JOptionPane.showMessageDialog(
+      this,
+      "Failed to add admin data",
+      "Error Message",
+      JOptionPane.ERROR_MESSAGE
+    );
+  }
 
   private void IDActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_IDActionPerformed
     // TODO add your handling code here:
