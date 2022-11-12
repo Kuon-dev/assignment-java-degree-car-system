@@ -1,5 +1,7 @@
 package carrentalsystem;
 
+import java.util.ArrayList;
+
 public class UserAdmin extends GeneralUser {
 
   String adminPostion;
@@ -38,5 +40,20 @@ public class UserAdmin extends GeneralUser {
     GeneralMutation m = new GeneralMutation();
 
     return m.addNewAdmin(admin);
+  }
+
+  public Boolean login(String name, String pass) {
+    GeneralGetters getters = new GeneralGetters();
+
+    ArrayList<UserAdmin> user = getters.getAllAdmin();
+    for (int i = 0; i < user.size(); i++) {
+      String userName = user.get(i).getName();
+      String userPassword = user.get(i).getPassword();
+      if (
+        userName.equalsIgnoreCase(name) && userPassword.equals(pass)
+      ) return true;
+    }
+    // if no results found
+    return false;
   }
 }

@@ -133,49 +133,11 @@ public class AdminMenu extends javax.swing.JFrame {
       layout
         .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(
-          javax.swing.GroupLayout.Alignment.TRAILING,
-          layout
-            .createSequentialGroup()
-            .addContainerGap(
-              javax.swing.GroupLayout.DEFAULT_SIZE,
-              Short.MAX_VALUE
-            )
-            .addGroup(
-              layout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(
-                  LoginBtn4,
-                  javax.swing.GroupLayout.PREFERRED_SIZE,
-                  275,
-                  javax.swing.GroupLayout.PREFERRED_SIZE
-                )
-                .addGroup(
-                  layout
-                    .createSequentialGroup()
-                    .addComponent(LoginBtn3)
-                    .addGap(11, 11, 11)
-                )
-            )
-            .addGap(97, 97, 97)
-        )
-        .addGroup(
           layout
             .createSequentialGroup()
             .addGroup(
               layout
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(
-                  layout
-                    .createSequentialGroup()
-                    .addGap(129, 129, 129)
-                    .addComponent(LoginBtn1)
-                )
-                .addGroup(
-                  layout
-                    .createSequentialGroup()
-                    .addGap(148, 148, 148)
-                    .addComponent(LoginBtn5)
-                )
                 .addGroup(
                   layout
                     .createSequentialGroup()
@@ -200,18 +162,55 @@ public class AdminMenu extends javax.swing.JFrame {
           layout
             .createSequentialGroup()
             .addGap(161, 161, 161)
+            .addComponent(AdminLoginLab)
+            .addGap(0, 0, Short.MAX_VALUE)
+        )
+        .addGroup(
+          javax.swing.GroupLayout.Alignment.TRAILING,
+          layout
+            .createSequentialGroup()
+            .addContainerGap(
+              javax.swing.GroupLayout.DEFAULT_SIZE,
+              Short.MAX_VALUE
+            )
             .addGroup(
               layout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(AdminLoginLab)
-                .addGroup(
-                  layout
-                    .createSequentialGroup()
-                    .addGap(10, 10, 10)
-                    .addComponent(ManageCarBtn)
+                .createParallelGroup(
+                  javax.swing.GroupLayout.Alignment.LEADING,
+                  false
+                )
+                .addComponent(
+                  LoginBtn4,
+                  javax.swing.GroupLayout.DEFAULT_SIZE,
+                  275,
+                  Short.MAX_VALUE
+                )
+                .addComponent(
+                  LoginBtn3,
+                  javax.swing.GroupLayout.DEFAULT_SIZE,
+                  javax.swing.GroupLayout.DEFAULT_SIZE,
+                  Short.MAX_VALUE
+                )
+                .addComponent(
+                  LoginBtn1,
+                  javax.swing.GroupLayout.DEFAULT_SIZE,
+                  javax.swing.GroupLayout.DEFAULT_SIZE,
+                  Short.MAX_VALUE
+                )
+                .addComponent(
+                  LoginBtn5,
+                  javax.swing.GroupLayout.DEFAULT_SIZE,
+                  javax.swing.GroupLayout.DEFAULT_SIZE,
+                  Short.MAX_VALUE
+                )
+                .addComponent(
+                  ManageCarBtn,
+                  javax.swing.GroupLayout.DEFAULT_SIZE,
+                  javax.swing.GroupLayout.DEFAULT_SIZE,
+                  Short.MAX_VALUE
                 )
             )
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(100, 100, 100)
         )
     );
     layout.setVerticalGroup(
@@ -228,25 +227,17 @@ public class AdminMenu extends javax.swing.JFrame {
               javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
             )
             .addComponent(AdminLoginLab)
-            .addPreferredGap(
-              javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-              13,
-              Short.MAX_VALUE
-            )
+            .addGap(18, 18, 18)
             .addComponent(ManageCarBtn)
-            .addPreferredGap(
-              javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
-            )
-            .addComponent(LoginBtn5)
-            .addGap(13, 13, 13)
-            .addComponent(LoginBtn1)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(LoginBtn5)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(LoginBtn1)
+            .addGap(7, 7, 7)
             .addComponent(LoginBtn3)
-            .addPreferredGap(
-              javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
-            )
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(LoginBtn4)
-            .addContainerGap()
+            .addContainerGap(19, Short.MAX_VALUE)
         )
     );
 
@@ -256,31 +247,43 @@ public class AdminMenu extends javax.swing.JFrame {
   private void LoginBtn1ActionPerformed(java.awt.event.ActionEvent evt) {
     // TODO register account
     //
-    System.out.println(adminData.getName());
     RegisterAdmin registerMenu = new RegisterAdmin();
+    registerMenu.setCurrentAdminData(adminData);
     registerMenu.setVisible(true);
     dispose();
-  } //GEN-FIRST:event_LoginBtn1ActionPerformed //GEN-LAST:event_LoginBtn1ActionPerformed
+  }
 
-  private void ManageCarBtnActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ManageCarBtnActionPerformed
+  private void ManageCarBtnActionPerformed(java.awt.event.ActionEvent evt) {
     // TODO add your handling code here:
     ManageCar manageCarMenu = new ManageCar();
+    manageCarMenu.setCurrentAdminData(adminData);
     manageCarMenu.setVisible(true);
     dispose();
   }
 
-  private void LoginBtn3ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_LoginBtn3ActionPerformed
+  private void LoginBtn3ActionPerformed(java.awt.event.ActionEvent evt) {
     // TODO manage booking
-    System.out.println("This is action 3 btn");
+    ManageBooking manageBookMenu = new ManageBooking();
+    manageBookMenu.setCurrentAdminData(adminData);
+    manageBookMenu.setVisible(true);
+    dispose();
   }
 
-  private void LoginBtn4ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_LoginBtn4ActionPerformed
+  private void LoginBtn4ActionPerformed(java.awt.event.ActionEvent evt) {
     // TODO manage personal info
-    System.out.println("This is action 4 btn");
+    ManageAccountAdmin adminAcc = new ManageAccountAdmin();
+    adminAcc.setCurrentAdminData(adminData);
+    adminAcc.setTextfieldData();
+    adminAcc.setVisible(true);
+    dispose();
   }
 
-  private void LoginBtn5ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_LoginBtn5ActionPerformed
+  private void LoginBtn5ActionPerformed(java.awt.event.ActionEvent evt) {
     // TODO sales report
+    SalesReport sales = new SalesReport();
+    sales.setCurrentAdminData(adminData);
+    sales.setVisible(true);
+    dispose();
   }
 
   private void ExitBtn1ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ExitBtn1ActionPerformed

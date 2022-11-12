@@ -268,7 +268,7 @@ public class AdminLogin extends javax.swing.JFrame {
     UserAdmin adminUser = new UserAdmin("001", null, null, null, null, null);
     Validator valid = new Validator();
 
-    Boolean loginCheck = adminUser.userLogin(adminName, adminPassword, "admin");
+    Boolean loginCheck = adminUser.login(adminName, adminPassword);
     if (loginCheck) {
       AdminMenu menu = new AdminMenu();
       GeneralGetters g = new GeneralGetters();

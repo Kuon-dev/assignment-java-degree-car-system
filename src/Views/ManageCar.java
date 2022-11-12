@@ -37,6 +37,19 @@ public class ManageCar extends javax.swing.JFrame {
     null
   );
 
+  public UserAdmin currentAdminData = new UserAdmin(
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  );
+
+  public void setCurrentAdminData(UserAdmin data) {
+    this.currentAdminData = data;
+  }
+
   public void updateTableInformation(ArrayList<GeneralCar> data) {
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
     model.setRowCount(0);
@@ -55,7 +68,7 @@ public class ManageCar extends javax.swing.JFrame {
     }
   }
 
-  public Boolean sanitizeInput() {
+  private Boolean sanitizeInput() {
     Validator v = new Validator();
     ArrayList<String> inputData = new ArrayList<>();
     inputData.add(CarNoPlate.getText()); // plate
@@ -813,6 +826,7 @@ public class ManageCar extends javax.swing.JFrame {
   private void MenuButActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_MenuButActionPerformed
     //Direct to main menu
     AdminMenu menu = new AdminMenu();
+    menu.setCurrentAdminData(currentAdminData);
     menu.setVisible(true);
     dispose();
   } //GEN-LAST:event_MenuButActionPerformed
@@ -883,7 +897,7 @@ public class ManageCar extends javax.swing.JFrame {
       //((source.getModel().getValueAt(rowIndex, i)).getClass());
       fetchedCarData.add((source.getModel().getValueAt(rowIndex, i)));
     }
-    tableSelectedCar.setCarNoplate(fetchedCarData.get(0).toString());
+    tableSelectedCar.setCarNoPlate(fetchedCarData.get(0).toString());
     tableSelectedCar.setBrand(fetchedCarData.get(1).toString());
     tableSelectedCar.setModel(fetchedCarData.get(2).toString());
     tableSelectedCar.setYear(
