@@ -34,41 +34,84 @@ public class RegisterAdmin extends javax.swing.JFrame {
   @SuppressWarnings("unchecked")
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
-    ExitBtn2 = new javax.swing.JButton();
-    LoginBtn2 = new javax.swing.JButton();
-    PswLab3 = new javax.swing.JLabel();
-    PswTxt3 = new javax.swing.JPasswordField();
     CustIDLab2 = new javax.swing.JLabel();
-    PswTxt2 = new javax.swing.JPasswordField();
+    PhNum = new javax.swing.JTextField();
+    Email = new javax.swing.JTextField();
+    ConfPass = new javax.swing.JPasswordField();
+    PswLab4 = new javax.swing.JLabel();
     CustIDLab3 = new javax.swing.JLabel();
+    Position = new javax.swing.JComboBox<>();
     jLabel1 = new javax.swing.JLabel();
     CustIDLab4 = new javax.swing.JLabel();
     jLabel2 = new javax.swing.JLabel();
-    PswTxt4 = new javax.swing.JPasswordField();
     CustIDLab1 = new javax.swing.JLabel();
-    PswTxt5 = new javax.swing.JPasswordField();
+    LoginBtn2 = new javax.swing.JButton();
+    PswLab3 = new javax.swing.JLabel();
     PswLab2 = new javax.swing.JLabel();
-    PswTxt6 = new javax.swing.JPasswordField();
-    CustIDTxt = new javax.swing.JTextField();
-    PswLab4 = new javax.swing.JLabel();
-    jComboBox1 = new javax.swing.JComboBox<>();
+    ID = new javax.swing.JTextField();
+    MenuBut = new javax.swing.JButton();
+    Name = new javax.swing.JTextField();
+    Password = new javax.swing.JPasswordField();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-    ExitBtn2.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
-    ExitBtn2.setForeground(new java.awt.Color(0, 102, 204));
-    ExitBtn2.setText("Exit");
-    ExitBtn2.addActionListener(
+    CustIDLab2.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    CustIDLab2.setForeground(new java.awt.Color(140, 174, 238));
+    CustIDLab2.setText("Email:");
+
+    PhNum.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    PhNum.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          ExitBtn2ActionPerformed(evt);
+          PhNumActionPerformed(evt);
         }
       }
     );
 
+    Email.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    Email.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          EmailActionPerformed(evt);
+        }
+      }
+    );
+
+    ConfPass.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+
+    PswLab4.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    PswLab4.setForeground(new java.awt.Color(140, 174, 238));
+    PswLab4.setText("Position:");
+
+    CustIDLab3.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    CustIDLab3.setForeground(new java.awt.Color(140, 174, 238));
+    CustIDLab3.setText("Phone Number:");
+
+    Position.setModel(
+      new javax.swing.DefaultComboBoxModel<>(
+        new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }
+      )
+    );
+
+    jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
+    jLabel1.setForeground(new java.awt.Color(0, 51, 204));
+    jLabel1.setText("Manage Account");
+
+    CustIDLab4.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    CustIDLab4.setForeground(new java.awt.Color(140, 174, 238));
+    CustIDLab4.setText("Name:");
+
+    jLabel2.setFont(new java.awt.Font("Brush Script MT", 0, 36)); // NOI18N
+    jLabel2.setForeground(new java.awt.Color(0, 51, 153));
+    jLabel2.setText("Welcome to Car Rental System");
+
+    CustIDLab1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    CustIDLab1.setForeground(new java.awt.Color(140, 174, 238));
+    CustIDLab1.setText("Admin ID:");
+
     LoginBtn2.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
     LoginBtn2.setForeground(new java.awt.Color(0, 102, 204));
-    LoginBtn2.setText("Register");
+    LoginBtn2.setText("Save Changes");
     LoginBtn2.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,62 +124,34 @@ public class RegisterAdmin extends javax.swing.JFrame {
     PswLab3.setForeground(new java.awt.Color(140, 174, 238));
     PswLab3.setText("Confirm Password:");
 
-    PswTxt3.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-
-    CustIDLab2.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-    CustIDLab2.setForeground(new java.awt.Color(140, 174, 238));
-    CustIDLab2.setText("Email:");
-
-    PswTxt2.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-
-    CustIDLab3.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-    CustIDLab3.setForeground(new java.awt.Color(140, 174, 238));
-    CustIDLab3.setText("Phone Number:");
-
-    jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
-    jLabel1.setForeground(new java.awt.Color(0, 51, 204));
-    jLabel1.setText("Register Admin");
-
-    CustIDLab4.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-    CustIDLab4.setForeground(new java.awt.Color(140, 174, 238));
-    CustIDLab4.setText("Name:");
-
-    jLabel2.setFont(new java.awt.Font("Brush Script MT", 0, 36)); // NOI18N
-    jLabel2.setForeground(new java.awt.Color(0, 51, 153));
-    jLabel2.setText("Welcome to Car Rental System");
-
-    PswTxt4.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-
-    CustIDLab1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-    CustIDLab1.setForeground(new java.awt.Color(140, 174, 238));
-    CustIDLab1.setText("Admin ID:");
-
-    PswTxt5.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-
     PswLab2.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     PswLab2.setForeground(new java.awt.Color(140, 174, 238));
     PswLab2.setText("Password:");
 
-    PswTxt6.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-
-    CustIDTxt.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-    CustIDTxt.addActionListener(
+    ID.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    ID.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          CustIDTxtActionPerformed(evt);
+          IDActionPerformed(evt);
         }
       }
     );
 
-    PswLab4.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-    PswLab4.setForeground(new java.awt.Color(140, 174, 238));
-    PswLab4.setText("Position:");
+    MenuBut.setBackground(new java.awt.Color(153, 204, 255));
+    MenuBut.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+    MenuBut.setForeground(new java.awt.Color(0, 102, 255));
+    MenuBut.setText("Main Menu");
 
-    jComboBox1.setModel(
-      new javax.swing.DefaultComboBoxModel<>(
-        new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }
-      )
+    Name.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    Name.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          NameActionPerformed(evt);
+        }
+      }
     );
+
+    Password.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(
       getContentPane()
@@ -150,33 +165,10 @@ public class RegisterAdmin extends javax.swing.JFrame {
             .createSequentialGroup()
             .addGroup(
               layout
-                .createParallelGroup(
-                  javax.swing.GroupLayout.Alignment.LEADING,
-                  false
-                )
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(
                   layout
                     .createSequentialGroup()
-                    .addGap(23, 23, 23)
-                    .addComponent(jLabel2)
-                )
-                .addGroup(
-                  layout
-                    .createSequentialGroup()
-                    .addGap(92, 92, 92)
-                    .addComponent(
-                      ExitBtn2,
-                      javax.swing.GroupLayout.PREFERRED_SIZE,
-                      73,
-                      javax.swing.GroupLayout.PREFERRED_SIZE
-                    )
-                    .addGap(78, 78, 78)
-                    .addComponent(LoginBtn2)
-                )
-                .addGroup(
-                  layout
-                    .createSequentialGroup()
-                    .addGap(26, 26, 26)
                     .addGroup(
                       layout
                         .createParallelGroup(
@@ -185,6 +177,7 @@ public class RegisterAdmin extends javax.swing.JFrame {
                         .addGroup(
                           layout
                             .createSequentialGroup()
+                            .addGap(26, 26, 26)
                             .addGroup(
                               layout
                                 .createParallelGroup(
@@ -198,90 +191,116 @@ public class RegisterAdmin extends javax.swing.JFrame {
                                 .addComponent(CustIDLab2)
                                 .addComponent(PswLab4)
                             )
+                            .addPreferredGap(
+                              javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                              javax.swing.GroupLayout.DEFAULT_SIZE,
+                              Short.MAX_VALUE
+                            )
+                        )
+                        .addGroup(
+                          javax.swing.GroupLayout.Alignment.TRAILING,
+                          layout
+                            .createSequentialGroup()
+                            .addContainerGap(
+                              javax.swing.GroupLayout.DEFAULT_SIZE,
+                              Short.MAX_VALUE
+                            )
+                            .addComponent(MenuBut)
+                            .addGap(18, 18, 18)
+                        )
+                    )
+                    .addGroup(
+                      layout
+                        .createParallelGroup(
+                          javax.swing.GroupLayout.Alignment.LEADING
+                        )
+                        .addGroup(
+                          javax.swing.GroupLayout.Alignment.TRAILING,
+                          layout
+                            .createParallelGroup(
+                              javax.swing.GroupLayout.Alignment.LEADING
+                            )
+                            .addComponent(LoginBtn2)
                             .addGroup(
                               layout
                                 .createParallelGroup(
                                   javax.swing.GroupLayout.Alignment.LEADING
                                 )
-                                .addGroup(
-                                  layout
-                                    .createSequentialGroup()
-                                    .addGap(31, 31, 31)
-                                    .addGroup(
-                                      layout
-                                        .createParallelGroup(
-                                          javax.swing.GroupLayout.Alignment.LEADING
-                                        )
-                                        .addComponent(
-                                          PswTxt2,
-                                          javax.swing.GroupLayout.PREFERRED_SIZE,
-                                          192,
-                                          javax.swing.GroupLayout.PREFERRED_SIZE
-                                        )
-                                        .addComponent(
-                                          CustIDTxt,
-                                          javax.swing.GroupLayout.PREFERRED_SIZE,
-                                          192,
-                                          javax.swing.GroupLayout.PREFERRED_SIZE
-                                        )
-                                        .addComponent(
-                                          PswTxt3,
-                                          javax.swing.GroupLayout.PREFERRED_SIZE,
-                                          192,
-                                          javax.swing.GroupLayout.PREFERRED_SIZE
-                                        )
-                                        .addComponent(
-                                          PswTxt5,
-                                          javax.swing.GroupLayout.PREFERRED_SIZE,
-                                          192,
-                                          javax.swing.GroupLayout.PREFERRED_SIZE
-                                        )
-                                    )
-                                )
-                                .addGroup(
+                                .addComponent(
+                                  Position,
                                   javax.swing.GroupLayout.Alignment.TRAILING,
-                                  layout
-                                    .createSequentialGroup()
-                                    .addPreferredGap(
-                                      javax.swing.LayoutStyle.ComponentPlacement.RELATED
-                                    )
-                                    .addGroup(
-                                      layout
-                                        .createParallelGroup(
-                                          javax.swing.GroupLayout.Alignment.LEADING
-                                        )
-                                        .addComponent(
-                                          PswTxt4,
-                                          javax.swing.GroupLayout.Alignment.TRAILING,
-                                          javax.swing.GroupLayout.PREFERRED_SIZE,
-                                          192,
-                                          javax.swing.GroupLayout.PREFERRED_SIZE
-                                        )
-                                        .addComponent(
-                                          jComboBox1,
-                                          javax.swing.GroupLayout.Alignment.TRAILING,
-                                          javax.swing.GroupLayout.PREFERRED_SIZE,
-                                          192,
-                                          javax.swing.GroupLayout.PREFERRED_SIZE
-                                        )
-                                        .addComponent(
-                                          PswTxt6,
-                                          javax.swing.GroupLayout.Alignment.TRAILING,
-                                          javax.swing.GroupLayout.PREFERRED_SIZE,
-                                          192,
-                                          javax.swing.GroupLayout.PREFERRED_SIZE
-                                        )
-                                    )
+                                  javax.swing.GroupLayout.PREFERRED_SIZE,
+                                  192,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE
+                                )
+                                .addComponent(
+                                  Password,
+                                  javax.swing.GroupLayout.Alignment.TRAILING,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE,
+                                  192,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE
                                 )
                             )
+                        )
+                        .addComponent(
+                          Email,
+                          javax.swing.GroupLayout.Alignment.TRAILING,
+                          javax.swing.GroupLayout.PREFERRED_SIZE,
+                          192,
+                          javax.swing.GroupLayout.PREFERRED_SIZE
+                        )
+                        .addComponent(
+                          PhNum,
+                          javax.swing.GroupLayout.Alignment.TRAILING,
+                          javax.swing.GroupLayout.PREFERRED_SIZE,
+                          192,
+                          javax.swing.GroupLayout.PREFERRED_SIZE
+                        )
+                        .addComponent(
+                          ConfPass,
+                          javax.swing.GroupLayout.Alignment.TRAILING,
+                          javax.swing.GroupLayout.PREFERRED_SIZE,
+                          192,
+                          javax.swing.GroupLayout.PREFERRED_SIZE
+                        )
+                        .addComponent(
+                          ID,
+                          javax.swing.GroupLayout.Alignment.TRAILING,
+                          javax.swing.GroupLayout.PREFERRED_SIZE,
+                          192,
+                          javax.swing.GroupLayout.PREFERRED_SIZE
+                        )
+                        .addComponent(
+                          Name,
+                          javax.swing.GroupLayout.Alignment.TRAILING,
+                          javax.swing.GroupLayout.PREFERRED_SIZE,
+                          192,
+                          javax.swing.GroupLayout.PREFERRED_SIZE
+                        )
+                    )
+                )
+                .addGroup(
+                  layout
+                    .createSequentialGroup()
+                    .addGroup(
+                      layout
+                        .createParallelGroup(
+                          javax.swing.GroupLayout.Alignment.LEADING
                         )
                         .addGroup(
                           layout
                             .createSequentialGroup()
-                            .addGap(96, 96, 96)
+                            .addGap(23, 23, 23)
+                            .addComponent(jLabel2)
+                        )
+                        .addGroup(
+                          layout
+                            .createSequentialGroup()
+                            .addGap(106, 106, 106)
                             .addComponent(jLabel1)
                         )
                     )
+                    .addGap(0, 0, Short.MAX_VALUE)
                 )
             )
             .addContainerGap(
@@ -303,7 +322,7 @@ public class RegisterAdmin extends javax.swing.JFrame {
             .addGap(16, 16, 16)
             .addGroup(
               layout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(
                   CustIDLab1,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -311,7 +330,7 @@ public class RegisterAdmin extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(
-                  CustIDTxt,
+                  ID,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   32,
                   javax.swing.GroupLayout.PREFERRED_SIZE
@@ -322,7 +341,7 @@ public class RegisterAdmin extends javax.swing.JFrame {
             )
             .addGroup(
               layout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(
                   CustIDLab4,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -330,16 +349,16 @@ public class RegisterAdmin extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(
-                  PswTxt2,
+                  Name,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
-                  35,
+                  32,
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
             )
             .addGap(18, 18, 18)
             .addGroup(
               layout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(
                   CustIDLab2,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -347,16 +366,16 @@ public class RegisterAdmin extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(
-                  PswTxt3,
+                  Email,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
-                  35,
+                  32,
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
             )
             .addGap(18, 18, 18)
             .addGroup(
               layout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(
                   CustIDLab3,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -364,9 +383,9 @@ public class RegisterAdmin extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(
-                  PswTxt5,
+                  PhNum,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
-                  37,
+                  32,
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
             )
@@ -385,7 +404,7 @@ public class RegisterAdmin extends javax.swing.JFrame {
                     .createSequentialGroup()
                     .addGap(2, 2, 2)
                     .addComponent(
-                      jComboBox1,
+                      Position,
                       javax.swing.GroupLayout.PREFERRED_SIZE,
                       30,
                       javax.swing.GroupLayout.PREFERRED_SIZE
@@ -405,7 +424,7 @@ public class RegisterAdmin extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(
-                  PswTxt6,
+                  Password,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   35,
                   javax.swing.GroupLayout.PREFERRED_SIZE
@@ -416,31 +435,26 @@ public class RegisterAdmin extends javax.swing.JFrame {
             )
             .addGroup(
               layout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(
                   PswLab3,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   42,
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
-                .addGroup(
-                  layout
-                    .createSequentialGroup()
-                    .addGap(1, 1, 1)
-                    .addComponent(
-                      PswTxt4,
-                      javax.swing.GroupLayout.PREFERRED_SIZE,
-                      42,
-                      javax.swing.GroupLayout.PREFERRED_SIZE
-                    )
+                .addComponent(
+                  ConfPass,
+                  javax.swing.GroupLayout.PREFERRED_SIZE,
+                  35,
+                  javax.swing.GroupLayout.PREFERRED_SIZE
                 )
             )
-            .addGap(18, 18, 18)
+            .addGap(19, 19, 19)
             .addGroup(
               layout
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(ExitBtn2)
                 .addComponent(LoginBtn2)
+                .addComponent(MenuBut)
             )
             .addContainerGap()
         )
@@ -449,20 +463,25 @@ public class RegisterAdmin extends javax.swing.JFrame {
     pack();
   } // </editor-fold>//GEN-END:initComponents
 
-  private void ExitBtn2ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ExitBtn2ActionPerformed
-    //Call the exit system function
-    exitSystem exit = new exitSystem();
-    exit.exitsystem();
-  } //GEN-LAST:event_ExitBtn2ActionPerformed
-
-  private void LoginBtn2ActionPerformed(java.awt.event.ActionEvent evt) {
-    System.out.println(CustIDTxt.getText());
-    System.out.println("Register acc btn maybe");
-  }
-
-  private void CustIDTxtActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_CustIDTxtActionPerformed
+  private void PhNumActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_PhNumActionPerformed
     // TODO add your handling code here:
-  } //GEN-LAST:event_CustIDTxtActionPerformed
+  } //GEN-LAST:event_PhNumActionPerformed
+
+  private void EmailActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_EmailActionPerformed
+    // TODO add your handling code here:
+  } //GEN-LAST:event_EmailActionPerformed
+
+  private void LoginBtn2ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_LoginBtn2ActionPerformed
+    // TODO add your handling code here:
+  } //GEN-LAST:event_LoginBtn2ActionPerformed
+
+  private void IDActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_IDActionPerformed
+    // TODO add your handling code here:
+  } //GEN-LAST:event_IDActionPerformed
+
+  private void NameActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_NameActionPerformed
+    // TODO add your handling code here:
+  } //GEN-LAST:event_NameActionPerformed
 
   /**
    * @param args the command line arguments
@@ -510,22 +529,22 @@ public class RegisterAdmin extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
+  private javax.swing.JPasswordField ConfPass;
   private javax.swing.JLabel CustIDLab1;
   private javax.swing.JLabel CustIDLab2;
   private javax.swing.JLabel CustIDLab3;
   private javax.swing.JLabel CustIDLab4;
-  private javax.swing.JTextField CustIDTxt;
-  private javax.swing.JButton ExitBtn2;
+  private javax.swing.JTextField Email;
+  private javax.swing.JTextField ID;
   private javax.swing.JButton LoginBtn2;
+  private javax.swing.JButton MenuBut;
+  private javax.swing.JTextField Name;
+  private javax.swing.JPasswordField Password;
+  private javax.swing.JTextField PhNum;
+  private javax.swing.JComboBox<String> Position;
   private javax.swing.JLabel PswLab2;
   private javax.swing.JLabel PswLab3;
   private javax.swing.JLabel PswLab4;
-  private javax.swing.JPasswordField PswTxt2;
-  private javax.swing.JPasswordField PswTxt3;
-  private javax.swing.JPasswordField PswTxt4;
-  private javax.swing.JPasswordField PswTxt5;
-  private javax.swing.JPasswordField PswTxt6;
-  private javax.swing.JComboBox<String> jComboBox1;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel2;
   // End of variables declaration//GEN-END:variables
