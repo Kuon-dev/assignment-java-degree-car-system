@@ -276,6 +276,9 @@ public class AdminMenu extends javax.swing.JFrame {
 
   private void LoginBtn5ActionPerformed(java.awt.event.ActionEvent evt) {
     // TODO sales report
+    SalesReport sales = new SalesReport();
+    sales.setVisible(true);
+    dispose();
   }
 
   private void ExitBtn1ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ExitBtn1ActionPerformed

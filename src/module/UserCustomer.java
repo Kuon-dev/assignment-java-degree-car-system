@@ -36,6 +36,7 @@ public class UserCustomer extends GeneralUser {
 
   public Boolean login(String name, String pass) {
     GeneralGetters getters = new GeneralGetters();
+
     ArrayList<UserCustomer> user = getters.getAllCustomer();
     for (int i = 0; i < user.size(); i++) {
       String userName = user.get(i).getName();
