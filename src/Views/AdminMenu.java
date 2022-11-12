@@ -247,8 +247,8 @@ public class AdminMenu extends javax.swing.JFrame {
   private void LoginBtn1ActionPerformed(java.awt.event.ActionEvent evt) {
     // TODO register account
     //
-    System.out.println(adminData.getName());
     RegisterAdmin registerMenu = new RegisterAdmin();
+    registerMenu.setCurrentAdminData(adminData);
     registerMenu.setVisible(true);
     dispose();
   }
@@ -256,6 +256,7 @@ public class AdminMenu extends javax.swing.JFrame {
   private void ManageCarBtnActionPerformed(java.awt.event.ActionEvent evt) {
     // TODO add your handling code here:
     ManageCar manageCarMenu = new ManageCar();
+    manageCarMenu.setCurrentAdminData(adminData);
     manageCarMenu.setVisible(true);
     dispose();
   }
@@ -263,6 +264,7 @@ public class AdminMenu extends javax.swing.JFrame {
   private void LoginBtn3ActionPerformed(java.awt.event.ActionEvent evt) {
     // TODO manage booking
     ManageBooking manageBookMenu = new ManageBooking();
+    manageBookMenu.setCurrentAdminData(adminData);
     manageBookMenu.setVisible(true);
     dispose();
   }
@@ -270,6 +272,8 @@ public class AdminMenu extends javax.swing.JFrame {
   private void LoginBtn4ActionPerformed(java.awt.event.ActionEvent evt) {
     // TODO manage personal info
     ManageAccountAdmin adminAcc = new ManageAccountAdmin();
+    adminAcc.setCurrentAdminData(adminData);
+    adminAcc.setTextfieldData();
     adminAcc.setVisible(true);
     dispose();
   }
@@ -277,6 +281,7 @@ public class AdminMenu extends javax.swing.JFrame {
   private void LoginBtn5ActionPerformed(java.awt.event.ActionEvent evt) {
     // TODO sales report
     SalesReport sales = new SalesReport();
+    sales.setCurrentAdminData(adminData);
     sales.setVisible(true);
     dispose();
   }

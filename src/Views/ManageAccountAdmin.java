@@ -12,6 +12,10 @@ import java.util.*;
  */
 public class ManageAccountAdmin extends javax.swing.JFrame {
 
+  public ManageAccountAdmin() {
+    initComponents();
+  }
+
   public UserAdmin currentAdminData = new UserAdmin(
     null,
     null,
@@ -28,9 +32,6 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
   /**
    * Creates new form ManageAccountAdmin
    */
-  public ManageAccountAdmin() {
-    initComponents();
-  }
 
   private Boolean sanitizeInput() {
     ArrayList<String> data = new ArrayList<>();
@@ -47,6 +48,14 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
       if (d.isEmpty()) return false;
     }
     return true;
+  }
+
+  public void setTextfieldData() {
+    ID.setText(currentAdminData.getId());
+    Name.setText(currentAdminData.getName());
+    Email.setText(currentAdminData.getEmail());
+    PhNum.setText(currentAdminData.getPhNum());
+    Position.setSelectedItem(currentAdminData.getPosition());
   }
 
   /**
@@ -175,6 +184,13 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
     MenuBut.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
     MenuBut.setForeground(new java.awt.Color(0, 102, 255));
     MenuBut.setText("Main Menu");
+    MenuBut.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          MenuBut(evt);
+        }
+      }
+    );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(
       getContentPane()
@@ -502,6 +518,14 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
 
   private void PhNumActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_PhNumActionPerformed
     // TODO add your handling code here:
+  } //GEN-LAST:event_PhNumActionPerformed
+
+  //
+  private void MenuBut(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_PhNumActionPerformed
+    AdminMenu menu = new AdminMenu();
+    menu.setCurrentAdminData(currentAdminData);
+    menu.setVisible(true);
+    dispose();
   } //GEN-LAST:event_PhNumActionPerformed
 
   /**

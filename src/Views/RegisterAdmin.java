@@ -20,6 +20,19 @@ public class RegisterAdmin extends javax.swing.JFrame {
     initComponents();
   }
 
+  public UserAdmin currentAdminData = new UserAdmin(
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  );
+
+  public void setCurrentAdminData(UserAdmin data) {
+    this.currentAdminData = data;
+  }
+
   /**
    * This method is called from within the constructor to initialize the form.
    * WARNING: Do NOT modify this code. The content of this method is always
@@ -493,6 +506,7 @@ public class RegisterAdmin extends javax.swing.JFrame {
 
   private void MenuButActionPerformed(java.awt.event.ActionEvent evt) {
     AdminMenu menu = new AdminMenu();
+    menu.setCurrentAdminData(currentAdminData);
     menu.setVisible(true);
     dispose();
   }

@@ -37,6 +37,19 @@ public class ManageCar extends javax.swing.JFrame {
     null
   );
 
+  public UserAdmin currentAdminData = new UserAdmin(
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  );
+
+  public void setCurrentAdminData(UserAdmin data) {
+    this.currentAdminData = data;
+  }
+
   public void updateTableInformation(ArrayList<GeneralCar> data) {
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
     model.setRowCount(0);
@@ -813,6 +826,7 @@ public class ManageCar extends javax.swing.JFrame {
   private void MenuButActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_MenuButActionPerformed
     //Direct to main menu
     AdminMenu menu = new AdminMenu();
+    menu.setCurrentAdminData(currentAdminData);
     menu.setVisible(true);
     dispose();
   } //GEN-LAST:event_MenuButActionPerformed
