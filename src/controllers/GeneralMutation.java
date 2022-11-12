@@ -2,6 +2,7 @@ package carrentalsystem;
 
 import carrentalsystem.FileController;
 import carrentalsystem.GeneralCar;
+import carrentalsystem.RecordBooking;
 import carrentalsystem.UserAdmin;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -12,6 +13,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Path;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class GeneralMutation {
@@ -20,8 +23,10 @@ public class GeneralMutation {
   private String adminDatabase = cwd + "/Database/MainAdmin.txt";
   private String customerDatabse = cwd + "/Database/MainCustomer.txt";
   private String carDatabase = cwd + "/Database/MainCar.txt";
+  private String bookingDatabase = cwd + "/Database/MainBooking.txt";
   private FileController f = new FileController();
   private GeneralGetters g = new GeneralGetters();
+  private DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
   public Boolean addNewAdmin(UserAdmin admin) {
     ArrayList<String> userData = new ArrayList<>();
@@ -152,12 +157,63 @@ public class GeneralMutation {
         return f.deleteFile(carDatabase, Integer.toString(i));
       }
     }
-    System.out.println("end of loop");
     return false;
   }
 
   public Boolean addNewBooking(RecordBooking booking) {
-    ArrayList<RecordBooking> records = g.getAllBooking();
+    ArrayList<String> recordData = new ArrayList<>();
+    recordData.add(booking.getReceiptID());
+    recordData.add(booking.getCustomer().getIC());
+    recordData.add(booking.getCar().getCarNoPlate());
+    recordData.add(String.valueOf(booking.getDays()));
+    recordData.add(String.valueOf(booking.getTotalPrice()));
+    recordData.add(df.format(booking.getBookingDate()));
+    recordData.add(df.format(booking.getStartDate()));
+    recordData.add(df.format(booking.getReturnDate()));
+
+    return f.addFile(recordData, bookingDatabase);
+  }
+
+  public Boolean editExistingBooking(
+    RecordBooking oldBooking,
+    RecordBooking newBooking
+  ) {
+    ArrayList<String> recordData = new ArrayList<>();
+    recordData.add(newBooking.getReceiptID());
+    recordData.add(newBooking.getCustomer().getIC());
+    recordData.add(newBooking.getCar().getCarNoPlate());
+    recordData.add(String.valueOf(newBooking.getDays()));
+    recordData.add(String.valueOf(newBooking.getTotalPrice()));
+    recordData.add(df.format(newBooking.getBookingDate()));
+    recordData.add(df.format(newBooking.getStartDate()));
+    recordData.add(df.format(newBooking.getReturnDate()));
+
+    ArrayList<RecordBooking> allBookings = g.getAllBooking();
+    for (int i = 0; i < allBookings.size(); i++) {
+      if (
+        allBookings
+          .get(i)
+          .getReceiptID()
+          .equalsIgnoreCase(oldBooking.getReceiptID())
+      ) {
+        return f.modifyFile(recordData, carDatabase, Integer.toString(i));
+      }
+    }
+    return false;
+  }
+
+  public Boolean deleteExistingBooking(RecordBooking booking) {
+    ArrayList<RecordBooking> allBookings = g.getAllBooking();
+    for (int i = 0; i < allBookings.size(); i++) {
+      if (
+        allBookings
+          .get(i)
+          .getReceiptID()
+          .equalsIgnoreCase(booking.getReceiptID())
+      ) {
+        return f.deleteFile(carDatabase, Integer.toString(i));
+      }
+    }
     return false;
   }
 }
