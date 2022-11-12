@@ -4,17 +4,49 @@
  */
 package carrentalsystem;
 
+import java.util.*;
+
 /**
  *
  * @author Lim Li Ping
  */
 public class ManageAccountAdmin extends javax.swing.JFrame {
 
+  public UserAdmin currentAdminData = new UserAdmin(
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  );
+
+  public void setCurrentAdminData(UserAdmin data) {
+    this.currentAdminData = data;
+  }
+
   /**
    * Creates new form ManageAccountAdmin
    */
   public ManageAccountAdmin() {
     initComponents();
+  }
+
+  private Boolean sanitizeInput() {
+    ArrayList<String> data = new ArrayList<>();
+    data.add(ID.getText());
+    data.add(Name.getText());
+    data.add(Email.getText());
+    data.add(PhNum.getText());
+    data.add(Position.getSelectedItem().toString());
+    data.add(Password.getText());
+    data.add(ConfPass.getText());
+
+    // if there's an empty input, return false
+    for (String d : data) {
+      if (d.isEmpty()) return false;
+    }
+    return true;
   }
 
   /**
@@ -131,7 +163,7 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
 
     Position.setModel(
       new javax.swing.DefaultComboBoxModel<>(
-        new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }
+        new String[] { "Manager", "Receiptionist", " " }
       )
     );
 

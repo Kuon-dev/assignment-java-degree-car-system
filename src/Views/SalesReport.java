@@ -110,7 +110,7 @@ public class SalesReport extends javax.swing.JFrame {
 
     BookingLab1.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
     BookingLab1.setForeground(new java.awt.Color(140, 174, 238));
-    BookingLab1.setText("Select Year");
+    BookingLab1.setText("Enter year");
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(
       getContentPane()
@@ -122,6 +122,7 @@ public class SalesReport extends javax.swing.JFrame {
         .addGroup(
           layout
             .createSequentialGroup()
+            .addContainerGap()
             .addGroup(
               layout
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,13 +130,12 @@ public class SalesReport extends javax.swing.JFrame {
                   javax.swing.GroupLayout.Alignment.TRAILING,
                   layout
                     .createSequentialGroup()
-                    .addContainerGap(20, Short.MAX_VALUE)
+                    .addGap(0, 14, Short.MAX_VALUE)
                     .addComponent(Title)
                 )
                 .addGroup(
                   layout
                     .createSequentialGroup()
-                    .addContainerGap()
                     .addComponent(MenuBut)
                     .addGap(0, 0, Short.MAX_VALUE)
                 )

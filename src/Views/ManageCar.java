@@ -55,7 +55,7 @@ public class ManageCar extends javax.swing.JFrame {
     }
   }
 
-  public Boolean sanitizeInput() {
+  private Boolean sanitizeInput() {
     Validator v = new Validator();
     ArrayList<String> inputData = new ArrayList<>();
     inputData.add(CarNoPlate.getText()); // plate

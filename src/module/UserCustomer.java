@@ -1,5 +1,7 @@
 package carrentalsystem;
 
+import java.util.ArrayList;
+
 public class UserCustomer extends GeneralUser {
 
   public String IC;
@@ -30,5 +32,18 @@ public class UserCustomer extends GeneralUser {
     GeneralMutation m = new GeneralMutation();
 
     return m.addNewCustomer(customer);
+  }
+
+  public Boolean login(String name, String pass) {
+    GeneralGetters getters = new GeneralGetters();
+    ArrayList<UserCustomer> user = getters.getAllCustomer();
+    for (int i = 0; i < user.size(); i++) {
+      String userName = user.get(i).getName();
+      String userPassword = user.get(i).getPassword();
+      if (
+        userName.equalsIgnoreCase(name) && userPassword.equals(pass)
+      ) return true;
+    }
+    return false;
   }
 }

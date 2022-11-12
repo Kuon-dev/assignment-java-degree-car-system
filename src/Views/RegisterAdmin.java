@@ -13,17 +13,11 @@ import javax.swing.JOptionPane;
  */
 public class RegisterAdmin extends javax.swing.JFrame {
 
-  private ArrayList<String> currentAdminData;
-
   /**
    * Creates new form RegisterAdmin
    */
   public RegisterAdmin() {
     initComponents();
-  }
-
-  public void setCurrentAdminData(ArrayList<String> data) {
-    this.currentAdminData = data;
   }
 
   /**
@@ -45,7 +39,7 @@ public class RegisterAdmin extends javax.swing.JFrame {
     CustIDLab4 = new javax.swing.JLabel();
     jLabel2 = new javax.swing.JLabel();
     CustIDLab1 = new javax.swing.JLabel();
-    LoginBtn2 = new javax.swing.JButton();
+    SaveChanges = new javax.swing.JButton();
     PswLab3 = new javax.swing.JLabel();
     PswLab2 = new javax.swing.JLabel();
     ID = new javax.swing.JTextField();
@@ -89,8 +83,15 @@ public class RegisterAdmin extends javax.swing.JFrame {
 
     Position.setModel(
       new javax.swing.DefaultComboBoxModel<>(
-        new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }
+        new String[] { "Manager", "Receptionist" }
       )
+    );
+    Position.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          PositionActionPerformed(evt);
+        }
+      }
     );
 
     jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
@@ -109,13 +110,13 @@ public class RegisterAdmin extends javax.swing.JFrame {
     CustIDLab1.setForeground(new java.awt.Color(140, 174, 238));
     CustIDLab1.setText("Admin ID:");
 
-    LoginBtn2.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
-    LoginBtn2.setForeground(new java.awt.Color(0, 102, 204));
-    LoginBtn2.setText("Save Changes");
-    LoginBtn2.addActionListener(
+    SaveChanges.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
+    SaveChanges.setForeground(new java.awt.Color(0, 102, 204));
+    SaveChanges.setText("Save Changes");
+    SaveChanges.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          LoginBtn2ActionPerformed(evt);
+          SaveChangesActionPerformed(evt);
         }
       }
     );
@@ -141,6 +142,13 @@ public class RegisterAdmin extends javax.swing.JFrame {
     MenuBut.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
     MenuBut.setForeground(new java.awt.Color(0, 102, 255));
     MenuBut.setText("Main Menu");
+    MenuBut.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          MenuButActionPerformed(evt);
+        }
+      }
+    );
 
     Name.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     Name.addActionListener(
@@ -220,7 +228,7 @@ public class RegisterAdmin extends javax.swing.JFrame {
                             .createParallelGroup(
                               javax.swing.GroupLayout.Alignment.LEADING
                             )
-                            .addComponent(LoginBtn2)
+                            .addComponent(SaveChanges)
                             .addGroup(
                               layout
                                 .createParallelGroup(
@@ -453,7 +461,7 @@ public class RegisterAdmin extends javax.swing.JFrame {
             .addGroup(
               layout
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(LoginBtn2)
+                .addComponent(SaveChanges)
                 .addComponent(MenuBut)
             )
             .addContainerGap()
@@ -471,9 +479,9 @@ public class RegisterAdmin extends javax.swing.JFrame {
     // TODO add your handling code here:
   } //GEN-LAST:event_EmailActionPerformed
 
-  private void LoginBtn2ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_LoginBtn2ActionPerformed
+  private void SaveChangesActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_SaveChangesActionPerformed
     // TODO add your handling code here:
-  } //GEN-LAST:event_LoginBtn2ActionPerformed
+  } //GEN-LAST:event_SaveChangesActionPerformed
 
   private void IDActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_IDActionPerformed
     // TODO add your handling code here:
@@ -482,6 +490,16 @@ public class RegisterAdmin extends javax.swing.JFrame {
   private void NameActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_NameActionPerformed
     // TODO add your handling code here:
   } //GEN-LAST:event_NameActionPerformed
+
+  private void MenuButActionPerformed(java.awt.event.ActionEvent evt) {
+    AdminMenu menu = new AdminMenu();
+    menu.setVisible(true);
+    dispose();
+  }
+
+  private void PositionActionPerformed(java.awt.event.ActionEvent evt) {
+    // TODO add your handling code here:
+  }
 
   /**
    * @param args the command line arguments
@@ -536,7 +554,6 @@ public class RegisterAdmin extends javax.swing.JFrame {
   private javax.swing.JLabel CustIDLab4;
   private javax.swing.JTextField Email;
   private javax.swing.JTextField ID;
-  private javax.swing.JButton LoginBtn2;
   private javax.swing.JButton MenuBut;
   private javax.swing.JTextField Name;
   private javax.swing.JPasswordField Password;
@@ -545,6 +562,7 @@ public class RegisterAdmin extends javax.swing.JFrame {
   private javax.swing.JLabel PswLab2;
   private javax.swing.JLabel PswLab3;
   private javax.swing.JLabel PswLab4;
+  private javax.swing.JButton SaveChanges;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel2;
   // End of variables declaration//GEN-END:variables
