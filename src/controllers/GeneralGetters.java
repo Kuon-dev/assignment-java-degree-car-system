@@ -2,6 +2,7 @@ package carrentalsystem;
 
 import carrentalsystem.FileController;
 import carrentalsystem.GeneralCar;
+import carrentalsystem.RecordBooking;
 import carrentalsystem.UserAdmin;
 import carrentalsystem.UserCustomer;
 import java.io.BufferedReader;
@@ -176,5 +177,15 @@ public class GeneralGetters {
     } finally {
       return allBookings;
     }
+  }
+
+  public RecordBooking getSpecificBooking(String receiptID) {
+    ArrayList<RecordBooking> allBookings = getAllBooking();
+
+    for (RecordBooking record : allBookings) {
+      if (record.getReceiptID().equals(receiptID)) return record;
+    }
+
+    throw new EmptyStackException();
   }
 }
