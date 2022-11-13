@@ -4,17 +4,68 @@
  */
 package carrentalsystem;
 
+import java.util.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Lim Li Ping
  */
 public class ManageAccountAdmin extends javax.swing.JFrame {
 
+  public ManageAccountAdmin() {
+    initComponents();
+  }
+
+  public UserAdmin currentAdminData = new UserAdmin(
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  );
+
+  public void setCurrentAdminData(UserAdmin data) {
+    this.currentAdminData = data;
+  }
+
   /**
    * Creates new form ManageAccountAdmin
    */
-  public ManageAccountAdmin() {
-    initComponents();
+
+  private Boolean sanitizeInput() {
+    ArrayList<String> data = new ArrayList<>();
+    data.add(ID.getText());
+    data.add(Name.getText());
+    data.add(Email.getText());
+    data.add(PhNum.getText());
+    data.add(Position.getSelectedItem().toString());
+    data.add(Password.getText());
+    data.add(ConfPass.getText());
+
+    // if there's an empty input, return false
+    for (String d : data) {
+      if (d.isEmpty()) {
+        JOptionPane.showMessageDialog(
+          this,
+          "Fill in all the inputs",
+          "Information",
+          JOptionPane.INFORMATION_MESSAGE
+        );
+
+        return false;
+      }
+    }
+    return true;
+  }
+
+  public void setTextfieldData() {
+    ID.setText(currentAdminData.getId());
+    Name.setText(currentAdminData.getName());
+    Email.setText(currentAdminData.getEmail());
+    PhNum.setText(currentAdminData.getPhNum());
+    Position.setSelectedItem(currentAdminData.getPosition());
   }
 
   /**
@@ -25,83 +76,69 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
   @SuppressWarnings("unchecked")
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
-    PswTxt4 = new javax.swing.JPasswordField();
-    ExitBtn2 = new javax.swing.JButton();
-    CustIDLab1 = new javax.swing.JLabel();
-    LoginBtn2 = new javax.swing.JButton();
-    PswTxt5 = new javax.swing.JPasswordField();
-    PswLab3 = new javax.swing.JLabel();
-    PswLab2 = new javax.swing.JLabel();
-    PswTxt3 = new javax.swing.JPasswordField();
-    PswTxt6 = new javax.swing.JPasswordField();
+    SaveChanges = new javax.swing.JButton();
     CustIDLab2 = new javax.swing.JLabel();
-    CustIDTxt = new javax.swing.JTextField();
-    PswTxt2 = new javax.swing.JPasswordField();
+    PhNum = new javax.swing.JTextField();
+    Email = new javax.swing.JTextField();
+    ConfPass = new javax.swing.JPasswordField();
     PswLab4 = new javax.swing.JLabel();
     CustIDLab3 = new javax.swing.JLabel();
-    jComboBox1 = new javax.swing.JComboBox<>();
+    Position = new javax.swing.JComboBox<>();
     jLabel1 = new javax.swing.JLabel();
     CustIDLab4 = new javax.swing.JLabel();
     jLabel2 = new javax.swing.JLabel();
+    CustIDLab1 = new javax.swing.JLabel();
+    PswLab3 = new javax.swing.JLabel();
+    PswLab2 = new javax.swing.JLabel();
+    ID = new javax.swing.JTextField();
+    Name = new javax.swing.JTextField();
+    Password = new javax.swing.JPasswordField();
+    MenuBut1 = new javax.swing.JButton();
+    SaveChanges1 = new javax.swing.JButton();
+
+    SaveChanges.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
+    SaveChanges.setForeground(new java.awt.Color(0, 102, 204));
+    SaveChanges.setText("Save Changes");
+    SaveChanges.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          SaveChangesActionPerformed(evt);
+        }
+      }
+    );
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-    PswTxt4.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-
-    ExitBtn2.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
-    ExitBtn2.setForeground(new java.awt.Color(0, 102, 204));
-    ExitBtn2.setText("Exit");
-    ExitBtn2.addActionListener(
-      new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-          ExitBtn2ActionPerformed(evt);
-        }
-      }
-    );
-
-    CustIDLab1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-    CustIDLab1.setForeground(new java.awt.Color(140, 174, 238));
-    CustIDLab1.setText("Admin ID:");
-
-    LoginBtn2.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
-    LoginBtn2.setForeground(new java.awt.Color(0, 102, 204));
-    LoginBtn2.setText("Save Changes");
-    LoginBtn2.addActionListener(
-      new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-          LoginBtn2ActionPerformed(evt);
-        }
-      }
-    );
-
-    PswTxt5.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-
-    PswLab3.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-    PswLab3.setForeground(new java.awt.Color(140, 174, 238));
-    PswLab3.setText("Confirm Password:");
-
-    PswLab2.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-    PswLab2.setForeground(new java.awt.Color(140, 174, 238));
-    PswLab2.setText("Password:");
-
-    PswTxt3.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-
-    PswTxt6.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
 
     CustIDLab2.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     CustIDLab2.setForeground(new java.awt.Color(140, 174, 238));
     CustIDLab2.setText("Email:");
 
-    CustIDTxt.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-    CustIDTxt.addActionListener(
+    PhNum.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    PhNum.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          CustIDTxtActionPerformed(evt);
+          PhNumActionPerformed(evt);
         }
       }
     );
 
-    PswTxt2.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    Email.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    Email.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          EmailActionPerformed(evt);
+        }
+      }
+    );
+
+    ConfPass.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    ConfPass.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          ConfPassActionPerformed(evt);
+        }
+      }
+    );
 
     PswLab4.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     PswLab4.setForeground(new java.awt.Color(140, 174, 238));
@@ -111,10 +148,17 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
     CustIDLab3.setForeground(new java.awt.Color(140, 174, 238));
     CustIDLab3.setText("Phone Number:");
 
-    jComboBox1.setModel(
+    Position.setModel(
       new javax.swing.DefaultComboBoxModel<>(
-        new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }
+        new String[] { "Manager", "Receptionist" }
       )
+    );
+    Position.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          PositionActionPerformed(evt);
+        }
+      }
     );
 
     jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
@@ -128,6 +172,61 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
     jLabel2.setFont(new java.awt.Font("Brush Script MT", 0, 36)); // NOI18N
     jLabel2.setForeground(new java.awt.Color(0, 51, 153));
     jLabel2.setText("Welcome to Car Rental System");
+
+    CustIDLab1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    CustIDLab1.setForeground(new java.awt.Color(140, 174, 238));
+    CustIDLab1.setText("Admin ID:");
+
+    PswLab3.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    PswLab3.setForeground(new java.awt.Color(140, 174, 238));
+    PswLab3.setText("Confirm Password:");
+
+    PswLab2.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    PswLab2.setForeground(new java.awt.Color(140, 174, 238));
+    PswLab2.setText("Password:");
+
+    ID.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    ID.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          IDActionPerformed(evt);
+        }
+      }
+    );
+
+    Name.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    Name.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          NameActionPerformed(evt);
+        }
+      }
+    );
+
+    Password.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+
+    MenuBut1.setBackground(new java.awt.Color(153, 204, 255));
+    MenuBut1.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+    MenuBut1.setForeground(new java.awt.Color(0, 102, 255));
+    MenuBut1.setText("Main Menu");
+    MenuBut1.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          MenuBut1ActionPerformed(evt);
+        }
+      }
+    );
+
+    SaveChanges1.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
+    SaveChanges1.setForeground(new java.awt.Color(0, 102, 204));
+    SaveChanges1.setText("Save Changes");
+    SaveChanges1.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          SaveChanges1ActionPerformed(evt);
+        }
+      }
+    );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(
       getContentPane()
@@ -145,23 +244,6 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
                 .addGroup(
                   layout
                     .createSequentialGroup()
-                    .addGap(23, 23, 23)
-                    .addComponent(jLabel2)
-                )
-                .addGroup(
-                  layout
-                    .createSequentialGroup()
-                    .addGap(75, 75, 75)
-                    .addComponent(
-                      ExitBtn2,
-                      javax.swing.GroupLayout.PREFERRED_SIZE,
-                      73,
-                      javax.swing.GroupLayout.PREFERRED_SIZE
-                    )
-                )
-                .addGroup(
-                  layout
-                    .createSequentialGroup()
                     .addGap(26, 26, 26)
                     .addGroup(
                       layout
@@ -175,6 +257,7 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
                         .addComponent(PswLab3)
                         .addComponent(CustIDLab2)
                         .addComponent(PswLab4)
+                        .addComponent(MenuBut1)
                     )
                     .addGroup(
                       layout
@@ -184,32 +267,61 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
                         .addGroup(
                           layout
                             .createSequentialGroup()
-                            .addGap(31, 31, 31)
+                            .addPreferredGap(
+                              javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                              javax.swing.GroupLayout.DEFAULT_SIZE,
+                              Short.MAX_VALUE
+                            )
                             .addGroup(
                               layout
                                 .createParallelGroup(
                                   javax.swing.GroupLayout.Alignment.LEADING
                                 )
                                 .addComponent(
-                                  PswTxt2,
+                                  Position,
+                                  javax.swing.GroupLayout.Alignment.TRAILING,
                                   javax.swing.GroupLayout.PREFERRED_SIZE,
                                   192,
                                   javax.swing.GroupLayout.PREFERRED_SIZE
                                 )
                                 .addComponent(
-                                  CustIDTxt,
+                                  Password,
+                                  javax.swing.GroupLayout.Alignment.TRAILING,
                                   javax.swing.GroupLayout.PREFERRED_SIZE,
                                   192,
                                   javax.swing.GroupLayout.PREFERRED_SIZE
                                 )
                                 .addComponent(
-                                  PswTxt3,
+                                  Email,
+                                  javax.swing.GroupLayout.Alignment.TRAILING,
                                   javax.swing.GroupLayout.PREFERRED_SIZE,
                                   192,
                                   javax.swing.GroupLayout.PREFERRED_SIZE
                                 )
                                 .addComponent(
-                                  PswTxt5,
+                                  PhNum,
+                                  javax.swing.GroupLayout.Alignment.TRAILING,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE,
+                                  192,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE
+                                )
+                                .addComponent(
+                                  ConfPass,
+                                  javax.swing.GroupLayout.Alignment.TRAILING,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE,
+                                  192,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE
+                                )
+                                .addComponent(
+                                  ID,
+                                  javax.swing.GroupLayout.Alignment.TRAILING,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE,
+                                  192,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE
+                                )
+                                .addComponent(
+                                  Name,
+                                  javax.swing.GroupLayout.Alignment.TRAILING,
                                   javax.swing.GroupLayout.PREFERRED_SIZE,
                                   192,
                                   javax.swing.GroupLayout.PREFERRED_SIZE
@@ -217,54 +329,36 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
                             )
                         )
                         .addGroup(
-                          javax.swing.GroupLayout.Alignment.TRAILING,
                           layout
                             .createSequentialGroup()
-                            .addPreferredGap(
-                              javax.swing.LayoutStyle.ComponentPlacement.RELATED
-                            )
-                            .addGroup(
-                              layout
-                                .createParallelGroup(
-                                  javax.swing.GroupLayout.Alignment.LEADING
-                                )
-                                .addComponent(LoginBtn2)
-                                .addGroup(
-                                  layout
-                                    .createParallelGroup(
-                                      javax.swing.GroupLayout.Alignment.LEADING
-                                    )
-                                    .addComponent(
-                                      PswTxt4,
-                                      javax.swing.GroupLayout.Alignment.TRAILING,
-                                      javax.swing.GroupLayout.PREFERRED_SIZE,
-                                      192,
-                                      javax.swing.GroupLayout.PREFERRED_SIZE
-                                    )
-                                    .addComponent(
-                                      jComboBox1,
-                                      javax.swing.GroupLayout.Alignment.TRAILING,
-                                      javax.swing.GroupLayout.PREFERRED_SIZE,
-                                      192,
-                                      javax.swing.GroupLayout.PREFERRED_SIZE
-                                    )
-                                    .addComponent(
-                                      PswTxt6,
-                                      javax.swing.GroupLayout.Alignment.TRAILING,
-                                      javax.swing.GroupLayout.PREFERRED_SIZE,
-                                      192,
-                                      javax.swing.GroupLayout.PREFERRED_SIZE
-                                    )
-                                )
-                            )
+                            .addGap(42, 42, 42)
+                            .addComponent(SaveChanges1)
+                            .addGap(0, 0, Short.MAX_VALUE)
                         )
                     )
                 )
                 .addGroup(
                   layout
                     .createSequentialGroup()
-                    .addGap(106, 106, 106)
-                    .addComponent(jLabel1)
+                    .addGroup(
+                      layout
+                        .createParallelGroup(
+                          javax.swing.GroupLayout.Alignment.LEADING
+                        )
+                        .addGroup(
+                          layout
+                            .createSequentialGroup()
+                            .addGap(23, 23, 23)
+                            .addComponent(jLabel2)
+                        )
+                        .addGroup(
+                          layout
+                            .createSequentialGroup()
+                            .addGap(106, 106, 106)
+                            .addComponent(jLabel1)
+                        )
+                    )
+                    .addGap(0, 0, Short.MAX_VALUE)
                 )
             )
             .addContainerGap(
@@ -286,7 +380,7 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
             .addGap(16, 16, 16)
             .addGroup(
               layout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(
                   CustIDLab1,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -294,7 +388,7 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(
-                  CustIDTxt,
+                  ID,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   32,
                   javax.swing.GroupLayout.PREFERRED_SIZE
@@ -305,7 +399,7 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
             )
             .addGroup(
               layout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(
                   CustIDLab4,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -313,16 +407,16 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(
-                  PswTxt2,
+                  Name,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
-                  35,
+                  32,
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
             )
             .addGap(18, 18, 18)
             .addGroup(
               layout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(
                   CustIDLab2,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -330,16 +424,16 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(
-                  PswTxt3,
+                  Email,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
-                  35,
+                  32,
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
             )
             .addGap(18, 18, 18)
             .addGroup(
               layout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(
                   CustIDLab3,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -347,9 +441,9 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(
-                  PswTxt5,
+                  PhNum,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
-                  37,
+                  32,
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
             )
@@ -368,7 +462,7 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
                     .createSequentialGroup()
                     .addGap(2, 2, 2)
                     .addComponent(
-                      jComboBox1,
+                      Position,
                       javax.swing.GroupLayout.PREFERRED_SIZE,
                       30,
                       javax.swing.GroupLayout.PREFERRED_SIZE
@@ -388,7 +482,7 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(
-                  PswTxt6,
+                  Password,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   35,
                   javax.swing.GroupLayout.PREFERRED_SIZE
@@ -399,31 +493,26 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
             )
             .addGroup(
               layout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(
                   PswLab3,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   42,
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
-                .addGroup(
-                  layout
-                    .createSequentialGroup()
-                    .addGap(1, 1, 1)
-                    .addComponent(
-                      PswTxt4,
-                      javax.swing.GroupLayout.PREFERRED_SIZE,
-                      42,
-                      javax.swing.GroupLayout.PREFERRED_SIZE
-                    )
+                .addComponent(
+                  ConfPass,
+                  javax.swing.GroupLayout.PREFERRED_SIZE,
+                  35,
+                  javax.swing.GroupLayout.PREFERRED_SIZE
                 )
             )
-            .addGap(18, 18, 18)
+            .addGap(19, 19, 19)
             .addGroup(
               layout
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(ExitBtn2)
-                .addComponent(LoginBtn2)
+                .addComponent(MenuBut1)
+                .addComponent(SaveChanges1)
             )
             .addContainerGap()
         )
@@ -432,17 +521,91 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
     pack();
   } // </editor-fold>//GEN-END:initComponents
 
-  private void ExitBtn2ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ExitBtn2ActionPerformed
-    //Call the exit system function
-    exitSystem exit = new exitSystem();
-    exit.exitsystem();
-  } //GEN-LAST:event_ExitBtn2ActionPerformed
+  private void LoginBtn2ActionPerformed(java.awt.event.ActionEvent evt) {
+    GeneralMutation m = new GeneralMutation();
+    if (!sanitizeInput()) return;
+    UserAdmin newAdminData = new UserAdmin(
+      ID.getText(),
+      Name.getText(),
+      Password.getText(),
+      Email.getText(),
+      PhNum.getText(),
+      Position.getSelectedItem().toString()
+    );
+    if (m.editExistingAdmin(currentAdminData, newAdminData)) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Record Added Successfully",
+        "Information",
+        JOptionPane.INFORMATION_MESSAGE
+      );
+      setCurrentAdminData(newAdminData);
+    } else JOptionPane.showMessageDialog(
+      this,
+      "Failed to add admin data",
+      "Error Message",
+      JOptionPane.ERROR_MESSAGE
+    );
+  }
 
-  private void LoginBtn2ActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_LoginBtn2ActionPerformed //GEN-LAST:event_LoginBtn2ActionPerformed
-
-  private void CustIDTxtActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_CustIDTxtActionPerformed
+  private void EmailActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_EmailActionPerformed
     // TODO add your handling code here:
-  } //GEN-LAST:event_CustIDTxtActionPerformed
+  } //GEN-LAST:event_EmailActionPerformed
+
+  private void IDActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_IDActionPerformed
+    // TODO add your handling code here:
+  } //GEN-LAST:event_IDActionPerformed
+
+  private void NameActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_NameActionPerformed
+    // TODO add your handling code here:
+  } //GEN-LAST:event_NameActionPerformed
+
+  private void PhNumActionPerformed(java.awt.event.ActionEvent evt) {
+    // TODO add your handling code here:
+  }
+
+  //
+  private void MenuBut(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_PhNumActionPerformed //GEN-LAST:event_PhNumActionPerformed
+
+  private void ConfPassActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ConfPassActionPerformed
+    // TODO add your handling code here:
+  } //GEN-LAST:event_ConfPassActionPerformed
+
+  private void MenuBut1ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_MenuBut1ActionPerformed
+    // TODO add your handling code here:
+    AdminMenu menu = new AdminMenu();
+    menu.setCurrentAdminData(currentAdminData);
+    menu.setVisible(true);
+    dispose();
+  } //GEN-LAST:event_MenuBut1ActionPerformed
+
+  private void SaveChanges1ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_SaveChanges1ActionPerformed
+    // TODO add your handling code here:
+    GeneralMutation m = new GeneralMutation();
+    if (!sanitizeInput()) return;
+    UserAdmin newAdminData = new UserAdmin(
+      ID.getText(),
+      Name.getText(),
+      Password.getText(),
+      Email.getText(),
+      PhNum.getText(),
+      Position.getSelectedItem().toString()
+    );
+    if (m.editExistingAdmin(currentAdminData, newAdminData)) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Record Added Successfully",
+        "Information",
+        JOptionPane.INFORMATION_MESSAGE
+      );
+      setCurrentAdminData(newAdminData);
+    } else JOptionPane.showMessageDialog(
+      this,
+      "Failed to add admin data",
+      "Error Message",
+      JOptionPane.ERROR_MESSAGE
+    );
+  } //GEN-LAST:event_SaveChanges1ActionPerformed
 
   /**
    * @param args the command line arguments
@@ -490,22 +653,23 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
+  private javax.swing.JPasswordField ConfPass;
   private javax.swing.JLabel CustIDLab1;
   private javax.swing.JLabel CustIDLab2;
   private javax.swing.JLabel CustIDLab3;
   private javax.swing.JLabel CustIDLab4;
-  private javax.swing.JTextField CustIDTxt;
-  private javax.swing.JButton ExitBtn2;
-  private javax.swing.JButton LoginBtn2;
+  private javax.swing.JTextField Email;
+  private javax.swing.JTextField ID;
+  private javax.swing.JButton MenuBut1;
+  private javax.swing.JTextField Name;
+  private javax.swing.JPasswordField Password;
+  private javax.swing.JTextField PhNum;
+  private javax.swing.JComboBox<String> Position;
   private javax.swing.JLabel PswLab2;
   private javax.swing.JLabel PswLab3;
   private javax.swing.JLabel PswLab4;
-  private javax.swing.JPasswordField PswTxt2;
-  private javax.swing.JPasswordField PswTxt3;
-  private javax.swing.JPasswordField PswTxt4;
-  private javax.swing.JPasswordField PswTxt5;
-  private javax.swing.JPasswordField PswTxt6;
-  private javax.swing.JComboBox<String> jComboBox1;
+  private javax.swing.JButton SaveChanges;
+  private javax.swing.JButton SaveChanges1;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel2;
   // End of variables declaration//GEN-END:variables

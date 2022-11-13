@@ -24,6 +24,19 @@ public class ManageBooking extends javax.swing.JFrame {
     initComponents();
   }
 
+  public UserAdmin currentAdminData = new UserAdmin(
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  );
+
+  public void setCurrentAdminData(UserAdmin data) {
+    this.currentAdminData = data;
+  }
+
   /**
    * This method is called from within the constructor to initialize the form.
    * WARNING: Do NOT modify this code. The content of this method is always
@@ -891,6 +904,7 @@ public class ManageBooking extends javax.swing.JFrame {
   private void MenuButActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_MenuButActionPerformed
     //Direct to main menu
     AdminMenu menu = new AdminMenu();
+    menu.setCurrentAdminData(currentAdminData);
     menu.setVisible(true);
     dispose();
   } //GEN-LAST:event_MenuButActionPerformed

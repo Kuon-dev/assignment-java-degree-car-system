@@ -23,8 +23,8 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
@@ -51,12 +51,12 @@
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="LoginBtn2" min="-2" max="-2" attributes="0"/>
-                          <Component id="PswTxt2" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                          <Component id="CustIDTxt" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                          <Component id="PswTxt3" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                          <Component id="PswTxt5" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                          <Component id="PswTxt6" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                          <Component id="PswTxt4" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Component id="oldpass" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Component id="newpass" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Component id="email" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Component id="name" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Component id="phnum" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Component id="ic" min="-2" pref="192" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -74,39 +74,39 @@
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CustIDLab1" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                  <Component id="CustIDTxt" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="ic" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CustIDLab4" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                  <Component id="PswTxt2" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="name" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CustIDLab2" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                  <Component id="PswTxt3" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="email" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CustIDLab3" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                  <Component id="PswTxt5" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="phnum" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="PswLab2" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="PswTxt6" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="oldpass" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="PswLab3" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="PswTxt4" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="newpass" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="LoginBtn2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="ExitBtn2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="18" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -151,13 +151,6 @@
         <Property name="text" type="java.lang.String" value="New Password:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="PswTxt3">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="18" style="3"/>
-        </Property>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="CustIDLab2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -167,13 +160,6 @@
           <Color blue="ee" green="ae" red="8c" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Email:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JPasswordField" name="PswTxt2">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="18" style="3"/>
-        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="CustIDLab3">
@@ -220,7 +206,7 @@
         <Property name="text" type="java.lang.String" value="Welcome to Car Rental System"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="PswTxt4">
+    <Component class="javax.swing.JPasswordField" name="newpass">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="3"/>
@@ -238,13 +224,6 @@
         <Property name="text" type="java.lang.String" value="IC:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="PswTxt5">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="18" style="3"/>
-        </Property>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="PswLab2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -256,21 +235,51 @@
         <Property name="text" type="java.lang.String" value="Old Password:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="PswTxt6">
+    <Component class="javax.swing.JPasswordField" name="oldpass">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="3"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="CustIDTxt">
+    <Component class="javax.swing.JTextField" name="name">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="3"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CustIDTxtActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nameActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="email">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="18" style="3"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emailActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="phnum">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="18" style="3"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="phnumActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="ic">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="18" style="3"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="icActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
