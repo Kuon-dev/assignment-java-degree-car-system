@@ -32,24 +32,19 @@
                       <Component id="Title" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane2" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="RoomDetails" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="CustDetails" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="delete" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="update" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="search" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="viewrecords" alignment="1" pref="188" max="32767" attributes="0"/>
-                                  <Component id="BookBtn" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="clearBut" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
+                  <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="RoomDetails" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="CustDetails" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="delete" alignment="1" max="32767" attributes="0"/>
+                          <Component id="update" alignment="1" max="32767" attributes="0"/>
+                          <Component id="search" alignment="1" max="32767" attributes="0"/>
+                          <Component id="viewrecords" alignment="1" pref="188" max="32767" attributes="0"/>
+                          <Component id="BookBtn" alignment="1" max="32767" attributes="0"/>
+                          <Component id="clearBut" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -223,8 +218,8 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="CustDetailsLab" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="IC" alignment="0" pref="209" max="32767" attributes="0"/>
-                              <Component id="CustName" alignment="0" pref="209" max="32767" attributes="0"/>
+                              <Component id="searchIC" alignment="0" pref="209" max="32767" attributes="0"/>
+                              <Component id="searchReceiptID" alignment="0" pref="209" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -244,11 +239,11 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="Passport" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="IC" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="searchIC" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="CustName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="searchReceiptID" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Name" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="141" max="32767" attributes="0"/>
@@ -270,9 +265,9 @@
             <Property name="text" type="java.lang.String" value="IC/Passport:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="IC">
+        <Component class="javax.swing.JTextField" name="searchIC">
         </Component>
-        <Component class="javax.swing.JTextField" name="CustName">
+        <Component class="javax.swing.JTextField" name="searchReceiptID">
         </Component>
         <Component class="javax.swing.JLabel" name="Name">
           <Properties>
@@ -395,7 +390,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="Day" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="DayStay" min="-2" pref="110" max="-2" attributes="0"/>
+                                  <Component id="customerIcEdit" min="-2" pref="110" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
@@ -404,8 +399,8 @@
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="EndDate" alignment="1" pref="110" max="32767" attributes="0"/>
-                                      <Component id="EndDate1" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="startDateEdit" alignment="1" pref="110" max="32767" attributes="0"/>
+                                      <Component id="endDateEdit" alignment="1" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -427,17 +422,17 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="Day" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="DayStay" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="customerIcEdit" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="EndDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="startDateEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BookingLab2" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="RoomTypeLab" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="EndDate1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="endDateEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="81" max="32767" attributes="0"/>
               </Group>
@@ -478,9 +473,9 @@
             <Property name="text" type="java.lang.String" value="Modify"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="DayStay">
+        <Component class="javax.swing.JTextField" name="customerIcEdit">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DayStayActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="customerIcEditActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="CarNoPlate">
@@ -510,14 +505,14 @@
             <Property name="text" type="java.lang.String" value="Start date:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="EndDate">
+        <Component class="javax.swing.JTextField" name="startDateEdit">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EndDateActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="startDateEditActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="EndDate1">
+        <Component class="javax.swing.JTextField" name="endDateEdit">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EndDate1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="endDateEditActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

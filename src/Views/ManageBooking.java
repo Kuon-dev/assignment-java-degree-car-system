@@ -76,8 +76,8 @@ public class ManageBooking extends javax.swing.JFrame {
     update = new javax.swing.JButton();
     CustDetails = new javax.swing.JPanel();
     Passport = new javax.swing.JLabel();
-    IC = new javax.swing.JTextField();
-    CustName = new javax.swing.JTextField();
+    searchIC = new javax.swing.JTextField();
+    searchReceiptID = new javax.swing.JTextField();
     Name = new javax.swing.JLabel();
     CustDetailsLab = new javax.swing.JLabel();
     jLabel1 = new javax.swing.JLabel();
@@ -89,12 +89,12 @@ public class ManageBooking extends javax.swing.JFrame {
     RoomTypeLab = new javax.swing.JLabel();
     Day = new javax.swing.JLabel();
     RoomDetailsLab = new javax.swing.JLabel();
-    DayStay = new javax.swing.JTextField();
+    customerIcEdit = new javax.swing.JTextField();
     CarNoPlate = new javax.swing.JTextField();
     BookingLab = new javax.swing.JLabel();
     BookingLab2 = new javax.swing.JLabel();
-    EndDate = new javax.swing.JTextField();
-    EndDate1 = new javax.swing.JTextField();
+    startDateEdit = new javax.swing.JTextField();
+    endDateEdit = new javax.swing.JTextField();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -225,13 +225,13 @@ public class ManageBooking extends javax.swing.JFrame {
                         )
                         .addComponent(CustDetailsLab)
                         .addComponent(
-                          IC,
+                          searchIC,
                           javax.swing.GroupLayout.DEFAULT_SIZE,
                           209,
                           Short.MAX_VALUE
                         )
                         .addComponent(
-                          CustName,
+                          searchReceiptID,
                           javax.swing.GroupLayout.DEFAULT_SIZE,
                           209,
                           Short.MAX_VALUE
@@ -267,7 +267,7 @@ public class ManageBooking extends javax.swing.JFrame {
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(Passport)
                 .addComponent(
-                  IC,
+                  searchIC,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   22,
                   javax.swing.GroupLayout.PREFERRED_SIZE
@@ -280,7 +280,7 @@ public class ManageBooking extends javax.swing.JFrame {
               CustDetailsLayout
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(
-                  CustName,
+                  searchReceiptID,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   javax.swing.GroupLayout.DEFAULT_SIZE,
                   javax.swing.GroupLayout.PREFERRED_SIZE
@@ -380,10 +380,10 @@ public class ManageBooking extends javax.swing.JFrame {
     RoomDetailsLab.setForeground(new java.awt.Color(66, 129, 244));
     RoomDetailsLab.setText("Modify");
 
-    DayStay.addActionListener(
+    customerIcEdit.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          DayStayActionPerformed(evt);
+          customerIcEditActionPerformed(evt);
         }
       }
     );
@@ -404,18 +404,18 @@ public class ManageBooking extends javax.swing.JFrame {
     BookingLab2.setForeground(new java.awt.Color(140, 174, 238));
     BookingLab2.setText("Start date:");
 
-    EndDate.addActionListener(
+    startDateEdit.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          EndDateActionPerformed(evt);
+          startDateEditActionPerformed(evt);
         }
       }
     );
 
-    EndDate1.addActionListener(
+    endDateEdit.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          EndDate1ActionPerformed(evt);
+          endDateEditActionPerformed(evt);
         }
       }
     );
@@ -466,7 +466,7 @@ public class ManageBooking extends javax.swing.JFrame {
                             .addComponent(Day)
                             .addGap(18, 18, 18)
                             .addComponent(
-                              DayStay,
+                              customerIcEdit,
                               javax.swing.GroupLayout.PREFERRED_SIZE,
                               110,
                               javax.swing.GroupLayout.PREFERRED_SIZE
@@ -491,14 +491,14 @@ public class ManageBooking extends javax.swing.JFrame {
                                   false
                                 )
                                 .addComponent(
-                                  EndDate,
+                                  startDateEdit,
                                   javax.swing.GroupLayout.Alignment.TRAILING,
                                   javax.swing.GroupLayout.DEFAULT_SIZE,
                                   110,
                                   Short.MAX_VALUE
                                 )
                                 .addComponent(
-                                  EndDate1,
+                                  endDateEdit,
                                   javax.swing.GroupLayout.Alignment.TRAILING
                                 )
                             )
@@ -544,7 +544,7 @@ public class ManageBooking extends javax.swing.JFrame {
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(Day)
                 .addComponent(
-                  DayStay,
+                  customerIcEdit,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   20,
                   javax.swing.GroupLayout.PREFERRED_SIZE
@@ -555,7 +555,7 @@ public class ManageBooking extends javax.swing.JFrame {
               RoomDetailsLayout
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(
-                  EndDate,
+                  startDateEdit,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   javax.swing.GroupLayout.DEFAULT_SIZE,
                   javax.swing.GroupLayout.PREFERRED_SIZE
@@ -573,7 +573,7 @@ public class ManageBooking extends javax.swing.JFrame {
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(RoomTypeLab)
                 .addComponent(
-                  EndDate1,
+                  endDateEdit,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   javax.swing.GroupLayout.DEFAULT_SIZE,
                   javax.swing.GroupLayout.PREFERRED_SIZE
@@ -607,81 +607,74 @@ public class ManageBooking extends javax.swing.JFrame {
                     .addComponent(Title)
                     .addGap(0, 0, Short.MAX_VALUE)
                 )
+                .addComponent(
+                  jScrollPane2,
+                  javax.swing.GroupLayout.Alignment.LEADING
+                )
                 .addGroup(
+                  javax.swing.GroupLayout.Alignment.LEADING,
                   layout
                     .createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(
+                      RoomDetails,
+                      javax.swing.GroupLayout.PREFERRED_SIZE,
+                      javax.swing.GroupLayout.DEFAULT_SIZE,
+                      javax.swing.GroupLayout.PREFERRED_SIZE
+                    )
+                    .addGap(30, 30, 30)
+                    .addComponent(
+                      CustDetails,
+                      javax.swing.GroupLayout.PREFERRED_SIZE,
+                      javax.swing.GroupLayout.DEFAULT_SIZE,
+                      javax.swing.GroupLayout.PREFERRED_SIZE
+                    )
+                    .addGap(78, 78, 78)
                     .addGroup(
                       layout
                         .createParallelGroup(
-                          javax.swing.GroupLayout.Alignment.LEADING
+                          javax.swing.GroupLayout.Alignment.LEADING,
+                          false
                         )
-                        .addComponent(jScrollPane2)
-                        .addGroup(
-                          layout
-                            .createSequentialGroup()
-                            .addComponent(
-                              RoomDetails,
-                              javax.swing.GroupLayout.PREFERRED_SIZE,
-                              javax.swing.GroupLayout.DEFAULT_SIZE,
-                              javax.swing.GroupLayout.PREFERRED_SIZE
-                            )
-                            .addGap(30, 30, 30)
-                            .addComponent(
-                              CustDetails,
-                              javax.swing.GroupLayout.PREFERRED_SIZE,
-                              javax.swing.GroupLayout.DEFAULT_SIZE,
-                              javax.swing.GroupLayout.PREFERRED_SIZE
-                            )
-                            .addGap(78, 78, 78)
-                            .addGroup(
-                              layout
-                                .createParallelGroup(
-                                  javax.swing.GroupLayout.Alignment.LEADING,
-                                  false
-                                )
-                                .addComponent(
-                                  delete,
-                                  javax.swing.GroupLayout.Alignment.TRAILING,
-                                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                                  Short.MAX_VALUE
-                                )
-                                .addComponent(
-                                  update,
-                                  javax.swing.GroupLayout.Alignment.TRAILING,
-                                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                                  Short.MAX_VALUE
-                                )
-                                .addComponent(
-                                  search,
-                                  javax.swing.GroupLayout.Alignment.TRAILING,
-                                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                                  Short.MAX_VALUE
-                                )
-                                .addComponent(
-                                  viewrecords,
-                                  javax.swing.GroupLayout.Alignment.TRAILING,
-                                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                                  188,
-                                  Short.MAX_VALUE
-                                )
-                                .addComponent(
-                                  BookBtn,
-                                  javax.swing.GroupLayout.Alignment.TRAILING,
-                                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                                  Short.MAX_VALUE
-                                )
-                                .addComponent(
-                                  clearBut,
-                                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                                  Short.MAX_VALUE
-                                )
-                            )
+                        .addComponent(
+                          delete,
+                          javax.swing.GroupLayout.Alignment.TRAILING,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          Short.MAX_VALUE
+                        )
+                        .addComponent(
+                          update,
+                          javax.swing.GroupLayout.Alignment.TRAILING,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          Short.MAX_VALUE
+                        )
+                        .addComponent(
+                          search,
+                          javax.swing.GroupLayout.Alignment.TRAILING,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          Short.MAX_VALUE
+                        )
+                        .addComponent(
+                          viewrecords,
+                          javax.swing.GroupLayout.Alignment.TRAILING,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          188,
+                          Short.MAX_VALUE
+                        )
+                        .addComponent(
+                          BookBtn,
+                          javax.swing.GroupLayout.Alignment.TRAILING,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          Short.MAX_VALUE
+                        )
+                        .addComponent(
+                          clearBut,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          Short.MAX_VALUE
                         )
                     )
                 )
@@ -787,31 +780,21 @@ public class ManageBooking extends javax.swing.JFrame {
 
   private void updateActionPerformed(java.awt.event.ActionEvent evt) {}
 
-  private void EmailActionPerformed(java.awt.event.ActionEvent evt) {}
-
   private void deleteActionPerformed(java.awt.event.ActionEvent evt) {}
 
   private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {}
-
-  private void DayStayActionPerformed(java.awt.event.ActionEvent evt) {}
 
   private void CarNoPlateActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_CarNoPlateActionPerformed
     // TODO add your handling code here:
   } //GEN-LAST:event_CarNoPlateActionPerformed
 
-  private void RoomIDComponentAdded(java.awt.event.ContainerEvent evt) {}
-
-  private void RoomIDItemStateChanged(java.awt.event.ItemEvent evt) {}
-
-  private void RoomIDActionPerformed(java.awt.event.ActionEvent evt) {}
-
-  private void EndDateActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_EndDateActionPerformed
+  private void startDateEditActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_startDateEditActionPerformed
     // TODO add your handling code here:
-  } //GEN-LAST:event_EndDateActionPerformed
+  } //GEN-LAST:event_startDateEditActionPerformed
 
-  private void EndDate1ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_EndDate1ActionPerformed
+  private void endDateEditActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_endDateEditActionPerformed
     // TODO add your handling code here:
-  } //GEN-LAST:event_EndDate1ActionPerformed
+  } //GEN-LAST:event_endDateEditActionPerformed
 
   /**
    * @param args the command line arguments
@@ -865,12 +848,7 @@ public class ManageBooking extends javax.swing.JFrame {
   private javax.swing.JTextField CarNoPlate;
   private javax.swing.JPanel CustDetails;
   private javax.swing.JLabel CustDetailsLab;
-  private javax.swing.JTextField CustName;
   private javax.swing.JLabel Day;
-  private javax.swing.JTextField DayStay;
-  private javax.swing.JTextField EndDate;
-  private javax.swing.JTextField EndDate1;
-  private javax.swing.JTextField IC;
   private javax.swing.JButton MenuBut;
   private javax.swing.JLabel Name;
   private javax.swing.JLabel Passport;
@@ -879,11 +857,16 @@ public class ManageBooking extends javax.swing.JFrame {
   private javax.swing.JLabel RoomTypeLab;
   private javax.swing.JLabel Title;
   private javax.swing.JButton clearBut;
+  private javax.swing.JTextField customerIcEdit;
   private javax.swing.JButton delete;
+  private javax.swing.JTextField endDateEdit;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JScrollPane jScrollPane2;
   private javax.swing.JTable jTable1;
   private javax.swing.JButton search;
+  private javax.swing.JTextField searchIC;
+  private javax.swing.JTextField searchReceiptID;
+  private javax.swing.JTextField startDateEdit;
   private javax.swing.JButton update;
   private javax.swing.JButton viewrecords;
   // End of variables declaration//GEN-END:variables
