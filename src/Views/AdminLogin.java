@@ -276,7 +276,7 @@ public class AdminLogin extends javax.swing.JFrame {
       // fetch current user data
       // pass data to admin menu
       menu.setCurrentAdminData(g.getSpecificAdmin("0")); // needs to change
-      m.logLoginActivity(g.getSpecificAdmin("0"), loginCheck);
+      m.logLoginActivity(g.getSpecificAdmin("0"));
       menu.setVisible(true);
       dispose();
     }

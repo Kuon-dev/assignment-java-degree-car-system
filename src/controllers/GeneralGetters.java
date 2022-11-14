@@ -53,6 +53,7 @@ public class GeneralGetters {
     throw new EmptyStackException();
   }
 
+  // ---------------------------------------------
   public ArrayList<UserCustomer> getAllCustomer() {
     List<ArrayList<String>> data = f.readFile(customerDatabse);
     ArrayList<UserCustomer> users = new ArrayList<UserCustomer>();
@@ -78,6 +79,7 @@ public class GeneralGetters {
     throw new EmptyStackException();
   }
 
+  // ---------------------------------------------
   public ArrayList<GeneralCar> getAllCar() {
     List<ArrayList<String>> data = f.readFile(carDatabase);
     ArrayList<GeneralCar> allCars = new ArrayList<GeneralCar>();
@@ -143,6 +145,7 @@ public class GeneralGetters {
     return filteredCars;
   }
 
+  // ---------------------------------------------
   public ArrayList<RecordBooking> getAllBooking() {
     List<ArrayList<String>> data = f.readFile(bookingDatabase);
     ArrayList<RecordBooking> allBookings = new ArrayList<RecordBooking>();

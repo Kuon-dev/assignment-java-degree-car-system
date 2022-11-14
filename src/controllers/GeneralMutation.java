@@ -25,30 +25,29 @@ public class GeneralMutation {
   private GeneralGetters g = new GeneralGetters();
   private DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
-  public void logLoginActivity(UserCustomer customer, Boolean status) {
+  public void logLoginActivity(UserCustomer customer) {
     SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     Date date = new Date();
-    String loginState = status ? "success" : "fail";
 
     ArrayList<String> data = new ArrayList<>();
     data.add(customer.getIC());
     data.add(df.format(date));
-    data.add(loginState);
+    data.add("User login");
     f.addFile(data, logDatabase);
   }
 
-  public void logLoginActivity(UserAdmin admin, Boolean status) {
+  public void logLoginActivity(UserAdmin admin) {
     SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     Date date = new Date();
-    String loginState = status ? "success" : "fail";
 
     ArrayList<String> data = new ArrayList<>();
     data.add(admin.getId());
     data.add(df.format(date));
-    data.add(loginState);
+    data.add("Admin login");
     f.addFile(data, logDatabase);
   }
 
+  // ---------------------------------------------
   public Boolean addNewAdmin(UserAdmin admin) {
     ArrayList<String> userData = new ArrayList<>();
     userData.add(admin.getId());
@@ -92,6 +91,7 @@ public class GeneralMutation {
     return false;
   }
 
+  // ---------------------------------------------
   public Boolean addNewCustomer(UserCustomer customer) {
     ArrayList<String> userData = new ArrayList<>();
     userData.add(customer.getId());
@@ -137,6 +137,7 @@ public class GeneralMutation {
     return false;
   }
 
+  // ---------------------------------------------
   public Boolean addNewCar(GeneralCar car) {
     ArrayList<String> carData = new ArrayList<>();
     carData.add(car.getCarNoPlate());
@@ -184,6 +185,7 @@ public class GeneralMutation {
     return false;
   }
 
+  // ---------------------------------------------
   public Boolean addNewBooking(RecordBooking booking) {
     ArrayList<String> Data = new ArrayList<>();
     Data.add(booking.getReceiptID());
@@ -240,4 +242,6 @@ public class GeneralMutation {
     }
     return false;
   }
+  // ---------------------------------------------
+  //
 }

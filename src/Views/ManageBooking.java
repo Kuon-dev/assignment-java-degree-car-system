@@ -22,6 +22,29 @@ public class ManageBooking extends javax.swing.JFrame {
    */
   public ManageBooking() {
     initComponents();
+
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    model.setRowCount(0);
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<RecordBooking> allBookings = g.getAllBooking();
+
+    for (RecordBooking book : allBookings) {
+      Object[] eachBooking = {
+        book.getReceiptID(),
+        book.getCar().getCarNoPlate(),
+        book.getCustomer().getIC(),
+        book.getCustomer().getName(),
+        book.getCustomer().getPhNum(),
+        book.getStartDate(),
+        book.getDays(),
+        book.getReturnDate(),
+        book.getTotalPrice(),
+        "",
+        "",
+      };
+
+      model.addRow(eachBooking);
+    }
   }
 
   public UserAdmin currentAdminData = new UserAdmin(
