@@ -29,15 +29,19 @@ public class RecordReport {
 
     ArrayList<Double> arrayRevenue = new ArrayList<>();
     for (int i = 0; i < 12; i++) {
-      System.out.println(i);
       arrayRevenue.add(0.0);
     }
     for (RecordBooking record : filteredBookings) {
       Calendar bookingTime = new GregorianCalendar();
       bookingTime.setTime(record.getBookingDate());
       int indexMonth = bookingTime.get(Calendar.MONTH);
-      System.out.println(indexMonth);
-      arrayRevenue.set(indexMonth, record.getTotalPrice());
+      if (arrayRevenue.get(indexMonth) == 0) arrayRevenue.set(
+        indexMonth,
+        record.getTotalPrice()
+      ); else arrayRevenue.set(
+        indexMonth,
+        arrayRevenue.get(indexMonth) + record.getTotalPrice()
+      );
     }
 
     List<Double> newList = arrayRevenue;
