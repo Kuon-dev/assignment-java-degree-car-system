@@ -77,12 +77,8 @@ public class ManageBooking extends javax.swing.JFrame {
     CustDetails = new javax.swing.JPanel();
     Passport = new javax.swing.JLabel();
     IC = new javax.swing.JTextField();
-    Contact = new javax.swing.JLabel();
     CustName = new javax.swing.JTextField();
     Name = new javax.swing.JLabel();
-    PhNum = new javax.swing.JTextField();
-    Mail = new javax.swing.JLabel();
-    Email = new javax.swing.JTextField();
     CustDetailsLab = new javax.swing.JLabel();
     jLabel1 = new javax.swing.JLabel();
     delete = new javax.swing.JButton();
@@ -91,18 +87,14 @@ public class ManageBooking extends javax.swing.JFrame {
     jTable1 = new javax.swing.JTable();
     RoomDetails = new javax.swing.JPanel();
     RoomTypeLab = new javax.swing.JLabel();
-    Room = new javax.swing.JLabel();
     Day = new javax.swing.JLabel();
     RoomDetailsLab = new javax.swing.JLabel();
     DayStay = new javax.swing.JTextField();
     CarNoPlate = new javax.swing.JTextField();
-    RoomID = new javax.swing.JComboBox<>();
     BookingLab = new javax.swing.JLabel();
     BookingLab2 = new javax.swing.JLabel();
     EndDate = new javax.swing.JTextField();
     EndDate1 = new javax.swing.JTextField();
-    Room1 = new javax.swing.JLabel();
-    EndDate2 = new javax.swing.JTextField();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -189,29 +181,13 @@ public class ManageBooking extends javax.swing.JFrame {
     Passport.setForeground(new java.awt.Color(140, 174, 238));
     Passport.setText("IC/Passport:");
 
-    Contact.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
-    Contact.setForeground(new java.awt.Color(140, 174, 238));
-    Contact.setText("Phone Number:");
-
     Name.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
     Name.setForeground(new java.awt.Color(140, 174, 238));
-    Name.setText("Name:");
-
-    Mail.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
-    Mail.setForeground(new java.awt.Color(140, 174, 238));
-    Mail.setText("Email:");
-
-    Email.addActionListener(
-      new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-          EmailActionPerformed(evt);
-        }
-      }
-    );
+    Name.setText("Receipt ID");
 
     CustDetailsLab.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     CustDetailsLab.setForeground(new java.awt.Color(66, 129, 244));
-    CustDetailsLab.setText("Customer Details");
+    CustDetailsLab.setText("Search record");
 
     jLabel1.setText("** Enter IC to search records");
 
@@ -231,7 +207,7 @@ public class ManageBooking extends javax.swing.JFrame {
                 .addGroup(
                   CustDetailsLayout
                     .createSequentialGroup()
-                    .addGap(13, 13, 13)
+                    .addGap(37, 37, 37)
                     .addGroup(
                       CustDetailsLayout
                         .createParallelGroup(
@@ -239,13 +215,6 @@ public class ManageBooking extends javax.swing.JFrame {
                         )
                         .addComponent(Passport)
                         .addComponent(Name)
-                        .addComponent(Contact)
-                        .addComponent(
-                          Mail,
-                          javax.swing.GroupLayout.PREFERRED_SIZE,
-                          40,
-                          javax.swing.GroupLayout.PREFERRED_SIZE
-                        )
                     )
                     .addGap(18, 18, 18)
                     .addGroup(
@@ -253,18 +222,6 @@ public class ManageBooking extends javax.swing.JFrame {
                         .createParallelGroup(
                           javax.swing.GroupLayout.Alignment.LEADING,
                           false
-                        )
-                        .addComponent(
-                          Email,
-                          javax.swing.GroupLayout.DEFAULT_SIZE,
-                          209,
-                          Short.MAX_VALUE
-                        )
-                        .addComponent(
-                          PhNum,
-                          javax.swing.GroupLayout.DEFAULT_SIZE,
-                          209,
-                          Short.MAX_VALUE
                         )
                         .addComponent(CustDetailsLab)
                         .addComponent(
@@ -331,36 +288,8 @@ public class ManageBooking extends javax.swing.JFrame {
                 .addComponent(Name)
             )
             .addPreferredGap(
-              javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
-            )
-            .addGroup(
-              CustDetailsLayout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(
-                  PhNum,
-                  javax.swing.GroupLayout.PREFERRED_SIZE,
-                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                  javax.swing.GroupLayout.PREFERRED_SIZE
-                )
-                .addComponent(Contact)
-            )
-            .addPreferredGap(
-              javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
-            )
-            .addGroup(
-              CustDetailsLayout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(
-                  Email,
-                  javax.swing.GroupLayout.PREFERRED_SIZE,
-                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                  javax.swing.GroupLayout.PREFERRED_SIZE
-                )
-                .addComponent(Mail)
-            )
-            .addPreferredGap(
               javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-              76,
+              141,
               Short.MAX_VALUE
             )
             .addComponent(jLabel1)
@@ -441,19 +370,15 @@ public class ManageBooking extends javax.swing.JFrame {
 
     RoomTypeLab.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
     RoomTypeLab.setForeground(new java.awt.Color(140, 174, 238));
-    RoomTypeLab.setText("Year:");
-
-    Room.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
-    Room.setForeground(new java.awt.Color(140, 174, 238));
-    Room.setText("Type of Fuel:");
+    RoomTypeLab.setText("End date:");
 
     Day.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
     Day.setForeground(new java.awt.Color(140, 174, 238));
-    Day.setText("Brand:");
+    Day.setText("Customer IC:");
 
     RoomDetailsLab.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     RoomDetailsLab.setForeground(new java.awt.Color(66, 129, 244));
-    RoomDetailsLab.setText("Car Details");
+    RoomDetailsLab.setText("Modify");
 
     DayStay.addActionListener(
       new java.awt.event.ActionListener() {
@@ -471,41 +396,13 @@ public class ManageBooking extends javax.swing.JFrame {
       }
     );
 
-    RoomID.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-    RoomID.setModel(
-      new javax.swing.DefaultComboBoxModel<>(
-        new String[] { "Petron", "Diesel" }
-      )
-    );
-    RoomID.addContainerListener(
-      new java.awt.event.ContainerAdapter() {
-        public void componentAdded(java.awt.event.ContainerEvent evt) {
-          RoomIDComponentAdded(evt);
-        }
-      }
-    );
-    RoomID.addItemListener(
-      new java.awt.event.ItemListener() {
-        public void itemStateChanged(java.awt.event.ItemEvent evt) {
-          RoomIDItemStateChanged(evt);
-        }
-      }
-    );
-    RoomID.addActionListener(
-      new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-          RoomIDActionPerformed(evt);
-        }
-      }
-    );
-
     BookingLab.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
     BookingLab.setForeground(new java.awt.Color(140, 174, 238));
     BookingLab.setText("Car No. Plate:");
 
     BookingLab2.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
     BookingLab2.setForeground(new java.awt.Color(140, 174, 238));
-    BookingLab2.setText("Model:");
+    BookingLab2.setText("Start date:");
 
     EndDate.addActionListener(
       new java.awt.event.ActionListener() {
@@ -519,18 +416,6 @@ public class ManageBooking extends javax.swing.JFrame {
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
           EndDate1ActionPerformed(evt);
-        }
-      }
-    );
-
-    Room1.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
-    Room1.setForeground(new java.awt.Color(140, 174, 238));
-    Room1.setText("Price:");
-
-    EndDate2.addActionListener(
-      new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-          EndDate2ActionPerformed(evt);
         }
       }
     );
@@ -557,24 +442,23 @@ public class ManageBooking extends javax.swing.JFrame {
                 .addGroup(
                   RoomDetailsLayout
                     .createSequentialGroup()
-                    .addGap(18, 18, 18)
-                    .addComponent(BookingLab)
-                    .addGap(18, 18, 18)
-                    .addComponent(
-                      CarNoPlate,
-                      javax.swing.GroupLayout.PREFERRED_SIZE,
-                      110,
-                      javax.swing.GroupLayout.PREFERRED_SIZE
-                    )
-                )
-                .addGroup(
-                  RoomDetailsLayout
-                    .createSequentialGroup()
-                    .addGap(24, 24, 24)
+                    .addGap(41, 41, 41)
                     .addGroup(
                       RoomDetailsLayout
                         .createParallelGroup(
                           javax.swing.GroupLayout.Alignment.TRAILING
+                        )
+                        .addGroup(
+                          RoomDetailsLayout
+                            .createSequentialGroup()
+                            .addComponent(BookingLab)
+                            .addGap(18, 18, 18)
+                            .addComponent(
+                              CarNoPlate,
+                              javax.swing.GroupLayout.PREFERRED_SIZE,
+                              110,
+                              javax.swing.GroupLayout.PREFERRED_SIZE
+                            )
                         )
                         .addGroup(
                           RoomDetailsLayout
@@ -597,9 +481,7 @@ public class ManageBooking extends javax.swing.JFrame {
                                   javax.swing.GroupLayout.Alignment.TRAILING
                                 )
                                 .addComponent(RoomTypeLab)
-                                .addComponent(Room)
                                 .addComponent(BookingLab2)
-                                .addComponent(Room1)
                             )
                             .addGap(18, 18, 18)
                             .addGroup(
@@ -610,22 +492,14 @@ public class ManageBooking extends javax.swing.JFrame {
                                 )
                                 .addComponent(
                                   EndDate,
-                                  javax.swing.GroupLayout.Alignment.TRAILING
+                                  javax.swing.GroupLayout.Alignment.TRAILING,
+                                  javax.swing.GroupLayout.DEFAULT_SIZE,
+                                  110,
+                                  Short.MAX_VALUE
                                 )
                                 .addComponent(
                                   EndDate1,
                                   javax.swing.GroupLayout.Alignment.TRAILING
-                                )
-                                .addComponent(
-                                  EndDate2,
-                                  javax.swing.GroupLayout.Alignment.TRAILING
-                                )
-                                .addComponent(
-                                  RoomID,
-                                  javax.swing.GroupLayout.Alignment.TRAILING,
-                                  0,
-                                  110,
-                                  Short.MAX_VALUE
                                 )
                             )
                         )
@@ -705,36 +579,7 @@ public class ManageBooking extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
             )
-            .addGap(18, 18, 18)
-            .addGroup(
-              RoomDetailsLayout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(Room)
-                .addComponent(
-                  RoomID,
-                  javax.swing.GroupLayout.PREFERRED_SIZE,
-                  23,
-                  javax.swing.GroupLayout.PREFERRED_SIZE
-                )
-            )
-            .addPreferredGap(
-              javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
-            )
-            .addGroup(
-              RoomDetailsLayout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(Room1)
-                .addComponent(
-                  EndDate2,
-                  javax.swing.GroupLayout.PREFERRED_SIZE,
-                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                  javax.swing.GroupLayout.PREFERRED_SIZE
-                )
-            )
-            .addContainerGap(
-              javax.swing.GroupLayout.DEFAULT_SIZE,
-              Short.MAX_VALUE
-            )
+            .addContainerGap(81, Short.MAX_VALUE)
         )
     );
 
@@ -765,7 +610,7 @@ public class ManageBooking extends javax.swing.JFrame {
                 .addGroup(
                   layout
                     .createSequentialGroup()
-                    .addGap(0, 12, Short.MAX_VALUE)
+                    .addGap(0, 0, Short.MAX_VALUE)
                     .addGroup(
                       layout
                         .createParallelGroup(
@@ -932,33 +777,33 @@ public class ManageBooking extends javax.swing.JFrame {
     dispose();
   } //GEN-LAST:event_MenuButActionPerformed
 
-  private void searchActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_searchActionPerformed //GEN-LAST:event_searchActionPerformed
+  private void searchActionPerformed(java.awt.event.ActionEvent evt) {}
 
-  private void BookBtnActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_BookBtnActionPerformed //GEN-LAST:event_BookBtnActionPerformed
+  private void BookBtnActionPerformed(java.awt.event.ActionEvent evt) {}
 
-  private void clearButActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_clearButActionPerformed //GEN-LAST:event_clearButActionPerformed
+  private void clearButActionPerformed(java.awt.event.ActionEvent evt) {}
 
-  private void viewrecordsActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_viewrecordsActionPerformed //GEN-LAST:event_viewrecordsActionPerformed
+  private void viewrecordsActionPerformed(java.awt.event.ActionEvent evt) {}
 
-  private void updateActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_updateActionPerformed //GEN-LAST:event_updateActionPerformed
+  private void updateActionPerformed(java.awt.event.ActionEvent evt) {}
 
-  private void EmailActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_EmailActionPerformed //GEN-LAST:event_EmailActionPerformed
+  private void EmailActionPerformed(java.awt.event.ActionEvent evt) {}
 
-  private void deleteActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_deleteActionPerformed //GEN-LAST:event_deleteActionPerformed
+  private void deleteActionPerformed(java.awt.event.ActionEvent evt) {}
 
-  private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {} //GEN-FIRST:event_jTable1MouseClicked //GEN-LAST:event_jTable1MouseClicked
+  private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {}
 
-  private void DayStayActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_DayStayActionPerformed //GEN-LAST:event_DayStayActionPerformed
+  private void DayStayActionPerformed(java.awt.event.ActionEvent evt) {}
 
   private void CarNoPlateActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_CarNoPlateActionPerformed
     // TODO add your handling code here:
   } //GEN-LAST:event_CarNoPlateActionPerformed
 
-  private void RoomIDComponentAdded(java.awt.event.ContainerEvent evt) {} //GEN-FIRST:event_RoomIDComponentAdded //GEN-LAST:event_RoomIDComponentAdded
+  private void RoomIDComponentAdded(java.awt.event.ContainerEvent evt) {}
 
-  private void RoomIDItemStateChanged(java.awt.event.ItemEvent evt) {} //GEN-FIRST:event_RoomIDItemStateChanged //GEN-LAST:event_RoomIDItemStateChanged
+  private void RoomIDItemStateChanged(java.awt.event.ItemEvent evt) {}
 
-  private void RoomIDActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_RoomIDActionPerformed //GEN-LAST:event_RoomIDActionPerformed
+  private void RoomIDActionPerformed(java.awt.event.ActionEvent evt) {}
 
   private void EndDateActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_EndDateActionPerformed
     // TODO add your handling code here:
@@ -967,10 +812,6 @@ public class ManageBooking extends javax.swing.JFrame {
   private void EndDate1ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_EndDate1ActionPerformed
     // TODO add your handling code here:
   } //GEN-LAST:event_EndDate1ActionPerformed
-
-  private void EndDate2ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_EndDate2ActionPerformed
-    // TODO add your handling code here:
-  } //GEN-LAST:event_EndDate2ActionPerformed
 
   /**
    * @param args the command line arguments
@@ -1022,27 +863,19 @@ public class ManageBooking extends javax.swing.JFrame {
   private javax.swing.JLabel BookingLab;
   private javax.swing.JLabel BookingLab2;
   private javax.swing.JTextField CarNoPlate;
-  private javax.swing.JLabel Contact;
   private javax.swing.JPanel CustDetails;
   private javax.swing.JLabel CustDetailsLab;
   private javax.swing.JTextField CustName;
   private javax.swing.JLabel Day;
   private javax.swing.JTextField DayStay;
-  private javax.swing.JTextField Email;
   private javax.swing.JTextField EndDate;
   private javax.swing.JTextField EndDate1;
-  private javax.swing.JTextField EndDate2;
   private javax.swing.JTextField IC;
-  private javax.swing.JLabel Mail;
   private javax.swing.JButton MenuBut;
   private javax.swing.JLabel Name;
   private javax.swing.JLabel Passport;
-  private javax.swing.JTextField PhNum;
-  private javax.swing.JLabel Room;
-  private javax.swing.JLabel Room1;
   private javax.swing.JPanel RoomDetails;
   private javax.swing.JLabel RoomDetailsLab;
-  private javax.swing.JComboBox<String> RoomID;
   private javax.swing.JLabel RoomTypeLab;
   private javax.swing.JLabel Title;
   private javax.swing.JButton clearBut;

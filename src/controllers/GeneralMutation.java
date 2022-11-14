@@ -47,6 +47,28 @@ public class GeneralMutation {
     f.addFile(data, logDatabase);
   }
 
+  public void logLogoutActivity(UserCustomer customer) {
+    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    Date date = new Date();
+
+    ArrayList<String> data = new ArrayList<>();
+    data.add(customer.getIC());
+    data.add(df.format(date));
+    data.add("User logout");
+    f.addFile(data, logDatabase);
+  }
+
+  public void logLogoutActivity(UserAdmin admin) {
+    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    Date date = new Date();
+
+    ArrayList<String> data = new ArrayList<>();
+    data.add(admin.getId());
+    data.add(df.format(date));
+    data.add("Admin logout");
+    f.addFile(data, logDatabase);
+  }
+
   // ---------------------------------------------
   public Boolean addNewAdmin(UserAdmin admin) {
     ArrayList<String> userData = new ArrayList<>();
