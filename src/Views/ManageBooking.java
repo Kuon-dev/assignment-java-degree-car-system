@@ -149,6 +149,30 @@ public class ManageBooking extends javax.swing.JFrame {
     }
   }
 
+  private void setSpecificTableData(ArrayList<RecordBooking> bookings) {
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+    for (RecordBooking book : bookings) {
+      Object[] eachBooking = {
+        book.getReceiptID(),
+        book.getCar().getCarNoPlate(),
+        book.getCustomer().getIC(),
+        book.getCustomer().getName(),
+        book.getCustomer().getPhNum(),
+        book.getCustomer().getEmail(),
+        df.format(book.getStartDate()),
+        book.getDays(),
+        df.format(book.getReturnDate()),
+        book.getTotalPrice(),
+        "",
+        "",
+      };
+
+      model.addRow(eachBooking);
+    }
+  }
+
   private void clearTableData() {
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
     model.setRowCount(0);
@@ -862,7 +886,35 @@ public class ManageBooking extends javax.swing.JFrame {
     dispose();
   } //GEN-LAST:event_MenuButActionPerformed
 
-  private void searchActionPerformed(java.awt.event.ActionEvent evt) {}
+  private void searchActionPerformed(java.awt.event.ActionEvent evt) {
+    String receiptID = searchReceiptID.getText();
+    String customerIC = searchIC.getText();
+    // if both is empty, return nothing
+    if (receiptID.isEmpty() && customerIC.isEmpty()) return;
+
+    GeneralGetters g = new GeneralGetters();
+    if (receiptID.isEmpty()) {
+      ArrayList<UserCustomer> allUser = g.getAllCustomer();
+      ArrayList<RecordBooking> allRecords = g.getAllBooking();
+      ArrayList<RecordBooking> queryRecords = new ArrayList<>();
+      for (RecordBooking r : allRecords) {
+        for (UserCustomer c : allUser) {
+          if (c.getIC().equals(customerIC)) queryRecords.add(r);
+        }
+      }
+      clearTableData();
+      setSpecificTableData(queryRecords);
+    }
+
+    ArrayList<UserCustomer> allUser = g.getAllCustomer();
+    ArrayList<RecordBooking> allRecords = g.getAllBooking();
+    ArrayList<RecordBooking> queryRecords = new ArrayList<>();
+    for (RecordBooking r : allRecords) {
+      if (r.getReceiptID().equals(receiptID)) queryRecords.add(r);
+    }
+    clearTableData();
+    setSpecificTableData(queryRecords);
+  }
 
   private void BookBtnActionPerformed(java.awt.event.ActionEvent evt) {}
 

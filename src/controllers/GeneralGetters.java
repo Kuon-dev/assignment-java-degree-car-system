@@ -180,7 +180,7 @@ public class GeneralGetters {
           Double.parseDouble(booking.get(4)), // price
           df.parse(booking.get(5)), // book date
           df.parse(booking.get(6)), // start
-          df.parse(booking.get(7)) // end
+          df.parse(booking.get(7)) // End
         );
         allBookings.add(b);
       }
