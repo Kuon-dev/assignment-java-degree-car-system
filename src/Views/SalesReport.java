@@ -365,10 +365,12 @@ public class SalesReport extends javax.swing.JFrame {
 
   private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
     // generate report
+    // TODO: SANITIZE INPUT
 
     // Create Chart
     RecordReport r = new RecordReport();
-    XYChart chart = r.getAnnualChart();
+    XYChart chart = r.getAnnualChart(Integer.parseInt(jTextField1.getText()));
+    r.test();
     JFrame frame = new JFrame("XChart Swing Demo");
     frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 

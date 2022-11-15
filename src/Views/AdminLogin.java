@@ -267,6 +267,7 @@ public class AdminLogin extends javax.swing.JFrame {
     //Set data stored in variables
     UserAdmin adminUser = new UserAdmin("001", null, null, null, null, null);
     Validator valid = new Validator();
+    GeneralMutation m = new GeneralMutation();
 
     Boolean loginCheck = adminUser.login(adminName, adminPassword);
     if (loginCheck) {
@@ -274,7 +275,8 @@ public class AdminLogin extends javax.swing.JFrame {
       GeneralGetters g = new GeneralGetters();
       // fetch current user data
       // pass data to admin menu
-      menu.setCurrentAdminData(g.getSpecificAdmin("0"));
+      menu.setCurrentAdminData(g.getSpecificAdmin("0")); // needs to change
+      m.logLoginActivity(g.getSpecificAdmin("0"));
       menu.setVisible(true);
       dispose();
     }

@@ -29,6 +29,44 @@ public class exitSystem {
       ) ==
       JOptionPane.YES_NO_OPTION
     ) {
+      // log user activity
+
+      //If the user confirm to exit then end the system
+      System.exit(0);
+    }
+  }
+
+  public void exitsystem(UserAdmin admin) {
+    if (
+      JOptionPane.showConfirmDialog(
+        frame,
+        "Confirm if you want to exit?",
+        "Confirm Messages",
+        JOptionPane.YES_NO_OPTION
+      ) ==
+      JOptionPane.YES_NO_OPTION
+    ) {
+      // log user activity
+      GeneralMutation m = new GeneralMutation();
+      m.logLogoutActivity(admin);
+      //If the user confirm to exit then end the system
+      System.exit(0);
+    }
+  }
+
+  public void exitsystem(UserCustomer customer) {
+    if (
+      JOptionPane.showConfirmDialog(
+        frame,
+        "Confirm if you want to exit?",
+        "Confirm Messages",
+        JOptionPane.YES_NO_OPTION
+      ) ==
+      JOptionPane.YES_NO_OPTION
+    ) {
+      // log user activity
+      GeneralMutation m = new GeneralMutation();
+      m.logLogoutActivity(customer);
       //If the user confirm to exit then end the system
       System.exit(0);
     }
