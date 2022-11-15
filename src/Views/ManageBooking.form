@@ -32,24 +32,19 @@
                       <Component id="Title" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane2" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="RoomDetails" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="CustDetails" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="delete" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="update" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="search" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="viewrecords" alignment="1" pref="188" max="32767" attributes="0"/>
-                                  <Component id="BookBtn" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="clearBut" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
+                  <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="RoomDetails" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="CustDetails" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="delete" alignment="1" max="32767" attributes="0"/>
+                          <Component id="update" alignment="1" max="32767" attributes="0"/>
+                          <Component id="search" alignment="1" max="32767" attributes="0"/>
+                          <Component id="viewrecords" alignment="1" pref="188" max="32767" attributes="0"/>
+                          <Component id="BookBtn" alignment="1" max="32767" attributes="0"/>
+                          <Component id="clearBut" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -215,20 +210,16 @@
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="Passport" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="Name" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="Contact" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="Mail" alignment="1" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="Email" alignment="0" pref="209" max="32767" attributes="0"/>
-                              <Component id="PhNum" alignment="0" pref="209" max="32767" attributes="0"/>
                               <Component id="CustDetailsLab" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="IC" alignment="0" pref="209" max="32767" attributes="0"/>
-                              <Component id="CustName" alignment="0" pref="209" max="32767" attributes="0"/>
+                              <Component id="searchIC" alignment="0" pref="209" max="32767" attributes="0"/>
+                              <Component id="searchReceiptID" alignment="0" pref="209" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -248,24 +239,14 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="Passport" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="IC" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="searchIC" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="CustName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="searchReceiptID" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Name" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="PhNum" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Contact" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Email" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Mail" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="76" max="32767" attributes="0"/>
+                  <EmptySpace pref="141" max="32767" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -284,20 +265,9 @@
             <Property name="text" type="java.lang.String" value="IC/Passport:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="IC">
+        <Component class="javax.swing.JTextField" name="searchIC">
         </Component>
-        <Component class="javax.swing.JLabel" name="Contact">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="3"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ee" green="ae" red="8c" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Phone Number:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="CustName">
+        <Component class="javax.swing.JTextField" name="searchReceiptID">
         </Component>
         <Component class="javax.swing.JLabel" name="Name">
           <Properties>
@@ -307,26 +277,8 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ee" green="ae" red="8c" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Name:"/>
+            <Property name="text" type="java.lang.String" value="Receipt ID"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="PhNum">
-        </Component>
-        <Component class="javax.swing.JLabel" name="Mail">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="3"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ee" green="ae" red="8c" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Email:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="Email">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EmailActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="CustDetailsLab">
           <Properties>
@@ -336,7 +288,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f4" green="81" red="42" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Customer Details"/>
+            <Property name="text" type="java.lang.String" value="Search record"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
@@ -428,32 +380,27 @@
                           <Component id="RoomDetailsLab" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="BookingLab" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="CarNoPlate" min="-2" pref="110" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="BookingLab" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="CarNoPlate" min="-2" pref="110" max="-2" attributes="0"/>
+                              </Group>
                               <Group type="102" attributes="0">
                                   <Component id="Day" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="DayStay" min="-2" pref="110" max="-2" attributes="0"/>
+                                  <Component id="customerIcEdit" min="-2" pref="110" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="RoomTypeLab" min="-2" max="-2" attributes="0"/>
-                                      <Component id="Room" min="-2" max="-2" attributes="0"/>
                                       <Component id="BookingLab2" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="Room1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="EndDate" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="EndDate1" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="EndDate2" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="RoomID" alignment="1" pref="110" max="32767" attributes="0"/>
+                                      <Component id="startDateEdit" alignment="1" pref="110" max="32767" attributes="0"/>
+                                      <Component id="endDateEdit" alignment="1" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -475,29 +422,19 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="Day" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="DayStay" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="customerIcEdit" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="EndDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="startDateEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BookingLab2" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="RoomTypeLab" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="EndDate1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="endDateEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Room" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="RoomID" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Room1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="EndDate2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="81" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -511,18 +448,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ee" green="ae" red="8c" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Year:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="Room">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="3"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ee" green="ae" red="8c" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Type of Fuel:"/>
+            <Property name="text" type="java.lang.String" value="End date:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="Day">
@@ -533,7 +459,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ee" green="ae" red="8c" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Brand:"/>
+            <Property name="text" type="java.lang.String" value="Customer IC:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="RoomDetailsLab">
@@ -544,39 +470,18 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f4" green="81" red="42" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Car Details"/>
+            <Property name="text" type="java.lang.String" value="Modify"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="DayStay">
+        <Component class="javax.swing.JTextField" name="customerIcEdit">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DayStayActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="customerIcEditActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="CarNoPlate">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CarNoPlateActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="RoomID">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="12" style="0"/>
-            </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="Petron"/>
-                <StringItem index="1" value="Diesel"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="componentAdded" listener="java.awt.event.ContainerListener" parameters="java.awt.event.ContainerEvent" handler="RoomIDComponentAdded"/>
-            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="RoomIDItemStateChanged"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RoomIDActionPerformed"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="BookingLab">
           <Properties>
@@ -597,33 +502,17 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ee" green="ae" red="8c" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Model:"/>
+            <Property name="text" type="java.lang.String" value="Start date:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="EndDate">
+        <Component class="javax.swing.JTextField" name="startDateEdit">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EndDateActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="startDateEditActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="EndDate1">
+        <Component class="javax.swing.JTextField" name="endDateEdit">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EndDate1ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="Room1">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="3"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ee" green="ae" red="8c" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Price:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="EndDate2">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EndDate2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="endDateEditActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

@@ -1,9 +1,5 @@
 package carrentalsystem;
 
-import carrentalsystem.FileController;
-import carrentalsystem.GeneralCar;
-import carrentalsystem.RecordBooking;
-import carrentalsystem.UserAdmin;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -24,10 +20,56 @@ public class GeneralMutation {
   private String customerDatabse = cwd + "/Database/MainCustomer.txt";
   private String carDatabase = cwd + "/Database/MainCar.txt";
   private String bookingDatabase = cwd + "/Database/MainBooking.txt";
+  private String logDatabase = cwd + "/Database/MainLog.txt";
   private FileController f = new FileController();
   private GeneralGetters g = new GeneralGetters();
   private DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
+  public void logLoginActivity(UserCustomer customer) {
+    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    Date date = new Date();
+
+    ArrayList<String> data = new ArrayList<>();
+    data.add(customer.getIC());
+    data.add(df.format(date));
+    data.add("User login");
+    f.addFile(data, logDatabase);
+  }
+
+  public void logLoginActivity(UserAdmin admin) {
+    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    Date date = new Date();
+
+    ArrayList<String> data = new ArrayList<>();
+    data.add(admin.getId());
+    data.add(df.format(date));
+    data.add("Admin login");
+    f.addFile(data, logDatabase);
+  }
+
+  public void logLogoutActivity(UserCustomer customer) {
+    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    Date date = new Date();
+
+    ArrayList<String> data = new ArrayList<>();
+    data.add(customer.getIC());
+    data.add(df.format(date));
+    data.add("User logout");
+    f.addFile(data, logDatabase);
+  }
+
+  public void logLogoutActivity(UserAdmin admin) {
+    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    Date date = new Date();
+
+    ArrayList<String> data = new ArrayList<>();
+    data.add(admin.getId());
+    data.add(df.format(date));
+    data.add("Admin logout");
+    f.addFile(data, logDatabase);
+  }
+
+  // ---------------------------------------------
   public Boolean addNewAdmin(UserAdmin admin) {
     ArrayList<String> userData = new ArrayList<>();
     userData.add(admin.getId());
@@ -71,6 +113,7 @@ public class GeneralMutation {
     return false;
   }
 
+  // ---------------------------------------------
   public Boolean addNewCustomer(UserCustomer customer) {
     ArrayList<String> userData = new ArrayList<>();
     userData.add(customer.getId());
@@ -116,6 +159,7 @@ public class GeneralMutation {
     return false;
   }
 
+  // ---------------------------------------------
   public Boolean addNewCar(GeneralCar car) {
     ArrayList<String> carData = new ArrayList<>();
     carData.add(car.getCarNoPlate());
@@ -163,33 +207,34 @@ public class GeneralMutation {
     return false;
   }
 
+  // ---------------------------------------------
   public Boolean addNewBooking(RecordBooking booking) {
-    ArrayList<String> recordData = new ArrayList<>();
-    recordData.add(booking.getReceiptID());
-    recordData.add(booking.getCustomer().getIC());
-    recordData.add(booking.getCar().getCarNoPlate());
-    recordData.add(String.valueOf(booking.getDays()));
-    recordData.add(String.valueOf(booking.getTotalPrice()));
-    recordData.add(df.format(booking.getBookingDate()));
-    recordData.add(df.format(booking.getStartDate()));
-    recordData.add(df.format(booking.getReturnDate()));
+    ArrayList<String> Data = new ArrayList<>();
+    Data.add(booking.getReceiptID());
+    Data.add(booking.getCustomer().getIC());
+    Data.add(booking.getCar().getCarNoPlate());
+    Data.add(String.valueOf(booking.getDays()));
+    Data.add(String.valueOf(booking.getTotalPrice()));
+    Data.add(df.format(booking.getBookingDate()));
+    Data.add(df.format(booking.getStartDate()));
+    Data.add(df.format(booking.getReturnDate()));
 
-    return f.addFile(recordData, bookingDatabase);
+    return f.addFile(Data, bookingDatabase);
   }
 
   public Boolean editExistingBooking(
     RecordBooking oldBooking,
     RecordBooking newBooking
   ) {
-    ArrayList<String> recordData = new ArrayList<>();
-    recordData.add(newBooking.getReceiptID());
-    recordData.add(newBooking.getCustomer().getIC());
-    recordData.add(newBooking.getCar().getCarNoPlate());
-    recordData.add(String.valueOf(newBooking.getDays()));
-    recordData.add(String.valueOf(newBooking.getTotalPrice()));
-    recordData.add(df.format(newBooking.getBookingDate()));
-    recordData.add(df.format(newBooking.getStartDate()));
-    recordData.add(df.format(newBooking.getReturnDate()));
+    ArrayList<String> Data = new ArrayList<>();
+    Data.add(newBooking.getReceiptID());
+    Data.add(newBooking.getCustomer().getIC());
+    Data.add(newBooking.getCar().getCarNoPlate());
+    Data.add(String.valueOf(newBooking.getDays()));
+    Data.add(String.valueOf(newBooking.getTotalPrice()));
+    Data.add(df.format(newBooking.getBookingDate()));
+    Data.add(df.format(newBooking.getStartDate()));
+    Data.add(df.format(newBooking.getReturnDate()));
 
     ArrayList<RecordBooking> allBookings = g.getAllBooking();
     for (int i = 0; i < allBookings.size(); i++) {
@@ -199,7 +244,7 @@ public class GeneralMutation {
           .getReceiptID()
           .equalsIgnoreCase(oldBooking.getReceiptID())
       ) {
-        return f.modifyFile(recordData, carDatabase, Integer.toString(i));
+        return f.modifyFile(Data, carDatabase, Integer.toString(i));
       }
     }
     return false;
@@ -219,4 +264,6 @@ public class GeneralMutation {
     }
     return false;
   }
+  // ---------------------------------------------
+  //
 }

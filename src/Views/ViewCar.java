@@ -23,7 +23,6 @@ public class ViewCar extends javax.swing.JFrame {
     model.setRowCount(0);
     GeneralGetters g = new GeneralGetters();
     ArrayList<GeneralCar> allCars = g.getAllCar();
-    System.out.println(allCars);
 
     for (GeneralCar car : allCars) {
       Object[] eachCar = {
