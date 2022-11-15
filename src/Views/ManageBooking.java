@@ -23,8 +23,7 @@ public class ManageBooking extends javax.swing.JFrame {
   public ManageBooking() {
     initComponents();
 
-    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-    model.setRowCount(0);
+    clearTableData();
     setTableData();
   }
 
@@ -125,7 +124,6 @@ public class ManageBooking extends javax.swing.JFrame {
 
   private void setTableData() {
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-    model.setRowCount(0);
     GeneralGetters g = new GeneralGetters();
     ArrayList<RecordBooking> allBookings = g.getAllBooking();
 
@@ -146,6 +144,11 @@ public class ManageBooking extends javax.swing.JFrame {
 
       model.addRow(eachBooking);
     }
+  }
+
+  private void clearTableData() {
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    model.setRowCount(0);
   }
 
   /**
@@ -869,9 +872,11 @@ public class ManageBooking extends javax.swing.JFrame {
     searchReceiptID.setText("");
 
     tableSelectedBooking.clearData();
+    clearTableData();
   }
 
   private void viewrecordsActionPerformed(java.awt.event.ActionEvent evt) {
+    clearTableData();
     setTableData();
   }
 
