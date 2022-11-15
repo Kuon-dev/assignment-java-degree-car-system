@@ -198,6 +198,6 @@ public class GeneralGetters {
       if (record.getReceiptID().equals(receiptID)) return record;
     }
 
-    return new RecordBooking(null, null, null, null, 0, null, null, null);
+    return new RecordBooking(null, null, null, 0, 0, null, null, null);
   }
 }

@@ -69,6 +69,36 @@ public class ManageBooking extends javax.swing.JFrame {
       null
     );
 
+    if (!newUserCustomer.isUserExist()) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Car does not exist in record",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      return false;
+    }
+
+    GeneralCar newSelectedCar = new GeneralCar(
+      inputData.get(3),
+      null,
+      null,
+      null,
+      0,
+      0,
+      null
+    );
+
+    if (!newSelectedCar.isCarExist()) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Car does not exist in record",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      return false;
+    }
+
     return true;
   }
 

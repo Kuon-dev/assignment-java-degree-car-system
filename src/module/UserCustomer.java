@@ -48,17 +48,17 @@ public class UserCustomer extends GeneralUser {
     return false;
   }
 
-  public Boolean userCustomerExists(String ic) {
+  public Boolean isUserExist() {
     GeneralGetters g = new GeneralGetters();
     ArrayList<UserCustomer> allUsers = g.getAllCustomer();
     for (UserCustomer c : allUsers) {
-      if (c.getIC().equalsIgnoreCase(ic)) return true;
+      if (c.getIC().equalsIgnoreCase(this.IC)) return true;
     }
     return false;
   }
 
   public void setCustomerData(String ic) {
-    if (!userCustomerExists(ic)) return;
+    if (!isUserExist()) return;
     GeneralGetters g = new GeneralGetters();
     ArrayList<UserCustomer> allUsers = g.getAllCustomer();
     for (UserCustomer c : allUsers) {
