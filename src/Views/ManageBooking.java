@@ -73,7 +73,7 @@ public class ManageBooking extends javax.swing.JFrame {
 
     // check for valid inputs of car and customer
     UserCustomer newUserCustomer = new UserCustomer(
-      null,
+      inputData.get(0),
       null,
       null,
       null,
@@ -83,7 +83,7 @@ public class ManageBooking extends javax.swing.JFrame {
     if (!newUserCustomer.isUserExist()) {
       JOptionPane.showMessageDialog(
         this,
-        "Car does not exist in record",
+        "User does not exist in record",
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
@@ -91,7 +91,7 @@ public class ManageBooking extends javax.swing.JFrame {
     }
 
     GeneralCar newSelectedCar = new GeneralCar(
-      inputData.get(3),
+      inputData.get(1),
       null,
       null,
       null,
@@ -113,11 +113,26 @@ public class ManageBooking extends javax.swing.JFrame {
     // check for valid date
     Validator v = new Validator();
     // incorrect format
-    if (
-      !v.isValidDate(inputData.get(2)) || !v.isValidDate(inputData.get(3))
-    ) return false;
+    if (!v.isValidDate(inputData.get(2)) || !v.isValidDate(inputData.get(3))) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Invalid date inputted",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+
+      return false;
+    }
     // incorrect end date
-    if (!v.isValidEndDate(inputData.get(2), inputData.get(3))) return false;
+    if (!v.isValidEndDate(inputData.get(2), inputData.get(3))) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Invalid date inputted",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      return false;
+    }
 
     return true;
   }
@@ -935,11 +950,78 @@ public class ManageBooking extends javax.swing.JFrame {
     setTableData();
   }
 
-  private void updateActionPerformed(java.awt.event.ActionEvent evt) {}
+  private void updateActionPerformed(java.awt.event.ActionEvent evt) {
+    try {
+      if (!sanitizeInput()) return;
+      if (tableSelectedBooking.getReceiptID().isEmpty()) {
+        JOptionPane.showMessageDialog(
+          this,
+          "Please select a record to modify",
+          "Error Message",
+          JOptionPane.ERROR_MESSAGE
+        );
+
+        return;
+      }
+      SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+      Date dateStart = df.parse(startDateEdit.getText());
+      Date dateEnd = df.parse(endDateEdit.getText());
+      long days =
+        (dateEnd.getTime() - dateStart.getTime()) / (1000 * 60 * 60 * 24) % 365;
+
+      GeneralGetters g = new GeneralGetters();
+      RecordBooking newRecord = new RecordBooking(
+        tableSelectedBooking.getReceiptID(),
+        g.getSpecificCustomer(customerIcEdit.getText()),
+        g.getSpecificSingleCar(CarNoPlate.getText()),
+        (int) days + 1,
+        g.getSpecificSingleCar(CarNoPlate.getText()).getPrice() * days,
+        tableSelectedBooking.getBookingDate(),
+        dateStart,
+        dateEnd
+      );
+
+      GeneralMutation m = new GeneralMutation();
+      if (
+        m.editExistingBooking(tableSelectedBooking, newRecord)
+      ) JOptionPane.showMessageDialog(
+        this,
+        "Record modified Successfully",
+        "Information",
+        JOptionPane.INFORMATION_MESSAGE
+      ); else JOptionPane.showMessageDialog(
+        this,
+        "Failed to modify record",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+    } catch (Exception e) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Failed to modify record",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      e.printStackTrace();
+    }
+  }
 
   private void deleteActionPerformed(java.awt.event.ActionEvent evt) {}
 
-  private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {}
+  private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {
+    GeneralGetters g = new GeneralGetters();
+    JTable source = ((JTable) evt.getSource());
+    int rowIndex = (source.getSelectedRow());
+    int columnCount = (source.getModel().getColumnCount());
+
+    ArrayList<Object> fetchedBookingData = new ArrayList<>();
+    for (int i = 0; i < columnCount; i++) {
+      //((source.getModel().getValueAt(rowIndex, i)).getClass());
+      fetchedBookingData.add((source.getModel().getValueAt(rowIndex, i)));
+    }
+    tableSelectedBooking =
+      g.getSpecificBooking(fetchedBookingData.get(0).toString());
+  }
 
   private void CarNoPlateActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_CarNoPlateActionPerformed
     // TODO add your handling code here:
