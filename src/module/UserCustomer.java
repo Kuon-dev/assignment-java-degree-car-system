@@ -47,4 +47,28 @@ public class UserCustomer extends GeneralUser {
     }
     return false;
   }
+
+  public Boolean userCustomerExists(String ic) {
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<UserCustomer> allUsers = g.getAllCustomer();
+    for (UserCustomer c : allUsers) {
+      if (c.getIC().equalsIgnoreCase(ic)) return true;
+    }
+    return false;
+  }
+
+  public void setCustomerData(String ic) {
+    if (!userCustomerExists(ic)) return;
+    GeneralUser g = new GeneralGetters();
+    ArrayList<UserCustomer> allUsers = g.getAllCustomer();
+    for (UserCustomer c : allUsers) {
+      if (c.getIC().equalsIgnoreCase(ic)) {
+        this.IC = c.getIC();
+        this.userName = c.getName();
+        this.userEmail = c.getEmail();
+        this.userPassword = c.getPassword();
+        this.userPhNum = c.getPhNum();
+      }
+    }
+  }
 }

@@ -30,13 +30,13 @@ public class Validator {
     Pattern.CASE_INSENSITIVE
   );
 
-  public static Boolean emailValidator(String email) {
+  public static Boolean isEmail(String email) {
     Matcher matcher = emailRegex.matcher(email);
     return matcher.find();
   }
 
   // check if the phone number is valid
-  public static Boolean phoneNumValidator(String phnum) {
+  public static Boolean isPhNum(String phnum) {
     try {
       if (phnum.isEmpty()) return false;
       String newPh = phnum.replace("-", "");
@@ -48,7 +48,7 @@ public class Validator {
   }
 
   // check if the credit / debit card is valid
-  public static Boolean cardValidator(String inputCard) {
+  public static Boolean isValidCard(String inputCard) {
     try {
       if (inputCard.isEmpty()) return false;
       // remove dashes and empty spaces
@@ -80,7 +80,7 @@ public class Validator {
   }
 
   // check if the date is valid and if it is not a past date
-  public static Boolean dateValidator(String usrInput) {
+  public static Boolean isValidDate(String usrInput) {
     try {
       // always return false if empty
       if (usrInput.isEmpty()) return false;

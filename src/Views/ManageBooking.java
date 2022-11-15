@@ -60,6 +60,37 @@ public class ManageBooking extends javax.swing.JFrame {
     this.currentAdminData = data;
   }
 
+  public Boolean sanitizeInput() {
+    ArrayList<String> inputData = new ArrayList<>();
+    inputData.add(customerIcEdit.getText());
+    inputData.add(CarNoPlate.getText());
+    inputData.add(startDateEdit.getText());
+    inputData.add(endDateEdit.getText());
+
+    for (String data : inputData) {
+      if (data.isEmpty()) {
+        JOptionPane.showMessageDialog(
+          this,
+          "Please fill in all the data before submitting",
+          "Error Message",
+          JOptionPane.ERROR_MESSAGE
+        );
+        return false;
+      }
+    }
+
+    // check for valid inputs of car and customer
+    UserCustomer newUserCustomer = new UserCustomer(
+      null,
+      null,
+      null,
+      null,
+      null
+    );
+
+    return true;
+  }
+
   /**
    * This method is called from within the constructor to initialize the form.
    * WARNING: Do NOT modify this code. The content of this method is always
