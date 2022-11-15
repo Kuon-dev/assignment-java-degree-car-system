@@ -119,4 +119,15 @@ public class RecordBooking {
 
     return sb.toString();
   }
+
+  public void clearData() {
+    this.receiptID = null;
+    this.customer = null;
+    this.car = null;
+    this.days = 0;
+    this.totalPrice = 0;
+    this.bookingDate = null;
+    this.startDate = null;
+    this.returnDate = null;
+  }
 }

@@ -37,6 +37,17 @@ public class ManageBooking extends javax.swing.JFrame {
     null
   );
 
+  private RecordBooking tableSelectedBooking = new RecordBooking(
+    null,
+    null,
+    null,
+    0,
+    0,
+    null,
+    null,
+    null
+  );
+
   public void setCurrentAdminData(UserAdmin data) {
     this.currentAdminData = data;
   }
@@ -48,6 +59,7 @@ public class ManageBooking extends javax.swing.JFrame {
     inputData.add(startDateEdit.getText());
     inputData.add(endDateEdit.getText());
 
+    // check for empty input
     for (String data : inputData) {
       if (data.isEmpty()) {
         JOptionPane.showMessageDialog(
@@ -98,6 +110,15 @@ public class ManageBooking extends javax.swing.JFrame {
       );
       return false;
     }
+
+    // check for valid date
+    Validator v = new Validator();
+    // incorrect format
+    if (
+      !v.isValidDate(inputData.get(2)) || !v.isValidDate(inputData.get(3))
+    ) return false;
+    // incorrect end date
+    if (!v.isValidEndDate(inputData.get(2), inputData.get(3))) return false;
 
     return true;
   }
@@ -839,9 +860,20 @@ public class ManageBooking extends javax.swing.JFrame {
 
   private void BookBtnActionPerformed(java.awt.event.ActionEvent evt) {}
 
-  private void clearButActionPerformed(java.awt.event.ActionEvent evt) {}
+  private void clearButActionPerformed(java.awt.event.ActionEvent evt) {
+    customerIcEdit.setText("");
+    CarNoPlate.setText("");
+    startDateEdit.setText("");
+    endDateEdit.setText("");
+    searchIC.setText("");
+    searchReceiptID.setText("");
 
-  private void viewrecordsActionPerformed(java.awt.event.ActionEvent evt) {}
+    tableSelectedBooking.clearData();
+  }
+
+  private void viewrecordsActionPerformed(java.awt.event.ActionEvent evt) {
+    setTableData();
+  }
 
   private void updateActionPerformed(java.awt.event.ActionEvent evt) {}
 
