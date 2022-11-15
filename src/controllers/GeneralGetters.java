@@ -178,9 +178,9 @@ public class GeneralGetters {
           getSpecificCar(bookedCar).get(0), // car
           Integer.parseInt(booking.get(3)), // days
           Double.parseDouble(booking.get(4)), // price
-          df.parse(booking.get(5)),
-          df.parse(booking.get(6)),
-          df.parse(booking.get(7))
+          df.parse(booking.get(5)), // book date
+          df.parse(booking.get(6)), // start
+          df.parse(booking.get(7)) // end
         );
         allBookings.add(b);
       }

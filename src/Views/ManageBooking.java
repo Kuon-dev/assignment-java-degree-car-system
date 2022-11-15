@@ -124,9 +124,11 @@ public class ManageBooking extends javax.swing.JFrame {
 
   private void setTableData() {
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
     GeneralGetters g = new GeneralGetters();
     ArrayList<RecordBooking> allBookings = g.getAllBooking();
 
+    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
     for (RecordBooking book : allBookings) {
       Object[] eachBooking = {
         book.getReceiptID(),
@@ -134,9 +136,10 @@ public class ManageBooking extends javax.swing.JFrame {
         book.getCustomer().getIC(),
         book.getCustomer().getName(),
         book.getCustomer().getPhNum(),
-        book.getStartDate(),
+        book.getCustomer().getEmail(),
+        df.format(book.getStartDate()),
         book.getDays(),
-        book.getReturnDate(),
+        df.format(book.getReturnDate()),
         book.getTotalPrice(),
         "",
         "",
