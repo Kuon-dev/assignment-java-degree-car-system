@@ -59,7 +59,7 @@ public class UserCustomer extends GeneralUser {
 
   public void setCustomerData(String ic) {
     if (!userCustomerExists(ic)) return;
-    GeneralUser g = new GeneralGetters();
+    GeneralGetters g = new GeneralGetters();
     ArrayList<UserCustomer> allUsers = g.getAllCustomer();
     for (UserCustomer c : allUsers) {
       if (c.getIC().equalsIgnoreCase(ic)) {

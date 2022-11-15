@@ -145,6 +145,15 @@ public class GeneralGetters {
     return filteredCars;
   }
 
+  public GeneralCar getSpecificSingleCar(String carPlate) {
+    ArrayList<GeneralCar> allCars = getAllCar();
+    for (GeneralCar c : allCars) {
+      if (c.getCarNoPlate().equals(carPlate)) return c;
+    }
+    // return empty car
+    return new GeneralCar(null, null, null, null, 0, 0, null);
+  }
+
   // ---------------------------------------------
   public ArrayList<RecordBooking> getAllBooking() {
     List<ArrayList<String>> data = f.readFile(bookingDatabase);
@@ -189,6 +198,6 @@ public class GeneralGetters {
       if (record.getReceiptID().equals(receiptID)) return record;
     }
 
-    throw new EmptyStackException();
+    return new RecordBooking(null, null, null, null, 0, null, null, null);
   }
 }

@@ -25,26 +25,7 @@ public class ManageBooking extends javax.swing.JFrame {
 
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
     model.setRowCount(0);
-    GeneralGetters g = new GeneralGetters();
-    ArrayList<RecordBooking> allBookings = g.getAllBooking();
-
-    for (RecordBooking book : allBookings) {
-      Object[] eachBooking = {
-        book.getReceiptID(),
-        book.getCar().getCarNoPlate(),
-        book.getCustomer().getIC(),
-        book.getCustomer().getName(),
-        book.getCustomer().getPhNum(),
-        book.getStartDate(),
-        book.getDays(),
-        book.getReturnDate(),
-        book.getTotalPrice(),
-        "",
-        "",
-      };
-
-      model.addRow(eachBooking);
-    }
+    setTableData();
   }
 
   public UserAdmin currentAdminData = new UserAdmin(
@@ -89,6 +70,31 @@ public class ManageBooking extends javax.swing.JFrame {
     );
 
     return true;
+  }
+
+  private void setTableData() {
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    model.setRowCount(0);
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<RecordBooking> allBookings = g.getAllBooking();
+
+    for (RecordBooking book : allBookings) {
+      Object[] eachBooking = {
+        book.getReceiptID(),
+        book.getCar().getCarNoPlate(),
+        book.getCustomer().getIC(),
+        book.getCustomer().getName(),
+        book.getCustomer().getPhNum(),
+        book.getStartDate(),
+        book.getDays(),
+        book.getReturnDate(),
+        book.getTotalPrice(),
+        "",
+        "",
+      };
+
+      model.addRow(eachBooking);
+    }
   }
 
   /**
@@ -413,9 +419,7 @@ public class ManageBooking extends javax.swing.JFrame {
 
     customerIcEdit.addActionListener(
       new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-          customerIcEditActionPerformed(evt);
-        }
+        public void actionPerformed(java.awt.event.ActionEvent evt) {}
       }
     );
 
