@@ -192,45 +192,25 @@ public class Receipt extends javax.swing.JFrame {
                       89,
                       javax.swing.GroupLayout.PREFERRED_SIZE
                     )
+                    .addPreferredGap(
+                      javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                      javax.swing.GroupLayout.DEFAULT_SIZE,
+                      Short.MAX_VALUE
+                    )
                     .addGroup(
                       jPanel1Layout
                         .createParallelGroup(
                           javax.swing.GroupLayout.Alignment.LEADING
                         )
-                        .addGroup(
-                          jPanel1Layout
-                            .createSequentialGroup()
-                            .addPreferredGap(
-                              javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                              javax.swing.GroupLayout.DEFAULT_SIZE,
-                              Short.MAX_VALUE
-                            )
-                            .addComponent(
-                              StartDate,
-                              javax.swing.GroupLayout.PREFERRED_SIZE,
-                              68,
-                              javax.swing.GroupLayout.PREFERRED_SIZE
-                            )
-                            .addGap(93, 93, 93)
+                        .addComponent(
+                          StartDate,
+                          javax.swing.GroupLayout.PREFERRED_SIZE,
+                          68,
+                          javax.swing.GroupLayout.PREFERRED_SIZE
                         )
-                        .addGroup(
-                          javax.swing.GroupLayout.Alignment.TRAILING,
-                          jPanel1Layout
-                            .createSequentialGroup()
-                            .addPreferredGap(
-                              javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                              javax.swing.GroupLayout.DEFAULT_SIZE,
-                              Short.MAX_VALUE
-                            )
-                            .addComponent(checkin)
-                            .addPreferredGap(
-                              javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                              javax.swing.GroupLayout.DEFAULT_SIZE,
-                              Short.MAX_VALUE
-                            )
-                        )
+                        .addComponent(checkin)
                     )
-                    .addGap(10, 10, 10)
+                    .addGap(56, 56, 56)
                     .addGroup(
                       jPanel1Layout
                         .createParallelGroup(
@@ -572,7 +552,6 @@ public class Receipt extends javax.swing.JFrame {
         )
     );
 
-    MenuBut.setBackground(new java.awt.Color(255, 255, 255));
     MenuBut.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
     MenuBut.setForeground(new java.awt.Color(0, 102, 204));
     MenuBut.setText("Main Menu");

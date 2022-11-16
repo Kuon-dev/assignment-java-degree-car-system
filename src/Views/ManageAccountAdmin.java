@@ -41,8 +41,8 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
     data.add(Email.getText());
     data.add(PhNum.getText());
     data.add(Position.getSelectedItem().toString());
-    data.add(Password.getText());
-    data.add(ConfPass.getText());
+    data.add(NewPass.getText());
+    data.add(ComfPass.getText());
 
     // if there's an empty input, return false
     for (String d : data) {
@@ -80,7 +80,7 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
     CustIDLab2 = new javax.swing.JLabel();
     PhNum = new javax.swing.JTextField();
     Email = new javax.swing.JTextField();
-    ConfPass = new javax.swing.JPasswordField();
+    ComfPass = new javax.swing.JPasswordField();
     PswLab4 = new javax.swing.JLabel();
     CustIDLab3 = new javax.swing.JLabel();
     Position = new javax.swing.JComboBox<>();
@@ -92,7 +92,7 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
     PswLab2 = new javax.swing.JLabel();
     ID = new javax.swing.JTextField();
     Name = new javax.swing.JTextField();
-    Password = new javax.swing.JPasswordField();
+    NewPass = new javax.swing.JPasswordField();
     MenuBut1 = new javax.swing.JButton();
     SaveChanges1 = new javax.swing.JButton();
 
@@ -101,7 +101,9 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
     SaveChanges.setText("Save Changes");
     SaveChanges.addActionListener(
       new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {}
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          SaveChangesActionPerformed(evt);
+        }
       }
     );
 
@@ -129,11 +131,11 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
       }
     );
 
-    ConfPass.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-    ConfPass.addActionListener(
+    ComfPass.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    ComfPass.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          ConfPassActionPerformed(evt);
+          ComfPassActionPerformed(evt);
         }
       }
     );
@@ -153,7 +155,9 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
     );
     Position.addActionListener(
       new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {}
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          PositionActionPerformed(evt);
+        }
       }
     );
 
@@ -175,11 +179,11 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
 
     PswLab3.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     PswLab3.setForeground(new java.awt.Color(140, 174, 238));
-    PswLab3.setText("Confirm Password:");
+    PswLab3.setText("Confirmed Password:");
 
     PswLab2.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     PswLab2.setForeground(new java.awt.Color(140, 174, 238));
-    PswLab2.setText("Password:");
+    PswLab2.setText("New Password:");
 
     ID.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     ID.addActionListener(
@@ -199,11 +203,10 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
       }
     );
 
-    Password.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    NewPass.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
 
-    MenuBut1.setBackground(new java.awt.Color(153, 204, 255));
-    MenuBut1.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
-    MenuBut1.setForeground(new java.awt.Color(0, 102, 255));
+    MenuBut1.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
+    MenuBut1.setForeground(new java.awt.Color(0, 102, 204));
     MenuBut1.setText("Main Menu");
     MenuBut1.addActionListener(
       new java.awt.event.ActionListener() {
@@ -281,7 +284,7 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
                                   javax.swing.GroupLayout.PREFERRED_SIZE
                                 )
                                 .addComponent(
-                                  Password,
+                                  NewPass,
                                   javax.swing.GroupLayout.Alignment.TRAILING,
                                   javax.swing.GroupLayout.PREFERRED_SIZE,
                                   192,
@@ -302,7 +305,7 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
                                   javax.swing.GroupLayout.PREFERRED_SIZE
                                 )
                                 .addComponent(
-                                  ConfPass,
+                                  ComfPass,
                                   javax.swing.GroupLayout.Alignment.TRAILING,
                                   javax.swing.GroupLayout.PREFERRED_SIZE,
                                   192,
@@ -478,7 +481,7 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(
-                  Password,
+                  NewPass,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   35,
                   javax.swing.GroupLayout.PREFERRED_SIZE
@@ -497,7 +500,7 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(
-                  ConfPass,
+                  ComfPass,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   35,
                   javax.swing.GroupLayout.PREFERRED_SIZE
@@ -517,33 +520,6 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
     pack();
   } // </editor-fold>//GEN-END:initComponents
 
-  private void LoginBtn2ActionPerformed(java.awt.event.ActionEvent evt) {
-    GeneralMutation m = new GeneralMutation();
-    if (!sanitizeInput()) return;
-    UserAdmin newAdminData = new UserAdmin(
-      ID.getText(),
-      Name.getText(),
-      Password.getText(),
-      Email.getText(),
-      PhNum.getText(),
-      Position.getSelectedItem().toString()
-    );
-    if (m.editExistingAdmin(currentAdminData, newAdminData)) {
-      JOptionPane.showMessageDialog(
-        this,
-        "Record Added Successfully",
-        "Information",
-        JOptionPane.INFORMATION_MESSAGE
-      );
-      setCurrentAdminData(newAdminData);
-    } else JOptionPane.showMessageDialog(
-      this,
-      "Failed to add admin data",
-      "Error Message",
-      JOptionPane.ERROR_MESSAGE
-    );
-  }
-
   private void EmailActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_EmailActionPerformed
     // TODO add your handling code here:
   } //GEN-LAST:event_EmailActionPerformed
@@ -560,12 +536,9 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
     // TODO add your handling code here:
   }
 
-  //
-  private void MenuBut(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_PhNumActionPerformed //GEN-LAST:event_PhNumActionPerformed
-
-  private void ConfPassActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ConfPassActionPerformed
+  private void ComfPassActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ComfPassActionPerformed
     // TODO add your handling code here:
-  } //GEN-LAST:event_ConfPassActionPerformed
+  } //GEN-LAST:event_ComfPassActionPerformed
 
   private void MenuBut1ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_MenuBut1ActionPerformed
     // TODO add your handling code here:
@@ -582,7 +555,7 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
     UserAdmin newAdminData = new UserAdmin(
       ID.getText(),
       Name.getText(),
-      Password.getText(),
+      NewPass.getText(),
       Email.getText(),
       PhNum.getText(),
       Position.getSelectedItem().toString()
@@ -649,7 +622,7 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JPasswordField ConfPass;
+  private javax.swing.JPasswordField ComfPass;
   private javax.swing.JLabel CustIDLab1;
   private javax.swing.JLabel CustIDLab2;
   private javax.swing.JLabel CustIDLab3;
@@ -658,7 +631,7 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
   private javax.swing.JTextField ID;
   private javax.swing.JButton MenuBut1;
   private javax.swing.JTextField Name;
-  private javax.swing.JPasswordField Password;
+  private javax.swing.JPasswordField NewPass;
   private javax.swing.JTextField PhNum;
   private javax.swing.JComboBox<String> Position;
   private javax.swing.JLabel PswLab2;

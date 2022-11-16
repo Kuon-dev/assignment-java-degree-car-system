@@ -45,18 +45,23 @@
                               <Component id="CustIDLab2" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="PswLab2" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="PswLab3" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="ExitBtn2" min="-2" pref="73" max="-2" attributes="0"/>
+                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="MenuBtn" alignment="1" max="32767" attributes="0"/>
+                              <Component id="PswLab3" alignment="1" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="LoginBtn2" min="-2" max="-2" attributes="0"/>
-                          <Component id="oldpass" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                          <Component id="newpass" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                          <Component id="email" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                          <Component id="name" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                          <Component id="phnum" min="-2" pref="192" max="-2" attributes="0"/>
-                          <Component id="ic" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Component id="NewPass" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Component id="ComfPass" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Component id="Email" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Component id="Name" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Component id="PhNum" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Component id="IC" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="SaveChanges" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -74,37 +79,37 @@
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CustIDLab1" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                  <Component id="ic" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="IC" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CustIDLab4" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                  <Component id="name" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="Name" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CustIDLab2" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                  <Component id="email" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="Email" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CustIDLab3" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                  <Component id="phnum" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="PhNum" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="PswLab2" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="oldpass" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="NewPass" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="PswLab3" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="newpass" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="ComfPass" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="LoginBtn2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ExitBtn2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="SaveChanges" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="MenuBtn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="18" max="32767" attributes="0"/>
           </Group>
@@ -112,7 +117,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="ExitBtn2">
+    <Component class="javax.swing.JButton" name="MenuBtn">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Snap ITC" size="14" style="0"/>
@@ -120,13 +125,13 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="66" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Exit"/>
+        <Property name="text" type="java.lang.String" value="Main Menu"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExitBtn2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="LoginBtn2">
+    <Component class="javax.swing.JButton" name="SaveChanges">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Snap ITC" size="14" style="0"/>
@@ -137,7 +142,7 @@
         <Property name="text" type="java.lang.String" value="Save Changes"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LoginBtn2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SaveChangesActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="PswLab3">
@@ -148,7 +153,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ee" green="ae" red="8c" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="New Password:"/>
+        <Property name="text" type="java.lang.String" value="Confirmed Password:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="CustIDLab2">
@@ -206,7 +211,7 @@
         <Property name="text" type="java.lang.String" value="Welcome to Car Rental System"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="newpass">
+    <Component class="javax.swing.JPasswordField" name="ComfPass">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="3"/>
@@ -232,54 +237,54 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ee" green="ae" red="8c" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Old Password:"/>
+        <Property name="text" type="java.lang.String" value="New Password:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="oldpass">
+    <Component class="javax.swing.JPasswordField" name="NewPass">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="3"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="name">
+    <Component class="javax.swing.JTextField" name="Name">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="3"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nameActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NameActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="email">
+    <Component class="javax.swing.JTextField" name="Email">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="3"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emailActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EmailActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="phnum">
+    <Component class="javax.swing.JTextField" name="PhNum">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="3"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="phnumActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PhNumActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="ic">
+    <Component class="javax.swing.JTextField" name="IC">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="3"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="icActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ICActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -51,7 +51,7 @@ public class ViewCar extends javax.swing.JFrame {
     jTable1 = new javax.swing.JTable();
     Title = new javax.swing.JLabel();
     ExitBtn1 = new javax.swing.JButton();
-    ExitBtn2 = new javax.swing.JButton();
+    BookCarBtn = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,13 +106,13 @@ public class ViewCar extends javax.swing.JFrame {
       }
     );
 
-    ExitBtn2.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
-    ExitBtn2.setForeground(new java.awt.Color(0, 102, 204));
-    ExitBtn2.setText("Book Car");
-    ExitBtn2.addActionListener(
+    BookCarBtn.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
+    BookCarBtn.setForeground(new java.awt.Color(0, 102, 204));
+    BookCarBtn.setText("Book Car");
+    BookCarBtn.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          ExitBtn2ActionPerformed(evt);
+          BookCarBtnActionPerformed(evt);
         }
       }
     );
@@ -157,7 +157,7 @@ public class ViewCar extends javax.swing.JFrame {
               javax.swing.GroupLayout.DEFAULT_SIZE,
               Short.MAX_VALUE
             )
-            .addComponent(ExitBtn2)
+            .addComponent(BookCarBtn)
             .addGap(161, 161, 161)
         )
     );
@@ -184,7 +184,7 @@ public class ViewCar extends javax.swing.JFrame {
               layout
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(ExitBtn1)
-                .addComponent(ExitBtn2)
+                .addComponent(BookCarBtn)
             )
             .addContainerGap(17, Short.MAX_VALUE)
         )
@@ -199,9 +199,9 @@ public class ViewCar extends javax.swing.JFrame {
     exit.exitsystem();
   } //GEN-LAST:event_ExitBtn1ActionPerformed
 
-  private void ExitBtn2ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ExitBtn2ActionPerformed
+  private void BookCarBtnActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_BookCarBtnActionPerformed
     // TODO add your handling code here:
-  } //GEN-LAST:event_ExitBtn2ActionPerformed
+  } //GEN-LAST:event_BookCarBtnActionPerformed
 
   /**
    * @param args the command line arguments
@@ -249,8 +249,8 @@ public class ViewCar extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
+  private javax.swing.JButton BookCarBtn;
   private javax.swing.JButton ExitBtn1;
-  private javax.swing.JButton ExitBtn2;
   private javax.swing.JLabel Title;
   private javax.swing.JScrollPane jScrollPane1;
   private javax.swing.JTable jTable1;

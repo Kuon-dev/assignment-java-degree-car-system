@@ -42,12 +42,12 @@ public class AdminMenu extends javax.swing.JFrame {
   private void initComponents() {
     Title = new javax.swing.JLabel();
     AdminLoginLab = new javax.swing.JLabel();
-    LoginBtn1 = new javax.swing.JButton();
+    RegisterAdminBtn = new javax.swing.JButton();
     ManageCarBtn = new javax.swing.JButton();
-    LoginBtn3 = new javax.swing.JButton();
-    LoginBtn4 = new javax.swing.JButton();
-    LoginBtn5 = new javax.swing.JButton();
-    ExitBtn1 = new javax.swing.JButton();
+    ManageBookingBtn = new javax.swing.JButton();
+    ManageInfoBtn = new javax.swing.JButton();
+    ViewSalesBtn = new javax.swing.JButton();
+    ExitBtn = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,13 +59,13 @@ public class AdminMenu extends javax.swing.JFrame {
     AdminLoginLab.setForeground(new java.awt.Color(0, 51, 204));
     AdminLoginLab.setText("Admin Menu");
 
-    LoginBtn1.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
-    LoginBtn1.setForeground(new java.awt.Color(0, 102, 204));
-    LoginBtn1.setText("Register Admin Account");
-    LoginBtn1.addActionListener(
+    RegisterAdminBtn.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
+    RegisterAdminBtn.setForeground(new java.awt.Color(0, 102, 204));
+    RegisterAdminBtn.setText("Register Admin Account");
+    RegisterAdminBtn.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          LoginBtn1ActionPerformed(evt);
+          RegisterAdminBtnActionPerformed(evt);
         }
       }
     );
@@ -81,46 +81,46 @@ public class AdminMenu extends javax.swing.JFrame {
       }
     );
 
-    LoginBtn3.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
-    LoginBtn3.setForeground(new java.awt.Color(0, 102, 204));
-    LoginBtn3.setText("Manage Customer's Booking");
-    LoginBtn3.addActionListener(
+    ManageBookingBtn.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
+    ManageBookingBtn.setForeground(new java.awt.Color(0, 102, 204));
+    ManageBookingBtn.setText("Manage Customer's Booking");
+    ManageBookingBtn.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          LoginBtn3ActionPerformed(evt);
+          ManageBookingBtnActionPerformed(evt);
         }
       }
     );
 
-    LoginBtn4.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
-    LoginBtn4.setForeground(new java.awt.Color(0, 102, 204));
-    LoginBtn4.setText("Manage Personal Information");
-    LoginBtn4.addActionListener(
+    ManageInfoBtn.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
+    ManageInfoBtn.setForeground(new java.awt.Color(0, 102, 204));
+    ManageInfoBtn.setText("Manage Personal Information");
+    ManageInfoBtn.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          LoginBtn4ActionPerformed(evt);
+          ManageInfoBtnActionPerformed(evt);
         }
       }
     );
 
-    LoginBtn5.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
-    LoginBtn5.setForeground(new java.awt.Color(0, 102, 204));
-    LoginBtn5.setText("View Sales Report");
-    LoginBtn5.addActionListener(
+    ViewSalesBtn.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
+    ViewSalesBtn.setForeground(new java.awt.Color(0, 102, 204));
+    ViewSalesBtn.setText("View Sales Report");
+    ViewSalesBtn.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          LoginBtn5ActionPerformed(evt);
+          ViewSalesBtnActionPerformed(evt);
         }
       }
     );
 
-    ExitBtn1.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
-    ExitBtn1.setForeground(new java.awt.Color(0, 102, 204));
-    ExitBtn1.setText("Exit");
-    ExitBtn1.addActionListener(
+    ExitBtn.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
+    ExitBtn.setForeground(new java.awt.Color(0, 102, 204));
+    ExitBtn.setText("Exit");
+    ExitBtn.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          ExitBtn1ActionPerformed(evt);
+          ExitBtnActionPerformed(evt);
         }
       }
     );
@@ -143,7 +143,7 @@ public class AdminMenu extends javax.swing.JFrame {
                     .createSequentialGroup()
                     .addContainerGap()
                     .addComponent(
-                      ExitBtn1,
+                      ExitBtn,
                       javax.swing.GroupLayout.PREFERRED_SIZE,
                       73,
                       javax.swing.GroupLayout.PREFERRED_SIZE
@@ -180,25 +180,25 @@ public class AdminMenu extends javax.swing.JFrame {
                   false
                 )
                 .addComponent(
-                  LoginBtn4,
+                  ManageInfoBtn,
                   javax.swing.GroupLayout.DEFAULT_SIZE,
                   275,
                   Short.MAX_VALUE
                 )
                 .addComponent(
-                  LoginBtn3,
+                  ManageBookingBtn,
                   javax.swing.GroupLayout.DEFAULT_SIZE,
                   javax.swing.GroupLayout.DEFAULT_SIZE,
                   Short.MAX_VALUE
                 )
                 .addComponent(
-                  LoginBtn1,
+                  RegisterAdminBtn,
                   javax.swing.GroupLayout.DEFAULT_SIZE,
                   javax.swing.GroupLayout.DEFAULT_SIZE,
                   Short.MAX_VALUE
                 )
                 .addComponent(
-                  LoginBtn5,
+                  ViewSalesBtn,
                   javax.swing.GroupLayout.DEFAULT_SIZE,
                   javax.swing.GroupLayout.DEFAULT_SIZE,
                   Short.MAX_VALUE
@@ -220,7 +220,7 @@ public class AdminMenu extends javax.swing.JFrame {
           layout
             .createSequentialGroup()
             .addContainerGap()
-            .addComponent(ExitBtn1)
+            .addComponent(ExitBtn)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(Title)
             .addPreferredGap(
@@ -230,13 +230,13 @@ public class AdminMenu extends javax.swing.JFrame {
             .addGap(18, 18, 18)
             .addComponent(ManageCarBtn)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(LoginBtn5)
+            .addComponent(ViewSalesBtn)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(LoginBtn1)
+            .addComponent(RegisterAdminBtn)
             .addGap(7, 7, 7)
-            .addComponent(LoginBtn3)
+            .addComponent(ManageBookingBtn)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(LoginBtn4)
+            .addComponent(ManageInfoBtn)
             .addContainerGap(19, Short.MAX_VALUE)
         )
     );
@@ -244,7 +244,7 @@ public class AdminMenu extends javax.swing.JFrame {
     pack();
   } // </editor-fold>//GEN-END:initComponents
 
-  private void LoginBtn1ActionPerformed(java.awt.event.ActionEvent evt) {
+  private void RegisterAdminBtnActionPerformed(java.awt.event.ActionEvent evt) {
     // TODO register account
     //
     RegisterAdmin registerMenu = new RegisterAdmin();
@@ -261,7 +261,7 @@ public class AdminMenu extends javax.swing.JFrame {
     dispose();
   }
 
-  private void LoginBtn3ActionPerformed(java.awt.event.ActionEvent evt) {
+  private void ManageBookingBtnActionPerformed(java.awt.event.ActionEvent evt) {
     // TODO manage booking
     ManageBooking manageBookMenu = new ManageBooking();
     manageBookMenu.setCurrentAdminData(adminData);
@@ -269,7 +269,7 @@ public class AdminMenu extends javax.swing.JFrame {
     dispose();
   }
 
-  private void LoginBtn4ActionPerformed(java.awt.event.ActionEvent evt) {
+  private void ManageInfoBtnActionPerformed(java.awt.event.ActionEvent evt) {
     // TODO manage personal info
     ManageAccountAdmin adminAcc = new ManageAccountAdmin();
     adminAcc.setCurrentAdminData(adminData);
@@ -278,7 +278,7 @@ public class AdminMenu extends javax.swing.JFrame {
     dispose();
   }
 
-  private void LoginBtn5ActionPerformed(java.awt.event.ActionEvent evt) {
+  private void ViewSalesBtnActionPerformed(java.awt.event.ActionEvent evt) {
     // TODO sales report
     SalesReport sales = new SalesReport();
     sales.setCurrentAdminData(adminData);
@@ -286,11 +286,11 @@ public class AdminMenu extends javax.swing.JFrame {
     dispose();
   }
 
-  private void ExitBtn1ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ExitBtn1ActionPerformed
+  private void ExitBtnActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ExitBtnActionPerformed
     //Call the exit system function
     exitSystem exit = new exitSystem();
     exit.exitsystem(adminData);
-  } //GEN-LAST:event_ExitBtn1ActionPerformed
+  } //GEN-LAST:event_ExitBtnActionPerformed
 
   /**
    * @param args the command line arguments
@@ -339,12 +339,12 @@ public class AdminMenu extends javax.swing.JFrame {
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JLabel AdminLoginLab;
-  private javax.swing.JButton ExitBtn1;
-  private javax.swing.JButton LoginBtn1;
-  private javax.swing.JButton LoginBtn3;
-  private javax.swing.JButton LoginBtn4;
-  private javax.swing.JButton LoginBtn5;
+  private javax.swing.JButton ExitBtn;
+  private javax.swing.JButton ManageBookingBtn;
   private javax.swing.JButton ManageCarBtn;
+  private javax.swing.JButton ManageInfoBtn;
+  private javax.swing.JButton RegisterAdminBtn;
   private javax.swing.JLabel Title;
+  private javax.swing.JButton ViewSalesBtn;
   // End of variables declaration//GEN-END:variables
 }

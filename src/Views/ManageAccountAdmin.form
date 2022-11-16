@@ -58,10 +58,10 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="Position" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
-                                  <Component id="Password" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
+                                  <Component id="NewPass" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
                                   <Component id="Email" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
                                   <Component id="PhNum" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
-                                  <Component id="ConfPass" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
+                                  <Component id="ComfPass" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
                                   <Component id="ID" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
                                   <Component id="Name" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
                               </Group>
@@ -129,12 +129,12 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="PswLab2" alignment="0" min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="Password" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="NewPass" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="PswLab3" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="ConfPass" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="ComfPass" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -178,14 +178,14 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EmailActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="ConfPass">
+    <Component class="javax.swing.JPasswordField" name="ComfPass">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="3"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConfPassActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ComfPassActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="PswLab4">
@@ -278,7 +278,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ee" green="ae" red="8c" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Confirm Password:"/>
+        <Property name="text" type="java.lang.String" value="Confirmed Password:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="PswLab2">
@@ -289,7 +289,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ee" green="ae" red="8c" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Password:"/>
+        <Property name="text" type="java.lang.String" value="New Password:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="ID">
@@ -312,7 +312,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NameActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="Password">
+    <Component class="javax.swing.JPasswordField" name="NewPass">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="3"/>
@@ -321,14 +321,11 @@
     </Component>
     <Component class="javax.swing.JButton" name="MenuBut1">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="99" type="rgb"/>
-        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="14" style="3"/>
+          <Font name="Snap ITC" size="14" style="0"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="66" red="0" type="rgb"/>
+          <Color blue="cc" green="66" red="0" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Main Menu"/>
       </Properties>

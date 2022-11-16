@@ -4,6 +4,9 @@
  */
 package carrentalsystem;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Lim Li Ping
@@ -15,6 +18,18 @@ public class BookingHistory extends javax.swing.JFrame {
    */
   public BookingHistory() {
     initComponents();
+  }
+
+  public UserCustomer currentCustomerData = new UserCustomer(
+    null,
+    null,
+    null,
+    null,
+    null
+  );
+
+  public void setCurrentCustomerData(UserCustomer data) {
+    this.currentCustomerData = data;
   }
 
   /**
@@ -152,12 +167,13 @@ public class BookingHistory extends javax.swing.JFrame {
 
   private void MenuButActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_MenuButActionPerformed
     //Direct to main menu
-    AdminMenu menu = new AdminMenu();
+    MemberMenu menu = new MemberMenu();
+    menu.setCurrentCustomerData(currentCustomerData);
     menu.setVisible(true);
     dispose();
   } //GEN-LAST:event_MenuButActionPerformed
 
-  private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {} //GEN-FIRST:event_jTable1MouseClicked //GEN-LAST:event_jTable1MouseClicked
+  private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {}
 
   /**
    * @param args the command line arguments
