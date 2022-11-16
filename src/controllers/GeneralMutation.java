@@ -244,7 +244,7 @@ public class GeneralMutation {
           .getReceiptID()
           .equalsIgnoreCase(oldBooking.getReceiptID())
       ) {
-        return f.modifyFile(Data, carDatabase, Integer.toString(i));
+        return f.modifyFile(Data, bookingDatabase, Integer.toString(i));
       }
     }
     return false;
@@ -259,7 +259,7 @@ public class GeneralMutation {
           .getReceiptID()
           .equalsIgnoreCase(booking.getReceiptID())
       ) {
-        return f.deleteFile(carDatabase, Integer.toString(i));
+        return f.deleteFile(bookingDatabase, Integer.toString(i));
       }
     }
     return false;

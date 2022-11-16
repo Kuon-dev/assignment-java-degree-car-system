@@ -58,4 +58,6 @@ public abstract class GeneralUser {
   // -----------------------------------------------------------------------------
 
   public abstract Boolean login(String inputName, String inputPassword);
+
+  public abstract Boolean isUserExist();
 }

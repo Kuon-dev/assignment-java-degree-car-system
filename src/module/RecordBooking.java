@@ -20,7 +20,7 @@ public class RecordBooking {
     double totalPrice,
     Date bookingDate,
     Date startDate,
-    Date endDate
+    Date returnDate
   ) {
     this.receiptID = receiptID;
     this.customer = customer;
@@ -29,7 +29,7 @@ public class RecordBooking {
     this.totalPrice = totalPrice;
     this.bookingDate = bookingDate;
     this.startDate = startDate;
-    this.returnDate = endDate;
+    this.returnDate = returnDate;
   }
 
   // getter setters
@@ -91,7 +91,7 @@ public class RecordBooking {
   }
 
   public Date getReturnDate() {
-    return bookingDate;
+    return returnDate;
   }
 
   public void setReturnDate(Date returnDate) {
@@ -118,5 +118,16 @@ public class RecordBooking {
     }
 
     return sb.toString();
+  }
+
+  public void clearData() {
+    this.receiptID = null;
+    this.customer = null;
+    this.car = null;
+    this.days = 0;
+    this.totalPrice = 0;
+    this.bookingDate = null;
+    this.startDate = null;
+    this.returnDate = null;
   }
 }

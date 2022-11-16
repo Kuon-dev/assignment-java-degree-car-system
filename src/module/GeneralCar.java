@@ -1,5 +1,7 @@
 package carrentalsystem;
 
+import java.util.ArrayList;
+
 public class GeneralCar {
 
   public String carNoPlate, brand, model, status, typeOfFuel;
@@ -92,5 +94,30 @@ public class GeneralCar {
     setFuelType(null);
     setModel(null);
     setPrice(0);
+  }
+
+  public Boolean isCarExist() {
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<GeneralCar> allCars = g.getAllCar();
+    for (GeneralCar car : allCars) {
+      if (car.getCarNoPlate().equals(this.carNoPlate)) return true;
+    }
+    return false;
+  }
+
+  public void setData() {
+    if (!isCarExist()) return;
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<GeneralCar> allUsers = g.getAllCar();
+    for (GeneralCar c : allUsers) {
+      if (c.getCarNoPlate().equalsIgnoreCase(this.carNoPlate)) {
+        this.brand = c.getBrand();
+        this.model = c.getModel();
+        this.status = c.getState();
+        this.year = c.getYear();
+        this.price = c.getPrice();
+        this.typeOfFuel = c.getFuelType();
+      }
+    }
   }
 }

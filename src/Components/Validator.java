@@ -5,7 +5,7 @@ import java.text.DateFormat;
 // error handling
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-// date formatters
+// date dfs
 import java.util.Date;
 // regex
 // add comment
@@ -30,13 +30,13 @@ public class Validator {
     Pattern.CASE_INSENSITIVE
   );
 
-  public static Boolean emailValidator(String email) {
+  public static Boolean isEmail(String email) {
     Matcher matcher = emailRegex.matcher(email);
     return matcher.find();
   }
 
   // check if the phone number is valid
-  public static Boolean phoneNumValidator(String phnum) {
+  public static Boolean isPhNum(String phnum) {
     try {
       if (phnum.isEmpty()) return false;
       String newPh = phnum.replace("-", "");
@@ -48,7 +48,7 @@ public class Validator {
   }
 
   // check if the credit / debit card is valid
-  public static Boolean cardValidator(String inputCard) {
+  public static Boolean isValidCard(String inputCard) {
     try {
       if (inputCard.isEmpty()) return false;
       // remove dashes and empty spaces
@@ -80,18 +80,16 @@ public class Validator {
   }
 
   // check if the date is valid and if it is not a past date
-  public static Boolean dateValidator(String usrInput) {
+  public static Boolean isValidDate(String usrInput) {
     try {
       // always return false if empty
       if (usrInput.isEmpty()) return false;
-      SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-      DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+      SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
-      // DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+      // DateTimedf df = DateTimedf.ofPattern("dd/MM/yyyy");
       // check if it is a valid date, will reach ParseException if invalid
       Date validDate;
-      validDate = formatter.parse(usrInput);
-      validDate = dateFormat.parse(usrInput);
+      validDate = df.parse(usrInput);
 
       // check if date is already over (means if user selected a past date)
       Date dateNow = new Date();
@@ -102,7 +100,24 @@ public class Validator {
 
       if (currentTime > inputDate) return false;
       return true;
-    } catch (ParseException e) {
+    } catch (Exception e) {
+      return false;
+    }
+  }
+
+  public Boolean isValidEndDate(String startDate, String endDate) {
+    try {
+      if (startDate.isEmpty() || endDate.isEmpty()) return false;
+      // always return false if empty
+      SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+
+      Date startingDate = df.parse(startDate);
+      Date endingDate = df.parse(endDate);
+
+      if (startingDate.getTime() > endingDate.getTime()) return false;
+      return true;
+      // check if date is already over (means if user selected a past date)
+    } catch (Exception e) {
       return false;
     }
   }

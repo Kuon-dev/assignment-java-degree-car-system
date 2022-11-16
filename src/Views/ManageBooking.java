@@ -23,28 +23,8 @@ public class ManageBooking extends javax.swing.JFrame {
   public ManageBooking() {
     initComponents();
 
-    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-    model.setRowCount(0);
-    GeneralGetters g = new GeneralGetters();
-    ArrayList<RecordBooking> allBookings = g.getAllBooking();
-
-    for (RecordBooking book : allBookings) {
-      Object[] eachBooking = {
-        book.getReceiptID(),
-        book.getCar().getCarNoPlate(),
-        book.getCustomer().getIC(),
-        book.getCustomer().getName(),
-        book.getCustomer().getPhNum(),
-        book.getStartDate(),
-        book.getDays(),
-        book.getReturnDate(),
-        book.getTotalPrice(),
-        "",
-        "",
-      };
-
-      model.addRow(eachBooking);
-    }
+    clearTableData();
+    setTableData();
   }
 
   public UserAdmin currentAdminData = new UserAdmin(
@@ -56,8 +36,161 @@ public class ManageBooking extends javax.swing.JFrame {
     null
   );
 
+  private RecordBooking tableSelectedBooking = new RecordBooking(
+    null,
+    null,
+    null,
+    0,
+    0,
+    null,
+    null,
+    null
+  );
+
   public void setCurrentAdminData(UserAdmin data) {
     this.currentAdminData = data;
+  }
+
+  public Boolean sanitizeInput() {
+    ArrayList<String> inputData = new ArrayList<>();
+    inputData.add(customerIcEdit.getText());
+    inputData.add(CarNoPlate.getText());
+    inputData.add(startDateEdit.getText());
+    inputData.add(endDateEdit.getText());
+
+    // check for empty input
+    for (String data : inputData) {
+      if (data.isEmpty()) {
+        JOptionPane.showMessageDialog(
+          this,
+          "Please fill in all the data before submitting",
+          "Error Message",
+          JOptionPane.ERROR_MESSAGE
+        );
+        return false;
+      }
+    }
+
+    // check for valid inputs of car and customer
+    UserCustomer newUserCustomer = new UserCustomer(
+      inputData.get(0),
+      null,
+      null,
+      null,
+      null
+    );
+
+    if (!newUserCustomer.isUserExist()) {
+      JOptionPane.showMessageDialog(
+        this,
+        "User does not exist in record",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      return false;
+    }
+
+    GeneralCar newSelectedCar = new GeneralCar(
+      inputData.get(1),
+      null,
+      null,
+      null,
+      0,
+      0,
+      null
+    );
+
+    if (!newSelectedCar.isCarExist()) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Car does not exist in record",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      return false;
+    }
+
+    // check for valid date
+    Validator v = new Validator();
+    // incorrect format
+    if (!v.isValidDate(inputData.get(2)) || !v.isValidDate(inputData.get(3))) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Invalid date inputted",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+
+      return false;
+    }
+    // incorrect end date
+    if (!v.isValidEndDate(inputData.get(2), inputData.get(3))) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Invalid date inputted",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      return false;
+    }
+
+    return true;
+  }
+
+  private void setTableData() {
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<RecordBooking> allBookings = g.getAllBooking();
+
+    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+    for (RecordBooking book : allBookings) {
+      Object[] eachBooking = {
+        book.getReceiptID(),
+        book.getCar().getCarNoPlate(),
+        book.getCustomer().getIC(),
+        book.getCustomer().getName(),
+        book.getCustomer().getPhNum(),
+        book.getCustomer().getEmail(),
+        df.format(book.getStartDate()),
+        book.getDays(),
+        df.format(book.getReturnDate()),
+        book.getTotalPrice(),
+        "",
+        "",
+      };
+
+      model.addRow(eachBooking);
+    }
+  }
+
+  private void setSpecificTableData(ArrayList<RecordBooking> bookings) {
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+    for (RecordBooking book : bookings) {
+      Object[] eachBooking = {
+        book.getReceiptID(),
+        book.getCar().getCarNoPlate(),
+        book.getCustomer().getIC(),
+        book.getCustomer().getName(),
+        book.getCustomer().getPhNum(),
+        book.getCustomer().getEmail(),
+        df.format(book.getStartDate()),
+        book.getDays(),
+        df.format(book.getReturnDate()),
+        book.getTotalPrice(),
+        "",
+        "",
+      };
+
+      model.addRow(eachBooking);
+    }
+  }
+
+  private void clearTableData() {
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    model.setRowCount(0);
   }
 
   /**
@@ -382,9 +515,7 @@ public class ManageBooking extends javax.swing.JFrame {
 
     customerIcEdit.addActionListener(
       new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-          customerIcEditActionPerformed(evt);
-        }
+        public void actionPerformed(java.awt.event.ActionEvent evt) {}
       }
     );
 
@@ -770,19 +901,127 @@ public class ManageBooking extends javax.swing.JFrame {
     dispose();
   } //GEN-LAST:event_MenuButActionPerformed
 
-  private void searchActionPerformed(java.awt.event.ActionEvent evt) {}
+  private void searchActionPerformed(java.awt.event.ActionEvent evt) {
+    String receiptID = searchReceiptID.getText();
+    String customerIC = searchIC.getText();
+    // if both is empty, return nothing
+    if (receiptID.isEmpty() && customerIC.isEmpty()) return;
+
+    GeneralGetters g = new GeneralGetters();
+    if (receiptID.isEmpty()) {
+      ArrayList<UserCustomer> allUser = g.getAllCustomer();
+      ArrayList<RecordBooking> allRecords = g.getAllBooking();
+      ArrayList<RecordBooking> queryRecords = new ArrayList<>();
+      for (RecordBooking r : allRecords) {
+        for (UserCustomer c : allUser) {
+          if (c.getIC().equals(customerIC)) queryRecords.add(r);
+        }
+      }
+      clearTableData();
+      setSpecificTableData(queryRecords);
+    }
+
+    ArrayList<UserCustomer> allUser = g.getAllCustomer();
+    ArrayList<RecordBooking> allRecords = g.getAllBooking();
+    ArrayList<RecordBooking> queryRecords = new ArrayList<>();
+    for (RecordBooking r : allRecords) {
+      if (r.getReceiptID().equals(receiptID)) queryRecords.add(r);
+    }
+    clearTableData();
+    setSpecificTableData(queryRecords);
+  }
 
   private void BookBtnActionPerformed(java.awt.event.ActionEvent evt) {}
 
-  private void clearButActionPerformed(java.awt.event.ActionEvent evt) {}
+  private void clearButActionPerformed(java.awt.event.ActionEvent evt) {
+    customerIcEdit.setText("");
+    CarNoPlate.setText("");
+    startDateEdit.setText("");
+    endDateEdit.setText("");
+    searchIC.setText("");
+    searchReceiptID.setText("");
 
-  private void viewrecordsActionPerformed(java.awt.event.ActionEvent evt) {}
+    tableSelectedBooking.clearData();
+    clearTableData();
+  }
 
-  private void updateActionPerformed(java.awt.event.ActionEvent evt) {}
+  private void viewrecordsActionPerformed(java.awt.event.ActionEvent evt) {
+    clearTableData();
+    setTableData();
+  }
+
+  private void updateActionPerformed(java.awt.event.ActionEvent evt) {
+    try {
+      if (!sanitizeInput()) return;
+      if (tableSelectedBooking.getReceiptID().isEmpty()) {
+        JOptionPane.showMessageDialog(
+          this,
+          "Please select a record to modify",
+          "Error Message",
+          JOptionPane.ERROR_MESSAGE
+        );
+
+        return;
+      }
+      SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+      Date dateStart = df.parse(startDateEdit.getText());
+      Date dateEnd = df.parse(endDateEdit.getText());
+      long days =
+        (dateEnd.getTime() - dateStart.getTime()) / (1000 * 60 * 60 * 24) % 365;
+
+      GeneralGetters g = new GeneralGetters();
+      RecordBooking newRecord = new RecordBooking(
+        tableSelectedBooking.getReceiptID(),
+        g.getSpecificCustomer(customerIcEdit.getText()),
+        g.getSpecificSingleCar(CarNoPlate.getText()),
+        (int) days + 1,
+        g.getSpecificSingleCar(CarNoPlate.getText()).getPrice() * days,
+        tableSelectedBooking.getBookingDate(),
+        dateStart,
+        dateEnd
+      );
+
+      GeneralMutation m = new GeneralMutation();
+      if (
+        m.editExistingBooking(tableSelectedBooking, newRecord)
+      ) JOptionPane.showMessageDialog(
+        this,
+        "Record modified Successfully",
+        "Information",
+        JOptionPane.INFORMATION_MESSAGE
+      ); else JOptionPane.showMessageDialog(
+        this,
+        "Failed to modify record",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+    } catch (Exception e) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Failed to modify record",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      e.printStackTrace();
+    }
+  }
 
   private void deleteActionPerformed(java.awt.event.ActionEvent evt) {}
 
-  private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {}
+  private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {
+    GeneralGetters g = new GeneralGetters();
+    JTable source = ((JTable) evt.getSource());
+    int rowIndex = (source.getSelectedRow());
+    int columnCount = (source.getModel().getColumnCount());
+
+    ArrayList<Object> fetchedBookingData = new ArrayList<>();
+    for (int i = 0; i < columnCount; i++) {
+      //((source.getModel().getValueAt(rowIndex, i)).getClass());
+      fetchedBookingData.add((source.getModel().getValueAt(rowIndex, i)));
+    }
+    tableSelectedBooking =
+      g.getSpecificBooking(fetchedBookingData.get(0).toString());
+  }
 
   private void CarNoPlateActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_CarNoPlateActionPerformed
     // TODO add your handling code here:

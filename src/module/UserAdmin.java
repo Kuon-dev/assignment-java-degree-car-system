@@ -56,4 +56,13 @@ public class UserAdmin extends GeneralUser {
     // if no results found
     return false;
   }
+
+  public Boolean isUserExist() {
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<UserAdmin> allUsers = g.getAllAdmin();
+    for (UserAdmin a : allUsers) {
+      if (a.getId().equals(this.userID)) return true;
+    }
+    return false;
+  }
 }
