@@ -72,12 +72,12 @@ public class ManageCar extends javax.swing.JFrame {
     Validator v = new Validator();
     ArrayList<String> inputData = new ArrayList<>();
     inputData.add(CarNoPlate.getText()); // plate
-    inputData.add(DayStay.getText()); // brand
-    inputData.add(EndDate.getText()); // model
-    inputData.add(RoomID1.getSelectedItem().toString().toUpperCase()); // status
-    inputData.add(EndDate1.getText()); // year
-    inputData.add(EndDate2.getText()); // price
-    inputData.add(RoomID.getSelectedItem().toString()); // fuel
+    inputData.add(Brand.getText()); // brand
+    inputData.add(Model.getText()); // model
+    inputData.add(Status.getSelectedItem().toString().toUpperCase()); // status
+    inputData.add(Year.getText()); // year
+    inputData.add(Price.getText()); // price
+    inputData.add(FuelType.getSelectedItem().toString()); // fuel
 
     for (int i = 0; i < inputData.size(); i++) {
       if (inputData.get(i).isEmpty()) {
@@ -113,7 +113,7 @@ public class ManageCar extends javax.swing.JFrame {
   private void initComponents() {
     MenuBut = new javax.swing.JButton();
     search = new javax.swing.JButton();
-    BookBtn = new javax.swing.JButton();
+    AddBtn = new javax.swing.JButton();
     clearBut = new javax.swing.JButton();
     WelLab = new javax.swing.JLabel();
     jScrollPane2 = new javax.swing.JScrollPane();
@@ -123,18 +123,18 @@ public class ManageCar extends javax.swing.JFrame {
     Room = new javax.swing.JLabel();
     Day = new javax.swing.JLabel();
     RoomDetailsLab = new javax.swing.JLabel();
-    DayStay = new javax.swing.JTextField();
+    Brand = new javax.swing.JTextField();
     CarNoPlate = new javax.swing.JTextField();
-    RoomID = new javax.swing.JComboBox<>();
+    FuelType = new javax.swing.JComboBox<>();
     BookingLab = new javax.swing.JLabel();
     BookingLab2 = new javax.swing.JLabel();
-    EndDate = new javax.swing.JTextField();
-    EndDate1 = new javax.swing.JTextField();
+    Model = new javax.swing.JTextField();
+    Year = new javax.swing.JTextField();
     Room1 = new javax.swing.JLabel();
-    EndDate2 = new javax.swing.JTextField();
+    Price = new javax.swing.JTextField();
     Room2 = new javax.swing.JLabel();
-    RoomID1 = new javax.swing.JComboBox<>();
-    viewrecords = new javax.swing.JButton();
+    Status = new javax.swing.JComboBox<>();
+    viewcar = new javax.swing.JButton();
     update = new javax.swing.JButton();
     delete = new javax.swing.JButton();
 
@@ -152,7 +152,6 @@ public class ManageCar extends javax.swing.JFrame {
       }
     );
 
-    search.setBackground(new java.awt.Color(255, 255, 255));
     search.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     search.setForeground(new java.awt.Color(0, 102, 255));
     search.setText("Search");
@@ -164,19 +163,17 @@ public class ManageCar extends javax.swing.JFrame {
       }
     );
 
-    BookBtn.setBackground(new java.awt.Color(255, 255, 255));
-    BookBtn.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-    BookBtn.setForeground(new java.awt.Color(0, 102, 255));
-    BookBtn.setText("Add");
-    BookBtn.addActionListener(
+    AddBtn.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    AddBtn.setForeground(new java.awt.Color(0, 102, 255));
+    AddBtn.setText("Add");
+    AddBtn.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          BookBtnActionPerformed(evt);
+          AddBtnActionPerformed(evt);
         }
       }
     );
 
-    clearBut.setBackground(new java.awt.Color(255, 255, 255));
     clearBut.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     clearBut.setForeground(new java.awt.Color(0, 102, 255));
     clearBut.setText("Clear");
@@ -253,10 +250,10 @@ public class ManageCar extends javax.swing.JFrame {
     RoomDetailsLab.setForeground(new java.awt.Color(66, 129, 244));
     RoomDetailsLab.setText("Car Details");
 
-    DayStay.addActionListener(
+    Brand.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          DayStayActionPerformed(evt);
+          BrandActionPerformed(evt);
         }
       }
     );
@@ -269,30 +266,30 @@ public class ManageCar extends javax.swing.JFrame {
       }
     );
 
-    RoomID.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-    RoomID.setModel(
+    FuelType.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+    FuelType.setModel(
       new javax.swing.DefaultComboBoxModel<>(
         new String[] { "Petron", "Diesel" }
       )
     );
-    RoomID.addContainerListener(
+    FuelType.addContainerListener(
       new java.awt.event.ContainerAdapter() {
         public void componentAdded(java.awt.event.ContainerEvent evt) {
-          RoomIDComponentAdded(evt);
+          FuelTypeComponentAdded(evt);
         }
       }
     );
-    RoomID.addItemListener(
+    FuelType.addItemListener(
       new java.awt.event.ItemListener() {
         public void itemStateChanged(java.awt.event.ItemEvent evt) {
-          RoomIDItemStateChanged(evt);
+          FuelTypeItemStateChanged(evt);
         }
       }
     );
-    RoomID.addActionListener(
+    FuelType.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          RoomIDActionPerformed(evt);
+          FuelTypeActionPerformed(evt);
         }
       }
     );
@@ -305,18 +302,18 @@ public class ManageCar extends javax.swing.JFrame {
     BookingLab2.setForeground(new java.awt.Color(140, 174, 238));
     BookingLab2.setText("Model:");
 
-    EndDate.addActionListener(
+    Model.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          EndDateActionPerformed(evt);
+          ModelActionPerformed(evt);
         }
       }
     );
 
-    EndDate1.addActionListener(
+    Year.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          EndDate1ActionPerformed(evt);
+          YearActionPerformed(evt);
         }
       }
     );
@@ -325,10 +322,10 @@ public class ManageCar extends javax.swing.JFrame {
     Room1.setForeground(new java.awt.Color(140, 174, 238));
     Room1.setText("Price:");
 
-    EndDate2.addActionListener(
+    Price.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          EndDate2ActionPerformed(evt);
+          PriceActionPerformed(evt);
         }
       }
     );
@@ -337,30 +334,30 @@ public class ManageCar extends javax.swing.JFrame {
     Room2.setForeground(new java.awt.Color(140, 174, 238));
     Room2.setText("Status:");
 
-    RoomID1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-    RoomID1.setModel(
+    Status.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+    Status.setModel(
       new javax.swing.DefaultComboBoxModel<>(
         new String[] { "Available", "Not Available" }
       )
     );
-    RoomID1.addContainerListener(
+    Status.addContainerListener(
       new java.awt.event.ContainerAdapter() {
         public void componentAdded(java.awt.event.ContainerEvent evt) {
-          RoomID1ComponentAdded(evt);
+          StatusComponentAdded(evt);
         }
       }
     );
-    RoomID1.addItemListener(
+    Status.addItemListener(
       new java.awt.event.ItemListener() {
         public void itemStateChanged(java.awt.event.ItemEvent evt) {
-          RoomID1ItemStateChanged(evt);
+          StatusItemStateChanged(evt);
         }
       }
     );
-    RoomID1.addActionListener(
+    Status.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          RoomID1ActionPerformed(evt);
+          StatusActionPerformed(evt);
         }
       }
     );
@@ -413,25 +410,25 @@ public class ManageCar extends javax.swing.JFrame {
                           javax.swing.GroupLayout.PREFERRED_SIZE
                         )
                         .addComponent(
-                          DayStay,
+                          Brand,
                           javax.swing.GroupLayout.PREFERRED_SIZE,
                           110,
                           javax.swing.GroupLayout.PREFERRED_SIZE
                         )
                         .addComponent(
-                          EndDate,
+                          Model,
                           javax.swing.GroupLayout.PREFERRED_SIZE,
                           110,
                           javax.swing.GroupLayout.PREFERRED_SIZE
                         )
                         .addComponent(
-                          EndDate1,
+                          Year,
                           javax.swing.GroupLayout.PREFERRED_SIZE,
                           110,
                           javax.swing.GroupLayout.PREFERRED_SIZE
                         )
                         .addComponent(
-                          RoomID,
+                          FuelType,
                           javax.swing.GroupLayout.PREFERRED_SIZE,
                           108,
                           javax.swing.GroupLayout.PREFERRED_SIZE
@@ -456,7 +453,7 @@ public class ManageCar extends javax.swing.JFrame {
                               javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
                             )
                             .addComponent(
-                              EndDate2,
+                              Price,
                               javax.swing.GroupLayout.PREFERRED_SIZE,
                               110,
                               javax.swing.GroupLayout.PREFERRED_SIZE
@@ -472,7 +469,7 @@ public class ManageCar extends javax.swing.JFrame {
                               Short.MAX_VALUE
                             )
                             .addComponent(
-                              RoomID1,
+                              Status,
                               javax.swing.GroupLayout.PREFERRED_SIZE,
                               108,
                               javax.swing.GroupLayout.PREFERRED_SIZE
@@ -513,7 +510,7 @@ public class ManageCar extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(
-                  EndDate2,
+                  Price,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   javax.swing.GroupLayout.DEFAULT_SIZE,
                   javax.swing.GroupLayout.PREFERRED_SIZE
@@ -531,14 +528,14 @@ public class ManageCar extends javax.swing.JFrame {
                       javax.swing.GroupLayout.Alignment.BASELINE
                     )
                     .addComponent(
-                      DayStay,
+                      Brand,
                       javax.swing.GroupLayout.PREFERRED_SIZE,
                       20,
                       javax.swing.GroupLayout.PREFERRED_SIZE
                     )
                     .addComponent(Room2)
                     .addComponent(
-                      RoomID1,
+                      Status,
                       javax.swing.GroupLayout.PREFERRED_SIZE,
                       23,
                       javax.swing.GroupLayout.PREFERRED_SIZE
@@ -550,7 +547,7 @@ public class ManageCar extends javax.swing.JFrame {
               RoomDetailsLayout
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(
-                  EndDate,
+                  Model,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   javax.swing.GroupLayout.DEFAULT_SIZE,
                   javax.swing.GroupLayout.PREFERRED_SIZE
@@ -568,7 +565,7 @@ public class ManageCar extends javax.swing.JFrame {
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(RoomTypeLab)
                 .addComponent(
-                  EndDate1,
+                  Year,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   javax.swing.GroupLayout.DEFAULT_SIZE,
                   javax.swing.GroupLayout.PREFERRED_SIZE
@@ -580,7 +577,7 @@ public class ManageCar extends javax.swing.JFrame {
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(Room)
                 .addComponent(
-                  RoomID,
+                  FuelType,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   23,
                   javax.swing.GroupLayout.PREFERRED_SIZE
@@ -593,19 +590,17 @@ public class ManageCar extends javax.swing.JFrame {
         )
     );
 
-    viewrecords.setBackground(new java.awt.Color(255, 255, 255));
-    viewrecords.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-    viewrecords.setForeground(new java.awt.Color(0, 102, 255));
-    viewrecords.setText("View Car");
-    viewrecords.addActionListener(
+    viewcar.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    viewcar.setForeground(new java.awt.Color(0, 102, 255));
+    viewcar.setText("View Car");
+    viewcar.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          viewrecordsActionPerformed(evt);
+          viewcarActionPerformed(evt);
         }
       }
     );
 
-    update.setBackground(new java.awt.Color(255, 255, 255));
     update.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     update.setForeground(new java.awt.Color(0, 102, 255));
     update.setText("Update");
@@ -617,7 +612,6 @@ public class ManageCar extends javax.swing.JFrame {
       }
     );
 
-    delete.setBackground(new java.awt.Color(255, 255, 255));
     delete.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     delete.setForeground(new java.awt.Color(0, 102, 255));
     delete.setText("Delete");
@@ -694,14 +688,14 @@ public class ManageCar extends javax.swing.JFrame {
                           Short.MAX_VALUE
                         )
                         .addComponent(
-                          viewrecords,
+                          viewcar,
                           javax.swing.GroupLayout.Alignment.TRAILING,
                           javax.swing.GroupLayout.DEFAULT_SIZE,
                           javax.swing.GroupLayout.DEFAULT_SIZE,
                           Short.MAX_VALUE
                         )
                         .addComponent(
-                          BookBtn,
+                          AddBtn,
                           javax.swing.GroupLayout.Alignment.TRAILING,
                           javax.swing.GroupLayout.DEFAULT_SIZE,
                           javax.swing.GroupLayout.DEFAULT_SIZE,
@@ -763,11 +757,11 @@ public class ManageCar extends javax.swing.JFrame {
                   layout
                     .createSequentialGroup()
                     .addGap(28, 28, 28)
-                    .addComponent(viewrecords)
+                    .addComponent(viewcar)
                     .addPreferredGap(
                       javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
                     )
-                    .addComponent(BookBtn)
+                    .addComponent(AddBtn)
                     .addPreferredGap(
                       javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
                     )
@@ -847,9 +841,9 @@ public class ManageCar extends javax.swing.JFrame {
     ArrayList<GeneralCar> queryList = (getter.getSpecificCar(carQuery));
 
     updateTableInformation(queryList);
-  } //GEN-FIRST:event_searchActionPerformed //GEN-LAST:event_searchActionPerformed
+  }
 
-  private void BookBtnActionPerformed(java.awt.event.ActionEvent evt) {
+  private void AddBtnActionPerformed(java.awt.event.ActionEvent evt) {
     // add car btn
     // if there is an invalid input, stop the function
     if (!sanitizeInput()) return;
@@ -857,12 +851,12 @@ public class ManageCar extends javax.swing.JFrame {
 
     GeneralCar newCar = new GeneralCar(
       CarNoPlate.getText(), // plate
-      DayStay.getText(), // brand
-      EndDate.getText(), // model
-      RoomID1.getSelectedItem().toString().toUpperCase(), // status
-      Integer.parseInt(EndDate1.getText()), // year
-      Double.parseDouble(EndDate2.getText()), // price
-      RoomID.getSelectedItem().toString() // fuel
+      Brand.getText(), // brand
+      Model.getText(), // model
+      Status.getSelectedItem().toString().toUpperCase(), // status
+      Integer.parseInt(Year.getText()), // year
+      Double.parseDouble(Price.getText()), // price
+      FuelType.getSelectedItem().toString() // fuel
     );
     if (m.addNewCar(newCar)) JOptionPane.showMessageDialog(
       this,
@@ -883,7 +877,7 @@ public class ManageCar extends javax.swing.JFrame {
     model.setRowCount(0);
 
     tableSelectedCar.clearData();
-  } //GEN-FIRST:event_clearButActionPerformed //GEN-LAST:event_clearButActionPerformed
+  }
 
   private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {
     // select car based on table GUI
@@ -911,29 +905,13 @@ public class ManageCar extends javax.swing.JFrame {
     //source.getModel().getValueAt(rowIndex);
   }
 
-  private void DayStayActionPerformed(java.awt.event.ActionEvent evt) {
-    System.out.println("day stay btn clicked");
-  } //GEN-FIRST:event_DayStayActionPerformed //GEN-LAST:event_DayStayActionPerformed
-
   private void CarNoPlateActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_CarNoPlateActionPerformed
     // TODO add your handling code here:
-    //
-    System.out.println("car plate btn clicked");
   } //GEN-LAST:event_CarNoPlateActionPerformed
 
-  private void RoomIDComponentAdded(java.awt.event.ContainerEvent evt) {} //GEN-FIRST:event_RoomIDComponentAdded //GEN-LAST:event_RoomIDComponentAdded
+  private void ModelActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_ModelActionPerformed //GEN-LAST:event_ModelActionPerformed
 
-  private void RoomIDItemStateChanged(java.awt.event.ItemEvent evt) {} //GEN-FIRST:event_RoomIDItemStateChanged //GEN-LAST:event_RoomIDItemStateChanged
-
-  private void RoomIDActionPerformed(java.awt.event.ActionEvent evt) {
-    System.out.println("room id clicked");
-  } //GEN-FIRST:event_RoomIDActionPerformed //GEN-LAST:event_RoomIDActionPerformed
-
-  private void EndDateActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_EndDateActionPerformed
-    System.out.println("end date clicked");
-  } //GEN-LAST:event_EndDateActionPerformed
-
-  private void viewrecordsActionPerformed(java.awt.event.ActionEvent evt) {
+  private void viewcarActionPerformed(java.awt.event.ActionEvent evt) {
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
     model.setRowCount(0);
 
@@ -953,7 +931,7 @@ public class ManageCar extends javax.swing.JFrame {
 
       model.addRow(eachCar);
     }
-  } //GEN-FIRST:event_viewrecordsActionPerformed //GEN-LAST:event_viewrecordsActionPerformed
+  }
 
   private void updateActionPerformed(java.awt.event.ActionEvent evt) {
     if (!sanitizeInput()) return;
@@ -968,12 +946,12 @@ public class ManageCar extends javax.swing.JFrame {
     GeneralMutation m = new GeneralMutation();
     GeneralCar newCar = new GeneralCar(
       CarNoPlate.getText(), // plate
-      DayStay.getText(), // brand
-      EndDate.getText(), // model
-      RoomID1.getSelectedItem().toString().toUpperCase(), // status
-      Integer.parseInt(EndDate1.getText()), // year
-      Double.parseDouble(EndDate2.getText()), // price
-      RoomID.getSelectedItem().toString() // fuel
+      Brand.getText(), // brand
+      Model.getText(), // model
+      Status.getSelectedItem().toString().toUpperCase(), // status
+      Integer.parseInt(Year.getText()), // year
+      Double.parseDouble(Price.getText()), // price
+      FuelType.getSelectedItem().toString() // fuel
     );
 
     if (
@@ -1013,32 +991,27 @@ public class ManageCar extends javax.swing.JFrame {
       "Error Message",
       JOptionPane.ERROR_MESSAGE
     );
-  } //GEN-FIRST:event_deleteActionPerformed //GEN-LAST:event_deleteActionPerformed
+  }
 
-  private void EndDate1ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_EndDate1ActionPerformed
+  private void YearActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_YearActionPerformed
     // TODO add your handling code here:
-    System.out.println("end date 1 btn click");
-  } //GEN-LAST:event_EndDate1ActionPerformed
+  } //GEN-LAST:event_YearActionPerformed
 
-  private void EndDate2ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_EndDate2ActionPerformed
+  private void PriceActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_PriceActionPerformed
     // TODO add your handling code here:
-    //
-    System.out.println("end date 2 btn click");
-  } //GEN-LAST:event_EndDate2ActionPerformed
+  } //GEN-LAST:event_PriceActionPerformed
 
-  private void RoomID1ComponentAdded(java.awt.event.ContainerEvent evt) { //GEN-FIRST:event_RoomID1ComponentAdded
+  private void StatusComponentAdded(java.awt.event.ContainerEvent evt) { //GEN-FIRST:event_StatusComponentAdded
     // TODO add your handling code here:
-  } //GEN-LAST:event_RoomID1ComponentAdded
+  } //GEN-LAST:event_StatusComponentAdded
 
-  private void RoomID1ItemStateChanged(java.awt.event.ItemEvent evt) { //GEN-FIRST:event_RoomID1ItemStateChanged
+  private void StatusItemStateChanged(java.awt.event.ItemEvent evt) { //GEN-FIRST:event_StatusItemStateChanged
     // TODO add your handling code here:
-  } //GEN-LAST:event_RoomID1ItemStateChanged
+  } //GEN-LAST:event_StatusItemStateChanged
 
-  private void RoomID1ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_RoomID1ActionPerformed
+  private void StatusActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_StatusActionPerformed
     // TODO add your handling code here:
-    //
-    System.out.println("room id 1 btn click");
-  } //GEN-LAST:event_RoomID1ActionPerformed
+  } //GEN-LAST:event_StatusActionPerformed
 
   /**
    * @param args the command line arguments
@@ -1086,31 +1059,31 @@ public class ManageCar extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JButton BookBtn;
+  private javax.swing.JButton AddBtn;
   private javax.swing.JLabel BookingLab;
   private javax.swing.JLabel BookingLab2;
+  private javax.swing.JTextField Brand;
   private javax.swing.JTextField CarNoPlate;
   private javax.swing.JLabel Day;
-  private javax.swing.JTextField DayStay;
-  private javax.swing.JTextField EndDate;
-  private javax.swing.JTextField EndDate1;
-  private javax.swing.JTextField EndDate2;
+  private javax.swing.JComboBox<String> FuelType;
   private javax.swing.JButton MenuBut;
+  private javax.swing.JTextField Model;
+  private javax.swing.JTextField Price;
   private javax.swing.JLabel Room;
   private javax.swing.JLabel Room1;
   private javax.swing.JLabel Room2;
   private javax.swing.JPanel RoomDetails;
   private javax.swing.JLabel RoomDetailsLab;
-  private javax.swing.JComboBox<String> RoomID;
-  private javax.swing.JComboBox<String> RoomID1;
   private javax.swing.JLabel RoomTypeLab;
+  private javax.swing.JComboBox<String> Status;
   private javax.swing.JLabel WelLab;
+  private javax.swing.JTextField Year;
   private javax.swing.JButton clearBut;
   private javax.swing.JButton delete;
   private javax.swing.JScrollPane jScrollPane2;
   private javax.swing.JTable jTable1;
   private javax.swing.JButton search;
   private javax.swing.JButton update;
-  private javax.swing.JButton viewrecords;
+  private javax.swing.JButton viewcar;
   // End of variables declaration//GEN-END:variables
 }

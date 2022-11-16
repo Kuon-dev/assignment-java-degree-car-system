@@ -273,25 +273,30 @@ public class MemberLogin extends javax.swing.JFrame {
   } //GEN-LAST:event_ExitBtn2ActionPerformed
 
   private void LoginBtn2ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_LoginBtn2ActionPerformed
-    String CustID, Password, admin;
+    String CustID, Password;
 
     //Retrieve data input
-    CustID = StaffIDTxt.getText();
+    CustID = CustIDTxt.getText();
     Password = PswTxt.getText();
 
     //Set data stored in variables
-    String staffid = "Admin";
-    String pass = "Admin123";
+    UserCustomer customerUser = new UserCustomer(null, null, null, null, null);
+    Validator valid = new Validator();
+    GeneralMutation m = new GeneralMutation();
 
-    //Check if the data input correct
-    if (CustID.equals(staffid) && Password.equals(pass)) {
-      //If data correct then go to main menu
-      AdminMenu menu = new AdminMenu();
+    Boolean loginCheck = customerUser.login(CustID, Password);
+    if (loginCheck) {
+      MemberMenu menu = new MemberMenu();
+      GeneralGetters g = new GeneralGetters();
+      // fetch current user data
+      // pass data to admin menu
+      menu.setCurrentCustomerData(g.getSpecificCustomer(CustID));
+      m.logLoginActivity(g.getSpecificCustomer(CustID));
       menu.setVisible(true);
       dispose();
     }
     //Check if data input is empty
-    else if (CustID.equals("") || Password.equals("")) {
+    else if (CustID.isEmpty() || Password.isEmpty()) {
       //If data input is empty then display login failed
       JOptionPane.showMessageDialog(
         this,
@@ -299,22 +304,14 @@ public class MemberLogin extends javax.swing.JFrame {
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
-
-      //Clear the JTextField
-      this.CustIDTxt.setText("");
-      this.PswTxt.setText("");
-    }
-    //Check if data not found
-    else {
+    } else {
       //Display incorrect data input message
       JOptionPane.showMessageDialog(
         this,
-        "Login Failed! \nIncorrect Staff ID or Password.",
+        "Login Failed! \nIncorrect IC or Password.",
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
-
-      //Clear the JTextField
       this.CustIDTxt.setText("");
       this.PswTxt.setText("");
     }

@@ -4,17 +4,31 @@
  */
 package carrentalsystem;
 
+import java.util.*;
+
 /**
  *
  * @author Lim Li Ping
  */
 public class MemberMenu extends javax.swing.JFrame {
 
+  private UserCustomer customerData = new UserCustomer(
+    null,
+    null,
+    null,
+    null,
+    null
+  );
+
   /**
    * Creates new form MemberMenu
    */
   public MemberMenu() {
     initComponents();
+  }
+
+  public void setCurrentCustomerData(UserCustomer data) {
+    this.customerData = data;
   }
 
   /**
@@ -26,10 +40,10 @@ public class MemberMenu extends javax.swing.JFrame {
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
     AdminLoginLab = new javax.swing.JLabel();
-    ManageCarBtn = new javax.swing.JButton();
-    LoginBtn4 = new javax.swing.JButton();
-    LoginBtn5 = new javax.swing.JButton();
-    ExitBtn1 = new javax.swing.JButton();
+    BookCarBtn = new javax.swing.JButton();
+    ManageInfoBtn = new javax.swing.JButton();
+    ViewBookingBtn = new javax.swing.JButton();
+    ExitBtn = new javax.swing.JButton();
     Title = new javax.swing.JLabel();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -38,46 +52,46 @@ public class MemberMenu extends javax.swing.JFrame {
     AdminLoginLab.setForeground(new java.awt.Color(0, 51, 204));
     AdminLoginLab.setText("Member Menu");
 
-    ManageCarBtn.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
-    ManageCarBtn.setForeground(new java.awt.Color(0, 102, 204));
-    ManageCarBtn.setText("Book Car");
-    ManageCarBtn.addActionListener(
+    BookCarBtn.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
+    BookCarBtn.setForeground(new java.awt.Color(0, 102, 204));
+    BookCarBtn.setText("Book Car");
+    BookCarBtn.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          ManageCarBtnActionPerformed(evt);
+          BookCarBtnActionPerformed(evt);
         }
       }
     );
 
-    LoginBtn4.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
-    LoginBtn4.setForeground(new java.awt.Color(0, 102, 204));
-    LoginBtn4.setText("Manage Personal Information");
-    LoginBtn4.addActionListener(
+    ManageInfoBtn.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
+    ManageInfoBtn.setForeground(new java.awt.Color(0, 102, 204));
+    ManageInfoBtn.setText("Manage Personal Information");
+    ManageInfoBtn.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          LoginBtn4ActionPerformed(evt);
+          ManageInfoBtnActionPerformed(evt);
         }
       }
     );
 
-    LoginBtn5.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
-    LoginBtn5.setForeground(new java.awt.Color(0, 102, 204));
-    LoginBtn5.setText("View Booking History");
-    LoginBtn5.addActionListener(
+    ViewBookingBtn.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
+    ViewBookingBtn.setForeground(new java.awt.Color(0, 102, 204));
+    ViewBookingBtn.setText("View Booking History");
+    ViewBookingBtn.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          LoginBtn5ActionPerformed(evt);
+          ViewBookingBtnActionPerformed(evt);
         }
       }
     );
 
-    ExitBtn1.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
-    ExitBtn1.setForeground(new java.awt.Color(0, 102, 204));
-    ExitBtn1.setText("Exit");
-    ExitBtn1.addActionListener(
+    ExitBtn.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
+    ExitBtn.setForeground(new java.awt.Color(0, 102, 204));
+    ExitBtn.setText("Exit");
+    ExitBtn.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          ExitBtn1ActionPerformed(evt);
+          ExitBtnActionPerformed(evt);
         }
       }
     );
@@ -104,7 +118,7 @@ public class MemberMenu extends javax.swing.JFrame {
                     .createSequentialGroup()
                     .addContainerGap()
                     .addComponent(
-                      ExitBtn1,
+                      ExitBtn,
                       javax.swing.GroupLayout.PREFERRED_SIZE,
                       73,
                       javax.swing.GroupLayout.PREFERRED_SIZE
@@ -118,20 +132,20 @@ public class MemberMenu extends javax.swing.JFrame {
                   layout
                     .createSequentialGroup()
                     .addGap(206, 206, 206)
-                    .addComponent(ManageCarBtn)
+                    .addComponent(BookCarBtn)
                 )
                 .addGroup(
                   layout
                     .createSequentialGroup()
                     .addGap(155, 155, 155)
-                    .addComponent(LoginBtn5)
+                    .addComponent(ViewBookingBtn)
                 )
                 .addGroup(
                   layout
                     .createSequentialGroup()
                     .addGap(130, 130, 130)
                     .addComponent(
-                      LoginBtn4,
+                      ManageInfoBtn,
                       javax.swing.GroupLayout.PREFERRED_SIZE,
                       275,
                       javax.swing.GroupLayout.PREFERRED_SIZE
@@ -159,7 +173,7 @@ public class MemberMenu extends javax.swing.JFrame {
             .addGroup(
               layout
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(ExitBtn1)
+                .addComponent(ExitBtn)
                 .addComponent(Title)
             )
             .addGap(1, 1, 1)
@@ -167,11 +181,11 @@ public class MemberMenu extends javax.swing.JFrame {
             .addPreferredGap(
               javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
             )
-            .addComponent(ManageCarBtn)
+            .addComponent(BookCarBtn)
             .addGap(18, 18, 18)
-            .addComponent(LoginBtn5)
+            .addComponent(ViewBookingBtn)
             .addGap(18, 18, 18)
-            .addComponent(LoginBtn4)
+            .addComponent(ManageInfoBtn)
             .addContainerGap(21, Short.MAX_VALUE)
         )
     );
@@ -179,23 +193,33 @@ public class MemberMenu extends javax.swing.JFrame {
     pack();
   } // </editor-fold>//GEN-END:initComponents
 
-  private void ManageCarBtnActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ManageCarBtnActionPerformed
-    // TODO add your handling code here:
-  } //GEN-LAST:event_ManageCarBtnActionPerformed
+  private void BookCarBtnActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_BookCarBtnActionPerformed
+    BookCar bookCarMenu = new BookCar();
+    bookCarMenu.setCurrentCustomerData(customerData);
+    bookCarMenu.setVisible(true);
+    dispose();
+  } //GEN-LAST:event_BookCarBtnActionPerformed
 
-  private void LoginBtn4ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_LoginBtn4ActionPerformed
-    // TODO add your handling code here:
-  } //GEN-LAST:event_LoginBtn4ActionPerformed
+  private void ManageInfoBtnActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ManageInfoBtnActionPerformed
+    ManageAccountMember memberAcc = new ManageAccountMember();
+    memberAcc.setCurrentCustomerData(customerData);
+    memberAcc.setTextfieldData();
+    memberAcc.setVisible(true);
+    dispose();
+  } //GEN-LAST:event_ManageInfoBtnActionPerformed
 
-  private void LoginBtn5ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_LoginBtn5ActionPerformed
-    // TODO add your handling code here:
-  } //GEN-LAST:event_LoginBtn5ActionPerformed
+  private void ViewBookingBtnActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ViewBookingBtnActionPerformed
+    BookingHistory booking = new BookingHistory();
+    booking.setCurrentCustomerData(customerData);
+    booking.setVisible(true);
+    dispose();
+  } //GEN-LAST:event_ViewBookingBtnActionPerformed
 
-  private void ExitBtn1ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ExitBtn1ActionPerformed
+  private void ExitBtnActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ExitBtnActionPerformed
     //Call the exit system function
     exitSystem exit = new exitSystem();
-    exit.exitsystem();
-  } //GEN-LAST:event_ExitBtn1ActionPerformed
+    exit.exitsystem(customerData);
+  } //GEN-LAST:event_ExitBtnActionPerformed
 
   /**
    * @param args the command line arguments
@@ -244,10 +268,15 @@ public class MemberMenu extends javax.swing.JFrame {
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JLabel AdminLoginLab;
-  private javax.swing.JButton ExitBtn1;
-  private javax.swing.JButton LoginBtn4;
-  private javax.swing.JButton LoginBtn5;
-  private javax.swing.JButton ManageCarBtn;
+  private javax.swing.JButton BookCarBtn;
+  private javax.swing.JButton ExitBtn;
+  private javax.swing.JButton ManageInfoBtn;
   private javax.swing.JLabel Title;
+  private javax.swing.JButton ViewBookingBtn;
+
   // End of variables declaration//GEN-END:variables
+
+  void setCurrentCustomerData(UserCustomer currentCustomerData) {
+    throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+  }
 }

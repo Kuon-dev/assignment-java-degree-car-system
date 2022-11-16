@@ -27,21 +27,21 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="ExitBtn1" min="-2" pref="73" max="-2" attributes="0"/>
+                      <Component id="ExitBtn" min="-2" pref="73" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="Title" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="206" max="-2" attributes="0"/>
-                      <Component id="ManageCarBtn" min="-2" max="-2" attributes="0"/>
+                      <Component id="BookCarBtn" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
-                      <Component id="LoginBtn5" min="-2" max="-2" attributes="0"/>
+                      <Component id="ViewBookingBtn" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
-                      <Component id="LoginBtn4" min="-2" pref="275" max="-2" attributes="0"/>
+                      <Component id="ManageInfoBtn" min="-2" pref="275" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="48" max="32767" attributes="0"/>
@@ -58,17 +58,17 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="ExitBtn1" min="-2" max="-2" attributes="0"/>
+                  <Component id="ExitBtn" min="-2" max="-2" attributes="0"/>
                   <Component id="Title" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
               <Component id="AdminLoginLab" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="ManageCarBtn" min="-2" max="-2" attributes="0"/>
+              <Component id="BookCarBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="LoginBtn5" min="-2" max="-2" attributes="0"/>
+              <Component id="ViewBookingBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="LoginBtn4" min="-2" max="-2" attributes="0"/>
+              <Component id="ManageInfoBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="21" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -86,7 +86,7 @@
         <Property name="text" type="java.lang.String" value="Member Menu"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="ManageCarBtn">
+    <Component class="javax.swing.JButton" name="BookCarBtn">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Snap ITC" size="14" style="0"/>
@@ -97,10 +97,10 @@
         <Property name="text" type="java.lang.String" value="Book Car"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ManageCarBtnActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BookCarBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="LoginBtn4">
+    <Component class="javax.swing.JButton" name="ManageInfoBtn">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Snap ITC" size="14" style="0"/>
@@ -111,10 +111,10 @@
         <Property name="text" type="java.lang.String" value="Manage Personal Information"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LoginBtn4ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ManageInfoBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="LoginBtn5">
+    <Component class="javax.swing.JButton" name="ViewBookingBtn">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Snap ITC" size="14" style="0"/>
@@ -125,10 +125,10 @@
         <Property name="text" type="java.lang.String" value="View Booking History"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LoginBtn5ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ViewBookingBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="ExitBtn1">
+    <Component class="javax.swing.JButton" name="ExitBtn">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Snap ITC" size="14" style="0"/>
@@ -139,7 +139,7 @@
         <Property name="text" type="java.lang.String" value="Exit"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExitBtn1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExitBtnActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="Title">

@@ -258,7 +258,7 @@ public class AdminLogin extends javax.swing.JFrame {
   } //GEN-LAST:event_ExitBtn1ActionPerformed
 
   private void LoginBtn1ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_LoginBtn1ActionPerformed
-    String adminName, adminPassword, admin;
+    String adminName, adminPassword;
 
     //Retrieve data input
     adminName = AdminIDTxt.getText();
@@ -275,8 +275,8 @@ public class AdminLogin extends javax.swing.JFrame {
       GeneralGetters g = new GeneralGetters();
       // fetch current user data
       // pass data to admin menu
-      menu.setCurrentAdminData(g.getSpecificAdmin("0")); // needs to change
-      m.logLoginActivity(g.getSpecificAdmin("0"));
+      menu.setCurrentAdminData(g.getSpecificAdmin(adminName));
+      m.logLoginActivity(g.getSpecificAdmin(adminName));
       menu.setVisible(true);
       dispose();
     }
@@ -297,10 +297,10 @@ public class AdminLogin extends javax.swing.JFrame {
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
+      //Clear the JTextField
       this.AdminIDTxt.setText("");
       this.PswTxt.setText("");
     }
-    //Clear the JTextField
   } //GEN-LAST:event_LoginBtn1ActionPerformed
 
   /**

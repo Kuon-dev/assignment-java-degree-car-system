@@ -39,7 +39,7 @@
               <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
               <Component id="ExitBtn1" min="-2" pref="73" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="ExitBtn2" min="-2" max="-2" attributes="0"/>
+              <Component id="BookCarBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -54,7 +54,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="ExitBtn1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ExitBtn2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="BookCarBtn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="17" max="32767" attributes="0"/>
           </Group>
@@ -114,7 +114,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExitBtn1ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="ExitBtn2">
+    <Component class="javax.swing.JButton" name="BookCarBtn">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Snap ITC" size="14" style="0"/>
@@ -125,7 +125,7 @@
         <Property name="text" type="java.lang.String" value="Book Car"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExitBtn2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BookCarBtnActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

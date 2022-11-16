@@ -25,26 +25,24 @@ public class RegisterMember extends javax.swing.JFrame {
   @SuppressWarnings("unchecked")
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
-    PswTxt2 = new javax.swing.JPasswordField();
     jLabel1 = new javax.swing.JLabel();
     jLabel2 = new javax.swing.JLabel();
     CustIDLab1 = new javax.swing.JLabel();
     PswLab2 = new javax.swing.JLabel();
-    CustIDTxt = new javax.swing.JTextField();
+    IC = new javax.swing.JTextField();
     ExitBtn2 = new javax.swing.JButton();
     LoginBtn2 = new javax.swing.JButton();
     PswLab3 = new javax.swing.JLabel();
-    PswTxt3 = new javax.swing.JPasswordField();
     CustIDLab2 = new javax.swing.JLabel();
     CustIDLab3 = new javax.swing.JLabel();
     CustIDLab4 = new javax.swing.JLabel();
-    PswTxt4 = new javax.swing.JPasswordField();
-    PswTxt5 = new javax.swing.JPasswordField();
-    PswTxt6 = new javax.swing.JPasswordField();
+    ComfPass = new javax.swing.JPasswordField();
+    Password = new javax.swing.JPasswordField();
+    Email = new javax.swing.JTextField();
+    Name = new javax.swing.JTextField();
+    PhNum = new javax.swing.JTextField();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-    PswTxt2.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
 
     jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
     jLabel1.setForeground(new java.awt.Color(0, 51, 204));
@@ -62,11 +60,11 @@ public class RegisterMember extends javax.swing.JFrame {
     PswLab2.setForeground(new java.awt.Color(140, 174, 238));
     PswLab2.setText("Password:");
 
-    CustIDTxt.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-    CustIDTxt.addActionListener(
+    IC.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    IC.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          CustIDTxtActionPerformed(evt);
+          ICActionPerformed(evt);
         }
       }
     );
@@ -97,8 +95,6 @@ public class RegisterMember extends javax.swing.JFrame {
     PswLab3.setForeground(new java.awt.Color(140, 174, 238));
     PswLab3.setText("Confirm Password:");
 
-    PswTxt3.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-
     CustIDLab2.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     CustIDLab2.setForeground(new java.awt.Color(140, 174, 238));
     CustIDLab2.setText("Email:");
@@ -111,11 +107,36 @@ public class RegisterMember extends javax.swing.JFrame {
     CustIDLab4.setForeground(new java.awt.Color(140, 174, 238));
     CustIDLab4.setText("Name:");
 
-    PswTxt4.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    ComfPass.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
 
-    PswTxt5.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    Password.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
 
-    PswTxt6.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    Email.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    Email.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          EmailActionPerformed(evt);
+        }
+      }
+    );
+
+    Name.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    Name.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          NameActionPerformed(evt);
+        }
+      }
+    );
+
+    PhNum.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    PhNum.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          PhNumActionPerformed(evt);
+        }
+      }
+    );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(
       getContentPane()
@@ -193,37 +214,37 @@ public class RegisterMember extends javax.swing.JFrame {
                           javax.swing.GroupLayout.Alignment.LEADING
                         )
                         .addComponent(
-                          PswTxt2,
+                          IC,
                           javax.swing.GroupLayout.PREFERRED_SIZE,
                           192,
                           javax.swing.GroupLayout.PREFERRED_SIZE
                         )
                         .addComponent(
-                          CustIDTxt,
+                          Password,
                           javax.swing.GroupLayout.PREFERRED_SIZE,
                           192,
                           javax.swing.GroupLayout.PREFERRED_SIZE
                         )
                         .addComponent(
-                          PswTxt3,
+                          ComfPass,
                           javax.swing.GroupLayout.PREFERRED_SIZE,
                           192,
                           javax.swing.GroupLayout.PREFERRED_SIZE
                         )
                         .addComponent(
-                          PswTxt5,
+                          Email,
                           javax.swing.GroupLayout.PREFERRED_SIZE,
                           192,
                           javax.swing.GroupLayout.PREFERRED_SIZE
                         )
                         .addComponent(
-                          PswTxt6,
+                          Name,
                           javax.swing.GroupLayout.PREFERRED_SIZE,
                           192,
                           javax.swing.GroupLayout.PREFERRED_SIZE
                         )
                         .addComponent(
-                          PswTxt4,
+                          PhNum,
                           javax.swing.GroupLayout.PREFERRED_SIZE,
                           192,
                           javax.swing.GroupLayout.PREFERRED_SIZE
@@ -255,7 +276,7 @@ public class RegisterMember extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(
-                  CustIDTxt,
+                  IC,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   39,
                   javax.swing.GroupLayout.PREFERRED_SIZE
@@ -274,9 +295,9 @@ public class RegisterMember extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(
-                  PswTxt2,
+                  Name,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
-                  42,
+                  39,
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
             )
@@ -293,9 +314,9 @@ public class RegisterMember extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(
-                  PswTxt3,
+                  Email,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
-                  42,
+                  39,
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
             )
@@ -312,9 +333,9 @@ public class RegisterMember extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(
-                  PswTxt5,
+                  PhNum,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
-                  42,
+                  39,
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
             )
@@ -331,7 +352,7 @@ public class RegisterMember extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(
-                  PswTxt6,
+                  Password,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   42,
                   javax.swing.GroupLayout.PREFERRED_SIZE
@@ -350,7 +371,7 @@ public class RegisterMember extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(
-                  PswTxt4,
+                  ComfPass,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   42,
                   javax.swing.GroupLayout.PREFERRED_SIZE
@@ -358,7 +379,7 @@ public class RegisterMember extends javax.swing.JFrame {
             )
             .addPreferredGap(
               javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-              28,
+              37,
               Short.MAX_VALUE
             )
             .addGroup(
@@ -374,9 +395,9 @@ public class RegisterMember extends javax.swing.JFrame {
     pack();
   } // </editor-fold>//GEN-END:initComponents
 
-  private void CustIDTxtActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_CustIDTxtActionPerformed
+  private void ICActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ICActionPerformed
     // TODO add your handling code here:
-  } //GEN-LAST:event_CustIDTxtActionPerformed
+  } //GEN-LAST:event_ICActionPerformed
 
   private void ExitBtn2ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ExitBtn2ActionPerformed
     //Call the exit system function
@@ -384,7 +405,19 @@ public class RegisterMember extends javax.swing.JFrame {
     exit.exitsystem();
   } //GEN-LAST:event_ExitBtn2ActionPerformed
 
-  private void LoginBtn2ActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_LoginBtn2ActionPerformed //GEN-LAST:event_LoginBtn2ActionPerformed
+  private void EmailActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_EmailActionPerformed
+    // TODO add your handling code here:
+  } //GEN-LAST:event_EmailActionPerformed
+
+  private void NameActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_NameActionPerformed
+    // TODO add your handling code here:
+  } //GEN-LAST:event_NameActionPerformed
+
+  private void PhNumActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_PhNumActionPerformed
+    // TODO add your handling code here:
+  } //GEN-LAST:event_PhNumActionPerformed
+
+  private void LoginBtn2ActionPerformed(java.awt.event.ActionEvent evt) {}
 
   /**
    * @param args the command line arguments
@@ -432,20 +465,20 @@ public class RegisterMember extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
+  private javax.swing.JPasswordField ComfPass;
   private javax.swing.JLabel CustIDLab1;
   private javax.swing.JLabel CustIDLab2;
   private javax.swing.JLabel CustIDLab3;
   private javax.swing.JLabel CustIDLab4;
-  private javax.swing.JTextField CustIDTxt;
+  private javax.swing.JTextField Email;
   private javax.swing.JButton ExitBtn2;
+  private javax.swing.JTextField IC;
   private javax.swing.JButton LoginBtn2;
+  private javax.swing.JTextField Name;
+  private javax.swing.JPasswordField Password;
+  private javax.swing.JTextField PhNum;
   private javax.swing.JLabel PswLab2;
   private javax.swing.JLabel PswLab3;
-  private javax.swing.JPasswordField PswTxt2;
-  private javax.swing.JPasswordField PswTxt3;
-  private javax.swing.JPasswordField PswTxt4;
-  private javax.swing.JPasswordField PswTxt5;
-  private javax.swing.JPasswordField PswTxt6;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel2;
   // End of variables declaration//GEN-END:variables
