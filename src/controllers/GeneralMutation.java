@@ -1,5 +1,6 @@
 package carrentalsystem;
 
+import carrentalsystem.UserCustomer;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -116,7 +117,7 @@ public class GeneralMutation {
   // ---------------------------------------------
   public Boolean addNewCustomer(UserCustomer customer) {
     ArrayList<String> userData = new ArrayList<>();
-    userData.add(customer.getId());
+    userData.add(customer.getIC());
     userData.add(customer.getName());
     userData.add(customer.getPassword());
     userData.add(customer.getEmail());
@@ -131,7 +132,7 @@ public class GeneralMutation {
     UserCustomer newCustomer
   ) {
     ArrayList<String> userData = new ArrayList<>();
-    userData.add(newCustomer.getId());
+    userData.add(newCustomer.getIC());
     userData.add(newCustomer.getName());
     userData.add(newCustomer.getPassword());
     userData.add(newCustomer.getEmail());
@@ -139,7 +140,7 @@ public class GeneralMutation {
 
     ArrayList<UserCustomer> cust = g.getAllCustomer();
     for (int i = 0; i < cust.size(); i++) {
-      if (cust.get(i).getId().equalsIgnoreCase(oldCustomer.getId())) {
+      if (cust.get(i).getIC().equalsIgnoreCase(oldCustomer.getIC())) {
         f.modifyFile(userData, customerDatabse, Integer.toString(i));
         return true;
       }
@@ -151,7 +152,7 @@ public class GeneralMutation {
     ArrayList<UserCustomer> customers = g.getAllCustomer();
 
     for (int i = 0; i < customers.size(); i++) {
-      if (customers.get(i).getId().equalsIgnoreCase(customer.getId())) {
+      if (customers.get(i).getIC().equalsIgnoreCase(customer.getIC())) {
         f.deleteFile(adminDatabase, Integer.toString(i));
         return true;
       }
