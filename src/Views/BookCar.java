@@ -301,9 +301,7 @@ public class BookCar extends javax.swing.JFrame {
     search.setText("Search");
     search.addActionListener(
       new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-          searchActionPerformed(evt);
-        }
+        public void actionPerformed(java.awt.event.ActionEvent evt) {}
       }
     );
 
@@ -312,9 +310,7 @@ public class BookCar extends javax.swing.JFrame {
     BookBtn.setText("Book Car");
     BookBtn.addActionListener(
       new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-          BookBtnActionPerformed(evt);
-        }
+        public void actionPerformed(java.awt.event.ActionEvent evt) {}
       }
     );
 
@@ -323,9 +319,7 @@ public class BookCar extends javax.swing.JFrame {
     clearBut.setText("Clear");
     clearBut.addActionListener(
       new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-          clearButActionPerformed(evt);
-        }
+        public void actionPerformed(java.awt.event.ActionEvent evt) {}
       }
     );
 
@@ -390,9 +384,7 @@ public class BookCar extends javax.swing.JFrame {
 
     Brand.addActionListener(
       new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-          BrandActionPerformed(evt);
-        }
+        public void actionPerformed(java.awt.event.ActionEvent evt) {}
       }
     );
 
@@ -412,23 +404,17 @@ public class BookCar extends javax.swing.JFrame {
     );
     FuelType.addContainerListener(
       new java.awt.event.ContainerAdapter() {
-        public void componentAdded(java.awt.event.ContainerEvent evt) {
-          FuelTypeComponentAdded(evt);
-        }
+        public void componentAdded(java.awt.event.ContainerEvent evt) {}
       }
     );
     FuelType.addItemListener(
       new java.awt.event.ItemListener() {
-        public void itemStateChanged(java.awt.event.ItemEvent evt) {
-          FuelTypeItemStateChanged(evt);
-        }
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {}
       }
     );
     FuelType.addActionListener(
       new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-          FuelTypeActionPerformed(evt);
-        }
+        public void actionPerformed(java.awt.event.ActionEvent evt) {}
       }
     );
 
@@ -1034,10 +1020,6 @@ public class BookCar extends javax.swing.JFrame {
   private javax.swing.JScrollPane jScrollPane1;
   private javax.swing.JTable jTable1;
   private javax.swing.JButton search;
-
   // End of variables declaration//GEN-END:variables
 
-  void setCurrentCustomerData(UserCustomer customerData) {
-    throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-  }
 }
