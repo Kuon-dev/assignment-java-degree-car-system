@@ -220,6 +220,7 @@ public class GeneralMutation {
     Data.add(df.format(booking.getBookingDate()));
     Data.add(df.format(booking.getStartDate()));
     Data.add(df.format(booking.getReturnDate()));
+    Data.add(booking.getStatus());
 
     return f.addFile(Data, bookingDatabase);
   }
