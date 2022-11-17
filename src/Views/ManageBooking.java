@@ -180,7 +180,7 @@ public class ManageBooking extends javax.swing.JFrame {
         book.getDays(),
         df.format(book.getReturnDate()),
         book.getTotalPrice(),
-        "",
+        book.getStatus(),
         "",
       };
 
@@ -557,7 +557,7 @@ public class ManageBooking extends javax.swing.JFrame {
 
     jComboBox1.setModel(
       new javax.swing.DefaultComboBoxModel<>(
-        new String[] { "Approve", "Reject" }
+        new String[] { "Approve", "Reject", "Pending" }
       )
     );
 
@@ -1015,6 +1015,7 @@ public class ManageBooking extends javax.swing.JFrame {
 
         return;
       }
+      // get date difference to obtain days
       SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
       Date dateStart = df.parse(startDateEdit.getText());
       Date dateEnd = df.parse(endDateEdit.getText());
@@ -1026,15 +1027,16 @@ public class ManageBooking extends javax.swing.JFrame {
         tableSelectedBooking.getReceiptID(),
         g.getSpecificCustomer(customerIcEdit.getText()),
         g.getSpecificSingleCar(CarNoPlate.getText()),
-        (int) days + 1,
-        g.getSpecificSingleCar(CarNoPlate.getText()).getPrice() * days,
+        (int) days + 1, // we need to +1 because the first day doesn't get counted
+        g.getSpecificSingleCar(CarNoPlate.getText()).getPrice() * (days + 1),
         tableSelectedBooking.getBookingDate(),
         dateStart,
         dateEnd,
-        tableSelectedBooking.getStatus()
+        jComboBox1.getSelectedItem().toString()
       );
 
       GeneralMutation m = new GeneralMutation();
+      // show respondse
       if (
         m.editExistingBooking(tableSelectedBooking, newRecord)
       ) JOptionPane.showMessageDialog(
@@ -1086,6 +1088,7 @@ public class ManageBooking extends javax.swing.JFrame {
   }
 
   private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {
+    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
     GeneralGetters g = new GeneralGetters();
     JTable source = ((JTable) evt.getSource());
     int rowIndex = (source.getSelectedRow());
@@ -1098,6 +1101,11 @@ public class ManageBooking extends javax.swing.JFrame {
     }
     tableSelectedBooking =
       g.getSpecificBooking(fetchedBookingData.get(0).toString());
+
+    customerIcEdit.setText(tableSelectedBooking.getCustomer().getIC());
+    CarNoPlate.setText(tableSelectedBooking.getCar().getCarNoPlate());
+    startDateEdit.setText(df.format(tableSelectedBooking.getStartDate()));
+    endDateEdit.setText(df.format(tableSelectedBooking.getReturnDate()));
   }
 
   private void CarNoPlateActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_CarNoPlateActionPerformed

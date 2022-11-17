@@ -894,7 +894,6 @@ public class ManageCar extends javax.swing.JFrame {
       Double.parseDouble(fetchedCarData.get(5).toString())
     );
     tableSelectedCar.setState(fetchedCarData.get(6).toString());
-    //source.getModel().getValueAt(rowIndex);
   }
 
   private void CarNoPlateActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_CarNoPlateActionPerformed

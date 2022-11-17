@@ -1,5 +1,6 @@
 package carrentalsystem;
 
+import carrentalsystem.RecordBooking;
 import carrentalsystem.UserCustomer;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -236,6 +237,7 @@ public class GeneralMutation {
     Data.add(df.format(newBooking.getBookingDate()));
     Data.add(df.format(newBooking.getStartDate()));
     Data.add(df.format(newBooking.getReturnDate()));
+    Data.add(newBooking.getStatus());
 
     ArrayList<RecordBooking> allBookings = g.getAllBooking();
     for (int i = 0; i < allBookings.size(); i++) {
