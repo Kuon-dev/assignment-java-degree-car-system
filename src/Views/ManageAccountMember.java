@@ -449,7 +449,7 @@ public class ManageAccountMember extends javax.swing.JFrame {
     pack();
   } // </editor-fold>//GEN-END:initComponents
 
-  private void SaveChangesActionPerformed(java.awt.ActiveEvent evt) {
+  private void SaveChangesActionPerformed(java.awt.event.ActionEvent evt) {
     GeneralMutation m = new GeneralMutation();
     if (!sanitizeInput()) return;
     UserCustomer newCustomerData = new UserCustomer(

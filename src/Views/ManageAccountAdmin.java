@@ -101,9 +101,7 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
     SaveChanges.setText("Save Changes");
     SaveChanges.addActionListener(
       new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-          SaveChangesActionPerformed(evt);
-        }
+        public void actionPerformed(java.awt.event.ActionEvent evt) {}
       }
     );
 
@@ -155,9 +153,7 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
     );
     Position.addActionListener(
       new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-          PositionActionPerformed(evt);
-        }
+        public void actionPerformed(java.awt.event.ActionEvent evt) {}
       }
     );
 

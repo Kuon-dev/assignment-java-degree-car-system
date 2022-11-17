@@ -252,9 +252,7 @@ public class ManageCar extends javax.swing.JFrame {
 
     Brand.addActionListener(
       new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-          BrandActionPerformed(evt);
-        }
+        public void actionPerformed(java.awt.event.ActionEvent evt) {}
       }
     );
 
@@ -274,23 +272,17 @@ public class ManageCar extends javax.swing.JFrame {
     );
     FuelType.addContainerListener(
       new java.awt.event.ContainerAdapter() {
-        public void componentAdded(java.awt.event.ContainerEvent evt) {
-          FuelTypeComponentAdded(evt);
-        }
+        public void componentAdded(java.awt.event.ContainerEvent evt) {}
       }
     );
     FuelType.addItemListener(
       new java.awt.event.ItemListener() {
-        public void itemStateChanged(java.awt.event.ItemEvent evt) {
-          FuelTypeItemStateChanged(evt);
-        }
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {}
       }
     );
     FuelType.addActionListener(
       new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-          FuelTypeActionPerformed(evt);
-        }
+        public void actionPerformed(java.awt.event.ActionEvent evt) {}
       }
     );
 
