@@ -1,6 +1,6 @@
-WLA-1110, Proton, Axia, AVAILABLE, 2018, 45.0, Petron
-WLA-4851, Proton, Axia, UNAVAILABLE, 2019, 20, Petron
-SLW-0211, Ford, F-150, UNAVAILABLE, 2015, 20, Diesel
-PT-0995, Tesla, Model-S, AVAILABLE, 2020, 50, Diesel
-BNM-6132, Perdua, MyVi, Available, 2009, 30.0, Petron
-[WLA-1110, Proton, Axia, AVAILABLE, 2018, 45.0, Petron]
+C-CofDVatjHEV4m24S4sKP, WLA-4851, Proton, Axia, AVAILABLE, 2019, 40.0, Petron
+C-v2XDW1NONPTd83AZ57Gm, SLC-4512, Ford, F-150, NOT AVAILABLE, 2015, 20.0, Diesel
+C-FTp72YFccvNqdN3kjZJz, PT-0995, Tesla, Model-S, AVAILABLE, 2020, 50.0, Diesel
+C-LLYojNcDerzeIlogUKPx, BNM-6132, Perdua, MyVi, AVAILABLE, 2009, 30.0, Petron
+C-NrnnT6cDuGUbDf6oqcqR, WLA-1110, Proton, Axia, AVAILABLE, 2018, 45.0, Petron
+C-nQYyWIMXKoZumhaQKPEP, SLW-0211, Ford, F-150, NOT AVAILABLE, 2015, 20.0, Diesel

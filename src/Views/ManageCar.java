@@ -32,6 +32,7 @@ public class ManageCar extends javax.swing.JFrame {
     null,
     null,
     null,
+    null,
     0,
     0,
     null
@@ -822,14 +823,15 @@ public class ManageCar extends javax.swing.JFrame {
     GeneralGetters getter = new GeneralGetters();
     String carPlate = CarNoPlate.getText();
     GeneralCar carQuery = new GeneralCar(
+      null,
       !CarNoPlate.getText().isEmpty() ? CarNoPlate.getText() : null, // plate
       null, // brand
       null, // model
       null, // status
       0, // year
       0, // price
-      null
-    ); // fuel type
+      null // fuel type
+    );
     ArrayList<GeneralCar> queryList = (getter.getSpecificCar(carQuery));
 
     updateTableInformation(queryList);
@@ -842,6 +844,7 @@ public class ManageCar extends javax.swing.JFrame {
     GeneralMutation m = new GeneralMutation();
 
     GeneralCar newCar = new GeneralCar(
+      tableSelectedCar.generateCarId(),
       CarNoPlate.getText(), // plate
       Brand.getText(), // brand
       Model.getText(), // model
@@ -883,6 +886,9 @@ public class ManageCar extends javax.swing.JFrame {
       //((source.getModel().getValueAt(rowIndex, i)).getClass());
       fetchedCarData.add((source.getModel().getValueAt(rowIndex, i)));
     }
+    tableSelectedCar.setCarId(
+      g.getSpecificSingleCar(fetchedCarData.get(0).toString()).getCarId()
+    );
     tableSelectedCar.setCarNoPlate(fetchedCarData.get(0).toString());
     tableSelectedCar.setBrand(fetchedCarData.get(1).toString());
     tableSelectedCar.setModel(fetchedCarData.get(2).toString());
@@ -894,11 +900,17 @@ public class ManageCar extends javax.swing.JFrame {
       Double.parseDouble(fetchedCarData.get(5).toString())
     );
     tableSelectedCar.setState(fetchedCarData.get(6).toString());
+
+    CarNoPlate.setText(tableSelectedCar.getCarNoPlate()); // plate
+    Brand.setText(tableSelectedCar.getBrand()); // brand
+    Model.setText(tableSelectedCar.getModel()); // model
+    Status.setSelectedItem(tableSelectedCar.getState()); // status
+    Year.setText(String.valueOf(tableSelectedCar.getYear())); // year
+    Price.setText(String.valueOf(tableSelectedCar.getPrice())); // price
+    FuelType.setSelectedItem(tableSelectedCar.getFuelType()); // fuel
   }
 
-  private void CarNoPlateActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_CarNoPlateActionPerformed
-    // TODO add your handling code here:
-  } //GEN-LAST:event_CarNoPlateActionPerformed
+  private void CarNoPlateActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_CarNoPlateActionPerformed //GEN-LAST:event_CarNoPlateActionPerformed
 
   private void ModelActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_ModelActionPerformed //GEN-LAST:event_ModelActionPerformed
 
@@ -918,6 +930,7 @@ public class ManageCar extends javax.swing.JFrame {
         car.getFuelType(),
         car.getPrice(),
         car.getState(),
+        car.getCarId(),
       };
 
       model.addRow(eachCar);
@@ -936,6 +949,7 @@ public class ManageCar extends javax.swing.JFrame {
     }
     GeneralMutation m = new GeneralMutation();
     GeneralCar newCar = new GeneralCar(
+      tableSelectedCar.getCarId(),
       CarNoPlate.getText(), // plate
       Brand.getText(), // brand
       Model.getText(), // model

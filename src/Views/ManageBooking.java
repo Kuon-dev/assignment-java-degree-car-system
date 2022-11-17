@@ -92,6 +92,7 @@ public class ManageBooking extends javax.swing.JFrame {
     }
 
     GeneralCar newSelectedCar = new GeneralCar(
+      null,
       inputData.get(1),
       null,
       null,
@@ -101,7 +102,7 @@ public class ManageBooking extends javax.swing.JFrame {
       null
     );
 
-    if (!newSelectedCar.isCarExist()) {
+    if (!newSelectedCar.isCarPlateExist()) {
       JOptionPane.showMessageDialog(
         this,
         "Car does not exist in record",
@@ -114,7 +115,10 @@ public class ManageBooking extends javax.swing.JFrame {
     // check for valid date
     Validator v = new Validator();
     // incorrect format
-    if (!v.isValidDate(inputData.get(2)) || !v.isValidDate(inputData.get(3))) {
+    if (
+      !v.isValidDate(inputData.get(2), false) ||
+      !v.isValidDate(inputData.get(3), false)
+    ) {
       JOptionPane.showMessageDialog(
         this,
         "Invalid date inputted",
@@ -128,7 +132,7 @@ public class ManageBooking extends javax.swing.JFrame {
     if (!v.isValidEndDate(inputData.get(2), inputData.get(3))) {
       JOptionPane.showMessageDialog(
         this,
-        "Invalid date inputted",
+        "Invalid end date inputted",
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
@@ -1023,12 +1027,15 @@ public class ManageBooking extends javax.swing.JFrame {
         (dateEnd.getTime() - dateStart.getTime()) / (1000 * 60 * 60 * 24) % 365;
 
       GeneralGetters g = new GeneralGetters();
+      GeneralCar newSelectedCar = g.getSpecificSingleCar(CarNoPlate.getText());
+
       RecordBooking newRecord = new RecordBooking(
         tableSelectedBooking.getReceiptID(),
         g.getSpecificCustomer(customerIcEdit.getText()),
-        g.getSpecificSingleCar(CarNoPlate.getText()),
+        g.getSpecificSingleCarById(newSelectedCar.getCarId()),
         (int) days + 1, // we need to +1 because the first day doesn't get counted
-        g.getSpecificSingleCar(CarNoPlate.getText()).getPrice() * (days + 1),
+        g.getSpecificSingleCarById(newSelectedCar.getCarId()).getPrice() *
+        (days + 1),
         tableSelectedBooking.getBookingDate(),
         dateStart,
         dateEnd,

@@ -1,14 +1,16 @@
 package carrentalsystem;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class GeneralCar {
 
-  public String carNoPlate, brand, model, status, typeOfFuel;
+  public String carId, carNoPlate, brand, model, status, typeOfFuel;
   public int year;
   public double price;
 
   public GeneralCar(
+    String carId,
     String carNoPlate,
     String brand,
     String model,
@@ -17,6 +19,7 @@ public class GeneralCar {
     double price,
     String typeOfFuel
   ) {
+    this.carId = carId;
     this.carNoPlate = carNoPlate;
     this.brand = brand;
     this.model = model;
@@ -28,6 +31,14 @@ public class GeneralCar {
 
   // get set
   // -------------------------------------
+  public String getCarId() {
+    return carId;
+  }
+
+  public void setCarId(String carId) {
+    this.carId = carId;
+  }
+
   public String getCarNoPlate() {
     return carNoPlate;
   }
@@ -97,7 +108,7 @@ public class GeneralCar {
   }
 
   public void setData() {
-    if (!isCarExist()) return;
+    if (!isCarPlateExist()) return;
     GeneralGetters g = new GeneralGetters();
     ArrayList<GeneralCar> allUsers = g.getAllCar();
     for (GeneralCar c : allUsers) {
@@ -112,12 +123,32 @@ public class GeneralCar {
     }
   }
 
-  public Boolean isCarExist() {
+  public Boolean isCarPlateExist() {
     GeneralGetters g = new GeneralGetters();
     ArrayList<GeneralCar> allCars = g.getAllCar();
     for (GeneralCar car : allCars) {
       if (car.getCarNoPlate().equals(this.carNoPlate)) return true;
     }
     return false;
+  }
+
+  public String generateCarId() {
+    String availableChar =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+      "abcdefghijklmnopqrstuvwxyz" +
+      "0123456789";
+
+    StringBuilder sb = new StringBuilder("C-");
+    Random random = new Random();
+    for (int i = 0; i < 20; i++) {
+      // generate random index number
+      int index = random.nextInt(availableChar.length());
+      // get character specified by index
+      char randomChar = availableChar.charAt(index);
+      // append the character to string builder
+      sb.append(randomChar);
+    }
+
+    return sb.toString();
   }
 }

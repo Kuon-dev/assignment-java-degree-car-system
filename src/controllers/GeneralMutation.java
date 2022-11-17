@@ -1,5 +1,6 @@
 package carrentalsystem;
 
+import carrentalsystem.GeneralCar;
 import carrentalsystem.RecordBooking;
 import carrentalsystem.UserCustomer;
 import java.io.BufferedReader;
@@ -164,6 +165,7 @@ public class GeneralMutation {
   // ---------------------------------------------
   public Boolean addNewCar(GeneralCar car) {
     ArrayList<String> carData = new ArrayList<>();
+    carData.add(car.getCarId());
     carData.add(car.getCarNoPlate());
     carData.add(car.getBrand());
     carData.add(car.getModel());
@@ -177,6 +179,7 @@ public class GeneralMutation {
 
   public Boolean editExistingCar(GeneralCar oldCar, GeneralCar newCar) {
     ArrayList<String> carData = new ArrayList<>();
+    carData.add(newCar.getCarId());
     carData.add(newCar.getCarNoPlate());
     carData.add(newCar.getBrand());
     carData.add(newCar.getModel());
@@ -187,9 +190,7 @@ public class GeneralMutation {
 
     ArrayList<GeneralCar> allCars = g.getAllCar();
     for (int i = 0; i < allCars.size(); i++) {
-      if (
-        allCars.get(i).getCarNoPlate().equalsIgnoreCase(oldCar.getCarNoPlate())
-      ) {
+      if (allCars.get(i).getCarId().equalsIgnoreCase(oldCar.getCarId())) {
         return f.modifyFile(carData, carDatabase, Integer.toString(i));
       }
     }
@@ -200,9 +201,7 @@ public class GeneralMutation {
     ArrayList<GeneralCar> allCars = g.getAllCar();
 
     for (int i = 0; i < allCars.size(); i++) {
-      if (
-        allCars.get(i).getCarNoPlate().equalsIgnoreCase(car.getCarNoPlate())
-      ) {
+      if (allCars.get(i).getCarId().equalsIgnoreCase(car.getCarId())) {
         return f.deleteFile(carDatabase, Integer.toString(i));
       }
     }
@@ -232,7 +231,7 @@ public class GeneralMutation {
     ArrayList<String> Data = new ArrayList<>();
     Data.add(newBooking.getReceiptID());
     Data.add(newBooking.getCustomer().getIC());
-    Data.add(newBooking.getCar().getCarNoPlate());
+    Data.add(newBooking.getCar().getCarId());
     Data.add(String.valueOf(newBooking.getDays()));
     Data.add(String.valueOf(newBooking.getTotalPrice()));
     Data.add(df.format(newBooking.getBookingDate()));

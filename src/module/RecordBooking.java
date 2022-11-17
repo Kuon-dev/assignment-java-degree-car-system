@@ -117,9 +117,9 @@ public class RecordBooking {
       "abcdefghijklmnopqrstuvwxyz" +
       "0123456789";
 
-    StringBuilder sb = new StringBuilder();
+    StringBuilder sb = new StringBuilder("R-");
     Random random = new Random();
-    for (int i = 0; i < 15; i++) {
+    for (int i = 0; i < 20; i++) {
       // generate random index number
       int index = random.nextInt(availableChar.length());
       // get character specified by index
