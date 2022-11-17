@@ -96,15 +96,6 @@ public class GeneralCar {
     setPrice(0);
   }
 
-  public Boolean isCarExist() {
-    GeneralGetters g = new GeneralGetters();
-    ArrayList<GeneralCar> allCars = g.getAllCar();
-    for (GeneralCar car : allCars) {
-      if (car.getCarNoPlate().equals(this.carNoPlate)) return true;
-    }
-    return false;
-  }
-
   public void setData() {
     if (!isCarExist()) return;
     GeneralGetters g = new GeneralGetters();
@@ -119,5 +110,14 @@ public class GeneralCar {
         this.typeOfFuel = c.getFuelType();
       }
     }
+  }
+
+  public Boolean isCarExist() {
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<GeneralCar> allCars = g.getAllCar();
+    for (GeneralCar car : allCars) {
+      if (car.getCarNoPlate().equals(this.carNoPlate)) return true;
+    }
+    return false;
   }
 }

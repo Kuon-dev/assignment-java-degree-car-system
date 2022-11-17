@@ -1013,7 +1013,31 @@ public class ManageBooking extends javax.swing.JFrame {
     }
   }
 
-  private void deleteActionPerformed(java.awt.event.ActionEvent evt) {}
+  private void deleteActionPerformed(java.awt.event.ActionEvent evt) {
+    if (tableSelectedBooking.getReceiptID().isEmpty()) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Please select a record to modify",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      return;
+    }
+    GeneralMutation m = new GeneralMutation();
+    if (
+      m.deleteExistingBooking(tableSelectedBooking)
+    ) JOptionPane.showMessageDialog(
+      this,
+      "Record Deleted Successfully",
+      "Information",
+      JOptionPane.INFORMATION_MESSAGE
+    ); else JOptionPane.showMessageDialog(
+      this,
+      "Failed To Delete Record",
+      "Error Message",
+      JOptionPane.ERROR_MESSAGE
+    );
+  }
 
   private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {
     GeneralGetters g = new GeneralGetters();
