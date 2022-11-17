@@ -34,16 +34,14 @@ public class UserCustomer extends GeneralUser {
     return m.addNewCustomer(customer);
   }
 
-  public Boolean login(String name, String pass) {
+  public Boolean login(String ic, String pass) {
     GeneralGetters getters = new GeneralGetters();
 
     ArrayList<UserCustomer> user = getters.getAllCustomer();
     for (int i = 0; i < user.size(); i++) {
-      String userName = user.get(i).getName();
+      String userIC = user.get(i).getIC();
       String userPassword = user.get(i).getPassword();
-      if (
-        userName.equalsIgnoreCase(name) && userPassword.equals(pass)
-      ) return true;
+      if (userIC.equalsIgnoreCase(ic) && userPassword.equals(pass)) return true;
     }
     return false;
   }

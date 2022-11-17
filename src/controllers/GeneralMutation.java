@@ -1,5 +1,8 @@
 package carrentalsystem;
 
+import carrentalsystem.GeneralCar;
+import carrentalsystem.RecordBooking;
+import carrentalsystem.UserCustomer;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -116,7 +119,7 @@ public class GeneralMutation {
   // ---------------------------------------------
   public Boolean addNewCustomer(UserCustomer customer) {
     ArrayList<String> userData = new ArrayList<>();
-    userData.add(customer.getId());
+    userData.add(customer.getIC());
     userData.add(customer.getName());
     userData.add(customer.getPassword());
     userData.add(customer.getEmail());
@@ -131,7 +134,7 @@ public class GeneralMutation {
     UserCustomer newCustomer
   ) {
     ArrayList<String> userData = new ArrayList<>();
-    userData.add(newCustomer.getId());
+    userData.add(newCustomer.getIC());
     userData.add(newCustomer.getName());
     userData.add(newCustomer.getPassword());
     userData.add(newCustomer.getEmail());
@@ -139,7 +142,7 @@ public class GeneralMutation {
 
     ArrayList<UserCustomer> cust = g.getAllCustomer();
     for (int i = 0; i < cust.size(); i++) {
-      if (cust.get(i).getId().equalsIgnoreCase(oldCustomer.getId())) {
+      if (cust.get(i).getIC().equalsIgnoreCase(oldCustomer.getIC())) {
         f.modifyFile(userData, customerDatabse, Integer.toString(i));
         return true;
       }
@@ -151,7 +154,7 @@ public class GeneralMutation {
     ArrayList<UserCustomer> customers = g.getAllCustomer();
 
     for (int i = 0; i < customers.size(); i++) {
-      if (customers.get(i).getId().equalsIgnoreCase(customer.getId())) {
+      if (customers.get(i).getIC().equalsIgnoreCase(customer.getIC())) {
         f.deleteFile(adminDatabase, Integer.toString(i));
         return true;
       }
@@ -162,6 +165,7 @@ public class GeneralMutation {
   // ---------------------------------------------
   public Boolean addNewCar(GeneralCar car) {
     ArrayList<String> carData = new ArrayList<>();
+    carData.add(car.getCarId());
     carData.add(car.getCarNoPlate());
     carData.add(car.getBrand());
     carData.add(car.getModel());
@@ -175,6 +179,7 @@ public class GeneralMutation {
 
   public Boolean editExistingCar(GeneralCar oldCar, GeneralCar newCar) {
     ArrayList<String> carData = new ArrayList<>();
+    carData.add(newCar.getCarId());
     carData.add(newCar.getCarNoPlate());
     carData.add(newCar.getBrand());
     carData.add(newCar.getModel());
@@ -185,9 +190,7 @@ public class GeneralMutation {
 
     ArrayList<GeneralCar> allCars = g.getAllCar();
     for (int i = 0; i < allCars.size(); i++) {
-      if (
-        allCars.get(i).getCarNoPlate().equalsIgnoreCase(oldCar.getCarNoPlate())
-      ) {
+      if (allCars.get(i).getCarId().equalsIgnoreCase(oldCar.getCarId())) {
         return f.modifyFile(carData, carDatabase, Integer.toString(i));
       }
     }
@@ -198,9 +201,7 @@ public class GeneralMutation {
     ArrayList<GeneralCar> allCars = g.getAllCar();
 
     for (int i = 0; i < allCars.size(); i++) {
-      if (
-        allCars.get(i).getCarNoPlate().equalsIgnoreCase(car.getCarNoPlate())
-      ) {
+      if (allCars.get(i).getCarId().equalsIgnoreCase(car.getCarId())) {
         return f.deleteFile(carDatabase, Integer.toString(i));
       }
     }
@@ -218,6 +219,7 @@ public class GeneralMutation {
     Data.add(df.format(booking.getBookingDate()));
     Data.add(df.format(booking.getStartDate()));
     Data.add(df.format(booking.getReturnDate()));
+    Data.add(booking.getStatus());
 
     return f.addFile(Data, bookingDatabase);
   }
@@ -229,12 +231,13 @@ public class GeneralMutation {
     ArrayList<String> Data = new ArrayList<>();
     Data.add(newBooking.getReceiptID());
     Data.add(newBooking.getCustomer().getIC());
-    Data.add(newBooking.getCar().getCarNoPlate());
+    Data.add(newBooking.getCar().getCarId());
     Data.add(String.valueOf(newBooking.getDays()));
     Data.add(String.valueOf(newBooking.getTotalPrice()));
     Data.add(df.format(newBooking.getBookingDate()));
     Data.add(df.format(newBooking.getStartDate()));
     Data.add(df.format(newBooking.getReturnDate()));
+    Data.add(newBooking.getStatus());
 
     ArrayList<RecordBooking> allBookings = g.getAllBooking();
     for (int i = 0; i < allBookings.size(); i++) {

@@ -277,7 +277,8 @@ public class MemberLogin extends javax.swing.JFrame {
 
     //Retrieve data input
     CustID = CustIDTxt.getText();
-    Password = PswTxt.getText();
+    Password = PswTxt2.getText();
+    String CustIC = StaffIDTxt.getText();
 
     //Set data stored in variables
     UserCustomer customerUser = new UserCustomer(null, null, null, null, null);

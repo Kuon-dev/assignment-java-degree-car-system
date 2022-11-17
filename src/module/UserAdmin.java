@@ -42,15 +42,15 @@ public class UserAdmin extends GeneralUser {
     return m.addNewAdmin(admin);
   }
 
-  public Boolean login(String name, String pass) {
+  public Boolean login(String adminId, String pass) {
     GeneralGetters getters = new GeneralGetters();
 
     ArrayList<UserAdmin> user = getters.getAllAdmin();
     for (int i = 0; i < user.size(); i++) {
-      String userName = user.get(i).getName();
+      String userId = user.get(i).getId();
       String userPassword = user.get(i).getPassword();
       if (
-        userName.equalsIgnoreCase(name) && userPassword.equals(pass)
+        userId.equalsIgnoreCase(adminId) && userPassword.equals(pass)
       ) return true;
     }
     // if no results found

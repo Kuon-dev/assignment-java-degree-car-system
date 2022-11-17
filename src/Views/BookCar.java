@@ -32,6 +32,7 @@ public class BookCar extends javax.swing.JFrame {
     null,
     null,
     null,
+    null,
     0,
     0,
     null
@@ -61,6 +62,7 @@ public class BookCar extends javax.swing.JFrame {
         car.getFuelType(),
         car.getPrice(),
         car.getState(),
+        car.getCarId(),
       };
 
       model.addRow(eachCar);

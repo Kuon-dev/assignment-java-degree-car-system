@@ -105,6 +105,26 @@ public class Validator {
     }
   }
 
+  public static Boolean isValidDate(String usrInput, Boolean isCheckPast) {
+    try {
+      if (usrInput.isEmpty()) return false;
+      SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+      Date validDate;
+      validDate = df.parse(usrInput);
+
+      // basically if we want to ignore check past date condition
+      if (!isCheckPast) return true;
+      Date dateNow = new Date();
+      long currentTime, inputDate;
+      currentTime = dateNow.getTime();
+      inputDate = validDate.getTime();
+      if (currentTime > inputDate) return false;
+      return true;
+    } catch (Exception e) {
+      return false;
+    }
+  }
+
   public Boolean isValidEndDate(String startDate, String endDate) {
     try {
       if (startDate.isEmpty() || endDate.isEmpty()) return false;

@@ -370,7 +370,6 @@ public class SalesReport extends javax.swing.JFrame {
     // Create Chart
     RecordReport r = new RecordReport();
     XYChart chart = r.getAnnualChart(Integer.parseInt(jTextField1.getText()));
-    r.test();
     JFrame frame = new JFrame("XChart Swing Demo");
     frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
