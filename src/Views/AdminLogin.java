@@ -265,7 +265,7 @@ public class AdminLogin extends javax.swing.JFrame {
     adminPassword = PswTxt1.getText();
 
     //Set data stored in variables
-    UserAdmin adminUser = new UserAdmin("001", null, null, null, null, null);
+    UserAdmin adminUser = new UserAdmin(null, null, null, null, null, null);
     Validator valid = new Validator();
     GeneralMutation m = new GeneralMutation();
 
