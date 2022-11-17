@@ -59,6 +59,4 @@ public class RecordReport {
       revenue
     );
   }
-
-  public void test() {}
 }

@@ -11,6 +11,7 @@ public class RecordBooking {
   public double totalPrice;
   public int days;
   public Date bookingDate, startDate, returnDate;
+  public String status;
 
   public RecordBooking(
     String receiptID,
@@ -20,7 +21,8 @@ public class RecordBooking {
     double totalPrice,
     Date bookingDate,
     Date startDate,
-    Date returnDate
+    Date returnDate,
+    String status
   ) {
     this.receiptID = receiptID;
     this.customer = customer;
@@ -30,6 +32,7 @@ public class RecordBooking {
     this.bookingDate = bookingDate;
     this.startDate = startDate;
     this.returnDate = returnDate;
+    this.status = status;
   }
 
   // getter setters
@@ -96,6 +99,14 @@ public class RecordBooking {
 
   public void setReturnDate(Date returnDate) {
     this.returnDate = returnDate;
+  }
+
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(String status) {
+    this.status = status;
   }
 
   // ----------------------

@@ -44,6 +44,7 @@ public class ManageBooking extends javax.swing.JFrame {
     0,
     null,
     null,
+    null,
     null
   );
 
@@ -156,8 +157,7 @@ public class ManageBooking extends javax.swing.JFrame {
         book.getDays(),
         df.format(book.getReturnDate()),
         book.getTotalPrice(),
-        "",
-        "",
+        book.getStatus(),
       };
 
       model.addRow(eachBooking);
@@ -1030,7 +1030,8 @@ public class ManageBooking extends javax.swing.JFrame {
         g.getSpecificSingleCar(CarNoPlate.getText()).getPrice() * days,
         tableSelectedBooking.getBookingDate(),
         dateStart,
-        dateEnd
+        dateEnd,
+        tableSelectedBooking.getStatus()
       );
 
       GeneralMutation m = new GeneralMutation();

@@ -180,7 +180,8 @@ public class GeneralGetters {
           Double.parseDouble(booking.get(4)), // price
           df.parse(booking.get(5)), // book date
           df.parse(booking.get(6)), // start
-          df.parse(booking.get(7)) // End
+          df.parse(booking.get(7)), // End
+          booking.get(8)
         );
         allBookings.add(b);
       }
@@ -198,6 +199,6 @@ public class GeneralGetters {
       if (record.getReceiptID().equals(receiptID)) return record;
     }
 
-    return new RecordBooking(null, null, null, 0, 0, null, null, null);
+    return new RecordBooking(null, null, null, 0, 0, null, null, null, null);
   }
 }
