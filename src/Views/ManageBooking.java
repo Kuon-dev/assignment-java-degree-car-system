@@ -210,7 +210,6 @@ public class ManageBooking extends javax.swing.JFrame {
   private void initComponents() {
     MenuBut = new javax.swing.JButton();
     search = new javax.swing.JButton();
-    BookBtn = new javax.swing.JButton();
     clearBut = new javax.swing.JButton();
     viewrecords = new javax.swing.JButton();
     update = new javax.swing.JButton();
@@ -252,7 +251,6 @@ public class ManageBooking extends javax.swing.JFrame {
       }
     );
 
-    search.setBackground(new java.awt.Color(153, 204, 255));
     search.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     search.setForeground(new java.awt.Color(0, 102, 255));
     search.setText("Search");
@@ -264,19 +262,6 @@ public class ManageBooking extends javax.swing.JFrame {
       }
     );
 
-    BookBtn.setBackground(new java.awt.Color(153, 204, 255));
-    BookBtn.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-    BookBtn.setForeground(new java.awt.Color(0, 102, 255));
-    BookBtn.setText("Book Car");
-    BookBtn.addActionListener(
-      new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-          BookBtnActionPerformed(evt);
-        }
-      }
-    );
-
-    clearBut.setBackground(new java.awt.Color(153, 204, 255));
     clearBut.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     clearBut.setForeground(new java.awt.Color(0, 102, 255));
     clearBut.setText("Clear");
@@ -288,7 +273,6 @@ public class ManageBooking extends javax.swing.JFrame {
       }
     );
 
-    viewrecords.setBackground(new java.awt.Color(153, 204, 255));
     viewrecords.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     viewrecords.setForeground(new java.awt.Color(0, 102, 255));
     viewrecords.setText("View Records");
@@ -300,7 +284,6 @@ public class ManageBooking extends javax.swing.JFrame {
       }
     );
 
-    update.setBackground(new java.awt.Color(153, 204, 255));
     update.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     update.setForeground(new java.awt.Color(0, 102, 255));
     update.setText("Update");
@@ -439,7 +422,6 @@ public class ManageBooking extends javax.swing.JFrame {
         )
     );
 
-    delete.setBackground(new java.awt.Color(153, 204, 255));
     delete.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     delete.setForeground(new java.awt.Color(0, 102, 255));
     delete.setText("Delete");
@@ -522,9 +504,7 @@ public class ManageBooking extends javax.swing.JFrame {
 
     customerIcEdit.addActionListener(
       new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-          customerIcEditActionPerformed(evt);
-        }
+        public void actionPerformed(java.awt.event.ActionEvent evt) {}
       }
     );
 
@@ -778,14 +758,19 @@ public class ManageBooking extends javax.swing.JFrame {
                     .addGroup(
                       layout
                         .createParallelGroup(
-                          javax.swing.GroupLayout.Alignment.TRAILING
+                          javax.swing.GroupLayout.Alignment.TRAILING,
+                          false
                         )
                         .addGroup(
                           javax.swing.GroupLayout.Alignment.LEADING,
                           layout
                             .createSequentialGroup()
                             .addComponent(MenuBut)
-                            .addGap(115, 115, 115)
+                            .addPreferredGap(
+                              javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                              javax.swing.GroupLayout.DEFAULT_SIZE,
+                              Short.MAX_VALUE
+                            )
                             .addComponent(Title)
                         )
                         .addGroup(
@@ -805,58 +790,51 @@ public class ManageBooking extends javax.swing.JFrame {
                               javax.swing.GroupLayout.DEFAULT_SIZE,
                               javax.swing.GroupLayout.PREFERRED_SIZE
                             )
-                            .addGap(78, 78, 78)
-                            .addGroup(
-                              layout
-                                .createParallelGroup(
-                                  javax.swing.GroupLayout.Alignment.LEADING,
-                                  false
-                                )
-                                .addComponent(
-                                  delete,
-                                  javax.swing.GroupLayout.Alignment.TRAILING,
-                                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                                  Short.MAX_VALUE
-                                )
-                                .addComponent(
-                                  update,
-                                  javax.swing.GroupLayout.Alignment.TRAILING,
-                                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                                  Short.MAX_VALUE
-                                )
-                                .addComponent(
-                                  search,
-                                  javax.swing.GroupLayout.Alignment.TRAILING,
-                                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                                  Short.MAX_VALUE
-                                )
-                                .addComponent(
-                                  viewrecords,
-                                  javax.swing.GroupLayout.Alignment.TRAILING,
-                                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                                  188,
-                                  Short.MAX_VALUE
-                                )
-                                .addComponent(
-                                  BookBtn,
-                                  javax.swing.GroupLayout.Alignment.TRAILING,
-                                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                                  Short.MAX_VALUE
-                                )
-                                .addComponent(
-                                  clearBut,
-                                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                                  Short.MAX_VALUE
-                                )
-                            )
                         )
                     )
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(42, 42, 42)
+                    .addGroup(
+                      layout
+                        .createParallelGroup(
+                          javax.swing.GroupLayout.Alignment.LEADING,
+                          false
+                        )
+                        .addComponent(
+                          delete,
+                          javax.swing.GroupLayout.Alignment.TRAILING,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          Short.MAX_VALUE
+                        )
+                        .addComponent(
+                          update,
+                          javax.swing.GroupLayout.Alignment.TRAILING,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          Short.MAX_VALUE
+                        )
+                        .addComponent(
+                          search,
+                          javax.swing.GroupLayout.Alignment.TRAILING,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          Short.MAX_VALUE
+                        )
+                        .addComponent(
+                          viewrecords,
+                          javax.swing.GroupLayout.Alignment.TRAILING,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          Short.MAX_VALUE
+                        )
+                        .addComponent(
+                          clearBut,
+                          javax.swing.GroupLayout.PREFERRED_SIZE,
+                          188,
+                          javax.swing.GroupLayout.PREFERRED_SIZE
+                        )
+                    )
+                    .addGap(0, 36, Short.MAX_VALUE)
                 )
             )
             .addContainerGap()
@@ -893,36 +871,37 @@ public class ManageBooking extends javax.swing.JFrame {
                 .addGroup(
                   layout
                     .createSequentialGroup()
-                    .addGap(9, 9, 9)
-                    .addComponent(BookBtn)
-                    .addPreferredGap(
-                      javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
-                    )
-                    .addComponent(viewrecords)
-                    .addGap(13, 13, 13)
-                    .addComponent(search)
-                    .addGap(16, 16, 16)
-                    .addComponent(update)
-                    .addPreferredGap(
-                      javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
-                    )
-                    .addComponent(delete)
-                    .addPreferredGap(
-                      javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
-                    )
-                    .addComponent(clearBut)
-                )
-                .addGroup(
-                  layout
-                    .createSequentialGroup()
                     .addPreferredGap(
                       javax.swing.LayoutStyle.ComponentPlacement.RELATED
                     )
-                    .addComponent(
-                      CustDetails,
-                      javax.swing.GroupLayout.PREFERRED_SIZE,
-                      javax.swing.GroupLayout.DEFAULT_SIZE,
-                      javax.swing.GroupLayout.PREFERRED_SIZE
+                    .addGroup(
+                      layout
+                        .createParallelGroup(
+                          javax.swing.GroupLayout.Alignment.LEADING
+                        )
+                        .addGroup(
+                          layout
+                            .createSequentialGroup()
+                            .addComponent(viewrecords)
+                            .addGap(13, 13, 13)
+                            .addComponent(search)
+                            .addGap(16, 16, 16)
+                            .addComponent(update)
+                            .addPreferredGap(
+                              javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
+                            )
+                            .addComponent(delete)
+                            .addPreferredGap(
+                              javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
+                            )
+                            .addComponent(clearBut)
+                        )
+                        .addComponent(
+                          CustDetails,
+                          javax.swing.GroupLayout.PREFERRED_SIZE,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          javax.swing.GroupLayout.PREFERRED_SIZE
+                        )
                     )
                 )
             )
@@ -1172,7 +1151,6 @@ public class ManageBooking extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JButton BookBtn;
   private javax.swing.JLabel BookingLab;
   private javax.swing.JLabel BookingLab2;
   private javax.swing.JTextField CarNoPlate;

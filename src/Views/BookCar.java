@@ -8,6 +8,8 @@ import java.io.*;
 import java.math.BigInteger;
 import java.text.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -25,6 +27,9 @@ public class BookCar extends javax.swing.JFrame {
     initComponents();
     GeneralGetters g = new GeneralGetters();
     updateTableInformation(g.getAllCar());
+    IC.setText(currentCustomerData.getIC());
+    Email.setText(currentCustomerData.getEmail());
+    PhNum.setText(currentCustomerData.getPhNum());
   }
 
   public GeneralCar tableSelectedCar = new GeneralCar(
@@ -81,7 +86,7 @@ public class BookCar extends javax.swing.JFrame {
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
-      this.IC.setText("");
+      IC.setText(currentCustomerData.getIC());
       return false;
     }
     if (!emailEntered.contains("@") || !emailEntered.contains(".com")) {
@@ -91,7 +96,7 @@ public class BookCar extends javax.swing.JFrame {
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
-      this.Email.setText("");
+      Email.setText(currentCustomerData.getEmail());
       return false;
     }
     if ((phnumEntered.length() != (10)) && (phnumEntered.length() != (11))) {
@@ -101,7 +106,7 @@ public class BookCar extends javax.swing.JFrame {
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
-      this.PhNum.setText("");
+      PhNum.setText(currentCustomerData.getPhNum());
       return false;
     }
     if (CardNum.getText().length() != (16)) {
@@ -111,7 +116,7 @@ public class BookCar extends javax.swing.JFrame {
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
-      this.CardNum.setText("");
+      CardNum.setText("");
       return false;
     }
     {
@@ -243,10 +248,15 @@ public class BookCar extends javax.swing.JFrame {
     Contact.setForeground(new java.awt.Color(140, 174, 238));
     Contact.setText("Phone Number:");
 
+    PhNum.setEditable(false);
+    PhNum.setBackground(new java.awt.Color(255, 255, 255));
+
     Mail.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
     Mail.setForeground(new java.awt.Color(140, 174, 238));
     Mail.setText("Email:");
 
+    Email.setEditable(false);
+    Email.setBackground(new java.awt.Color(255, 255, 255));
     Email.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -535,9 +545,21 @@ public class BookCar extends javax.swing.JFrame {
           java.lang.String.class,
           java.lang.Double.class,
         };
+        boolean[] canEdit = new boolean[] {
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+        };
 
         public Class getColumnClass(int columnIndex) {
           return types[columnIndex];
+        }
+
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+          return canEdit[columnIndex];
         }
       }
     );
@@ -1280,22 +1302,26 @@ public class BookCar extends javax.swing.JFrame {
   private void EmailActionPerformed(java.awt.event.ActionEvent evt) {}
 
   private void BookButActionPerformed(java.awt.event.ActionEvent evt) {
-    GeneralMutation m = new GeneralMutation();
-    if (!sanitizeInput()) return;
-    RecordBooking newBookingData = new RecordBooking(
-      generateReceiptID(),
-      currentCustomerData,
-      tableSelectedCar,
-      Integer.parseInt(RentDays.getText()),
-      Double.parseDouble(TotalPrice.getText()),
-      new Date(),
-      df.parse(StartDate.getText()),
-      df.parse(ReturnDate.getText()),
-      "Pending",
-      CardNum.getText(),
-      AccHolder.getText(),
-      Bank.getText()
-    );
+    try {
+      GeneralMutation m = new GeneralMutation();
+      if (!sanitizeInput()) return;
+      RecordBooking newBookingData = new RecordBooking(
+        generateReceiptID(),
+        currentCustomerData,
+        tableSelectedCar,
+        Integer.parseInt(RentDays.getText()),
+        Double.parseDouble(TotalPrice.getText()),
+        new Date(),
+        df.parse(StartDate.getText()),
+        df.parse(ReturnDate.getText()),
+        "Pending",
+        CardNum.getText(),
+        AccHolder.getText(),
+        Bank.getText()
+      );
+    } catch (ParseException ex) {
+      Logger.getLogger(BookCar.class.getName()).log(Level.SEVERE, null, ex);
+    }
   }
 
   private void MenuButActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_MenuButActionPerformed
@@ -1326,7 +1352,7 @@ public class BookCar extends javax.swing.JFrame {
     String BookingStartDate = this.StartDate.getText();
     String TotalDayStay = this.RentDays.getText();
     String records;
-    Date StartDate, EndDate;
+    Date startdate, EndDate;
     //Check Day Stay validation
     if (TotalDayStay.matches("[0-9]+")) {
       //Convert Day Stay into Integer
@@ -1335,11 +1361,11 @@ public class BookCar extends javax.swing.JFrame {
       if (Day > 0) {
         try {
           //Date formatting
-          StartDate = df.parse(BookingStartDate);
+          startdate = df.parse(BookingStartDate);
           //Store today date in today
           Date today = new Date();
           //Check if start date input had over
-          if (StartDate.before(today)) {
+          if (startdate.before(today)) {
             //Display error message if the booking date has passed
             JOptionPane.showMessageDialog(
               this,
@@ -1347,9 +1373,9 @@ public class BookCar extends javax.swing.JFrame {
               "Error Message",
               JOptionPane.ERROR_MESSAGE
             );
-            this.StartDate.setText("");
-            this.RentDays.setText("");
-            this.ReturnDate.setText("");
+            StartDate.setText("");
+            RentDays.setText("");
+            ReturnDate.setText("");
           } else {
             //Call calendar features
             Calendar c = Calendar.getInstance();
@@ -1360,7 +1386,7 @@ public class BookCar extends javax.swing.JFrame {
             String BookingEndDate = df.format(c.getTime());
             EndDate = df.parse(BookingEndDate);
             //Set end date
-            this.ReturnDate.setText(BookingEndDate);
+            ReturnDate.setText(BookingEndDate);
             //Set total price
             TotalPrice.setText(
               String.valueOf(Double.parseDouble(Price.getText()) * Day)
@@ -1374,8 +1400,8 @@ public class BookCar extends javax.swing.JFrame {
             "Error Message",
             JOptionPane.ERROR_MESSAGE
           );
-          this.StartDate.setText("");
-          this.ReturnDate.setText("");
+          StartDate.setText("");
+          ReturnDate.setText("");
         }
       } else {
         //Display error message if day stau enter less than one
