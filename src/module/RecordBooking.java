@@ -11,7 +11,7 @@ public class RecordBooking {
   public double totalPrice;
   public int days;
   public Date bookingDate, startDate, returnDate;
-  public String status;
+  public String status, cardNum, accHolder, bank;
 
   public RecordBooking(
     String receiptID,
@@ -22,7 +22,10 @@ public class RecordBooking {
     Date bookingDate,
     Date startDate,
     Date returnDate,
-    String status
+    String status,
+    String cardNum,
+    String accHolder,
+    String bank
   ) {
     this.receiptID = receiptID;
     this.customer = customer;
@@ -33,6 +36,9 @@ public class RecordBooking {
     this.startDate = startDate;
     this.returnDate = returnDate;
     this.status = status;
+    this.cardNum = cardNum;
+    this.accHolder = accHolder;
+    this.bank = bank;
   }
 
   // getter setters
@@ -109,27 +115,31 @@ public class RecordBooking {
     this.status = status;
   }
 
-  // ----------------------
-
-  public String generateReceiptID() {
-    String availableChar =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
-      "abcdefghijklmnopqrstuvwxyz" +
-      "0123456789";
-
-    StringBuilder sb = new StringBuilder("R-");
-    Random random = new Random();
-    for (int i = 0; i < 20; i++) {
-      // generate random index number
-      int index = random.nextInt(availableChar.length());
-      // get character specified by index
-      char randomChar = availableChar.charAt(index);
-      // append the character to string builder
-      sb.append(randomChar);
-    }
-
-    return sb.toString();
+  public String getCardNum() {
+    return cardNum;
   }
+
+  public void setCardNum(String cardNum) {
+    this.cardNum = cardNum;
+  }
+
+  public String getAccHolder() {
+    return accHolder;
+  }
+
+  public void setAccHolder(String accHolder) {
+    this.accHolder = accHolder;
+  }
+
+  public String getBank() {
+    return bank;
+  }
+
+  public void setBank(String bank) {
+    this.bank = bank;
+  }
+
+  // ----------------------
 
   public void clearData() {
     this.receiptID = null;

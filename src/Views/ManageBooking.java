@@ -428,7 +428,7 @@ public class ManageBooking extends javax.swing.JFrame {
             )
             .addPreferredGap(
               javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-              141,
+              150,
               Short.MAX_VALUE
             )
             .addComponent(jLabel1)
@@ -561,7 +561,7 @@ public class ManageBooking extends javax.swing.JFrame {
 
     jComboBox1.setModel(
       new javax.swing.DefaultComboBoxModel<>(
-        new String[] { "Approve", "Reject", "Pending" }
+        new String[] { "Approve", "Reject" }
       )
     );
 
@@ -873,15 +873,7 @@ public class ManageBooking extends javax.swing.JFrame {
                     .addComponent(MenuBut)
                     .addGap(24, 24, 24)
                 )
-                .addGroup(
-                  javax.swing.GroupLayout.Alignment.TRAILING,
-                  layout
-                    .createSequentialGroup()
-                    .addComponent(Title)
-                    .addPreferredGap(
-                      javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
-                    )
-                )
+                .addComponent(Title, javax.swing.GroupLayout.Alignment.TRAILING)
             )
             .addGroup(
               layout
@@ -897,38 +889,35 @@ public class ManageBooking extends javax.swing.JFrame {
                   layout
                     .createSequentialGroup()
                     .addGap(9, 9, 9)
-                    .addGroup(
-                      layout
-                        .createParallelGroup(
-                          javax.swing.GroupLayout.Alignment.LEADING
-                        )
-                        .addGroup(
-                          layout
-                            .createSequentialGroup()
-                            .addComponent(BookBtn)
-                            .addPreferredGap(
-                              javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
-                            )
-                            .addComponent(viewrecords)
-                            .addGap(13, 13, 13)
-                            .addComponent(search)
-                            .addGap(16, 16, 16)
-                            .addComponent(update)
-                            .addPreferredGap(
-                              javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
-                            )
-                            .addComponent(delete)
-                            .addPreferredGap(
-                              javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
-                            )
-                            .addComponent(clearBut)
-                        )
-                        .addComponent(
-                          CustDetails,
-                          javax.swing.GroupLayout.PREFERRED_SIZE,
-                          javax.swing.GroupLayout.DEFAULT_SIZE,
-                          javax.swing.GroupLayout.PREFERRED_SIZE
-                        )
+                    .addComponent(BookBtn)
+                    .addPreferredGap(
+                      javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
+                    )
+                    .addComponent(viewrecords)
+                    .addGap(13, 13, 13)
+                    .addComponent(search)
+                    .addGap(16, 16, 16)
+                    .addComponent(update)
+                    .addPreferredGap(
+                      javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
+                    )
+                    .addComponent(delete)
+                    .addPreferredGap(
+                      javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
+                    )
+                    .addComponent(clearBut)
+                )
+                .addGroup(
+                  layout
+                    .createSequentialGroup()
+                    .addPreferredGap(
+                      javax.swing.LayoutStyle.ComponentPlacement.RELATED
+                    )
+                    .addComponent(
+                      CustDetails,
+                      javax.swing.GroupLayout.PREFERRED_SIZE,
+                      javax.swing.GroupLayout.DEFAULT_SIZE,
+                      javax.swing.GroupLayout.PREFERRED_SIZE
                     )
                 )
             )
@@ -939,10 +928,7 @@ public class ManageBooking extends javax.swing.JFrame {
               255,
               javax.swing.GroupLayout.PREFERRED_SIZE
             )
-            .addContainerGap(
-              javax.swing.GroupLayout.DEFAULT_SIZE,
-              Short.MAX_VALUE
-            )
+            .addContainerGap(9, Short.MAX_VALUE)
         )
     );
 

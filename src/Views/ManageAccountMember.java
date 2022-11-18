@@ -33,13 +33,22 @@ public class ManageAccountMember extends javax.swing.JFrame {
   }
 
   private Boolean sanitizeInput() {
+    if (!(ConfPass.getText()).equals(NewPass.getText())) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Password does not matched.",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      this.NewPass.setText("");
+      this.ConfPass.setText("");
+      return false;
+    }
     ArrayList<String> data = new ArrayList<>();
     data.add(IC.getText());
     data.add(Name.getText());
     data.add(Email.getText());
     data.add(PhNum.getText());
-    data.add(NewPass.getText());
-    data.add(ComfPass.getText());
 
     // if there's an empty input, return false
     for (String d : data) {
@@ -80,7 +89,7 @@ public class ManageAccountMember extends javax.swing.JFrame {
     jLabel1 = new javax.swing.JLabel();
     CustIDLab4 = new javax.swing.JLabel();
     jLabel2 = new javax.swing.JLabel();
-    ComfPass = new javax.swing.JPasswordField();
+    ConfPass = new javax.swing.JPasswordField();
     CustIDLab1 = new javax.swing.JLabel();
     PswLab2 = new javax.swing.JLabel();
     NewPass = new javax.swing.JPasswordField();
@@ -137,7 +146,7 @@ public class ManageAccountMember extends javax.swing.JFrame {
     jLabel2.setForeground(new java.awt.Color(0, 51, 153));
     jLabel2.setText("Welcome to Car Rental System");
 
-    ComfPass.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    ConfPass.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
 
     CustIDLab1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     CustIDLab1.setForeground(new java.awt.Color(140, 174, 238));
@@ -273,7 +282,7 @@ public class ManageAccountMember extends javax.swing.JFrame {
                           javax.swing.GroupLayout.PREFERRED_SIZE
                         )
                         .addComponent(
-                          ComfPass,
+                          ConfPass,
                           javax.swing.GroupLayout.PREFERRED_SIZE,
                           192,
                           javax.swing.GroupLayout.PREFERRED_SIZE
@@ -431,7 +440,7 @@ public class ManageAccountMember extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(
-                  ComfPass,
+                  ConfPass,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   42,
                   javax.swing.GroupLayout.PREFERRED_SIZE
@@ -457,21 +466,25 @@ public class ManageAccountMember extends javax.swing.JFrame {
     UserCustomer newCustomerData = new UserCustomer(
       IC.getText(),
       Name.getText(),
-      NewPass.getText(),
+      NewPass.getText().isEmpty()
+        ? currentCustomerData.getPassword()
+        : NewPass.getText(),
       Email.getText(),
       PhNum.getText()
     );
     if (m.editExistingCustomer(currentCustomerData, newCustomerData)) {
       JOptionPane.showMessageDialog(
         this,
-        "Record Added Successfully",
+        "Changes Had Been Saved Successfully.",
         "Information",
         JOptionPane.INFORMATION_MESSAGE
       );
       setCurrentCustomerData(newCustomerData);
+      NewPass.setText("");
+      ConfPass.setText("");
     } else JOptionPane.showMessageDialog(
       this,
-      "Failed to add admin data",
+      "Failed To Save Changes.",
       "Error Message",
       JOptionPane.ERROR_MESSAGE
     );
@@ -546,7 +559,7 @@ public class ManageAccountMember extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JPasswordField ComfPass;
+  private javax.swing.JPasswordField ConfPass;
   private javax.swing.JLabel CustIDLab1;
   private javax.swing.JLabel CustIDLab2;
   private javax.swing.JLabel CustIDLab3;

@@ -140,17 +140,6 @@ public class MemberMenu extends javax.swing.JFrame {
                     .addGap(155, 155, 155)
                     .addComponent(ViewBookingBtn)
                 )
-                .addGroup(
-                  layout
-                    .createSequentialGroup()
-                    .addGap(130, 130, 130)
-                    .addComponent(
-                      ManageInfoBtn,
-                      javax.swing.GroupLayout.PREFERRED_SIZE,
-                      275,
-                      javax.swing.GroupLayout.PREFERRED_SIZE
-                    )
-                )
             )
             .addContainerGap(48, Short.MAX_VALUE)
         )
@@ -159,8 +148,29 @@ public class MemberMenu extends javax.swing.JFrame {
           layout
             .createSequentialGroup()
             .addGap(0, 0, Short.MAX_VALUE)
-            .addComponent(AdminLoginLab)
-            .addGap(179, 179, 179)
+            .addGroup(
+              layout
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(
+                  javax.swing.GroupLayout.Alignment.TRAILING,
+                  layout
+                    .createSequentialGroup()
+                    .addComponent(AdminLoginLab)
+                    .addGap(179, 179, 179)
+                )
+                .addGroup(
+                  javax.swing.GroupLayout.Alignment.TRAILING,
+                  layout
+                    .createSequentialGroup()
+                    .addComponent(
+                      ManageInfoBtn,
+                      javax.swing.GroupLayout.PREFERRED_SIZE,
+                      275,
+                      javax.swing.GroupLayout.PREFERRED_SIZE
+                    )
+                    .addGap(117, 117, 117)
+                )
+            )
         )
     );
     layout.setVerticalGroup(
