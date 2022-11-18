@@ -135,6 +135,7 @@ public class ManageCar extends javax.swing.JFrame {
     Price = new javax.swing.JTextField();
     Room2 = new javax.swing.JLabel();
     Status = new javax.swing.JComboBox<>();
+    jLabel1 = new javax.swing.JLabel();
     viewcar = new javax.swing.JButton();
     update = new javax.swing.JButton();
     delete = new javax.swing.JButton();
@@ -330,7 +331,7 @@ public class ManageCar extends javax.swing.JFrame {
     Status.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
     Status.setModel(
       new javax.swing.DefaultComboBoxModel<>(
-        new String[] { "Available", "Not Available" }
+        new String[] { "AVAILABLE", "NOT AVAILABLE" }
       )
     );
     Status.addContainerListener(
@@ -354,6 +355,8 @@ public class ManageCar extends javax.swing.JFrame {
         }
       }
     );
+
+    jLabel1.setText("**Use Car No. Plate to Search a car");
 
     javax.swing.GroupLayout RoomDetailsLayout = new javax.swing.GroupLayout(
       RoomDetails
@@ -429,44 +432,55 @@ public class ManageCar extends javax.swing.JFrame {
                     )
                     .addPreferredGap(
                       javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                      47,
+                      24,
                       Short.MAX_VALUE
                     )
                     .addGroup(
                       RoomDetailsLayout
                         .createParallelGroup(
-                          javax.swing.GroupLayout.Alignment.LEADING,
-                          false
+                          javax.swing.GroupLayout.Alignment.LEADING
                         )
                         .addGroup(
+                          javax.swing.GroupLayout.Alignment.TRAILING,
                           RoomDetailsLayout
-                            .createSequentialGroup()
-                            .addComponent(Room1)
-                            .addPreferredGap(
-                              javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
+                            .createParallelGroup(
+                              javax.swing.GroupLayout.Alignment.LEADING,
+                              false
                             )
-                            .addComponent(
-                              Price,
-                              javax.swing.GroupLayout.PREFERRED_SIZE,
-                              110,
-                              javax.swing.GroupLayout.PREFERRED_SIZE
+                            .addGroup(
+                              RoomDetailsLayout
+                                .createSequentialGroup()
+                                .addComponent(Room1)
+                                .addPreferredGap(
+                                  javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
+                                )
+                                .addComponent(
+                                  Price,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE,
+                                  110,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE
+                                )
+                            )
+                            .addGroup(
+                              RoomDetailsLayout
+                                .createSequentialGroup()
+                                .addComponent(Room2)
+                                .addPreferredGap(
+                                  javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                  javax.swing.GroupLayout.DEFAULT_SIZE,
+                                  Short.MAX_VALUE
+                                )
+                                .addComponent(
+                                  Status,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE,
+                                  108,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE
+                                )
                             )
                         )
-                        .addGroup(
-                          RoomDetailsLayout
-                            .createSequentialGroup()
-                            .addComponent(Room2)
-                            .addPreferredGap(
-                              javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                              javax.swing.GroupLayout.DEFAULT_SIZE,
-                              Short.MAX_VALUE
-                            )
-                            .addComponent(
-                              Status,
-                              javax.swing.GroupLayout.PREFERRED_SIZE,
-                              108,
-                              javax.swing.GroupLayout.PREFERRED_SIZE
-                            )
+                        .addComponent(
+                          jLabel1,
+                          javax.swing.GroupLayout.Alignment.TRAILING
                         )
                     )
                 )
@@ -538,47 +552,65 @@ public class ManageCar extends javax.swing.JFrame {
             .addGap(18, 18, 18)
             .addGroup(
               RoomDetailsLayout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(
-                  Model,
-                  javax.swing.GroupLayout.PREFERRED_SIZE,
-                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                  javax.swing.GroupLayout.PREFERRED_SIZE
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(
+                  RoomDetailsLayout
+                    .createSequentialGroup()
+                    .addGroup(
+                      RoomDetailsLayout
+                        .createParallelGroup(
+                          javax.swing.GroupLayout.Alignment.BASELINE
+                        )
+                        .addComponent(
+                          Model,
+                          javax.swing.GroupLayout.PREFERRED_SIZE,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          javax.swing.GroupLayout.PREFERRED_SIZE
+                        )
+                        .addComponent(
+                          BookingLab2,
+                          javax.swing.GroupLayout.PREFERRED_SIZE,
+                          21,
+                          javax.swing.GroupLayout.PREFERRED_SIZE
+                        )
+                    )
+                    .addGap(18, 18, 18)
+                    .addGroup(
+                      RoomDetailsLayout
+                        .createParallelGroup(
+                          javax.swing.GroupLayout.Alignment.BASELINE
+                        )
+                        .addComponent(RoomTypeLab)
+                        .addComponent(
+                          Year,
+                          javax.swing.GroupLayout.PREFERRED_SIZE,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          javax.swing.GroupLayout.PREFERRED_SIZE
+                        )
+                    )
+                    .addGap(18, 18, 18)
+                    .addGroup(
+                      RoomDetailsLayout
+                        .createParallelGroup(
+                          javax.swing.GroupLayout.Alignment.BASELINE
+                        )
+                        .addComponent(Room)
+                        .addComponent(
+                          FuelType,
+                          javax.swing.GroupLayout.PREFERRED_SIZE,
+                          23,
+                          javax.swing.GroupLayout.PREFERRED_SIZE
+                        )
+                    )
+                    .addContainerGap()
                 )
-                .addComponent(
-                  BookingLab2,
-                  javax.swing.GroupLayout.PREFERRED_SIZE,
-                  21,
-                  javax.swing.GroupLayout.PREFERRED_SIZE
+                .addGroup(
+                  javax.swing.GroupLayout.Alignment.TRAILING,
+                  RoomDetailsLayout
+                    .createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
                 )
-            )
-            .addGap(18, 18, 18)
-            .addGroup(
-              RoomDetailsLayout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(RoomTypeLab)
-                .addComponent(
-                  Year,
-                  javax.swing.GroupLayout.PREFERRED_SIZE,
-                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                  javax.swing.GroupLayout.PREFERRED_SIZE
-                )
-            )
-            .addGap(18, 18, 18)
-            .addGroup(
-              RoomDetailsLayout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(Room)
-                .addComponent(
-                  FuelType,
-                  javax.swing.GroupLayout.PREFERRED_SIZE,
-                  23,
-                  javax.swing.GroupLayout.PREFERRED_SIZE
-                )
-            )
-            .addContainerGap(
-              javax.swing.GroupLayout.DEFAULT_SIZE,
-              Short.MAX_VALUE
             )
         )
     );
@@ -872,6 +904,14 @@ public class ManageCar extends javax.swing.JFrame {
     model.setRowCount(0);
 
     tableSelectedCar.clearData();
+
+    this.CarNoPlate.setText("");
+    this.Brand.setText("");
+    this.Model.setText("");
+    this.Year.setText("");
+    this.FuelType.setSelectedItem("Petron");
+    this.Price.setText("");
+    this.Status.setSelectedItem("Available");
   }
 
   private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {
@@ -910,9 +950,9 @@ public class ManageCar extends javax.swing.JFrame {
     FuelType.setSelectedItem(tableSelectedCar.getFuelType()); // fuel
   }
 
-  private void CarNoPlateActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_CarNoPlateActionPerformed //GEN-LAST:event_CarNoPlateActionPerformed
+  private void CarNoPlateActionPerformed(java.awt.event.ActionEvent evt) {}
 
-  private void ModelActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_ModelActionPerformed //GEN-LAST:event_ModelActionPerformed
+  private void ModelActionPerformed(java.awt.event.ActionEvent evt) {}
 
   private void viewcarActionPerformed(java.awt.event.ActionEvent evt) {
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -1085,6 +1125,7 @@ public class ManageCar extends javax.swing.JFrame {
   private javax.swing.JTextField Year;
   private javax.swing.JButton clearBut;
   private javax.swing.JButton delete;
+  private javax.swing.JLabel jLabel1;
   private javax.swing.JScrollPane jScrollPane2;
   private javax.swing.JTable jTable1;
   private javax.swing.JButton search;
