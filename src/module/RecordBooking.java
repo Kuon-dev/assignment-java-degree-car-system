@@ -150,5 +150,8 @@ public class RecordBooking {
     this.bookingDate = null;
     this.startDate = null;
     this.returnDate = null;
+    this.cardNum = null;
+    this.accHolder = null;
+    this.bank = null;
   }
 }

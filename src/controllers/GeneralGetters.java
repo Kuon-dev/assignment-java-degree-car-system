@@ -192,7 +192,10 @@ public class GeneralGetters {
           df.parse(booking.get(5)), // book date
           df.parse(booking.get(6)), // start
           df.parse(booking.get(7)), // End
-          booking.get(8)
+          booking.get(8), //status
+          booking.get(9), //card number
+          booking.get(10), //card holder
+          booking.get(11) //bank
         );
         allBookings.add(b);
       }
@@ -210,6 +213,19 @@ public class GeneralGetters {
       if (record.getReceiptID().equals(receiptID)) return record;
     }
 
-    return new RecordBooking(null, null, null, 0, 0, null, null, null, null);
+    return new RecordBooking(
+      null,
+      null,
+      null,
+      0,
+      0,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    );
   }
 }
