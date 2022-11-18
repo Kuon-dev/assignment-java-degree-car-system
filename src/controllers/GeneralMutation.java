@@ -241,6 +241,9 @@ public class GeneralMutation {
     Data.add(df.format(newBooking.getStartDate()));
     Data.add(df.format(newBooking.getReturnDate()));
     Data.add(newBooking.getStatus());
+    Data.add(newBooking.getCardNum());
+    Data.add(newBooking.getAccHolder());
+    Data.add(newBooking.getBank());
 
     ArrayList<RecordBooking> allBookings = g.getAllBooking();
     for (int i = 0; i < allBookings.size(); i++) {
