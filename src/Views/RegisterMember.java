@@ -544,7 +544,7 @@ public class RegisterMember extends javax.swing.JFrame {
     if (!sanitizeInput()) return;
     if (!isUserExist()) return;
     UserCustomer newCustomerData = new UserCustomer(
-      IC.getText(),
+      IC.getText().replace("-", ""),
       Name.getText(),
       Password.getText(),
       Email.getText(),
