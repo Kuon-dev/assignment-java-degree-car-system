@@ -4,6 +4,9 @@
  */
 package carrentalsystem;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Lim Li Ping
@@ -15,6 +18,125 @@ public class RegisterMember extends javax.swing.JFrame {
    */
   public RegisterMember() {
     initComponents();
+  }
+
+  public UserCustomer currentCustomerData = new UserCustomer(
+    null,
+    null,
+    null,
+    null,
+    null
+  );
+
+  public void setCurrentCustomerData(UserCustomer data) {
+    this.currentCustomerData = data;
+  }
+
+  private Boolean sanitizeInput() {
+    String pass = this.Password.getText();
+    String confirmed = this.ConfPass.getText();
+    String phnumEntered = this.PhNum.getText();
+    String emailEntered = this.Email.getText();
+    String icEntered = this.IC.getText();
+    if (icEntered.length() != (12)) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Incorrect IC.",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      this.IC.setText("");
+      return false;
+    }
+    if (!emailEntered.contains("@") || !emailEntered.contains(".com")) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Incorrect Email.",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      this.Email.setText("");
+      return false;
+    }
+    if ((phnumEntered.length() != (10)) && (phnumEntered.length() != (11))) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Incorrect Phone Number.",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      this.PhNum.setText("");
+      return false;
+    }
+    if (!confirmed.equals(pass)) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Password does not matched.",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      this.Password.setText("");
+      this.ConfPass.setText("");
+      return false;
+    }
+    {
+      ArrayList<String> data = new ArrayList<>();
+      data.add(IC.getText().replace("-", ""));
+      data.add(Name.getText());
+      data.add(Email.getText());
+      data.add(PhNum.getText().replace("-", ""));
+      data.add(Password.getText());
+      data.add(ConfPass.getText());
+
+      // if there's an empty input, return false
+      for (String d : data) {
+        if (d.isEmpty()) {
+          JOptionPane.showMessageDialog(
+            this,
+            "Fill in all the inputs",
+            "Information",
+            JOptionPane.INFORMATION_MESSAGE
+          );
+          return false;
+        }
+      }
+      return true;
+    }
+  }
+
+  private Boolean isUserExist() {
+    Validator v = new Validator();
+    if (v.isCustomerICExist(IC.getText().replace("-", ""))) {
+      JOptionPane.showMessageDialog(
+        this,
+        "IC Existed",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      IC.setText("");
+      return false;
+    }
+    if (v.isCustomerPhNumExist(PhNum.getText().replace("-", ""))) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Phone Number Existed",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      PhNum.setText("");
+      return false;
+    }
+    if (v.isCustomerEmailExist(Email.getText())) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Email Existed",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      Email.setText("");
+      return false;
+    }
+    return true;
   }
 
   /**
@@ -31,12 +153,12 @@ public class RegisterMember extends javax.swing.JFrame {
     PswLab2 = new javax.swing.JLabel();
     IC = new javax.swing.JTextField();
     ExitBtn2 = new javax.swing.JButton();
-    LoginBtn2 = new javax.swing.JButton();
+    RegisterBtn = new javax.swing.JButton();
     PswLab3 = new javax.swing.JLabel();
     CustIDLab2 = new javax.swing.JLabel();
     CustIDLab3 = new javax.swing.JLabel();
     CustIDLab4 = new javax.swing.JLabel();
-    ComfPass = new javax.swing.JPasswordField();
+    ConfPass = new javax.swing.JPasswordField();
     Password = new javax.swing.JPasswordField();
     Email = new javax.swing.JTextField();
     Name = new javax.swing.JTextField();
@@ -80,13 +202,13 @@ public class RegisterMember extends javax.swing.JFrame {
       }
     );
 
-    LoginBtn2.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
-    LoginBtn2.setForeground(new java.awt.Color(0, 102, 204));
-    LoginBtn2.setText("Register");
-    LoginBtn2.addActionListener(
+    RegisterBtn.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
+    RegisterBtn.setForeground(new java.awt.Color(0, 102, 204));
+    RegisterBtn.setText("Register");
+    RegisterBtn.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          LoginBtn2ActionPerformed(evt);
+          RegisterBtnActionPerformed(evt);
         }
       }
     );
@@ -107,7 +229,7 @@ public class RegisterMember extends javax.swing.JFrame {
     CustIDLab4.setForeground(new java.awt.Color(140, 174, 238));
     CustIDLab4.setText("Name:");
 
-    ComfPass.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    ConfPass.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
 
     Password.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
 
@@ -171,7 +293,7 @@ public class RegisterMember extends javax.swing.JFrame {
                       javax.swing.GroupLayout.PREFERRED_SIZE
                     )
                     .addGap(78, 78, 78)
-                    .addComponent(LoginBtn2)
+                    .addComponent(RegisterBtn)
                 )
                 .addGroup(
                   layout
@@ -226,7 +348,7 @@ public class RegisterMember extends javax.swing.JFrame {
                           javax.swing.GroupLayout.PREFERRED_SIZE
                         )
                         .addComponent(
-                          ComfPass,
+                          ConfPass,
                           javax.swing.GroupLayout.PREFERRED_SIZE,
                           192,
                           javax.swing.GroupLayout.PREFERRED_SIZE
@@ -371,7 +493,7 @@ public class RegisterMember extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(
-                  ComfPass,
+                  ConfPass,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   42,
                   javax.swing.GroupLayout.PREFERRED_SIZE
@@ -386,7 +508,7 @@ public class RegisterMember extends javax.swing.JFrame {
               layout
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(ExitBtn2)
-                .addComponent(LoginBtn2)
+                .addComponent(RegisterBtn)
             )
             .addContainerGap()
         )
@@ -417,7 +539,37 @@ public class RegisterMember extends javax.swing.JFrame {
     // TODO add your handling code here:
   } //GEN-LAST:event_PhNumActionPerformed
 
-  private void LoginBtn2ActionPerformed(java.awt.event.ActionEvent evt) {}
+  private void RegisterBtnActionPerformed(java.awt.event.ActionEvent evt) {
+    GeneralMutation m = new GeneralMutation();
+    if (!sanitizeInput()) return;
+    if (!isUserExist()) return;
+    UserCustomer newCustomerData = new UserCustomer(
+      IC.getText(),
+      Name.getText(),
+      Password.getText(),
+      Email.getText(),
+      PhNum.getText().replace("-", "")
+    );
+    if (m.addNewCustomer(newCustomerData)) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Record Added Successfully",
+        "Information",
+        JOptionPane.INFORMATION_MESSAGE
+      );
+      IC.setText("");
+      Name.setText("");
+      Password.setText("");
+      Email.setText("");
+      PhNum.setText("");
+      ConfPass.setText("");
+    } else JOptionPane.showMessageDialog(
+      this,
+      "Failed to add admin data",
+      "Error Message",
+      JOptionPane.ERROR_MESSAGE
+    );
+  }
 
   /**
    * @param args the command line arguments
@@ -465,7 +617,7 @@ public class RegisterMember extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JPasswordField ComfPass;
+  private javax.swing.JPasswordField ConfPass;
   private javax.swing.JLabel CustIDLab1;
   private javax.swing.JLabel CustIDLab2;
   private javax.swing.JLabel CustIDLab3;
@@ -473,12 +625,12 @@ public class RegisterMember extends javax.swing.JFrame {
   private javax.swing.JTextField Email;
   private javax.swing.JButton ExitBtn2;
   private javax.swing.JTextField IC;
-  private javax.swing.JButton LoginBtn2;
   private javax.swing.JTextField Name;
   private javax.swing.JPasswordField Password;
   private javax.swing.JTextField PhNum;
   private javax.swing.JLabel PswLab2;
   private javax.swing.JLabel PswLab3;
+  private javax.swing.JButton RegisterBtn;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel2;
   // End of variables declaration//GEN-END:variables

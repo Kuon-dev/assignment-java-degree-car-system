@@ -299,7 +299,7 @@ public class AdminLogin extends javax.swing.JFrame {
       );
       //Clear the JTextField
       this.AdminIDTxt.setText("");
-      this.PswTxt.setText("");
+      this.PswTxt1.setText("");
     }
   } //GEN-LAST:event_LoginBtn1ActionPerformed
 

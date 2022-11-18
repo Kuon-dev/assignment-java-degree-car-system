@@ -47,18 +47,17 @@
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                              <Component id="SaveChanges" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                  <Component id="Position" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
-                                  <Component id="Password" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="Position" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Component id="Password" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
                           <Component id="Email" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
                           <Component id="PhNum" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
                           <Component id="ConfPass" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
                           <Component id="ID" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
                           <Component id="Name" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                              <Component id="RegisterBtn" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -126,7 +125,7 @@
               </Group>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="SaveChanges" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="RegisterBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="MenuBut" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -172,6 +171,9 @@
           <Font name="Times New Roman" size="18" style="3"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConfPassActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="PswLab4">
       <Properties>
@@ -255,7 +257,7 @@
         <Property name="text" type="java.lang.String" value="Admin ID:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="SaveChanges">
+    <Component class="javax.swing.JButton" name="RegisterBtn">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Snap ITC" size="14" style="0"/>
@@ -263,10 +265,10 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="66" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Save Changes"/>
+        <Property name="text" type="java.lang.String" value="Register"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SaveChangesActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegisterBtnActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="PswLab3">
@@ -307,14 +309,11 @@
     </Component>
     <Component class="javax.swing.JButton" name="MenuBut">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="99" type="rgb"/>
-        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="14" style="3"/>
+          <Font name="Snap ITC" size="14" style="0"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="66" red="0" type="rgb"/>
+          <Color blue="cc" green="66" red="0" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Main Menu"/>
       </Properties>

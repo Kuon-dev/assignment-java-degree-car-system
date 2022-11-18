@@ -5,6 +5,7 @@ import java.text.DateFormat;
 // error handling
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 // date dfs
 import java.util.Date;
 // regex
@@ -140,5 +141,50 @@ public class Validator {
     } catch (Exception e) {
       return false;
     }
+  }
+
+  public Boolean isAdminPhNumExist(String PhNum) {
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<UserAdmin> allUsers = g.getAllAdmin();
+    for (UserAdmin a : allUsers) {
+      if (a.getPhNum().equals(PhNum)) return true;
+    }
+    return false;
+  }
+
+  public Boolean isAdminEmailExist(String Email) {
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<UserAdmin> allUsers = g.getAllAdmin();
+    for (UserAdmin a : allUsers) {
+      if (a.getEmail().equals(Email)) return true;
+    }
+    return false;
+  }
+
+  public Boolean isCustomerICExist(String IC) {
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<UserCustomer> allUsers = g.getAllCustomer();
+    for (UserCustomer a : allUsers) {
+      if (a.getIC().equals(IC)) return true;
+    }
+    return false;
+  }
+
+  public Boolean isCustomerPhNumExist(String PhNum) {
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<UserCustomer> allUsers = g.getAllCustomer();
+    for (UserCustomer a : allUsers) {
+      if (a.getPhNum().equals(PhNum)) return true;
+    }
+    return false;
+  }
+
+  public Boolean isCustomerEmailExist(String Email) {
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<UserCustomer> allUsers = g.getAllCustomer();
+    for (UserCustomer a : allUsers) {
+      if (a.getEmail().equals(Email)) return true;
+    }
+    return false;
   }
 }

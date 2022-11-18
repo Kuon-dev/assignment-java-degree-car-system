@@ -4,9 +4,11 @@
  */
 package carrentalsystem;
 
+import java.awt.Color;
 import java.lang.reflect.Array;
 import java.util.*;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -19,6 +21,8 @@ public class RegisterAdmin extends javax.swing.JFrame {
    */
   public RegisterAdmin() {
     initComponents();
+    String randomId = generateNewAdminId();
+    this.ID.setText(randomId);
   }
 
   public UserAdmin currentAdminData = new UserAdmin(
@@ -35,25 +39,88 @@ public class RegisterAdmin extends javax.swing.JFrame {
   }
 
   private Boolean sanitizeInput() {
-    ArrayList<String> data = new ArrayList<>();
-    data.add(Name.getText());
-    data.add(Email.getText());
-    data.add(PhNum.getText());
-    data.add(Position.getSelectedItem().toString());
-    data.add(Password.getText());
-    data.add(ConfPass.getText());
+    String pass = this.Password.getText();
+    String confirmed = this.ConfPass.getText();
+    String phnumEntered = this.PhNum.getText();
+    String emailEntered = this.Email.getText();
+    if (!emailEntered.contains("@") || !emailEntered.contains(".com")) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Incorrect Email.",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      this.Email.setText("");
+      return false;
+    }
+    if ((phnumEntered.length() != (10)) && (phnumEntered.length() != (11))) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Incorrect Phone Number.",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      this.PhNum.setText("");
+      return false;
+    }
+    if (!confirmed.equals(pass)) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Password does not matched.",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      this.Password.setText("");
+      this.ConfPass.setText("");
+      return false;
+    }
+    {
+      ArrayList<String> data = new ArrayList<>();
+      data.add(ID.getText());
+      data.add(Name.getText());
+      data.add(Email.getText());
+      data.add(PhNum.getText());
+      data.add(Position.getSelectedItem().toString());
+      data.add(Password.getText());
+      data.add(ConfPass.getText());
 
-    // if there's an empty input, return false
-    for (String d : data) {
-      if (d.isEmpty()) {
-        JOptionPane.showMessageDialog(
-          this,
-          "Fill in all the inputs",
-          "Information",
-          JOptionPane.INFORMATION_MESSAGE
-        );
-        return false;
+      // if there's an empty input, return false
+      for (String d : data) {
+        if (d.isEmpty()) {
+          JOptionPane.showMessageDialog(
+            this,
+            "Fill in all the inputs",
+            "Information",
+            JOptionPane.INFORMATION_MESSAGE
+          );
+          return false;
+        }
       }
+      return true;
+    }
+  }
+
+  private Boolean isUserExist() {
+    Validator v = new Validator();
+    if (v.isAdminPhNumExist(PhNum.getText().replace("-", ""))) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Phone Number Existed",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      PhNum.setText("");
+      return false;
+    }
+    if (v.isAdminEmailExist(Email.getText())) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Email Existed",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      Email.setText("");
+      return false;
     }
     return true;
   }
@@ -92,7 +159,7 @@ public class RegisterAdmin extends javax.swing.JFrame {
     CustIDLab4 = new javax.swing.JLabel();
     jLabel2 = new javax.swing.JLabel();
     CustIDLab1 = new javax.swing.JLabel();
-    SaveChanges = new javax.swing.JButton();
+    RegisterBtn = new javax.swing.JButton();
     PswLab3 = new javax.swing.JLabel();
     PswLab2 = new javax.swing.JLabel();
     ID = new javax.swing.JTextField();
@@ -125,6 +192,13 @@ public class RegisterAdmin extends javax.swing.JFrame {
     );
 
     ConfPass.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    ConfPass.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          ConfPassActionPerformed(evt);
+        }
+      }
+    );
 
     PswLab4.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     PswLab4.setForeground(new java.awt.Color(140, 174, 238));
@@ -163,13 +237,13 @@ public class RegisterAdmin extends javax.swing.JFrame {
     CustIDLab1.setForeground(new java.awt.Color(140, 174, 238));
     CustIDLab1.setText("Admin ID:");
 
-    SaveChanges.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
-    SaveChanges.setForeground(new java.awt.Color(0, 102, 204));
-    SaveChanges.setText("Save Changes");
-    SaveChanges.addActionListener(
+    RegisterBtn.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
+    RegisterBtn.setForeground(new java.awt.Color(0, 102, 204));
+    RegisterBtn.setText("Register");
+    RegisterBtn.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          SaveChangesActionPerformed(evt);
+          RegisterBtnActionPerformed(evt);
         }
       }
     );
@@ -193,9 +267,8 @@ public class RegisterAdmin extends javax.swing.JFrame {
       }
     );
 
-    MenuBut.setBackground(new java.awt.Color(153, 204, 255));
-    MenuBut.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
-    MenuBut.setForeground(new java.awt.Color(0, 102, 255));
+    MenuBut.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
+    MenuBut.setForeground(new java.awt.Color(0, 102, 204));
     MenuBut.setText("Main Menu");
     MenuBut.addActionListener(
       new java.awt.event.ActionListener() {
@@ -277,33 +350,19 @@ public class RegisterAdmin extends javax.swing.JFrame {
                         .createParallelGroup(
                           javax.swing.GroupLayout.Alignment.LEADING
                         )
-                        .addGroup(
+                        .addComponent(
+                          Position,
                           javax.swing.GroupLayout.Alignment.TRAILING,
-                          layout
-                            .createParallelGroup(
-                              javax.swing.GroupLayout.Alignment.LEADING
-                            )
-                            .addComponent(SaveChanges)
-                            .addGroup(
-                              layout
-                                .createParallelGroup(
-                                  javax.swing.GroupLayout.Alignment.LEADING
-                                )
-                                .addComponent(
-                                  Position,
-                                  javax.swing.GroupLayout.Alignment.TRAILING,
-                                  javax.swing.GroupLayout.PREFERRED_SIZE,
-                                  192,
-                                  javax.swing.GroupLayout.PREFERRED_SIZE
-                                )
-                                .addComponent(
-                                  Password,
-                                  javax.swing.GroupLayout.Alignment.TRAILING,
-                                  javax.swing.GroupLayout.PREFERRED_SIZE,
-                                  192,
-                                  javax.swing.GroupLayout.PREFERRED_SIZE
-                                )
-                            )
+                          javax.swing.GroupLayout.PREFERRED_SIZE,
+                          192,
+                          javax.swing.GroupLayout.PREFERRED_SIZE
+                        )
+                        .addComponent(
+                          Password,
+                          javax.swing.GroupLayout.Alignment.TRAILING,
+                          javax.swing.GroupLayout.PREFERRED_SIZE,
+                          192,
+                          javax.swing.GroupLayout.PREFERRED_SIZE
                         )
                         .addComponent(
                           Email,
@@ -339,6 +398,12 @@ public class RegisterAdmin extends javax.swing.JFrame {
                           javax.swing.GroupLayout.PREFERRED_SIZE,
                           192,
                           javax.swing.GroupLayout.PREFERRED_SIZE
+                        )
+                        .addGroup(
+                          layout
+                            .createSequentialGroup()
+                            .addGap(16, 16, 16)
+                            .addComponent(RegisterBtn)
                         )
                     )
                 )
@@ -516,7 +581,7 @@ public class RegisterAdmin extends javax.swing.JFrame {
             .addGroup(
               layout
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(SaveChanges)
+                .addComponent(RegisterBtn)
                 .addComponent(MenuBut)
             )
             .addContainerGap()
@@ -534,23 +599,33 @@ public class RegisterAdmin extends javax.swing.JFrame {
     // TODO add your handling code here:
   } //GEN-LAST:event_EmailActionPerformed
 
-  private void SaveChangesActionPerformed(java.awt.event.ActionEvent evt) {
+  private void RegisterBtnActionPerformed(java.awt.event.ActionEvent evt) {
     GeneralMutation m = new GeneralMutation();
     if (!sanitizeInput()) return;
+    if (!isUserExist()) return;
     UserAdmin newAdminData = new UserAdmin(
-      generateNewAdminId(),
+      ID.getText(),
       Name.getText(),
       Password.getText(),
       Email.getText(),
       PhNum.getText().replace("-", ""),
       Position.getSelectedItem().toString()
     );
-    if (m.addNewAdmin(newAdminData)) JOptionPane.showMessageDialog(
-      this,
-      "Record Added Successfully",
-      "Information",
-      JOptionPane.INFORMATION_MESSAGE
-    ); else JOptionPane.showMessageDialog(
+    if (m.addNewAdmin(newAdminData)) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Record Added Successfully",
+        "Information",
+        JOptionPane.INFORMATION_MESSAGE
+      );
+      ID.setText(generateNewAdminId());
+      Name.setText("");
+      Password.setText("");
+      Email.setText("");
+      PhNum.setText("");
+      Position.setSelectedItem("Manager");
+      ConfPass.setText("");
+    } else JOptionPane.showMessageDialog(
       this,
       "Failed to add admin data",
       "Error Message",
@@ -565,6 +640,10 @@ public class RegisterAdmin extends javax.swing.JFrame {
   private void NameActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_NameActionPerformed
     // TODO add your handling code here:
   } //GEN-LAST:event_NameActionPerformed
+
+  private void ConfPassActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ConfPassActionPerformed
+    // TODO add your handling code here:
+  } //GEN-LAST:event_ConfPassActionPerformed
 
   private void MenuButActionPerformed(java.awt.event.ActionEvent evt) {
     AdminMenu menu = new AdminMenu();
@@ -638,7 +717,7 @@ public class RegisterAdmin extends javax.swing.JFrame {
   private javax.swing.JLabel PswLab2;
   private javax.swing.JLabel PswLab3;
   private javax.swing.JLabel PswLab4;
-  private javax.swing.JButton SaveChanges;
+  private javax.swing.JButton RegisterBtn;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel2;
   // End of variables declaration//GEN-END:variables
