@@ -4,6 +4,7 @@
  */
 package carrentalsystem;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,6 +19,35 @@ public class BookingHistory extends javax.swing.JFrame {
    */
   public BookingHistory() {
     initComponents();
+    GeneralGetters g = new GeneralGetters();
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    model.setRowCount(0);
+
+    ArrayList<RecordBooking> allBookings = g.getAllBooking();
+
+    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+    for (RecordBooking book : allBookings) {
+      if (
+        book.getCustomer().getIC().equalsIgnoreCase(currentCustomerData.getIC())
+      ) {
+        Object[] eachBooking = {
+          book.getReceiptID(),
+          book.getCar().getCarNoPlate(),
+          book.getCustomer().getIC(),
+          book.getCustomer().getName(),
+          book.getCustomer().getPhNum(),
+          book.getCustomer().getEmail(),
+          df.format(book.getStartDate()),
+          book.getDays(),
+          df.format(book.getReturnDate()),
+          book.getTotalPrice(),
+          "",
+          "",
+        };
+
+        model.addRow(eachBooking);
+      }
+    }
   }
 
   public UserCustomer currentCustomerData = new UserCustomer(

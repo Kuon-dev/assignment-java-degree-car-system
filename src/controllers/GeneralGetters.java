@@ -89,9 +89,10 @@ public class GeneralGetters {
         car.get(1),
         car.get(2),
         car.get(3),
-        Integer.parseInt(car.get(4)),
-        Double.parseDouble(car.get(5)),
-        car.get(6)
+        car.get(4),
+        Integer.parseInt(car.get(5)),
+        Double.parseDouble(car.get(6)),
+        car.get(7)
       );
       allCars.add(c);
     }
@@ -151,7 +152,16 @@ public class GeneralGetters {
       if (c.getCarNoPlate().equals(carPlate)) return c;
     }
     // return empty car
-    return new GeneralCar(null, null, null, null, 0, 0, null);
+    return new GeneralCar(null, null, null, null, null, 0, 0, null);
+  }
+
+  public GeneralCar getSpecificSingleCarById(String carId) {
+    ArrayList<GeneralCar> allCars = getAllCar();
+    for (GeneralCar c : allCars) {
+      if (c.getCarId().equals(carId)) return c;
+    }
+    // return empty car
+    return new GeneralCar(null, null, null, null, null, 0, 0, null);
   }
 
   // ---------------------------------------------
@@ -167,6 +177,7 @@ public class GeneralGetters {
           null,
           null,
           null,
+          null,
           0,
           0,
           null
@@ -175,12 +186,13 @@ public class GeneralGetters {
           booking.get(0), // receiptID
           getSpecificCustomer(booking.get(1)), // customerID
           // because this returns an arraylist, have to get index of 0
-          getSpecificCar(bookedCar).get(0), // car
+          getSpecificSingleCarById(bookedCar.getCarId()), // car
           Integer.parseInt(booking.get(3)), // days
           Double.parseDouble(booking.get(4)), // price
           df.parse(booking.get(5)), // book date
           df.parse(booking.get(6)), // start
-          df.parse(booking.get(7)) // End
+          df.parse(booking.get(7)), // End
+          booking.get(8)
         );
         allBookings.add(b);
       }
@@ -198,6 +210,6 @@ public class GeneralGetters {
       if (record.getReceiptID().equals(receiptID)) return record;
     }
 
-    return new RecordBooking(null, null, null, 0, 0, null, null, null);
+    return new RecordBooking(null, null, null, 0, 0, null, null, null, null);
   }
 }

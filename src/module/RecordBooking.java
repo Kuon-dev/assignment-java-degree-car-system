@@ -11,6 +11,7 @@ public class RecordBooking {
   public double totalPrice;
   public int days;
   public Date bookingDate, startDate, returnDate;
+  public String status;
 
   public RecordBooking(
     String receiptID,
@@ -20,7 +21,8 @@ public class RecordBooking {
     double totalPrice,
     Date bookingDate,
     Date startDate,
-    Date returnDate
+    Date returnDate,
+    String status
   ) {
     this.receiptID = receiptID;
     this.customer = customer;
@@ -30,6 +32,7 @@ public class RecordBooking {
     this.bookingDate = bookingDate;
     this.startDate = startDate;
     this.returnDate = returnDate;
+    this.status = status;
   }
 
   // getter setters
@@ -98,6 +101,14 @@ public class RecordBooking {
     this.returnDate = returnDate;
   }
 
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
   // ----------------------
 
   public String generateReceiptID() {
@@ -106,9 +117,9 @@ public class RecordBooking {
       "abcdefghijklmnopqrstuvwxyz" +
       "0123456789";
 
-    StringBuilder sb = new StringBuilder();
+    StringBuilder sb = new StringBuilder("R-");
     Random random = new Random();
-    for (int i = 0; i < 15; i++) {
+    for (int i = 0; i < 20; i++) {
       // generate random index number
       int index = random.nextInt(availableChar.length());
       // get character specified by index

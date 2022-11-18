@@ -44,6 +44,7 @@ public class ManageBooking extends javax.swing.JFrame {
     0,
     null,
     null,
+    null,
     null
   );
 
@@ -91,6 +92,7 @@ public class ManageBooking extends javax.swing.JFrame {
     }
 
     GeneralCar newSelectedCar = new GeneralCar(
+      null,
       inputData.get(1),
       null,
       null,
@@ -100,7 +102,7 @@ public class ManageBooking extends javax.swing.JFrame {
       null
     );
 
-    if (!newSelectedCar.isCarExist()) {
+    if (!newSelectedCar.isCarPlateExist()) {
       JOptionPane.showMessageDialog(
         this,
         "Car does not exist in record",
@@ -113,7 +115,10 @@ public class ManageBooking extends javax.swing.JFrame {
     // check for valid date
     Validator v = new Validator();
     // incorrect format
-    if (!v.isValidDate(inputData.get(2)) || !v.isValidDate(inputData.get(3))) {
+    if (
+      !v.isValidDate(inputData.get(2), false) ||
+      !v.isValidDate(inputData.get(3), false)
+    ) {
       JOptionPane.showMessageDialog(
         this,
         "Invalid date inputted",
@@ -127,7 +132,7 @@ public class ManageBooking extends javax.swing.JFrame {
     if (!v.isValidEndDate(inputData.get(2), inputData.get(3))) {
       JOptionPane.showMessageDialog(
         this,
-        "Invalid date inputted",
+        "Invalid end date inputted",
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
@@ -156,8 +161,7 @@ public class ManageBooking extends javax.swing.JFrame {
         book.getDays(),
         df.format(book.getReturnDate()),
         book.getTotalPrice(),
-        "",
-        "",
+        book.getStatus(),
       };
 
       model.addRow(eachBooking);
@@ -180,7 +184,7 @@ public class ManageBooking extends javax.swing.JFrame {
         book.getDays(),
         df.format(book.getReturnDate()),
         book.getTotalPrice(),
-        "",
+        book.getStatus(),
         "",
       };
 
@@ -557,7 +561,7 @@ public class ManageBooking extends javax.swing.JFrame {
 
     jComboBox1.setModel(
       new javax.swing.DefaultComboBoxModel<>(
-        new String[] { "Approve", "Reject" }
+        new String[] { "Approve", "Reject", "Pending" }
       )
     );
 
@@ -1015,6 +1019,7 @@ public class ManageBooking extends javax.swing.JFrame {
 
         return;
       }
+      // get date difference to obtain days
       SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
       Date dateStart = df.parse(startDateEdit.getText());
       Date dateEnd = df.parse(endDateEdit.getText());
@@ -1022,18 +1027,23 @@ public class ManageBooking extends javax.swing.JFrame {
         (dateEnd.getTime() - dateStart.getTime()) / (1000 * 60 * 60 * 24) % 365;
 
       GeneralGetters g = new GeneralGetters();
+      GeneralCar newSelectedCar = g.getSpecificSingleCar(CarNoPlate.getText());
+
       RecordBooking newRecord = new RecordBooking(
         tableSelectedBooking.getReceiptID(),
         g.getSpecificCustomer(customerIcEdit.getText()),
-        g.getSpecificSingleCar(CarNoPlate.getText()),
-        (int) days + 1,
-        g.getSpecificSingleCar(CarNoPlate.getText()).getPrice() * days,
+        g.getSpecificSingleCarById(newSelectedCar.getCarId()),
+        (int) days + 1, // we need to +1 because the first day doesn't get counted
+        g.getSpecificSingleCarById(newSelectedCar.getCarId()).getPrice() *
+        (days + 1),
         tableSelectedBooking.getBookingDate(),
         dateStart,
-        dateEnd
+        dateEnd,
+        jComboBox1.getSelectedItem().toString()
       );
 
       GeneralMutation m = new GeneralMutation();
+      // show respondse
       if (
         m.editExistingBooking(tableSelectedBooking, newRecord)
       ) JOptionPane.showMessageDialog(
@@ -1058,9 +1068,34 @@ public class ManageBooking extends javax.swing.JFrame {
     }
   }
 
-  private void deleteActionPerformed(java.awt.event.ActionEvent evt) {}
+  private void deleteActionPerformed(java.awt.event.ActionEvent evt) {
+    if (tableSelectedBooking.getReceiptID().isEmpty()) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Please select a record to modify",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      return;
+    }
+    GeneralMutation m = new GeneralMutation();
+    if (
+      m.deleteExistingBooking(tableSelectedBooking)
+    ) JOptionPane.showMessageDialog(
+      this,
+      "Record Deleted Successfully",
+      "Information",
+      JOptionPane.INFORMATION_MESSAGE
+    ); else JOptionPane.showMessageDialog(
+      this,
+      "Failed To Delete Record",
+      "Error Message",
+      JOptionPane.ERROR_MESSAGE
+    );
+  }
 
   private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {
+    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
     GeneralGetters g = new GeneralGetters();
     JTable source = ((JTable) evt.getSource());
     int rowIndex = (source.getSelectedRow());
@@ -1073,6 +1108,11 @@ public class ManageBooking extends javax.swing.JFrame {
     }
     tableSelectedBooking =
       g.getSpecificBooking(fetchedBookingData.get(0).toString());
+
+    customerIcEdit.setText(tableSelectedBooking.getCustomer().getIC());
+    CarNoPlate.setText(tableSelectedBooking.getCar().getCarNoPlate());
+    startDateEdit.setText(df.format(tableSelectedBooking.getStartDate()));
+    endDateEdit.setText(df.format(tableSelectedBooking.getReturnDate()));
   }
 
   private void CarNoPlateActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_CarNoPlateActionPerformed
