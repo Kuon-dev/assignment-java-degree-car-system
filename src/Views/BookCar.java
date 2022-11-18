@@ -1280,22 +1280,26 @@ public class BookCar extends javax.swing.JFrame {
   private void EmailActionPerformed(java.awt.event.ActionEvent evt) {}
 
   private void BookButActionPerformed(java.awt.event.ActionEvent evt) {
-    GeneralMutation m = new GeneralMutation();
-    if (!sanitizeInput()) return;
-    RecordBooking newBookingData = new RecordBooking(
-      generateReceiptID(),
-      currentCustomerData,
-      tableSelectedCar,
-      Integer.parseInt(RentDays.getText()),
-      Double.parseDouble(TotalPrice.getText()),
-      new Date(),
-      df.parse(StartDate.getText()),
-      df.parse(ReturnDate.getText()),
-      "Pending",
-      CardNum.getText(),
-      AccHolder.getText(),
-      Bank.getText()
-    );
+    try {
+      GeneralMutation m = new GeneralMutation();
+      if (!sanitizeInput()) return;
+      RecordBooking newBookingData = new RecordBooking(
+        generateReceiptID(),
+        currentCustomerData,
+        tableSelectedCar,
+        Integer.parseInt(RentDays.getText()),
+        Double.parseDouble(TotalPrice.getText()),
+        new Date(),
+        df.parse(StartDate.getText()),
+        df.parse(ReturnDate.getText()),
+        "Pending",
+        CardNum.getText(),
+        AccHolder.getText(),
+        Bank.getText()
+      );
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   private void MenuButActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_MenuButActionPerformed
@@ -1323,77 +1327,77 @@ public class BookCar extends javax.swing.JFrame {
   } //GEN-LAST:event_StartDateActionPerformed
 
   private void RentDaysActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_RentDaysActionPerformed
-    String BookingStartDate = this.StartDate.getText();
-    String TotalDayStay = this.RentDays.getText();
+    String bookingStartDate = this.StartDate.getText();
+    String totalDayStay = this.RentDays.getText();
     String records;
-    Date StartDate, EndDate;
     //Check Day Stay validation
-    if (TotalDayStay.matches("[0-9]+")) {
-      //Convert Day Stay into Integer
-      int Day = Integer.parseInt(TotalDayStay);
-      //Check if Day larger than zero
-      if (Day > 0) {
-        try {
-          //Date formatting
-          StartDate = df.parse(BookingStartDate);
-          //Store today date in today
-          Date today = new Date();
-          //Check if start date input had over
-          if (StartDate.before(today)) {
-            //Display error message if the booking date has passed
-            JOptionPane.showMessageDialog(
-              this,
-              "Error. The booking date has passed.",
-              "Error Message",
-              JOptionPane.ERROR_MESSAGE
-            );
-            this.StartDate.setText("");
-            this.RentDays.setText("");
-            this.ReturnDate.setText("");
-          } else {
-            //Call calendar features
-            Calendar c = Calendar.getInstance();
-            c.setTime(df.parse(BookingStartDate));
-            int TotalDay = Integer.parseInt(TotalDayStay);
-            //Calculate end date
-            c.add(Calendar.DATE, TotalDay);
-            String BookingEndDate = df.format(c.getTime());
-            EndDate = df.parse(BookingEndDate);
-            //Set end date
-            this.ReturnDate.setText(BookingEndDate);
-            //Set total price
-            TotalPrice.setText(
-              String.valueOf(Double.parseDouble(Price.getText()) * Day)
-            );
-          }
-        } catch (ParseException ex) {
-          //Display error message if any error
-          JOptionPane.showMessageDialog(
-            this,
-            "Invalid Date Format.",
-            "Error Message",
-            JOptionPane.ERROR_MESSAGE
-          );
-          this.StartDate.setText("");
-          this.ReturnDate.setText("");
-        }
-      } else {
-        //Display error message if day stau enter less than one
-        JOptionPane.showMessageDialog(
-          this,
-          "Day stay cannot less than one day.",
-          "Error Message",
-          JOptionPane.ERROR_MESSAGE
-        );
-      }
-    } else {
-      //Display error message if day stay input not valid
+    if (!totalDayStay.matches("[0-9]+")) {
       JOptionPane.showMessageDialog(
         this,
         "Invalid Day Stay.",
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
+      return;
+    }
+
+    Date startDate, endDate;
+
+    //Convert Day Stay into Integer
+    int day = Integer.parseInt(totalDayStay);
+    //Check if Day larger than zero
+    if (day <= 0) {
+      //Display error message if day stau enter less than one
+      JOptionPane.showMessageDialog(
+        this,
+        "Day stay cannot less than one day.",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      return;
+    }
+
+    try {
+      Date today = new Date();
+      startDate = df.parse(bookingStartDate);
+      if (startDate.before(today)) {
+        //Display error message if the booking date has passed
+        JOptionPane.showMessageDialog(
+          this,
+          "Error. The booking date has passed.",
+          "Error Message",
+          JOptionPane.ERROR_MESSAGE
+        );
+        this.StartDate.setText("");
+        this.RentDays.setText("");
+        this.ReturnDate.setText("");
+        return;
+      }
+
+      //Call calendar features
+      Calendar c = Calendar.getInstance();
+      c.setTime(df.parse(bookingStartDate));
+      int TotalDay = Integer.parseInt(totalDayStay);
+      //Calculate end date
+      c.add(Calendar.DATE, TotalDay);
+      String bookingEndDate = df.format(c.getTime());
+      endDate = df.parse(bookingEndDate);
+      //Set end date
+      this.ReturnDate.setText(bookingEndDate);
+      //Set total price
+      TotalPrice.setText(
+        String.valueOf(Double.parseDouble(Price.getText()) * day)
+      );
+    } catch (ParseException ex) {
+      //Display error message if any error
+      JOptionPane.showMessageDialog(
+        this,
+        "Invalid Date Format.",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      this.StartDate.setText("");
+      this.ReturnDate.setText("");
     }
   } //GEN-LAST:event_RentDaysActionPerformed
 
