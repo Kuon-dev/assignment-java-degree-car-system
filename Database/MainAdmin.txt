@@ -1,4 +1,5 @@
 Staff#0000, Robert, 12345, Robert@gmail.com, 012345677889, Manager
-1, Sam, 54321, Sam@gmail.com, 0125415159, Supervisor
-2, Jennet, 32451, Jennet@gmail.com, 0125415159, Supervisor
-4, Mary, 12345, mary@gmail.com, 01235123, Manager
+Staff#0001, Sam, 54321, Sam@gmail.com, 0125415159, Supervisor
+Staff#0002, Jennet, 32451, Jennet@gmail.com, 0125415159, Supervisor
+Staff#0004, Mary, 12345, mary@gmail.com, 01235123, Manager
+[Staff#0005, Joshua, 12345, Joshua@gmail.com, 032-123-5123, Manager]

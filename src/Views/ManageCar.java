@@ -1012,6 +1012,8 @@ public class ManageCar extends javax.swing.JFrame {
       "Error Message",
       JOptionPane.ERROR_MESSAGE
     );
+
+    searchActionPerformed(evt);
   }
 
   private void deleteActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1036,6 +1038,8 @@ public class ManageCar extends javax.swing.JFrame {
       "Error Message",
       JOptionPane.ERROR_MESSAGE
     );
+
+    searchActionPerformed(evt);
   }
 
   private void YearActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_YearActionPerformed
