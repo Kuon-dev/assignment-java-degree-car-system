@@ -8,6 +8,8 @@ import java.io.*;
 import java.math.BigInteger;
 import java.text.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -25,6 +27,9 @@ public class BookCar extends javax.swing.JFrame {
     initComponents();
     GeneralGetters g = new GeneralGetters();
     updateTableInformation(g.getAllCar());
+    IC.setText(currentCustomerData.getIC());
+    Email.setText(currentCustomerData.getEmail());
+    PhNum.setText(currentCustomerData.getPhNum());
   }
 
   public GeneralCar tableSelectedCar = new GeneralCar(
@@ -81,7 +86,7 @@ public class BookCar extends javax.swing.JFrame {
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
-      this.IC.setText("");
+      IC.setText(currentCustomerData.getIC());
       return false;
     }
     if (!emailEntered.contains("@") || !emailEntered.contains(".com")) {
@@ -91,7 +96,7 @@ public class BookCar extends javax.swing.JFrame {
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
-      this.Email.setText("");
+      Email.setText(currentCustomerData.getEmail());
       return false;
     }
     if ((phnumEntered.length() != (10)) && (phnumEntered.length() != (11))) {
@@ -101,7 +106,7 @@ public class BookCar extends javax.swing.JFrame {
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
-      this.PhNum.setText("");
+      PhNum.setText(currentCustomerData.getPhNum());
       return false;
     }
     if (CardNum.getText().length() != (16)) {
@@ -111,7 +116,7 @@ public class BookCar extends javax.swing.JFrame {
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
-      this.CardNum.setText("");
+      CardNum.setText("");
       return false;
     }
     {
@@ -556,6 +561,7 @@ public class BookCar extends javax.swing.JFrame {
         public boolean isCellEditable(int rowIndex, int columnIndex) {
           return canEdit[columnIndex];
         }
+
       }
     );
     jTable1.addMouseListener(
@@ -1321,6 +1327,7 @@ public class BookCar extends javax.swing.JFrame {
         AccHolder.getText(),
         Bank.getText()
       );
+
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -1354,6 +1361,7 @@ public class BookCar extends javax.swing.JFrame {
     String bookingStartDate = this.StartDate.getText();
     String totalDayStay = this.RentDays.getText();
     String records;
+    
     //Check Day Stay validation
     if (!totalDayStay.matches("[0-9]+")) {
       JOptionPane.showMessageDialog(
@@ -1386,6 +1394,7 @@ public class BookCar extends javax.swing.JFrame {
       startDate = df.parse(bookingStartDate);
       if (startDate.before(today)) {
         //Display error message if the booking date has passed
+
         JOptionPane.showMessageDialog(
           this,
           "Error. The booking date has passed.",
