@@ -58,7 +58,7 @@ public class ManageAccountMember extends javax.swing.JFrame {
   }
 
   public void setTextfieldData() {
-    IC.setText(currentCustomerData.getId());
+    IC.setText(currentCustomerData.getIC());
     Name.setText(currentCustomerData.getName());
     Email.setText(currentCustomerData.getEmail());
     PhNum.setText(currentCustomerData.getPhNum());
@@ -107,7 +107,9 @@ public class ManageAccountMember extends javax.swing.JFrame {
     SaveChanges.setText("Save Changes");
     SaveChanges.addActionListener(
       new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {}
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          SaveChangesActionPerformed(evt);
+        }
       }
     );
 
@@ -174,6 +176,8 @@ public class ManageAccountMember extends javax.swing.JFrame {
       }
     );
 
+    IC.setEditable(false);
+    IC.setBackground(new java.awt.Color(255, 255, 255));
     IC.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     IC.addActionListener(
       new java.awt.event.ActionListener() {

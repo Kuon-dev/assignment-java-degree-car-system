@@ -5,6 +5,8 @@
 package carrentalsystem;
 
 import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -12,6 +14,8 @@ import javax.swing.table.DefaultTableModel;
  * @author Lim Li Ping
  */
 public class ViewCar extends javax.swing.JFrame {
+
+  private JFrame frame;
 
   /**
    * Creates new form ViewCar
@@ -127,24 +131,6 @@ public class ViewCar extends javax.swing.JFrame {
         .addGroup(
           layout
             .createSequentialGroup()
-            .addContainerGap()
-            .addGroup(
-              layout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane1)
-                .addGroup(
-                  layout
-                    .createSequentialGroup()
-                    .addGap(127, 127, 127)
-                    .addComponent(Title)
-                    .addGap(0, 131, Short.MAX_VALUE)
-                )
-            )
-            .addContainerGap()
-        )
-        .addGroup(
-          layout
-            .createSequentialGroup()
             .addGap(109, 109, 109)
             .addComponent(
               ExitBtn1,
@@ -159,6 +145,32 @@ public class ViewCar extends javax.swing.JFrame {
             )
             .addComponent(BookCarBtn)
             .addGap(161, 161, 161)
+        )
+        .addGroup(
+          layout
+            .createSequentialGroup()
+            .addGroup(
+              layout
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(
+                  layout
+                    .createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(
+                      jScrollPane1,
+                      javax.swing.GroupLayout.PREFERRED_SIZE,
+                      902,
+                      javax.swing.GroupLayout.PREFERRED_SIZE
+                    )
+                )
+                .addGroup(
+                  layout
+                    .createSequentialGroup()
+                    .addGap(249, 249, 249)
+                    .addComponent(Title)
+                )
+            )
+            .addContainerGap(14, Short.MAX_VALUE)
         )
     );
     layout.setVerticalGroup(
@@ -200,7 +212,20 @@ public class ViewCar extends javax.swing.JFrame {
   } //GEN-LAST:event_ExitBtn1ActionPerformed
 
   private void BookCarBtnActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_BookCarBtnActionPerformed
-    // TODO add your handling code here:
+    frame = new JFrame("Login");
+    if (
+      JOptionPane.showConfirmDialog(
+        frame,
+        "Only member can book a car. Confirm if you want to register or login as member?",
+        "Confirm Messages",
+        JOptionPane.YES_NO_OPTION
+      ) ==
+      JOptionPane.YES_NO_OPTION
+    ) {
+      LoginMenu menu = new LoginMenu();
+      menu.setVisible(true);
+      dispose();
+    }
   } //GEN-LAST:event_BookCarBtnActionPerformed
 
   /**

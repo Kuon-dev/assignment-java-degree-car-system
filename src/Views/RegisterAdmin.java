@@ -167,6 +167,8 @@ public class RegisterAdmin extends javax.swing.JFrame {
     PswLab2.setForeground(new java.awt.Color(140, 174, 238));
     PswLab2.setText("Password:");
 
+    ID.setEditable(false);
+    ID.setBackground(new java.awt.Color(255, 255, 255));
     ID.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     ID.addActionListener(
       new java.awt.event.ActionListener() {
