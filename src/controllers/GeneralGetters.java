@@ -192,10 +192,10 @@ public class GeneralGetters {
           df.parse(booking.get(5)), // book date
           df.parse(booking.get(6)), // start
           df.parse(booking.get(7)), // End
-          booking.get(8), // state
-          booking.get(9), // card num
-          booking.get(10), // acc holder
-          booking.get(11) // bank
+          booking.get(8), //status
+          booking.get(9), //card number
+          booking.get(10), //card holder
+          booking.get(11) //bank
         );
         allBookings.add(b);
       }

@@ -525,7 +525,9 @@ public class ManageBooking extends javax.swing.JFrame {
 
     customerIcEdit.addActionListener(
       new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {}
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          customerIcEditActionPerformed(evt);
+        }
       }
     );
 
@@ -567,7 +569,7 @@ public class ManageBooking extends javax.swing.JFrame {
 
     jComboBox1.setModel(
       new javax.swing.DefaultComboBoxModel<>(
-        new String[] { "Approve", "Reject" }
+        new String[] { "Approve", "Reject", "Pending" }
       )
     );
 
