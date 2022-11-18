@@ -4,6 +4,7 @@
  */
 package carrentalsystem;
 
+import java.lang.reflect.Array;
 import java.util.*;
 import javax.swing.JOptionPane;
 
@@ -35,7 +36,6 @@ public class RegisterAdmin extends javax.swing.JFrame {
 
   private Boolean sanitizeInput() {
     ArrayList<String> data = new ArrayList<>();
-    data.add(ID.getText());
     data.add(Name.getText());
     data.add(Email.getText());
     data.add(PhNum.getText());
@@ -56,6 +56,21 @@ public class RegisterAdmin extends javax.swing.JFrame {
       }
     }
     return true;
+  }
+
+  private String generateNewAdminId() {
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<UserAdmin> allAdmin = g.getAllAdmin();
+
+    StringBuilder sb = new StringBuilder("Staff#");
+    String lastId = allAdmin.get(allAdmin.size() - 1).getId();
+    String[] arrId = lastId.split("#", 5);
+    // get number of the ID
+    int idToGenerate = Integer.parseInt(arrId[1]) + 1;
+    String generatedId = String.format("%04d", idToGenerate);
+    sb.append(generatedId);
+
+    return sb.toString();
   }
 
   /**
@@ -523,11 +538,11 @@ public class RegisterAdmin extends javax.swing.JFrame {
     GeneralMutation m = new GeneralMutation();
     if (!sanitizeInput()) return;
     UserAdmin newAdminData = new UserAdmin(
-      ID.getText(),
+      generateNewAdminId(),
       Name.getText(),
       Password.getText(),
       Email.getText(),
-      PhNum.getText(),
+      PhNum.getText().replace("-", ""),
       Position.getSelectedItem().toString()
     );
     if (m.addNewAdmin(newAdminData)) JOptionPane.showMessageDialog(

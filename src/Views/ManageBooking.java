@@ -1065,6 +1065,9 @@ public class ManageBooking extends javax.swing.JFrame {
         JOptionPane.ERROR_MESSAGE
       );
       e.printStackTrace();
+    } finally {
+      clearTableData();
+      setTableData();
     }
   }
 
@@ -1092,6 +1095,8 @@ public class ManageBooking extends javax.swing.JFrame {
       "Error Message",
       JOptionPane.ERROR_MESSAGE
     );
+    clearTableData();
+    setTableData();
   }
 
   private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {
