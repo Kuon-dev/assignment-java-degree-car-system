@@ -155,15 +155,20 @@ public class BookingHistory extends javax.swing.JFrame {
             .addGroup(
               layout
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(
+                  jScrollPane2,
+                  javax.swing.GroupLayout.DEFAULT_SIZE,
+                  1362,
+                  Short.MAX_VALUE
+                )
                 .addGroup(
                   layout
                     .createSequentialGroup()
                     .addComponent(MenuBut)
-                    .addGap(96, 96, 96)
+                    .addGap(436, 436, 436)
                     .addComponent(Title)
-                    .addGap(0, 309, Short.MAX_VALUE)
+                    .addGap(0, 0, Short.MAX_VALUE)
                 )
-                .addComponent(jScrollPane2)
             )
             .addContainerGap()
         )
@@ -178,10 +183,22 @@ public class BookingHistory extends javax.swing.JFrame {
             .addGroup(
               layout
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(MenuBut)
-                .addComponent(Title)
+                .addGroup(
+                  layout
+                    .createSequentialGroup()
+                    .addComponent(MenuBut)
+                    .addGap(39, 39, 39)
+                )
+                .addGroup(
+                  javax.swing.GroupLayout.Alignment.TRAILING,
+                  layout
+                    .createSequentialGroup()
+                    .addComponent(Title)
+                    .addPreferredGap(
+                      javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
+                    )
+                )
             )
-            .addGap(18, 18, 18)
             .addComponent(
               jScrollPane2,
               javax.swing.GroupLayout.PREFERRED_SIZE,

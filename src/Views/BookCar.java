@@ -69,6 +69,106 @@ public class BookCar extends javax.swing.JFrame {
     }
   }
 
+  private DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+
+  private Boolean sanitizeInput() {
+    String phnumEntered = this.PhNum.getText();
+    String emailEntered = this.Email.getText();
+    if (IC.getText().length() != 12) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Incorrect IC.",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      this.IC.setText("");
+      return false;
+    }
+    if (!emailEntered.contains("@") || !emailEntered.contains(".com")) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Incorrect Email.",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      this.Email.setText("");
+      return false;
+    }
+    if ((phnumEntered.length() != (10)) && (phnumEntered.length() != (11))) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Incorrect Phone Number.",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      this.PhNum.setText("");
+      return false;
+    }
+    if (CardNum.getText().length() != (16)) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Invalid Card Number.",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      this.CardNum.setText("");
+      return false;
+    }
+    {
+      ArrayList<String> data = new ArrayList<>();
+      data.add(CarNoPlate.getText());
+      data.add(Brand.getText());
+      data.add(Model.getText());
+      data.add(Year.getText());
+      data.add(FuelType.getSelectedItem().toString());
+      data.add(Price.getText());
+      data.add(StartDate.getText());
+      data.add(RentDays.getText());
+      data.add(ReturnDate.getText());
+      data.add(TotalPrice.getText());
+      data.add(IC.getText());
+      data.add(Email.getText());
+      data.add(PhNum.getText());
+      data.add(CardNum.getText());
+      data.add(AccHolder.getText());
+      data.add(Bank.getText());
+
+      // if there's an empty input, return false
+      for (String d : data) {
+        if (d.isEmpty()) {
+          JOptionPane.showMessageDialog(
+            this,
+            "Fill in all the inputs",
+            "Information",
+            JOptionPane.INFORMATION_MESSAGE
+          );
+          return false;
+        }
+      }
+      return true;
+    }
+  }
+
+  public String generateReceiptID() {
+    String availableChar =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+      "abcdefghijklmnopqrstuvwxyz" +
+      "0123456789";
+
+    StringBuilder sb = new StringBuilder("R-");
+    Random random = new Random();
+    for (int i = 0; i < 20; i++) {
+      // generate random index number
+      int index = random.nextInt(availableChar.length());
+      // get character specified by index
+      char randomChar = availableChar.charAt(index);
+      // append the character to string builder
+      sb.append(randomChar);
+    }
+
+    return sb.toString();
+  }
+
   /**
    * This method is called from within the constructor to initialize the form.
    * WARNING: Do NOT modify this code. The content of this method is always
@@ -81,12 +181,16 @@ public class BookCar extends javax.swing.JFrame {
     Passport = new javax.swing.JLabel();
     IC = new javax.swing.JTextField();
     Contact = new javax.swing.JLabel();
-    CustName = new javax.swing.JTextField();
-    Name = new javax.swing.JLabel();
     PhNum = new javax.swing.JTextField();
     Mail = new javax.swing.JLabel();
     Email = new javax.swing.JTextField();
     CustDetailsLab = new javax.swing.JLabel();
+    Mail1 = new javax.swing.JLabel();
+    Mail2 = new javax.swing.JLabel();
+    Mail3 = new javax.swing.JLabel();
+    CardNum = new javax.swing.JTextField();
+    AccHolder = new javax.swing.JTextField();
+    Bank = new javax.swing.JTextField();
     Title = new javax.swing.JLabel();
     MenuBut = new javax.swing.JButton();
     search = new javax.swing.JButton();
@@ -107,9 +211,17 @@ public class BookCar extends javax.swing.JFrame {
     Model = new javax.swing.JTextField();
     Year = new javax.swing.JTextField();
     Room1 = new javax.swing.JLabel();
-    Price = new javax.swing.JTextField();
+    StartDate = new javax.swing.JTextField();
     Room2 = new javax.swing.JLabel();
-    Status = new javax.swing.JComboBox<>();
+    Room3 = new javax.swing.JLabel();
+    RentDays = new javax.swing.JTextField();
+    TotalPrice = new javax.swing.JTextField();
+    BookingLab1 = new javax.swing.JLabel();
+    Day1 = new javax.swing.JLabel();
+    ReturnDate = new javax.swing.JTextField();
+    PricePDay = new javax.swing.JLabel();
+    Price = new javax.swing.JTextField();
+    jLabel1 = new javax.swing.JLabel();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,15 +234,14 @@ public class BookCar extends javax.swing.JFrame {
 
     Passport.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
     Passport.setForeground(new java.awt.Color(140, 174, 238));
-    Passport.setText("IC/Passport:");
+    Passport.setText("Customer IC:");
+
+    IC.setEditable(false);
+    IC.setBackground(new java.awt.Color(255, 255, 255));
 
     Contact.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
     Contact.setForeground(new java.awt.Color(140, 174, 238));
     Contact.setText("Phone Number:");
-
-    Name.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
-    Name.setForeground(new java.awt.Color(140, 174, 238));
-    Name.setText("Name:");
 
     Mail.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
     Mail.setForeground(new java.awt.Color(140, 174, 238));
@@ -148,6 +259,42 @@ public class BookCar extends javax.swing.JFrame {
     CustDetailsLab.setForeground(new java.awt.Color(66, 129, 244));
     CustDetailsLab.setText("Customer Details");
 
+    Mail1.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+    Mail1.setForeground(new java.awt.Color(140, 174, 238));
+    Mail1.setText("Card Number:");
+
+    Mail2.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+    Mail2.setForeground(new java.awt.Color(140, 174, 238));
+    Mail2.setText("Bank:");
+
+    Mail3.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+    Mail3.setForeground(new java.awt.Color(140, 174, 238));
+    Mail3.setText("Card Holder:");
+
+    CardNum.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          CardNumActionPerformed(evt);
+        }
+      }
+    );
+
+    AccHolder.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          AccHolderActionPerformed(evt);
+        }
+      }
+    );
+
+    Bank.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          BankActionPerformed(evt);
+        }
+      }
+    );
+
     javax.swing.GroupLayout CustDetailsLayout = new javax.swing.GroupLayout(
       CustDetails
     );
@@ -158,12 +305,14 @@ public class BookCar extends javax.swing.JFrame {
         .addGroup(
           CustDetailsLayout
             .createSequentialGroup()
-            .addGap(13, 13, 13)
+            .addGap(10, 10, 10)
             .addGroup(
               CustDetailsLayout
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(Mail3)
+                .addComponent(Mail2)
+                .addComponent(Mail1)
                 .addComponent(Passport)
-                .addComponent(Name)
                 .addComponent(Contact)
                 .addComponent(
                   Mail,
@@ -199,16 +348,25 @@ public class BookCar extends javax.swing.JFrame {
                   Short.MAX_VALUE
                 )
                 .addComponent(
-                  CustName,
+                  CardNum,
+                  javax.swing.GroupLayout.DEFAULT_SIZE,
+                  209,
+                  Short.MAX_VALUE
+                )
+                .addComponent(
+                  AccHolder,
+                  javax.swing.GroupLayout.DEFAULT_SIZE,
+                  209,
+                  Short.MAX_VALUE
+                )
+                .addComponent(
+                  Bank,
                   javax.swing.GroupLayout.DEFAULT_SIZE,
                   209,
                   Short.MAX_VALUE
                 )
             )
-            .addContainerGap(
-              javax.swing.GroupLayout.DEFAULT_SIZE,
-              Short.MAX_VALUE
-            )
+            .addContainerGap(16, Short.MAX_VALUE)
         )
     );
     CustDetailsLayout.setVerticalGroup(
@@ -233,23 +391,7 @@ public class BookCar extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
             )
-            .addPreferredGap(
-              javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
-            )
-            .addGroup(
-              CustDetailsLayout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(
-                  CustName,
-                  javax.swing.GroupLayout.PREFERRED_SIZE,
-                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                  javax.swing.GroupLayout.PREFERRED_SIZE
-                )
-                .addComponent(Name)
-            )
-            .addPreferredGap(
-              javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
-            )
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(
               CustDetailsLayout
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -261,9 +403,7 @@ public class BookCar extends javax.swing.JFrame {
                 )
                 .addComponent(Contact)
             )
-            .addPreferredGap(
-              javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
-            )
+            .addGap(12, 12, 12)
             .addGroup(
               CustDetailsLayout
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -274,6 +414,46 @@ public class BookCar extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(Mail)
+            )
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(
+              CustDetailsLayout
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(Mail1)
+                .addComponent(
+                  CardNum,
+                  javax.swing.GroupLayout.PREFERRED_SIZE,
+                  javax.swing.GroupLayout.DEFAULT_SIZE,
+                  javax.swing.GroupLayout.PREFERRED_SIZE
+                )
+            )
+            .addPreferredGap(
+              javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
+            )
+            .addGroup(
+              CustDetailsLayout
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(
+                  AccHolder,
+                  javax.swing.GroupLayout.PREFERRED_SIZE,
+                  javax.swing.GroupLayout.DEFAULT_SIZE,
+                  javax.swing.GroupLayout.PREFERRED_SIZE
+                )
+                .addComponent(Mail3)
+            )
+            .addPreferredGap(
+              javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
+            )
+            .addGroup(
+              CustDetailsLayout
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(
+                  Bank,
+                  javax.swing.GroupLayout.PREFERRED_SIZE,
+                  javax.swing.GroupLayout.DEFAULT_SIZE,
+                  javax.swing.GroupLayout.PREFERRED_SIZE
+                )
+                .addComponent(Mail2)
             )
             .addContainerGap(
               javax.swing.GroupLayout.DEFAULT_SIZE,
@@ -303,7 +483,9 @@ public class BookCar extends javax.swing.JFrame {
     search.setText("Search");
     search.addActionListener(
       new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {}
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          searchActionPerformed(evt);
+        }
       }
     );
 
@@ -321,7 +503,9 @@ public class BookCar extends javax.swing.JFrame {
     clearBut.setText("Clear");
     clearBut.addActionListener(
       new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {}
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          clearButActionPerformed(evt);
+        }
       }
     );
 
@@ -329,10 +513,10 @@ public class BookCar extends javax.swing.JFrame {
     jTable1.setModel(
       new javax.swing.table.DefaultTableModel(
         new Object[][] {
-          { null, null, null, null, null, null, null },
-          { null, null, null, null, null, null, null },
-          { null, null, null, null, null, null, null },
-          { null, null, null, null, null, null, null },
+          { null, null, null, null, null, null },
+          { null, null, null, null, null, null },
+          { null, null, null, null, null, null },
+          { null, null, null, null, null, null },
         },
         new String[] {
           "Car No Plate",
@@ -341,7 +525,6 @@ public class BookCar extends javax.swing.JFrame {
           "Year",
           "Type of Fuel",
           "Price",
-          "Status",
         }
       ) {
         Class[] types = new Class[] {
@@ -351,7 +534,6 @@ public class BookCar extends javax.swing.JFrame {
           java.lang.Integer.class,
           java.lang.String.class,
           java.lang.Double.class,
-          java.lang.String.class,
         };
 
         public Class getColumnClass(int columnIndex) {
@@ -436,6 +618,8 @@ public class BookCar extends javax.swing.JFrame {
       }
     );
 
+    Year.setEditable(false);
+    Year.setBackground(new java.awt.Color(255, 255, 255));
     Year.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -446,8 +630,66 @@ public class BookCar extends javax.swing.JFrame {
 
     Room1.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
     Room1.setForeground(new java.awt.Color(140, 174, 238));
-    Room1.setText("Price:");
+    Room1.setText("Total Price:");
 
+    StartDate.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          StartDateActionPerformed(evt);
+        }
+      }
+    );
+
+    Room2.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+    Room2.setForeground(new java.awt.Color(140, 174, 238));
+    Room2.setText("Return Date:");
+
+    Room3.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+    Room3.setForeground(new java.awt.Color(140, 174, 238));
+    Room3.setText("Start Date:");
+
+    RentDays.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          RentDaysActionPerformed(evt);
+        }
+      }
+    );
+
+    TotalPrice.setEditable(false);
+    TotalPrice.setBackground(new java.awt.Color(255, 255, 255));
+    TotalPrice.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          TotalPriceActionPerformed(evt);
+        }
+      }
+    );
+
+    BookingLab1.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+    BookingLab1.setForeground(new java.awt.Color(140, 174, 238));
+    BookingLab1.setText("(dd/mm/yyyy)");
+
+    Day1.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+    Day1.setForeground(new java.awt.Color(140, 174, 238));
+    Day1.setText("Day of Rent:");
+
+    ReturnDate.setEditable(false);
+    ReturnDate.setBackground(new java.awt.Color(255, 255, 255));
+    ReturnDate.addActionListener(
+      new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          ReturnDateActionPerformed(evt);
+        }
+      }
+    );
+
+    PricePDay.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+    PricePDay.setForeground(new java.awt.Color(140, 174, 238));
+    PricePDay.setText("Price Per Day:");
+
+    Price.setEditable(false);
+    Price.setBackground(new java.awt.Color(255, 255, 255));
     Price.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -456,37 +698,7 @@ public class BookCar extends javax.swing.JFrame {
       }
     );
 
-    Room2.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
-    Room2.setForeground(new java.awt.Color(140, 174, 238));
-    Room2.setText("Status:");
-
-    Status.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-    Status.setModel(
-      new javax.swing.DefaultComboBoxModel<>(
-        new String[] { "Available", "Rented" }
-      )
-    );
-    Status.addContainerListener(
-      new java.awt.event.ContainerAdapter() {
-        public void componentAdded(java.awt.event.ContainerEvent evt) {
-          StatusComponentAdded(evt);
-        }
-      }
-    );
-    Status.addItemListener(
-      new java.awt.event.ItemListener() {
-        public void itemStateChanged(java.awt.event.ItemEvent evt) {
-          StatusItemStateChanged(evt);
-        }
-      }
-    );
-    Status.addActionListener(
-      new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-          StatusActionPerformed(evt);
-        }
-      }
-    );
+    jLabel1.setText("** Use Car No Plate/ Brand/ Model to search a car");
 
     javax.swing.GroupLayout RoomDetailsLayout = new javax.swing.GroupLayout(
       RoomDetails
@@ -498,15 +710,19 @@ public class BookCar extends javax.swing.JFrame {
         .addGroup(
           RoomDetailsLayout
             .createSequentialGroup()
+            .addGap(169, 169, 169)
+            .addComponent(RoomDetailsLab)
+            .addContainerGap(
+              javax.swing.GroupLayout.DEFAULT_SIZE,
+              Short.MAX_VALUE
+            )
+        )
+        .addGroup(
+          RoomDetailsLayout
+            .createSequentialGroup()
             .addGroup(
               RoomDetailsLayout
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(
-                  RoomDetailsLayout
-                    .createSequentialGroup()
-                    .addGap(143, 143, 143)
-                    .addComponent(RoomDetailsLab)
-                )
                 .addGroup(
                   RoomDetailsLayout
                     .createSequentialGroup()
@@ -518,50 +734,18 @@ public class BookCar extends javax.swing.JFrame {
                         .addGroup(
                           RoomDetailsLayout
                             .createSequentialGroup()
+                            .addGap(14, 14, 14)
                             .addGroup(
                               RoomDetailsLayout
                                 .createParallelGroup(
-                                  javax.swing.GroupLayout.Alignment.LEADING,
-                                  false
+                                  javax.swing.GroupLayout.Alignment.TRAILING
                                 )
-                                .addGroup(
-                                  RoomDetailsLayout
-                                    .createSequentialGroup()
-                                    .addGap(14, 14, 14)
-                                    .addComponent(Room)
-                                    .addPreferredGap(
-                                      javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
-                                    )
-                                    .addComponent(
-                                      FuelType,
-                                      0,
-                                      javax.swing.GroupLayout.DEFAULT_SIZE,
-                                      Short.MAX_VALUE
-                                    )
-                                )
-                                .addGroup(
-                                  RoomDetailsLayout
-                                    .createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(BookingLab)
-                                    .addGap(16, 16, 16)
-                                    .addComponent(
-                                      CarNoPlate,
-                                      javax.swing.GroupLayout.PREFERRED_SIZE,
-                                      110,
-                                      javax.swing.GroupLayout.PREFERRED_SIZE
-                                    )
-                                )
+                                .addComponent(RoomTypeLab)
+                                .addComponent(Room)
+                                .addComponent(PricePDay)
                             )
-                            .addGap(0, 0, Short.MAX_VALUE)
-                        )
-                        .addGroup(
-                          javax.swing.GroupLayout.Alignment.TRAILING,
-                          RoomDetailsLayout
-                            .createSequentialGroup()
-                            .addContainerGap(
-                              javax.swing.GroupLayout.DEFAULT_SIZE,
-                              Short.MAX_VALUE
+                            .addPreferredGap(
+                              javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
                             )
                             .addGroup(
                               RoomDetailsLayout
@@ -569,37 +753,33 @@ public class BookCar extends javax.swing.JFrame {
                                   javax.swing.GroupLayout.Alignment.LEADING
                                 )
                                 .addGroup(
-                                  javax.swing.GroupLayout.Alignment.TRAILING,
                                   RoomDetailsLayout
                                     .createSequentialGroup()
-                                    .addComponent(Day)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(
-                                      Brand,
-                                      javax.swing.GroupLayout.PREFERRED_SIZE,
-                                      110,
-                                      javax.swing.GroupLayout.PREFERRED_SIZE
+                                    .addGroup(
+                                      RoomDetailsLayout
+                                        .createParallelGroup(
+                                          javax.swing.GroupLayout.Alignment.LEADING
+                                        )
+                                        .addComponent(
+                                          FuelType,
+                                          javax.swing.GroupLayout.PREFERRED_SIZE,
+                                          112,
+                                          javax.swing.GroupLayout.PREFERRED_SIZE
+                                        )
+                                        .addComponent(
+                                          Price,
+                                          javax.swing.GroupLayout.PREFERRED_SIZE,
+                                          110,
+                                          javax.swing.GroupLayout.PREFERRED_SIZE
+                                        )
                                     )
+                                    .addGap(0, 0, Short.MAX_VALUE)
                                 )
                                 .addGroup(
                                   javax.swing.GroupLayout.Alignment.TRAILING,
                                   RoomDetailsLayout
                                     .createSequentialGroup()
-                                    .addComponent(BookingLab2)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(
-                                      Model,
-                                      javax.swing.GroupLayout.PREFERRED_SIZE,
-                                      110,
-                                      javax.swing.GroupLayout.PREFERRED_SIZE
-                                    )
-                                )
-                                .addGroup(
-                                  javax.swing.GroupLayout.Alignment.TRAILING,
-                                  RoomDetailsLayout
-                                    .createSequentialGroup()
-                                    .addComponent(RoomTypeLab)
-                                    .addGap(18, 18, 18)
+                                    .addGap(0, 0, Short.MAX_VALUE)
                                     .addComponent(
                                       Year,
                                       javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -609,49 +789,145 @@ public class BookCar extends javax.swing.JFrame {
                                 )
                             )
                         )
-                    )
-                    .addPreferredGap(
-                      javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                      31,
-                      Short.MAX_VALUE
+                        .addGroup(
+                          RoomDetailsLayout
+                            .createSequentialGroup()
+                            .addContainerGap(
+                              javax.swing.GroupLayout.DEFAULT_SIZE,
+                              Short.MAX_VALUE
+                            )
+                            .addGroup(
+                              RoomDetailsLayout
+                                .createParallelGroup(
+                                  javax.swing.GroupLayout.Alignment.TRAILING
+                                )
+                                .addGroup(
+                                  RoomDetailsLayout
+                                    .createSequentialGroup()
+                                    .addComponent(BookingLab)
+                                    .addGap(14, 14, 14)
+                                )
+                                .addGroup(
+                                  RoomDetailsLayout
+                                    .createSequentialGroup()
+                                    .addComponent(Day)
+                                    .addPreferredGap(
+                                      javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
+                                    )
+                                )
+                                .addGroup(
+                                  RoomDetailsLayout
+                                    .createSequentialGroup()
+                                    .addComponent(BookingLab2)
+                                    .addGap(18, 18, 18)
+                                )
+                            )
+                            .addGroup(
+                              RoomDetailsLayout
+                                .createParallelGroup(
+                                  javax.swing.GroupLayout.Alignment.LEADING
+                                )
+                                .addComponent(
+                                  Brand,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE,
+                                  110,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE
+                                )
+                                .addComponent(
+                                  Model,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE,
+                                  110,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE
+                                )
+                                .addComponent(
+                                  CarNoPlate,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE,
+                                  110,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE
+                                )
+                            )
+                        )
                     )
                     .addGroup(
                       RoomDetailsLayout
                         .createParallelGroup(
-                          javax.swing.GroupLayout.Alignment.LEADING,
-                          false
+                          javax.swing.GroupLayout.Alignment.LEADING
                         )
                         .addGroup(
                           RoomDetailsLayout
                             .createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addGroup(
+                              RoomDetailsLayout
+                                .createParallelGroup(
+                                  javax.swing.GroupLayout.Alignment.LEADING
+                                )
+                                .addComponent(Room2)
+                                .addGroup(
+                                  RoomDetailsLayout
+                                    .createSequentialGroup()
+                                    .addGroup(
+                                      RoomDetailsLayout
+                                        .createParallelGroup(
+                                          javax.swing.GroupLayout.Alignment.TRAILING
+                                        )
+                                        .addComponent(BookingLab1)
+                                        .addComponent(Day1)
+                                        .addComponent(Room3)
+                                    )
+                                    .addPreferredGap(
+                                      javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
+                                    )
+                                    .addGroup(
+                                      RoomDetailsLayout
+                                        .createParallelGroup(
+                                          javax.swing.GroupLayout.Alignment.LEADING,
+                                          false
+                                        )
+                                        .addComponent(
+                                          RentDays,
+                                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                                          104,
+                                          Short.MAX_VALUE
+                                        )
+                                        .addComponent(StartDate)
+                                    )
+                                )
+                            )
+                        )
+                        .addGroup(
+                          javax.swing.GroupLayout.Alignment.TRAILING,
+                          RoomDetailsLayout
+                            .createSequentialGroup()
+                            .addGap(25, 25, 25)
                             .addComponent(Room1)
-                            .addPreferredGap(
-                              javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
-                            )
-                            .addComponent(
-                              Price,
-                              javax.swing.GroupLayout.PREFERRED_SIZE,
-                              110,
-                              javax.swing.GroupLayout.PREFERRED_SIZE
-                            )
-                        )
-                        .addGroup(
-                          RoomDetailsLayout
-                            .createSequentialGroup()
-                            .addComponent(Room2)
-                            .addPreferredGap(
-                              javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                              javax.swing.GroupLayout.DEFAULT_SIZE,
-                              Short.MAX_VALUE
-                            )
-                            .addComponent(
-                              Status,
-                              javax.swing.GroupLayout.PREFERRED_SIZE,
-                              108,
-                              javax.swing.GroupLayout.PREFERRED_SIZE
+                            .addGap(9, 9, 9)
+                            .addGroup(
+                              RoomDetailsLayout
+                                .createParallelGroup(
+                                  javax.swing.GroupLayout.Alignment.LEADING,
+                                  false
+                                )
+                                .addComponent(
+                                  TotalPrice,
+                                  javax.swing.GroupLayout.DEFAULT_SIZE,
+                                  104,
+                                  Short.MAX_VALUE
+                                )
+                                .addComponent(ReturnDate)
                             )
                         )
                     )
+                )
+                .addGroup(
+                  javax.swing.GroupLayout.Alignment.TRAILING,
+                  RoomDetailsLayout
+                    .createSequentialGroup()
+                    .addContainerGap(
+                      javax.swing.GroupLayout.DEFAULT_SIZE,
+                      Short.MAX_VALUE
+                    )
+                    .addComponent(jLabel1)
                 )
             )
             .addContainerGap()
@@ -663,85 +939,157 @@ public class BookCar extends javax.swing.JFrame {
         .addGroup(
           RoomDetailsLayout
             .createSequentialGroup()
-            .addComponent(
-              RoomDetailsLab,
-              javax.swing.GroupLayout.PREFERRED_SIZE,
-              34,
-              javax.swing.GroupLayout.PREFERRED_SIZE
-            )
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addContainerGap()
             .addGroup(
               RoomDetailsLayout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(
-                  BookingLab,
-                  javax.swing.GroupLayout.PREFERRED_SIZE,
-                  21,
-                  javax.swing.GroupLayout.PREFERRED_SIZE
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(
+                  RoomDetailsLayout
+                    .createSequentialGroup()
+                    .addGap(40, 40, 40)
+                    .addGroup(
+                      RoomDetailsLayout
+                        .createParallelGroup(
+                          javax.swing.GroupLayout.Alignment.BASELINE
+                        )
+                        .addComponent(
+                          CarNoPlate,
+                          javax.swing.GroupLayout.PREFERRED_SIZE,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          javax.swing.GroupLayout.PREFERRED_SIZE
+                        )
+                        .addComponent(
+                          BookingLab,
+                          javax.swing.GroupLayout.PREFERRED_SIZE,
+                          21,
+                          javax.swing.GroupLayout.PREFERRED_SIZE
+                        )
+                    )
                 )
-                .addComponent(
-                  CarNoPlate,
-                  javax.swing.GroupLayout.PREFERRED_SIZE,
-                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                  javax.swing.GroupLayout.PREFERRED_SIZE
+                .addGroup(
+                  RoomDetailsLayout
+                    .createSequentialGroup()
+                    .addComponent(
+                      RoomDetailsLab,
+                      javax.swing.GroupLayout.PREFERRED_SIZE,
+                      34,
+                      javax.swing.GroupLayout.PREFERRED_SIZE
+                    )
+                    .addPreferredGap(
+                      javax.swing.LayoutStyle.ComponentPlacement.RELATED
+                    )
+                    .addGroup(
+                      RoomDetailsLayout
+                        .createParallelGroup(
+                          javax.swing.GroupLayout.Alignment.BASELINE
+                        )
+                        .addComponent(Room3)
+                        .addComponent(
+                          StartDate,
+                          javax.swing.GroupLayout.PREFERRED_SIZE,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          javax.swing.GroupLayout.PREFERRED_SIZE
+                        )
+                    )
+                    .addPreferredGap(
+                      javax.swing.LayoutStyle.ComponentPlacement.RELATED
+                    )
+                    .addGroup(
+                      RoomDetailsLayout
+                        .createParallelGroup(
+                          javax.swing.GroupLayout.Alignment.LEADING
+                        )
+                        .addGroup(
+                          RoomDetailsLayout
+                            .createSequentialGroup()
+                            .addComponent(
+                              BookingLab1,
+                              javax.swing.GroupLayout.PREFERRED_SIZE,
+                              14,
+                              javax.swing.GroupLayout.PREFERRED_SIZE
+                            )
+                            .addPreferredGap(
+                              javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
+                            )
+                            .addGroup(
+                              RoomDetailsLayout
+                                .createParallelGroup(
+                                  javax.swing.GroupLayout.Alignment.BASELINE
+                                )
+                                .addComponent(
+                                  RentDays,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE,
+                                  javax.swing.GroupLayout.DEFAULT_SIZE,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE
+                                )
+                                .addComponent(Day1)
+                            )
+                        )
+                        .addGroup(
+                          RoomDetailsLayout
+                            .createSequentialGroup()
+                            .addGroup(
+                              RoomDetailsLayout
+                                .createParallelGroup(
+                                  javax.swing.GroupLayout.Alignment.BASELINE
+                                )
+                                .addComponent(
+                                  Brand,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE,
+                                  20,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE
+                                )
+                                .addComponent(Day)
+                            )
+                            .addPreferredGap(
+                              javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
+                            )
+                            .addGroup(
+                              RoomDetailsLayout
+                                .createParallelGroup(
+                                  javax.swing.GroupLayout.Alignment.BASELINE
+                                )
+                                .addComponent(
+                                  Model,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE,
+                                  javax.swing.GroupLayout.DEFAULT_SIZE,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE
+                                )
+                                .addComponent(
+                                  BookingLab2,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE,
+                                  21,
+                                  javax.swing.GroupLayout.PREFERRED_SIZE
+                                )
+                            )
+                        )
+                    )
+                    .addPreferredGap(
+                      javax.swing.LayoutStyle.ComponentPlacement.RELATED
+                    )
+                    .addGroup(
+                      RoomDetailsLayout
+                        .createParallelGroup(
+                          javax.swing.GroupLayout.Alignment.BASELINE
+                        )
+                        .addComponent(
+                          ReturnDate,
+                          javax.swing.GroupLayout.PREFERRED_SIZE,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          javax.swing.GroupLayout.PREFERRED_SIZE
+                        )
+                        .addComponent(Room2)
+                        .addComponent(RoomTypeLab)
+                        .addComponent(
+                          Year,
+                          javax.swing.GroupLayout.PREFERRED_SIZE,
+                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          javax.swing.GroupLayout.PREFERRED_SIZE
+                        )
+                    )
                 )
-                .addComponent(
-                  Price,
-                  javax.swing.GroupLayout.PREFERRED_SIZE,
-                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                  javax.swing.GroupLayout.PREFERRED_SIZE
-                )
-                .addComponent(Room1)
             )
-            .addGap(18, 18, 18)
-            .addGroup(
-              RoomDetailsLayout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(
-                  Brand,
-                  javax.swing.GroupLayout.PREFERRED_SIZE,
-                  20,
-                  javax.swing.GroupLayout.PREFERRED_SIZE
-                )
-                .addComponent(Room2)
-                .addComponent(
-                  Status,
-                  javax.swing.GroupLayout.PREFERRED_SIZE,
-                  23,
-                  javax.swing.GroupLayout.PREFERRED_SIZE
-                )
-                .addComponent(Day)
-            )
-            .addGap(18, 18, 18)
-            .addGroup(
-              RoomDetailsLayout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(
-                  Model,
-                  javax.swing.GroupLayout.PREFERRED_SIZE,
-                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                  javax.swing.GroupLayout.PREFERRED_SIZE
-                )
-                .addComponent(
-                  BookingLab2,
-                  javax.swing.GroupLayout.PREFERRED_SIZE,
-                  21,
-                  javax.swing.GroupLayout.PREFERRED_SIZE
-                )
-            )
-            .addGap(18, 18, 18)
-            .addGroup(
-              RoomDetailsLayout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(RoomTypeLab)
-                .addComponent(
-                  Year,
-                  javax.swing.GroupLayout.PREFERRED_SIZE,
-                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                  javax.swing.GroupLayout.PREFERRED_SIZE
-                )
-            )
-            .addGap(18, 18, 18)
+            .addGap(12, 12, 12)
             .addGroup(
               RoomDetailsLayout
                 .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -752,11 +1100,32 @@ public class BookCar extends javax.swing.JFrame {
                   23,
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
+                .addComponent(Room1)
+                .addComponent(
+                  TotalPrice,
+                  javax.swing.GroupLayout.PREFERRED_SIZE,
+                  javax.swing.GroupLayout.DEFAULT_SIZE,
+                  javax.swing.GroupLayout.PREFERRED_SIZE
+                )
             )
-            .addContainerGap(
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(
+              RoomDetailsLayout
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(PricePDay)
+                .addComponent(
+                  Price,
+                  javax.swing.GroupLayout.PREFERRED_SIZE,
+                  javax.swing.GroupLayout.DEFAULT_SIZE,
+                  javax.swing.GroupLayout.PREFERRED_SIZE
+                )
+            )
+            .addPreferredGap(
+              javax.swing.LayoutStyle.ComponentPlacement.RELATED,
               javax.swing.GroupLayout.DEFAULT_SIZE,
               Short.MAX_VALUE
             )
+            .addComponent(jLabel1)
         )
     );
 
@@ -780,7 +1149,7 @@ public class BookCar extends javax.swing.JFrame {
                     .addComponent(MenuBut)
                     .addGap(115, 115, 115)
                     .addComponent(Title)
-                    .addGap(0, 410, Short.MAX_VALUE)
+                    .addGap(0, 0, Short.MAX_VALUE)
                 )
                 .addGroup(
                   javax.swing.GroupLayout.Alignment.TRAILING,
@@ -792,43 +1161,46 @@ public class BookCar extends javax.swing.JFrame {
                       javax.swing.GroupLayout.DEFAULT_SIZE,
                       javax.swing.GroupLayout.PREFERRED_SIZE
                     )
-                    .addPreferredGap(
-                      javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                      javax.swing.GroupLayout.DEFAULT_SIZE,
-                      Short.MAX_VALUE
-                    )
+                    .addGap(18, 18, 18)
                     .addComponent(
                       CustDetails,
                       javax.swing.GroupLayout.PREFERRED_SIZE,
                       javax.swing.GroupLayout.DEFAULT_SIZE,
                       javax.swing.GroupLayout.PREFERRED_SIZE
                     )
-                    .addGap(34, 34, 34)
+                    .addPreferredGap(
+                      javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                      50,
+                      Short.MAX_VALUE
+                    )
                     .addGroup(
                       layout
                         .createParallelGroup(
-                          javax.swing.GroupLayout.Alignment.LEADING,
-                          false
+                          javax.swing.GroupLayout.Alignment.LEADING
+                        )
+                        .addGroup(
+                          javax.swing.GroupLayout.Alignment.TRAILING,
+                          layout
+                            .createSequentialGroup()
+                            .addComponent(
+                              BookBtn,
+                              javax.swing.GroupLayout.PREFERRED_SIZE,
+                              188,
+                              javax.swing.GroupLayout.PREFERRED_SIZE
+                            )
+                            .addGap(18, 18, 18)
                         )
                         .addComponent(
                           search,
-                          javax.swing.GroupLayout.Alignment.TRAILING,
-                          javax.swing.GroupLayout.DEFAULT_SIZE,
-                          javax.swing.GroupLayout.DEFAULT_SIZE,
-                          Short.MAX_VALUE
-                        )
-                        .addComponent(
-                          BookBtn,
-                          javax.swing.GroupLayout.Alignment.TRAILING,
-                          javax.swing.GroupLayout.DEFAULT_SIZE,
+                          javax.swing.GroupLayout.PREFERRED_SIZE,
                           188,
-                          Short.MAX_VALUE
+                          javax.swing.GroupLayout.PREFERRED_SIZE
                         )
                         .addComponent(
                           clearBut,
-                          javax.swing.GroupLayout.DEFAULT_SIZE,
-                          javax.swing.GroupLayout.DEFAULT_SIZE,
-                          Short.MAX_VALUE
+                          javax.swing.GroupLayout.PREFERRED_SIZE,
+                          188,
+                          javax.swing.GroupLayout.PREFERRED_SIZE
                         )
                     )
                 )
@@ -879,13 +1251,13 @@ public class BookCar extends javax.swing.JFrame {
                     .addComponent(clearBut)
                 )
                 .addComponent(
-                  RoomDetails,
+                  CustDetails,
                   javax.swing.GroupLayout.DEFAULT_SIZE,
                   javax.swing.GroupLayout.DEFAULT_SIZE,
                   Short.MAX_VALUE
                 )
                 .addComponent(
-                  CustDetails,
+                  RoomDetails,
                   javax.swing.GroupLayout.DEFAULT_SIZE,
                   javax.swing.GroupLayout.DEFAULT_SIZE,
                   Short.MAX_VALUE
@@ -898,7 +1270,7 @@ public class BookCar extends javax.swing.JFrame {
               228,
               javax.swing.GroupLayout.PREFERRED_SIZE
             )
-            .addContainerGap(55, Short.MAX_VALUE)
+            .addContainerGap(28, Short.MAX_VALUE)
         )
     );
 
@@ -906,6 +1278,25 @@ public class BookCar extends javax.swing.JFrame {
   } // </editor-fold>//GEN-END:initComponents
 
   private void EmailActionPerformed(java.awt.event.ActionEvent evt) {}
+
+  private void BookButActionPerformed(java.awt.event.ActionEvent evt) {
+    GeneralMutation m = new GeneralMutation();
+    if (!sanitizeInput()) return;
+    RecordBooking newBookingData = new RecordBooking(
+      generateReceiptID(),
+      currentCustomerData,
+      tableSelectedCar,
+      Integer.parseInt(RentDays.getText()),
+      Double.parseDouble(TotalPrice.getText()),
+      new Date(),
+      df.parse(StartDate.getText()),
+      df.parse(ReturnDate.getText()),
+      "Pending",
+      CardNum.getText(),
+      AccHolder.getText(),
+      Bank.getText()
+    );
+  }
 
   private void MenuButActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_MenuButActionPerformed
     //Direct to main menu
@@ -927,21 +1318,180 @@ public class BookCar extends javax.swing.JFrame {
     // TODO add your handling code here:
   } //GEN-LAST:event_YearActionPerformed
 
+  private void StartDateActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_StartDateActionPerformed
+    // TODO add your handling code here:
+  } //GEN-LAST:event_StartDateActionPerformed
+
+  private void RentDaysActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_RentDaysActionPerformed
+    String BookingStartDate = this.StartDate.getText();
+    String TotalDayStay = this.RentDays.getText();
+    String records;
+    Date StartDate, EndDate;
+    //Check Day Stay validation
+    if (TotalDayStay.matches("[0-9]+")) {
+      //Convert Day Stay into Integer
+      int Day = Integer.parseInt(TotalDayStay);
+      //Check if Day larger than zero
+      if (Day > 0) {
+        try {
+          //Date formatting
+          StartDate = df.parse(BookingStartDate);
+          //Store today date in today
+          Date today = new Date();
+          //Check if start date input had over
+          if (StartDate.before(today)) {
+            //Display error message if the booking date has passed
+            JOptionPane.showMessageDialog(
+              this,
+              "Error. The booking date has passed.",
+              "Error Message",
+              JOptionPane.ERROR_MESSAGE
+            );
+            this.StartDate.setText("");
+            this.RentDays.setText("");
+            this.ReturnDate.setText("");
+          } else {
+            //Call calendar features
+            Calendar c = Calendar.getInstance();
+            c.setTime(df.parse(BookingStartDate));
+            int TotalDay = Integer.parseInt(TotalDayStay);
+            //Calculate end date
+            c.add(Calendar.DATE, TotalDay);
+            String BookingEndDate = df.format(c.getTime());
+            EndDate = df.parse(BookingEndDate);
+            //Set end date
+            this.ReturnDate.setText(BookingEndDate);
+            //Set total price
+            TotalPrice.setText(
+              String.valueOf(Double.parseDouble(Price.getText()) * Day)
+            );
+          }
+        } catch (ParseException ex) {
+          //Display error message if any error
+          JOptionPane.showMessageDialog(
+            this,
+            "Invalid Date Format.",
+            "Error Message",
+            JOptionPane.ERROR_MESSAGE
+          );
+          this.StartDate.setText("");
+          this.ReturnDate.setText("");
+        }
+      } else {
+        //Display error message if day stau enter less than one
+        JOptionPane.showMessageDialog(
+          this,
+          "Day stay cannot less than one day.",
+          "Error Message",
+          JOptionPane.ERROR_MESSAGE
+        );
+      }
+    } else {
+      //Display error message if day stay input not valid
+      JOptionPane.showMessageDialog(
+        this,
+        "Invalid Day Stay.",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+    }
+  } //GEN-LAST:event_RentDaysActionPerformed
+
+  private void TotalPriceActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_TotalPriceActionPerformed
+    // TODO add your handling code here:
+  } //GEN-LAST:event_TotalPriceActionPerformed
+
+  private void ReturnDateActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_ReturnDateActionPerformed //GEN-LAST:event_ReturnDateActionPerformed
+
   private void PriceActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_PriceActionPerformed
     // TODO add your handling code here:
   } //GEN-LAST:event_PriceActionPerformed
 
-  private void StatusComponentAdded(java.awt.event.ContainerEvent evt) { //GEN-FIRST:event_StatusComponentAdded
+  private void CardNumActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_CardNumActionPerformed
     // TODO add your handling code here:
-  } //GEN-LAST:event_StatusComponentAdded
+  } //GEN-LAST:event_CardNumActionPerformed
 
-  private void StatusItemStateChanged(java.awt.event.ItemEvent evt) { //GEN-FIRST:event_StatusItemStateChanged
+  private void AccHolderActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_AccHolderActionPerformed
     // TODO add your handling code here:
-  } //GEN-LAST:event_StatusItemStateChanged
+  } //GEN-LAST:event_AccHolderActionPerformed
 
-  private void StatusActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_StatusActionPerformed
+  private void BankActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_BankActionPerformed
     // TODO add your handling code here:
-  } //GEN-LAST:event_StatusActionPerformed
+  } //GEN-LAST:event_BankActionPerformed
+
+  private void searchActionPerformed(java.awt.event.ActionEvent evt) {
+    // search
+    GeneralGetters getter = new GeneralGetters();
+    GeneralCar carQuery = new GeneralCar(
+      null,
+      !CarNoPlate.getText().isEmpty() ? CarNoPlate.getText() : null, // plate
+      !Brand.getText().isEmpty() ? Brand.getText() : null, // brand
+      !Model.getText().isEmpty() ? Model.getText() : null, // model
+      null, // status
+      0, // year
+      0, // price
+      null // fuel type
+    );
+    ArrayList<GeneralCar> queryList = (getter.getSpecificCar(carQuery));
+
+    updateTableInformation(queryList);
+  }
+
+  private void clearButActionPerformed(java.awt.event.ActionEvent evt) {
+    CarNoPlate.setText("");
+    Brand.setText("");
+    Model.setText("");
+    Year.setText("");
+    FuelType.setSelectedItem("Petron");
+    Price.setText("");
+    StartDate.setText("");
+    RentDays.setText("");
+    ReturnDate.setText("");
+    TotalPrice.setText("");
+    IC.setText(currentCustomerData.getIC());
+    Email.setText(currentCustomerData.getEmail());
+    PhNum.setText(currentCustomerData.getPhNum());
+    CardNum.setText("");
+    AccHolder.setText("");
+    Bank.setText("");
+    GeneralGetters get = new GeneralGetters();
+    updateTableInformation(get.getAllCar());
+  }
+
+  private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {
+    // select car based on table GUI
+    GeneralGetters g = new GeneralGetters();
+    JTable source = ((JTable) evt.getSource());
+    int rowIndex = (source.getSelectedRow());
+    int columnCount = (source.getModel().getColumnCount());
+
+    ArrayList<Object> fetchedCarData = new ArrayList<>();
+    for (int i = 0; i < columnCount; i++) {
+      //((source.getModel().getValueAt(rowIndex, i)).getClass());
+      fetchedCarData.add((source.getModel().getValueAt(rowIndex, i)));
+    }
+    tableSelectedCar.setCarId(
+      g.getSpecificSingleCar(fetchedCarData.get(0).toString()).getCarId()
+    );
+    tableSelectedCar.setCarNoPlate(fetchedCarData.get(0).toString());
+    tableSelectedCar.setBrand(fetchedCarData.get(1).toString());
+    tableSelectedCar.setModel(fetchedCarData.get(2).toString());
+    tableSelectedCar.setYear(
+      Integer.parseInt(fetchedCarData.get(3).toString())
+    );
+    tableSelectedCar.setFuelType(fetchedCarData.get(4).toString());
+    tableSelectedCar.setPrice(
+      Double.parseDouble(fetchedCarData.get(5).toString())
+    );
+    tableSelectedCar.setState(fetchedCarData.get(6).toString());
+
+    CarNoPlate.setText(tableSelectedCar.getCarNoPlate()); // plate
+    Brand.setText(tableSelectedCar.getBrand()); // brand
+    Model.setText(tableSelectedCar.getModel()); // model
+    Price.setText(String.valueOf(tableSelectedCar.getPrice())); // price
+    Year.setText(String.valueOf(tableSelectedCar.getYear())); // year
+    FuelType.setSelectedItem(tableSelectedCar.getFuelType()); // fuel
+  }
 
   /**
    * @param args the command line arguments
@@ -989,36 +1539,48 @@ public class BookCar extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
+  private javax.swing.JTextField AccHolder;
+  private javax.swing.JTextField Bank;
   private javax.swing.JButton BookBtn;
   private javax.swing.JLabel BookingLab;
+  private javax.swing.JLabel BookingLab1;
   private javax.swing.JLabel BookingLab2;
   private javax.swing.JTextField Brand;
   private javax.swing.JTextField CarNoPlate;
+  private javax.swing.JTextField CardNum;
   private javax.swing.JLabel Contact;
   private javax.swing.JPanel CustDetails;
   private javax.swing.JLabel CustDetailsLab;
-  private javax.swing.JTextField CustName;
   private javax.swing.JLabel Day;
+  private javax.swing.JLabel Day1;
   private javax.swing.JTextField Email;
   private javax.swing.JComboBox<String> FuelType;
   private javax.swing.JTextField IC;
   private javax.swing.JLabel Mail;
+  private javax.swing.JLabel Mail1;
+  private javax.swing.JLabel Mail2;
+  private javax.swing.JLabel Mail3;
   private javax.swing.JButton MenuBut;
   private javax.swing.JTextField Model;
-  private javax.swing.JLabel Name;
   private javax.swing.JLabel Passport;
   private javax.swing.JTextField PhNum;
   private javax.swing.JTextField Price;
+  private javax.swing.JLabel PricePDay;
+  private javax.swing.JTextField RentDays;
+  private javax.swing.JTextField ReturnDate;
   private javax.swing.JLabel Room;
   private javax.swing.JLabel Room1;
   private javax.swing.JLabel Room2;
+  private javax.swing.JLabel Room3;
   private javax.swing.JPanel RoomDetails;
   private javax.swing.JLabel RoomDetailsLab;
   private javax.swing.JLabel RoomTypeLab;
-  private javax.swing.JComboBox<String> Status;
+  private javax.swing.JTextField StartDate;
   private javax.swing.JLabel Title;
+  private javax.swing.JTextField TotalPrice;
   private javax.swing.JTextField Year;
   private javax.swing.JButton clearBut;
+  private javax.swing.JLabel jLabel1;
   private javax.swing.JScrollPane jScrollPane1;
   private javax.swing.JTable jTable1;
   private javax.swing.JButton search;

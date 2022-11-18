@@ -61,7 +61,7 @@
                                   <Component id="NewPass" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
                                   <Component id="Email" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
                                   <Component id="PhNum" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
-                                  <Component id="ComfPass" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
+                                  <Component id="ConfPass" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
                                   <Component id="ID" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
                                   <Component id="Name" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
                               </Group>
@@ -134,7 +134,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="PswLab3" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="ComfPass" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="ConfPass" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -178,14 +178,14 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EmailActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="ComfPass">
+    <Component class="javax.swing.JPasswordField" name="ConfPass">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="3"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ComfPassActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConfPassActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="PswLab4">
@@ -294,6 +294,10 @@
     </Component>
     <Component class="javax.swing.JTextField" name="ID">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="3"/>
         </Property>

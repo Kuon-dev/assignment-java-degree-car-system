@@ -35,14 +35,23 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
    */
 
   private Boolean sanitizeInput() {
+    if (!(ConfPass.getText()).equals(NewPass.getText())) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Password does not matched.",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      this.NewPass.setText("");
+      this.ConfPass.setText("");
+      return false;
+    }
     ArrayList<String> data = new ArrayList<>();
     data.add(ID.getText());
     data.add(Name.getText());
     data.add(Email.getText());
     data.add(PhNum.getText());
     data.add(Position.getSelectedItem().toString());
-    data.add(NewPass.getText());
-    data.add(ComfPass.getText());
 
     // if there's an empty input, return false
     for (String d : data) {
@@ -80,7 +89,7 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
     CustIDLab2 = new javax.swing.JLabel();
     PhNum = new javax.swing.JTextField();
     Email = new javax.swing.JTextField();
-    ComfPass = new javax.swing.JPasswordField();
+    ConfPass = new javax.swing.JPasswordField();
     PswLab4 = new javax.swing.JLabel();
     CustIDLab3 = new javax.swing.JLabel();
     Position = new javax.swing.JComboBox<>();
@@ -129,11 +138,11 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
       }
     );
 
-    ComfPass.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-    ComfPass.addActionListener(
+    ConfPass.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+    ConfPass.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          ComfPassActionPerformed(evt);
+          ConfPassActionPerformed(evt);
         }
       }
     );
@@ -181,6 +190,8 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
     PswLab2.setForeground(new java.awt.Color(140, 174, 238));
     PswLab2.setText("New Password:");
 
+    ID.setEditable(false);
+    ID.setBackground(new java.awt.Color(255, 255, 255));
     ID.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
     ID.addActionListener(
       new java.awt.event.ActionListener() {
@@ -301,7 +312,7 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
                                   javax.swing.GroupLayout.PREFERRED_SIZE
                                 )
                                 .addComponent(
-                                  ComfPass,
+                                  ConfPass,
                                   javax.swing.GroupLayout.Alignment.TRAILING,
                                   javax.swing.GroupLayout.PREFERRED_SIZE,
                                   192,
@@ -496,7 +507,7 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(
-                  ComfPass,
+                  ConfPass,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   35,
                   javax.swing.GroupLayout.PREFERRED_SIZE
@@ -532,9 +543,9 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
     // TODO add your handling code here:
   }
 
-  private void ComfPassActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ComfPassActionPerformed
+  private void ConfPassActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ConfPassActionPerformed
     // TODO add your handling code here:
-  } //GEN-LAST:event_ComfPassActionPerformed
+  } //GEN-LAST:event_ConfPassActionPerformed
 
   private void MenuBut1ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_MenuBut1ActionPerformed
     // TODO add your handling code here:
@@ -551,7 +562,9 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
     UserAdmin newAdminData = new UserAdmin(
       ID.getText(),
       Name.getText(),
-      NewPass.getText(),
+      NewPass.getText().isEmpty()
+        ? currentAdminData.getPassword()
+        : NewPass.getText(),
       Email.getText(),
       PhNum.getText(),
       Position.getSelectedItem().toString()
@@ -559,14 +572,16 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
     if (m.editExistingAdmin(currentAdminData, newAdminData)) {
       JOptionPane.showMessageDialog(
         this,
-        "Record Added Successfully",
+        "Changes Had Been Saved Successfully",
         "Information",
         JOptionPane.INFORMATION_MESSAGE
       );
       setCurrentAdminData(newAdminData);
+      NewPass.setText("");
+      ConfPass.setText("");
     } else JOptionPane.showMessageDialog(
       this,
-      "Failed to add admin data",
+      "Failed To Save Changes",
       "Error Message",
       JOptionPane.ERROR_MESSAGE
     );
@@ -618,7 +633,7 @@ public class ManageAccountAdmin extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JPasswordField ComfPass;
+  private javax.swing.JPasswordField ConfPass;
   private javax.swing.JLabel CustIDLab1;
   private javax.swing.JLabel CustIDLab2;
   private javax.swing.JLabel CustIDLab3;
