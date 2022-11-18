@@ -112,7 +112,8 @@ public class GeneralCar {
     GeneralGetters g = new GeneralGetters();
     ArrayList<GeneralCar> allUsers = g.getAllCar();
     for (GeneralCar c : allUsers) {
-      if (c.getCarNoPlate().equalsIgnoreCase(this.carNoPlate)) {
+      if (c.getCarId().equalsIgnoreCase(this.carId)) {
+        this.carNoPlate = c.getCarNoPlate();
         this.brand = c.getBrand();
         this.model = c.getModel();
         this.status = c.getState();

@@ -243,10 +243,15 @@ public class BookCar extends javax.swing.JFrame {
     Contact.setForeground(new java.awt.Color(140, 174, 238));
     Contact.setText("Phone Number:");
 
+    PhNum.setEditable(false);
+    PhNum.setBackground(new java.awt.Color(255, 255, 255));
+
     Mail.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
     Mail.setForeground(new java.awt.Color(140, 174, 238));
     Mail.setText("Email:");
 
+    Email.setEditable(false);
+    Email.setBackground(new java.awt.Color(255, 255, 255));
     Email.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -535,9 +540,28 @@ public class BookCar extends javax.swing.JFrame {
           java.lang.String.class,
           java.lang.Double.class,
         };
+        boolean[] canEdit = new boolean[] {
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+        };
 
         public Class getColumnClass(int columnIndex) {
           return types[columnIndex];
+        }
+
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+          return canEdit[columnIndex];
+        }
+      }
+    );
+    jTable1.addMouseListener(
+      new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+          jTable1MouseClicked(evt);
         }
       }
     );
@@ -1405,7 +1429,7 @@ public class BookCar extends javax.swing.JFrame {
     // TODO add your handling code here:
   } //GEN-LAST:event_TotalPriceActionPerformed
 
-  private void ReturnDateActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_ReturnDateActionPerformed //GEN-LAST:event_ReturnDateActionPerformed
+  private void ReturnDateActionPerformed(java.awt.event.ActionEvent evt) {}
 
   private void PriceActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_PriceActionPerformed
     // TODO add your handling code here:
@@ -1487,7 +1511,9 @@ public class BookCar extends javax.swing.JFrame {
     tableSelectedCar.setPrice(
       Double.parseDouble(fetchedCarData.get(5).toString())
     );
-    tableSelectedCar.setState(fetchedCarData.get(6).toString());
+    tableSelectedCar.setState(
+      g.getSpecificSingleCar(fetchedCarData.get(0).toString()).getState()
+    );
 
     CarNoPlate.setText(tableSelectedCar.getCarNoPlate()); // plate
     Brand.setText(tableSelectedCar.getBrand()); // brand
