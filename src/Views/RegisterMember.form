@@ -33,7 +33,7 @@
                       <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
                       <Component id="ExitBtn2" min="-2" pref="73" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                      <Component id="LoginBtn2" min="-2" max="-2" attributes="0"/>
+                      <Component id="RegisterBtn" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
@@ -57,7 +57,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="IC" min="-2" pref="192" max="-2" attributes="0"/>
                           <Component id="Password" min="-2" pref="192" max="-2" attributes="0"/>
-                          <Component id="ComfPass" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Component id="ConfPass" min="-2" pref="192" max="-2" attributes="0"/>
                           <Component id="Email" min="-2" pref="192" max="-2" attributes="0"/>
                           <Component id="Name" min="-2" pref="192" max="-2" attributes="0"/>
                           <Component id="PhNum" min="-2" pref="192" max="-2" attributes="0"/>
@@ -103,12 +103,12 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="PswLab3" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="ComfPass" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="ConfPass" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="37" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="ExitBtn2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="LoginBtn2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="RegisterBtn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -184,7 +184,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExitBtn2ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="LoginBtn2">
+    <Component class="javax.swing.JButton" name="RegisterBtn">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Snap ITC" size="14" style="0"/>
@@ -195,7 +195,7 @@
         <Property name="text" type="java.lang.String" value="Register"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LoginBtn2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegisterBtnActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="PswLab3">
@@ -242,7 +242,7 @@
         <Property name="text" type="java.lang.String" value="Name:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="ComfPass">
+    <Component class="javax.swing.JPasswordField" name="ConfPass">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="18" style="3"/>
