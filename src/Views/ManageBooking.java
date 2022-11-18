@@ -165,9 +165,6 @@ public class ManageBooking extends javax.swing.JFrame {
         df.format(book.getReturnDate()),
         book.getTotalPrice(),
         book.getStatus(),
-        book.getCardNum(),
-        book.getAccHolder(),
-        book.getBank(),
       };
 
       model.addRow(eachBooking);
@@ -525,9 +522,7 @@ public class ManageBooking extends javax.swing.JFrame {
 
     customerIcEdit.addActionListener(
       new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-          customerIcEditActionPerformed(evt);
-        }
+        public void actionPerformed(java.awt.event.ActionEvent evt) {}
       }
     );
 
