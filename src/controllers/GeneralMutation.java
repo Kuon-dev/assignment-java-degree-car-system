@@ -213,7 +213,7 @@ public class GeneralMutation {
     ArrayList<String> Data = new ArrayList<>();
     Data.add(booking.getReceiptID());
     Data.add(booking.getCustomer().getIC());
-    Data.add(booking.getCar().getCarNoPlate());
+    Data.add(booking.getCar().getCarId());
     Data.add(String.valueOf(booking.getDays()));
     Data.add(String.valueOf(booking.getTotalPrice()));
     Data.add(df.format(booking.getBookingDate()));
