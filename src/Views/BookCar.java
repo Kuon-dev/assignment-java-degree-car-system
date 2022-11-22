@@ -27,9 +27,6 @@ public class BookCar extends javax.swing.JFrame {
     initComponents();
     GeneralGetters g = new GeneralGetters();
     updateTableInformation(g.getAllCar());
-    IC.setText(currentCustomerData.getIC());
-    Email.setText(currentCustomerData.getEmail());
-    PhNum.setText(currentCustomerData.getPhNum());
   }
 
   public GeneralCar tableSelectedCar = new GeneralCar(
@@ -53,6 +50,9 @@ public class BookCar extends javax.swing.JFrame {
 
   public void setCurrentCustomerData(UserCustomer data) {
     this.currentCustomerData = data;
+    IC.setText(currentCustomerData.getIC());
+    Email.setText(currentCustomerData.getEmail());
+    PhNum.setText(currentCustomerData.getPhNum());
   }
 
   public void updateTableInformation(ArrayList<GeneralCar> data) {
@@ -504,7 +504,9 @@ public class BookCar extends javax.swing.JFrame {
     BookBtn.setText("Book Car");
     BookBtn.addActionListener(
       new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {}
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          BookButActionPerformed(evt);
+        }
       }
     );
 
@@ -1317,7 +1319,6 @@ public class BookCar extends javax.swing.JFrame {
 
   private void BookButActionPerformed(java.awt.event.ActionEvent evt) {
     try {
-      GeneralMutation m = new GeneralMutation();
       if (!sanitizeInput()) return;
       RecordBooking newBookingData = new RecordBooking(
         generateReceiptID(),
@@ -1332,6 +1333,18 @@ public class BookCar extends javax.swing.JFrame {
         CardNum.getText(),
         AccHolder.getText(),
         Bank.getText()
+      );
+      GeneralMutation m = new GeneralMutation();
+      if (m.addNewBooking(newBookingData)) JOptionPane.showMessageDialog(
+        this,
+        "Booking has been added sucessfully",
+        "Information",
+        JOptionPane.INFORMATION_MESSAGE
+      ); else JOptionPane.showMessageDialog(
+        this,
+        "Failed to add booking",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
       );
     } catch (Exception e) {
       e.printStackTrace();

@@ -19,6 +19,22 @@ public class BookingHistory extends javax.swing.JFrame {
    */
   public BookingHistory() {
     initComponents();
+  }
+
+  public UserCustomer currentCustomerData = new UserCustomer(
+    null,
+    null,
+    null,
+    null,
+    null
+  );
+
+  public void setCurrentCustomerData(UserCustomer data) {
+    this.currentCustomerData = data;
+    setTableData();
+  }
+
+  public void setTableData() {
     GeneralGetters g = new GeneralGetters();
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
     model.setRowCount(0);
@@ -41,25 +57,13 @@ public class BookingHistory extends javax.swing.JFrame {
           book.getDays(),
           df.format(book.getReturnDate()),
           book.getTotalPrice(),
-          "",
-          "",
+          book.getBank(),
+          book.getAccHolder(),
         };
 
         model.addRow(eachBooking);
       }
     }
-  }
-
-  public UserCustomer currentCustomerData = new UserCustomer(
-    null,
-    null,
-    null,
-    null,
-    null
-  );
-
-  public void setCurrentCustomerData(UserCustomer data) {
-    this.currentCustomerData = data;
   }
 
   /**
