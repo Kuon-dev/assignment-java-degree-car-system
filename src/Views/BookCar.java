@@ -561,7 +561,6 @@ public class BookCar extends javax.swing.JFrame {
         public boolean isCellEditable(int rowIndex, int columnIndex) {
           return canEdit[columnIndex];
         }
-
       }
     );
     jTable1.addMouseListener(
@@ -682,6 +681,13 @@ public class BookCar extends javax.swing.JFrame {
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
           RentDaysActionPerformed(evt);
+        }
+      }
+    );
+    RentDays.addKeyListener(
+      new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+          RentDaysKeyPressed(evt);
         }
       }
     );
@@ -1327,7 +1333,6 @@ public class BookCar extends javax.swing.JFrame {
         AccHolder.getText(),
         Bank.getText()
       );
-
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -1357,13 +1362,38 @@ public class BookCar extends javax.swing.JFrame {
     // TODO add your handling code here:
   } //GEN-LAST:event_StartDateActionPerformed
 
-  private void RentDaysActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_RentDaysActionPerformed
-    String bookingStartDate = this.StartDate.getText();
-    String totalDayStay = this.RentDays.getText();
+  private void RentDaysActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_RentDaysActionPerformed //GEN-LAST:event_RentDaysActionPerformed
+
+  private void TotalPriceActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_TotalPriceActionPerformed
+    // TODO add your handling code here:
+  } //GEN-LAST:event_TotalPriceActionPerformed
+
+  private void ReturnDateActionPerformed(java.awt.event.ActionEvent evt) {}
+
+  private void PriceActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_PriceActionPerformed
+    // TODO add your handling code here:
+  } //GEN-LAST:event_PriceActionPerformed
+
+  private void CardNumActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_CardNumActionPerformed
+    // TODO add your handling code here:
+  } //GEN-LAST:event_CardNumActionPerformed
+
+  private void AccHolderActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_AccHolderActionPerformed
+    // TODO add your handling code here:
+  } //GEN-LAST:event_AccHolderActionPerformed
+
+  private void BankActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_BankActionPerformed
+    // TODO add your handling code here:
+  } //GEN-LAST:event_BankActionPerformed
+
+  private void RentDaysKeyPressed(java.awt.event.KeyEvent evt) { //GEN-FIRST:event_RentDaysKeyPressed
+    String bookingStartDate = StartDate.getText();
+    String totalDayStay = RentDays.getText();
     String records;
-    
+
     //Check Day Stay validation
-    if (!totalDayStay.matches("[0-9]+")) {
+    Validator valid = new Validator();
+    if (!valid.isNumber(totalDayStay)) {
       JOptionPane.showMessageDialog(
         this,
         "Invalid Day Stay.",
@@ -1432,29 +1462,7 @@ public class BookCar extends javax.swing.JFrame {
       this.StartDate.setText("");
       this.ReturnDate.setText("");
     }
-  } //GEN-LAST:event_RentDaysActionPerformed
-
-  private void TotalPriceActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_TotalPriceActionPerformed
-    // TODO add your handling code here:
-  } //GEN-LAST:event_TotalPriceActionPerformed
-
-  private void ReturnDateActionPerformed(java.awt.event.ActionEvent evt) {}
-
-  private void PriceActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_PriceActionPerformed
-    // TODO add your handling code here:
-  } //GEN-LAST:event_PriceActionPerformed
-
-  private void CardNumActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_CardNumActionPerformed
-    // TODO add your handling code here:
-  } //GEN-LAST:event_CardNumActionPerformed
-
-  private void AccHolderActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_AccHolderActionPerformed
-    // TODO add your handling code here:
-  } //GEN-LAST:event_AccHolderActionPerformed
-
-  private void BankActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_BankActionPerformed
-    // TODO add your handling code here:
-  } //GEN-LAST:event_BankActionPerformed
+  } //GEN-LAST:event_RentDaysKeyPressed
 
   private void searchActionPerformed(java.awt.event.ActionEvent evt) {
     // search
