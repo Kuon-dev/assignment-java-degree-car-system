@@ -278,7 +278,6 @@ public class MemberLogin extends javax.swing.JFrame {
     //Retrieve data input
     CustID = CustIDTxt.getText();
     Password = PswTxt2.getText();
-    String CustIC = StaffIDTxt.getText();
 
     //Set data stored in variables
     UserCustomer customerUser = new UserCustomer(null, null, null, null, null);
@@ -314,7 +313,7 @@ public class MemberLogin extends javax.swing.JFrame {
         JOptionPane.ERROR_MESSAGE
       );
       this.CustIDTxt.setText("");
-      this.PswTxt.setText("");
+      this.PswTxt2.setText("");
     }
   } //GEN-LAST:event_LoginBtn2ActionPerformed
 
