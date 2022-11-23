@@ -499,9 +499,7 @@ public class BookCar extends javax.swing.JFrame {
     BookBtn.setText("Book Car");
     BookBtn.addActionListener(
       new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-          BookButActionPerformed(evt);
-        }
+        public void actionPerformed(java.awt.event.ActionEvent evt) {}
       }
     );
 
@@ -683,8 +681,8 @@ public class BookCar extends javax.swing.JFrame {
     );
     RentDays.addKeyListener(
       new java.awt.event.KeyAdapter() {
-        public void keyPressed(java.awt.event.KeyEvent evt) {
-          RentDaysKeyPressed(evt);
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+          RentDaysKeyReleased(evt);
         }
       }
     );
@@ -1370,7 +1368,7 @@ public class BookCar extends javax.swing.JFrame {
     // TODO add your handling code here:
   } //GEN-LAST:event_StartDateActionPerformed
 
-  private void RentDaysActionPerformed(java.awt.event.ActionEvent evt) {} //GEN-FIRST:event_RentDaysActionPerformed //GEN-LAST:event_RentDaysActionPerformed
+  private void RentDaysActionPerformed(java.awt.event.ActionEvent evt) {}
 
   private void TotalPriceActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_TotalPriceActionPerformed
     // TODO add your handling code here:
@@ -1394,39 +1392,29 @@ public class BookCar extends javax.swing.JFrame {
     // TODO add your handling code here:
   } //GEN-LAST:event_BankActionPerformed
 
-  private void RentDaysKeyPressed(java.awt.event.KeyEvent evt) { //GEN-FIRST:event_RentDaysKeyPressed
+  private void RentDaysKeyReleased(java.awt.event.KeyEvent evt) { //GEN-FIRST:event_RentDaysKeyReleased
     String bookingStartDate = StartDate.getText();
-    String totalDayStay = RentDays.getText();
     String records;
-    Validator valid = new Validator();
-    char key = evt.getKeyChar();
-    if (evt.getKeyChar() == ('\b')) return;
-    if (totalDayStay.isEmpty()) totalDayStay = Character.toString(key);
-    if (tableSelectedCar.getCarId() == null) {
-      JOptionPane.showMessageDialog(
-        this,
-        "Please select a car first",
-        "Error Message",
-        JOptionPane.ERROR_MESSAGE
-      );
-      return;
-    }
 
-    if (!valid.isNumber(Character.toString(key)) && evt.getKeyCode() != 10) {
+    //Check Day Rent validation
+    Validator valid = new Validator();
+    if (!valid.isNumber(RentDays.getText())) {
       JOptionPane.showMessageDialog(
         this,
         "Invalid Day Stay.",
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
+      RentDays.setText("");
+      ReturnDate.setText("");
+      TotalPrice.setText("");
       return;
     }
 
-    //Check Day Stay validation
     Date startDate, endDate;
 
-    //Convert Day Stay into Integer
-    int day = Integer.parseInt(totalDayStay);
+    //Convert Day Rent into Integer
+    int day = Integer.parseInt(RentDays.getText());
     //Check if Day larger than zero
     if (day <= 0) {
       //Display error message if day stau enter less than one
@@ -1451,22 +1439,21 @@ public class BookCar extends javax.swing.JFrame {
           "Error Message",
           JOptionPane.ERROR_MESSAGE
         );
-        this.StartDate.setText("");
-        this.RentDays.setText("");
-        this.ReturnDate.setText("");
+        StartDate.setText("");
+        RentDays.setText("");
+        ReturnDate.setText("");
         return;
       }
 
       //Call calendar features
       Calendar c = Calendar.getInstance();
       c.setTime(df.parse(bookingStartDate));
-      int TotalDay = Integer.parseInt(totalDayStay);
       //Calculate end date
-      c.add(Calendar.DATE, TotalDay);
+      c.add(Calendar.DATE, day);
       String bookingEndDate = df.format(c.getTime());
       endDate = df.parse(bookingEndDate);
       //Set end date
-      this.ReturnDate.setText(bookingEndDate);
+      ReturnDate.setText(bookingEndDate);
       //Set total price
       TotalPrice.setText(
         String.valueOf(Double.parseDouble(Price.getText()) * day)
@@ -1479,10 +1466,10 @@ public class BookCar extends javax.swing.JFrame {
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
-      this.StartDate.setText("");
-      this.ReturnDate.setText("");
+      StartDate.setText("");
+      ReturnDate.setText("");
     }
-  } //GEN-LAST:event_RentDaysKeyPressed
+  } //GEN-LAST:event_RentDaysKeyReleased
 
   private void searchActionPerformed(java.awt.event.ActionEvent evt) {
     // search
