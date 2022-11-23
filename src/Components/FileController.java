@@ -83,7 +83,6 @@ public class FileController {
       PrintWriter pr = new PrintWriter(path);
       for (int i = 0; i < data.size(); i++) {
         String line = String.join(", ", data.get(i));
-        System.out.println(line);
         if (
           line.equalsIgnoreCase(
             String.join(", ", data.get((Integer.parseInt(index))))
@@ -95,7 +94,6 @@ public class FileController {
           newData.add(line);
         }
       }
-      System.out.println(newData);
       pr.write("");
       pr.close();
 
@@ -134,7 +132,6 @@ public class FileController {
             String.join(", ", data.get((Integer.parseInt(index))))
           )
         ) {
-          System.out.println("modified");
           hasModified = true;
         } else {
           newData.add(line);
