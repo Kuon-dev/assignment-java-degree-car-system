@@ -79,17 +79,9 @@ public class BookCar extends javax.swing.JFrame {
   private Boolean sanitizeInput() {
     String phnumEntered = this.PhNum.getText();
     String emailEntered = this.Email.getText();
-    if (IC.getText().length() != 12) {
-      JOptionPane.showMessageDialog(
-        this,
-        "Incorrect IC.",
-        "Error Message",
-        JOptionPane.ERROR_MESSAGE
-      );
-      IC.setText(currentCustomerData.getIC());
-      return false;
-    }
-    if (!emailEntered.contains("@") || !emailEntered.contains(".com")) {
+    Validator v = new Validator();
+    IC.setText(currentCustomerData.getIC());
+    if (!v.isEmail(emailEntered)) {
       JOptionPane.showMessageDialog(
         this,
         "Incorrect Email.",
@@ -99,7 +91,10 @@ public class BookCar extends javax.swing.JFrame {
       Email.setText(currentCustomerData.getEmail());
       return false;
     }
-    if ((phnumEntered.length() != (10)) && (phnumEntered.length() != (11))) {
+    if (
+      (phnumEntered.length() != (10) && (phnumEntered.length() != (11))) ||
+      !v.isPhNum(phnumEntered)
+    ) {
       JOptionPane.showMessageDialog(
         this,
         "Incorrect Phone Number.",
@@ -109,7 +104,7 @@ public class BookCar extends javax.swing.JFrame {
       PhNum.setText(currentCustomerData.getPhNum());
       return false;
     }
-    if (CardNum.getText().length() != (16)) {
+    if (!v.isValidCard(CardNum.getText())) {
       JOptionPane.showMessageDialog(
         this,
         "Invalid Card Number.",
@@ -1403,10 +1398,21 @@ public class BookCar extends javax.swing.JFrame {
     String bookingStartDate = StartDate.getText();
     String totalDayStay = RentDays.getText();
     String records;
-
-    //Check Day Stay validation
     Validator valid = new Validator();
-    if (!valid.isNumber(totalDayStay)) {
+    char key = evt.getKeyChar();
+    if (evt.getKeyChar() == ('\b')) return;
+    if (totalDayStay.isEmpty()) totalDayStay = Character.toString(key);
+    if (tableSelectedCar.getCarId() == null) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Please select a car first",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      return;
+    }
+
+    if (!valid.isNumber(Character.toString(key)) && evt.getKeyCode() != 10) {
       JOptionPane.showMessageDialog(
         this,
         "Invalid Day Stay.",
@@ -1416,6 +1422,7 @@ public class BookCar extends javax.swing.JFrame {
       return;
     }
 
+    //Check Day Stay validation
     Date startDate, endDate;
 
     //Convert Day Stay into Integer

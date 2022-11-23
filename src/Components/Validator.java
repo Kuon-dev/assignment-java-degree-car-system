@@ -17,7 +17,7 @@ public class Validator {
   // check if a string is a number
   public static Boolean isNumber(String input) {
     try {
-      if (input == "") return false;
+      if (input.isEmpty()) return false;
       Double.parseDouble(input);
       return true;
     } catch (NumberFormatException e) {
@@ -26,14 +26,10 @@ public class Validator {
   }
 
   // check if the email is valid
-  public static final Pattern emailRegex = Pattern.compile(
-    "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$",
-    Pattern.CASE_INSENSITIVE
-  );
 
   public static Boolean isEmail(String email) {
-    Matcher matcher = emailRegex.matcher(email);
-    return matcher.find();
+    String regexPattern = "^(.+)@(\\S+)$";
+    return Pattern.compile(regexPattern).matcher(email).matches();
   }
 
   // check if the phone number is valid
@@ -57,7 +53,7 @@ public class Validator {
       formattedCard = formattedCard.replace(" ", "");
 
       // check for any strings
-      int validCard = Integer.parseInt(formattedCard);
+      long validCard = Long.parseLong(formattedCard);
       // luhn's algo
       int nDigits = inputCard.length();
 
