@@ -1396,6 +1396,7 @@ public class BookCar extends javax.swing.JFrame {
 
   private void RentDaysKeyReleased(java.awt.event.KeyEvent evt) { //GEN-FIRST:event_RentDaysKeyReleased
     String bookingStartDate = StartDate.getText();
+    String totalDayStay = RentDays.getText();
     String records;
     Validator valid = new Validator();
     // will return whatever the key is released from the keyboard
