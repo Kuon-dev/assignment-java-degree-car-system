@@ -684,7 +684,7 @@ public class BookCar extends javax.swing.JFrame {
     RentDays.addKeyListener(
       new java.awt.event.KeyAdapter() {
         public void keyReleased(java.awt.event.KeyEvent evt) {
-          RentDaysKeyPressed(evt);
+          RentDaysKeyReleased(evt);
         }
       }
     );
@@ -1394,9 +1394,8 @@ public class BookCar extends javax.swing.JFrame {
     // TODO add your handling code here:
   } //GEN-LAST:event_BankActionPerformed
 
-  private void RentDaysKeyPressed(java.awt.event.KeyEvent evt) { //GEN-FIRST:event_RentDaysKeyPressed
+  private void RentDaysKeyReleased(java.awt.event.KeyEvent evt) { //GEN-FIRST:event_RentDaysKeyReleased
     String bookingStartDate = StartDate.getText();
-    String totalDayStay = RentDays.getText();
     String records;
     Validator valid = new Validator();
     // will return whatever the key is released from the keyboard
@@ -1439,14 +1438,16 @@ public class BookCar extends javax.swing.JFrame {
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
+      RentDays.setText("");
+      ReturnDate.setText("");
+      TotalPrice.setText("");
       return;
     }
 
-    //Check Day Stay validation
     Date startDate, endDate;
 
-    //Convert Day Stay into Integer
-    int day = Integer.parseInt(totalDayStay);
+    //Convert Day Rent into Integer
+    int day = Integer.parseInt(RentDays.getText());
     //Check if Day larger than zero
     if (day <= 0) {
       //Display error message if day stau enter less than one
@@ -1471,22 +1472,21 @@ public class BookCar extends javax.swing.JFrame {
           "Error Message",
           JOptionPane.ERROR_MESSAGE
         );
-        this.StartDate.setText("");
-        this.RentDays.setText("");
-        this.ReturnDate.setText("");
+        StartDate.setText("");
+        RentDays.setText("");
+        ReturnDate.setText("");
         return;
       }
 
       //Call calendar features
       Calendar c = Calendar.getInstance();
       c.setTime(df.parse(bookingStartDate));
-      int TotalDay = Integer.parseInt(totalDayStay);
       //Calculate end date
-      c.add(Calendar.DATE, TotalDay);
+      c.add(Calendar.DATE, day);
       String bookingEndDate = df.format(c.getTime());
       endDate = df.parse(bookingEndDate);
       //Set end date
-      this.ReturnDate.setText(bookingEndDate);
+      ReturnDate.setText(bookingEndDate);
       //Set total price
       TotalPrice.setText(
         String.valueOf(Double.parseDouble(Price.getText()) * day)
@@ -1499,13 +1499,9 @@ public class BookCar extends javax.swing.JFrame {
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
-      this.StartDate.setText("");
-      this.ReturnDate.setText("");
+      StartDate.setText("");
+      ReturnDate.setText("");
     }
-  } //GEN-LAST:event_RentDaysKeyPressed
-
-  private void RentDaysKeyReleased(java.awt.event.KeyEvent evt) { //GEN-FIRST:event_RentDaysKeyReleased
-    // TODO add your handling code here:
   } //GEN-LAST:event_RentDaysKeyReleased
 
   private void searchActionPerformed(java.awt.event.ActionEvent evt) {
