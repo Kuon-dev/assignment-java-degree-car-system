@@ -499,7 +499,9 @@ public class BookCar extends javax.swing.JFrame {
     BookBtn.setText("Book Car");
     BookBtn.addActionListener(
       new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {}
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          BookBtnActionPerformed(evt);
+        }
       }
     );
 
@@ -1310,7 +1312,7 @@ public class BookCar extends javax.swing.JFrame {
 
   private void EmailActionPerformed(java.awt.event.ActionEvent evt) {}
 
-  private void BookButActionPerformed(java.awt.event.ActionEvent evt) {
+  private void BookBtnActionPerformed(java.awt.event.ActionEvent evt) {
     try {
       if (!sanitizeInput()) return;
       RecordBooking newBookingData = new RecordBooking(
@@ -1394,14 +1396,46 @@ public class BookCar extends javax.swing.JFrame {
 
   private void RentDaysKeyReleased(java.awt.event.KeyEvent evt) { //GEN-FIRST:event_RentDaysKeyReleased
     String bookingStartDate = StartDate.getText();
+    String totalDayStay = RentDays.getText();
     String records;
-
-    //Check Day Rent validation
     Validator valid = new Validator();
-    if (!valid.isNumber(RentDays.getText())) {
+    // will return whatever the key is released from the keyboard
+    // but in char datatype
+    char key = evt.getKeyChar();
+    // backspace key character
+    if (evt.getKeyChar() == ('\b')) return;
+    // if input empty we are gonna assign totalDayStay as that key
+    if (totalDayStay.isEmpty()) totalDayStay = Character.toString(key);
+    // if there's no selected car to do calculatiaons, throw popup
+    if (tableSelectedCar.getCarId() == null) {
       JOptionPane.showMessageDialog(
         this,
-        "Invalid Day Stay.",
+        "Please select a car first",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      return;
+    }
+
+    if (bookingStartDate.isEmpty()) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Starting date cannot be empty",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      return;
+    }
+    //
+    // keycode 10 refers to ENTER key press
+    if (
+      !valid.isNumber(Character.toString(key)) &&
+      evt.getKeyCode() != 10 &&
+      !v.isNumber(totalDayStay)
+    ) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Invalid Day Stay",
         "Error Message",
         JOptionPane.ERROR_MESSAGE
       );
