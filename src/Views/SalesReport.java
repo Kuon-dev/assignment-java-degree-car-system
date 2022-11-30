@@ -50,7 +50,6 @@ public class SalesReport extends javax.swing.JFrame {
     AdminLoginLab = new javax.swing.JLabel();
     BookingLab = new javax.swing.JLabel();
     BookingLab1 = new javax.swing.JLabel();
-    jPanel1 = new javax.swing.JPanel();
     jButton1 = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -132,21 +131,6 @@ public class SalesReport extends javax.swing.JFrame {
     BookingLab1.setForeground(new java.awt.Color(140, 174, 238));
     BookingLab1.setText("Enter year");
 
-    javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(
-      jPanel1
-    );
-    jPanel1.setLayout(jPanel1Layout);
-    jPanel1Layout.setHorizontalGroup(
-      jPanel1Layout
-        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 0, Short.MAX_VALUE)
-    );
-    jPanel1Layout.setVerticalGroup(
-      jPanel1Layout
-        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 184, Short.MAX_VALUE)
-    );
-
     jButton1.setText("Generate");
     jButton1.addActionListener(
       new java.awt.event.ActionListener() {
@@ -205,36 +189,22 @@ public class SalesReport extends javax.swing.JFrame {
           layout
             .createSequentialGroup()
             .addGap(34, 34, 34)
-            .addGroup(
-              layout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(
-                  jPanel1,
-                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                  javax.swing.GroupLayout.DEFAULT_SIZE,
-                  Short.MAX_VALUE
-                )
-                .addGroup(
-                  layout
-                    .createSequentialGroup()
-                    .addComponent(
-                      jTextField1,
-                      javax.swing.GroupLayout.PREFERRED_SIZE,
-                      130,
-                      javax.swing.GroupLayout.PREFERRED_SIZE
-                    )
-                    .addPreferredGap(
-                      javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                      javax.swing.GroupLayout.DEFAULT_SIZE,
-                      Short.MAX_VALUE
-                    )
-                    .addComponent(
-                      Month,
-                      javax.swing.GroupLayout.PREFERRED_SIZE,
-                      130,
-                      javax.swing.GroupLayout.PREFERRED_SIZE
-                    )
-                )
+            .addComponent(
+              jTextField1,
+              javax.swing.GroupLayout.PREFERRED_SIZE,
+              130,
+              javax.swing.GroupLayout.PREFERRED_SIZE
+            )
+            .addPreferredGap(
+              javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+              javax.swing.GroupLayout.DEFAULT_SIZE,
+              Short.MAX_VALUE
+            )
+            .addComponent(
+              Month,
+              javax.swing.GroupLayout.PREFERRED_SIZE,
+              130,
+              javax.swing.GroupLayout.PREFERRED_SIZE
             )
             .addGap(44, 44, 44)
         )
@@ -323,16 +293,9 @@ public class SalesReport extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
             )
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(
-              jPanel1,
-              javax.swing.GroupLayout.PREFERRED_SIZE,
-              javax.swing.GroupLayout.DEFAULT_SIZE,
-              javax.swing.GroupLayout.PREFERRED_SIZE
-            )
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGap(50, 50, 50)
             .addComponent(jButton1)
-            .addContainerGap(16, Short.MAX_VALUE)
+            .addContainerGap(24, Short.MAX_VALUE)
         )
     );
 
@@ -371,7 +334,7 @@ public class SalesReport extends javax.swing.JFrame {
     RecordReport r = new RecordReport();
     XYChart chart = r.getAnnualChart(Integer.parseInt(jTextField1.getText()));
     JFrame frame = new JFrame("XChart Swing Demo");
-    frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    //frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     // Add content to the window.
     JPanel chartPanel = new XChartPanel(chart);
@@ -438,7 +401,6 @@ public class SalesReport extends javax.swing.JFrame {
   private javax.swing.JComboBox<String> Month;
   private javax.swing.JLabel Title;
   private javax.swing.JButton jButton1;
-  private javax.swing.JPanel jPanel1;
   private javax.swing.JTextField jTextField1;
   // End of variables declaration//GEN-END:variables
 }
