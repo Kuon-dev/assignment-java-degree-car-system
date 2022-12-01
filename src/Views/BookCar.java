@@ -58,6 +58,8 @@ public class BookCar extends javax.swing.JFrame {
   public void updateTableInformation(ArrayList<GeneralCar> data) {
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
     model.setRowCount(0);
+    // temporary array so it will not push duplicated data on the table
+    ArrayList<String> tempArr = new ArrayList<>();
     for (GeneralCar car : data) {
       Object[] eachCar = {
         car.getCarNoPlate(),
@@ -70,7 +72,10 @@ public class BookCar extends javax.swing.JFrame {
         car.getCarId(),
       };
 
-      model.addRow(eachCar);
+      if (!tempArr.contains(car.getCarNoPlate())) {
+        model.addRow(eachCar);
+        tempArr.add(car.getCarNoPlate());
+      }
     }
   }
 
@@ -1431,7 +1436,7 @@ public class BookCar extends javax.swing.JFrame {
     if (
       !valid.isNumber(Character.toString(key)) &&
       evt.getKeyCode() != 10 &&
-      !v.isNumber(totalDayStay)
+      !valid.isNumber(totalDayStay)
     ) {
       JOptionPane.showMessageDialog(
         this,
