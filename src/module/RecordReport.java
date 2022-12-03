@@ -1,11 +1,13 @@
 package carrentalsystem;
 
+import java.time.*;
 /**
  * Creates a simple real-time chart
  */
 import java.util.*;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.stream.*;
 import org.knowm.xchart.QuickChart;
 import org.knowm.xchart.SwingWrapper;
 import org.knowm.xchart.XYChart;
@@ -71,6 +73,69 @@ public class RecordReport {
       "Revenue",
       "y(x)",
       month,
+      revenue
+    );
+  }
+
+  public XYChart getMonthlyChart(int inputYear, int inputMonth) {
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<RecordBooking> allBookings = g.getAllBooking();
+    ArrayList<RecordBooking> filteredBookings = new ArrayList<RecordBooking>();
+    for (RecordBooking r : allBookings) {
+      Calendar bookingTime = new GregorianCalendar();
+      bookingTime.setTime(r.getBookingDate());
+
+      int year = bookingTime.get(Calendar.YEAR);
+      int month = bookingTime.get(Calendar.MONTH) + 1;
+      int day = bookingTime.get(Calendar.DAY_OF_MONTH);
+
+      if (
+        year == inputYear &&
+        month == inputMonth &&
+        r.getStatus().equalsIgnoreCase("Approve")
+      ) filteredBookings.add(r);
+    }
+
+    // set X axis values
+    YearMonth yearMonthObject = YearMonth.of(inputYear, inputMonth);
+    int selectedMonthDays = yearMonthObject.lengthOfMonth();
+    double[] totalDays = new double[selectedMonthDays];
+    Arrays.setAll(totalDays, i -> i + 1);
+
+    // set renenue
+    ArrayList<Double> arrayRevenue = new ArrayList<>();
+    // initialize empty values, so if the month has no booking it will return 0
+    for (int i = 0; i < selectedMonthDays; i++) {
+      arrayRevenue.add(0.0);
+    }
+
+    for (RecordBooking record : filteredBookings) {
+      Calendar bookingTime = new GregorianCalendar();
+      bookingTime.setTime(record.getBookingDate());
+      int indexDay = bookingTime.get(Calendar.DAY_OF_MONTH) - 1;
+      // if there is no booking, we use set method
+      if (arrayRevenue.get(indexDay) == 0) arrayRevenue.set(
+        indexDay,
+        record.getTotalPrice()
+        // else we get the current number, then add it before setting it
+      ); else arrayRevenue.set(
+        indexDay,
+        arrayRevenue.get(indexDay) + record.getTotalPrice()
+      );
+    }
+
+    List<Double> newList = arrayRevenue;
+    double[] revenue = newList
+      .stream()
+      .mapToDouble(Double::doubleValue)
+      .toArray();
+
+    return QuickChart.getChart(
+      "Monthly Sales Report ",
+      "Days",
+      "Revenue",
+      "y(x)",
+      totalDays,
       revenue
     );
   }
