@@ -557,12 +557,9 @@ public class RegisterMember extends javax.swing.JFrame {
         "Information",
         JOptionPane.INFORMATION_MESSAGE
       );
-      IC.setText("");
-      Name.setText("");
-      Password.setText("");
-      Email.setText("");
-      PhNum.setText("");
-      ConfPass.setText("");
+      LoginMenu main = new LoginMenu();
+      main.setVisible(true);
+      dispose();
     } else JOptionPane.showMessageDialog(
       this,
       "Failed to add admin data",

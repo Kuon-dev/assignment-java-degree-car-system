@@ -1335,17 +1335,22 @@ public class BookCar extends javax.swing.JFrame {
         Bank.getText()
       );
       GeneralMutation m = new GeneralMutation();
-      if (m.addNewBooking(newBookingData)) JOptionPane.showMessageDialog(
-        this,
-        "Booking has been added sucessfully",
-        "Information",
-        JOptionPane.INFORMATION_MESSAGE
-      ); else JOptionPane.showMessageDialog(
-        this,
-        "Failed to add booking",
-        "Error Message",
-        JOptionPane.ERROR_MESSAGE
-      );
+      if (m.addNewBooking(newBookingData)) {
+        clear();
+        JOptionPane.showMessageDialog(
+          this,
+          "Booking has been added sucessfully",
+          "Information",
+          JOptionPane.INFORMATION_MESSAGE
+        );
+      } else {
+        JOptionPane.showMessageDialog(
+          this,
+          "Failed to add booking",
+          "Error Message",
+          JOptionPane.ERROR_MESSAGE
+        );
+      }
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -1529,24 +1534,7 @@ public class BookCar extends javax.swing.JFrame {
   }
 
   private void clearButActionPerformed(java.awt.event.ActionEvent evt) {
-    CarNoPlate.setText("");
-    Brand.setText("");
-    Model.setText("");
-    Year.setText("");
-    FuelType.setSelectedItem("Petron");
-    Price.setText("");
-    StartDate.setText("");
-    RentDays.setText("");
-    ReturnDate.setText("");
-    TotalPrice.setText("");
-    IC.setText(currentCustomerData.getIC());
-    Email.setText(currentCustomerData.getEmail());
-    PhNum.setText(currentCustomerData.getPhNum());
-    CardNum.setText("");
-    AccHolder.setText("");
-    Bank.setText("");
-    GeneralGetters get = new GeneralGetters();
-    updateTableInformation(get.getAllCar());
+    clear();
   }
 
   private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {
@@ -1584,6 +1572,27 @@ public class BookCar extends javax.swing.JFrame {
     Price.setText(String.valueOf(tableSelectedCar.getPrice())); // price
     Year.setText(String.valueOf(tableSelectedCar.getYear())); // year
     FuelType.setSelectedItem(tableSelectedCar.getFuelType()); // fuel
+  }
+
+  public void clear() {
+    CarNoPlate.setText("");
+    Brand.setText("");
+    Model.setText("");
+    Year.setText("");
+    FuelType.setSelectedItem("Petron");
+    Price.setText("");
+    StartDate.setText("");
+    RentDays.setText("");
+    ReturnDate.setText("");
+    TotalPrice.setText("");
+    IC.setText(currentCustomerData.getIC());
+    Email.setText(currentCustomerData.getEmail());
+    PhNum.setText(currentCustomerData.getPhNum());
+    CardNum.setText("");
+    AccHolder.setText("");
+    Bank.setText("");
+    GeneralGetters get = new GeneralGetters();
+    updateTableInformation(get.getAllCar());
   }
 
   /**

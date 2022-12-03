@@ -957,8 +957,6 @@ public class ManageBooking extends javax.swing.JFrame {
     setSpecificTableData(queryRecords);
   }
 
-  private void BookBtnActionPerformed(java.awt.event.ActionEvent evt) {}
-
   private void clearButActionPerformed(java.awt.event.ActionEvent evt) {
     customerIcEdit.setText("");
     CarNoPlate.setText("");
