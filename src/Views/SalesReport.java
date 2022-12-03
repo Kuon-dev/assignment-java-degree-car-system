@@ -5,6 +5,7 @@
 package carrentalsystem;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import org.knowm.xchart.*;
@@ -58,6 +59,7 @@ public class SalesReport extends javax.swing.JFrame {
     Month.setModel(
       new javax.swing.DefaultComboBoxModel<>(
         new String[] {
+          "None",
           "January",
           "Febuary",
           "March",
@@ -331,21 +333,51 @@ public class SalesReport extends javax.swing.JFrame {
     // TODO: SANITIZE INPUT
 
     // Create Chart
+    if (jTextField1.getText().isEmpty() && Month.getSelectedItem() == "None") {
+      JOptionPane.showMessageDialog(
+        this,
+        "Input is empty",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      return;
+    }
+
+    Validator v = new Validator();
+    if (!v.isNumber(jTextField1.getText())) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Invalid date inputted",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      return;
+    }
+
+    JFrame frame = new JFrame("Sales report");
     RecordReport r = new RecordReport();
-    XYChart chart = r.getAnnualChart(Integer.parseInt(jTextField1.getText()));
-    JFrame frame = new JFrame("XChart Swing Demo");
+    if (Month.getSelectedItem() == "None") {
+      XYChart chart = r.getAnnualChart(Integer.parseInt(jTextField1.getText()));
+      //frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+      JPanel chartPanel = new XChartPanel(chart);
+      // Add content to the window.
+      frame.add(chartPanel);
+      frame.pack();
+      // Display the window.
+      frame.setVisible(true);
+    } else {
+      XYChart chart = r.getMonthlyChart(
+        Integer.parseInt(jTextField1.getText()),
+        Month.getSelectedIndex()
+      );
+      JPanel chartPanel = new XChartPanel(chart);
+      // Add content to the window.
+      frame.add(chartPanel);
+      frame.pack();
+      // Display the window.
+      frame.setVisible(true);
+    }
     //frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-    // Add content to the window.
-    JPanel chartPanel = new XChartPanel(chart);
-    frame.add(chartPanel);
-
-    // Display the window.
-    frame.pack();
-    frame.setVisible(true);
-    // Create Chart
-    // XYChart chart = QuickChart.getChart("Sample Chart", "X", "Y", "y(x)", xData, yData);
-
   }
 
   /**
