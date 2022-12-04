@@ -23,8 +23,7 @@ public class ManageCar extends javax.swing.JFrame {
    */
   public ManageCar() {
     initComponents();
-    GeneralGetters g = new GeneralGetters();
-    updateTableInformation(g.getAllCar());
+    setTable();
   }
 
   public GeneralCar tableSelectedCar = new GeneralCar(
@@ -49,6 +48,26 @@ public class ManageCar extends javax.swing.JFrame {
 
   public void setCurrentAdminData(UserAdmin data) {
     this.currentAdminData = data;
+  }
+
+  public void setTable() {
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<GeneralCar> allCars = g.getAllCar();
+    for (GeneralCar car : allCars) {
+      Object[] eachCar = {
+        car.getCarNoPlate(),
+        car.getBrand(),
+        car.getModel(),
+        car.getYear(),
+        car.getFuelType(),
+        car.getPrice(),
+        car.getState(),
+      };
+
+      model.addRow(eachCar);
+    }
   }
 
   public void updateTableInformation(ArrayList<GeneralCar> data) {
@@ -885,12 +904,16 @@ public class ManageCar extends javax.swing.JFrame {
       Double.parseDouble(Price.getText()), // price
       FuelType.getSelectedItem().toString() // fuel
     );
-    if (m.addNewCar(newCar)) JOptionPane.showMessageDialog(
-      this,
-      "Record Added Successfully",
-      "Information",
-      JOptionPane.INFORMATION_MESSAGE
-    ); else JOptionPane.showMessageDialog(
+    if (m.addNewCar(newCar)) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Record Added Successfully",
+        "Information",
+        JOptionPane.INFORMATION_MESSAGE
+      );
+      clear();
+      setTable();
+    } else JOptionPane.showMessageDialog(
       this,
       "Failed to add car",
       "Error Message",
@@ -899,19 +922,8 @@ public class ManageCar extends javax.swing.JFrame {
   }
 
   private void clearButActionPerformed(java.awt.event.ActionEvent evt) {
-    // clear
-    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-    model.setRowCount(0);
-
-    tableSelectedCar.clearData();
-
-    this.CarNoPlate.setText("");
-    this.Brand.setText("");
-    this.Model.setText("");
-    this.Year.setText("");
-    this.FuelType.setSelectedItem("Petron");
-    this.Price.setText("");
-    this.Status.setSelectedItem("Available");
+    clear();
+    setTable();
   }
 
   private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {
@@ -955,26 +967,8 @@ public class ManageCar extends javax.swing.JFrame {
   private void ModelActionPerformed(java.awt.event.ActionEvent evt) {}
 
   private void viewcarActionPerformed(java.awt.event.ActionEvent evt) {
-    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-    model.setRowCount(0);
-
-    GeneralGetters g = new GeneralGetters();
-    ArrayList<GeneralCar> allCars = g.getAllCar();
-
-    for (GeneralCar car : allCars) {
-      Object[] eachCar = {
-        car.getCarNoPlate(),
-        car.getBrand(),
-        car.getModel(),
-        car.getYear(),
-        car.getFuelType(),
-        car.getPrice(),
-        car.getState(),
-        car.getCarId(),
-      };
-
-      model.addRow(eachCar);
-    }
+    clear();
+    setTable();
   }
 
   private void updateActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1012,8 +1006,14 @@ public class ManageCar extends javax.swing.JFrame {
       "Error Message",
       JOptionPane.ERROR_MESSAGE
     );
-
     searchActionPerformed(evt);
+    CarNoPlate.setText("");
+    Brand.setText("");
+    Model.setText("");
+    Year.setText("");
+    FuelType.setSelectedItem("Petron");
+    Price.setText("");
+    Status.setSelectedItem("Available");
   }
 
   private void deleteActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1039,7 +1039,24 @@ public class ManageCar extends javax.swing.JFrame {
       JOptionPane.ERROR_MESSAGE
     );
 
-    searchActionPerformed(evt);
+    clear();
+    setTable();
+  }
+
+  public void clear() {
+    // clear
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    model.setRowCount(0);
+
+    tableSelectedCar.clearData();
+
+    CarNoPlate.setText("");
+    Brand.setText("");
+    Model.setText("");
+    Year.setText("");
+    FuelType.setSelectedItem("Petron");
+    Price.setText("");
+    Status.setSelectedItem("Available");
   }
 
   private void YearActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_YearActionPerformed
