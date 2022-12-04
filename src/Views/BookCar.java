@@ -1339,7 +1339,7 @@ public class BookCar extends javax.swing.JFrame {
         clear();
         JOptionPane.showMessageDialog(
           this,
-          "Booking has been added sucessfully",
+          "Booking has been added sucessfully, an confirmation email will be sent once admin approve your booking.",
           "Information",
           JOptionPane.INFORMATION_MESSAGE
         );

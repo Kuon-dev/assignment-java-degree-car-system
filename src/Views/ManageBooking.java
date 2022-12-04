@@ -934,24 +934,13 @@ public class ManageBooking extends javax.swing.JFrame {
     if (receiptID.isEmpty() && customerIC.isEmpty()) return;
 
     GeneralGetters g = new GeneralGetters();
-    if (receiptID.isEmpty()) {
-      ArrayList<UserCustomer> allUser = g.getAllCustomer();
-      ArrayList<RecordBooking> allRecords = g.getAllBooking();
-      ArrayList<RecordBooking> queryRecords = new ArrayList<>();
-      for (RecordBooking r : allRecords) {
-        for (UserCustomer c : allUser) {
-          if (c.getIC().equals(customerIC)) queryRecords.add(r);
-        }
-      }
-      clearTableData();
-      setSpecificTableData(queryRecords);
-    }
-
-    ArrayList<UserCustomer> allUser = g.getAllCustomer();
     ArrayList<RecordBooking> allRecords = g.getAllBooking();
     ArrayList<RecordBooking> queryRecords = new ArrayList<>();
     for (RecordBooking r : allRecords) {
-      if (r.getReceiptID().equals(receiptID)) queryRecords.add(r);
+      if (
+        (receiptID.isEmpty() && r.getCustomer().getIC().equals(customerIC)) ||
+        r.getReceiptID().equals(receiptID)
+      ) queryRecords.add(r);
     }
     clearTableData();
     setSpecificTableData(queryRecords);
@@ -967,6 +956,7 @@ public class ManageBooking extends javax.swing.JFrame {
 
     tableSelectedBooking.clearData();
     clearTableData();
+    setTableData();
   }
 
   private void viewrecordsActionPerformed(java.awt.event.ActionEvent evt) {
