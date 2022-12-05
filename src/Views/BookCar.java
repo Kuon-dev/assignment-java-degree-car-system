@@ -1523,20 +1523,21 @@ public class BookCar extends javax.swing.JFrame {
         String.valueOf(Double.parseDouble(Price.getText()) * day)
       );
 
-      if (!valid.isValidDate(bookingStartDate, true)) return;
+      // check clash for end date
       for (RecordBooking r : allRecords) {
-        if (Car.isEmpty()) return;
         if (
-          r.getCar().getCarNoPlate().equals(Car) &&
+          (Car.isEmpty()) ||
           (
-            (
-              r.getStartDate().getTime() >= startDate.getTime() &&
-              startDate.getTime() <= r.getReturnDate().getTime()
-            ) ||
-            (
-              endDate.getTime() >= r.getStartDate().getTime() &&
-              endDate.getTime() <= r.getReturnDate().getTime()
-            )
+            startDate.getTime() >= r.getStartDate().getTime() &&
+            startDate.getTime() <= r.getReturnDate().getTime()
+          ) ||
+          (
+            endDate.getTime() >= r.getStartDate().getTime() &&
+            endDate.getTime() <= r.getReturnDate().getTime()
+          ) ||
+          (
+            startDate.getTime() <= r.getStartDate().getTime() &&
+            endDate.getTime() >= r.getReturnDate().getTime()
           )
         ) {
           JOptionPane.showMessageDialog(
@@ -1545,10 +1546,10 @@ public class BookCar extends javax.swing.JFrame {
             "Error Message",
             JOptionPane.ERROR_MESSAGE
           );
+          clear();
+          setTable();
           return;
         }
-        clear();
-        setTable();
       }
     } catch (ParseException ex) {
       //Display error message if any error
