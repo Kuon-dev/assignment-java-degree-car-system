@@ -25,8 +25,8 @@ public class BookCar extends javax.swing.JFrame {
    */
   public BookCar() {
     initComponents();
-    GeneralGetters g = new GeneralGetters();
-    updateTableInformation(g.getAllCar());
+    clear();
+    setTable();
   }
 
   public GeneralCar tableSelectedCar = new GeneralCar(
@@ -55,6 +55,25 @@ public class BookCar extends javax.swing.JFrame {
     PhNum.setText(currentCustomerData.getPhNum());
   }
 
+  public void setTable() {
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<GeneralCar> allCars = g.getAllCar();
+    for (GeneralCar car : allCars) {
+      Object[] eachCar = {
+        car.getCarNoPlate(),
+        car.getBrand(),
+        car.getModel(),
+        car.getYear(),
+        car.getFuelType(),
+        car.getPrice(),
+        car.getState(),
+      };
+      if (car.getState().equals("AVAILABLE")) model.addRow(eachCar);
+    }
+  }
+
   public void updateTableInformation(ArrayList<GeneralCar> data) {
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
     model.setRowCount(0);
@@ -68,8 +87,6 @@ public class BookCar extends javax.swing.JFrame {
         car.getYear(),
         car.getFuelType(),
         car.getPrice(),
-        car.getState(),
-        car.getCarId(),
       };
 
       if (!tempArr.contains(car.getCarNoPlate())) {
@@ -1408,6 +1425,9 @@ public class BookCar extends javax.swing.JFrame {
     String bookingStartDate = StartDate.getText();
     String totalDayStay = RentDays.getText();
     String records;
+    String Car = CarNoPlate.getText();
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<RecordBooking> allRecords = g.getAllBooking();
     Validator valid = new Validator();
     // will return whatever the key is released from the keyboard
     // but in char datatype
@@ -1502,6 +1522,34 @@ public class BookCar extends javax.swing.JFrame {
       TotalPrice.setText(
         String.valueOf(Double.parseDouble(Price.getText()) * day)
       );
+
+      if (!valid.isValidDate(bookingStartDate, true)) return;
+      for (RecordBooking r : allRecords) {
+        if (Car.isEmpty()) return;
+        if (
+          r.getCar().getCarNoPlate().equals(Car) &&
+          (
+            (
+              r.getStartDate().getTime() >= startDate.getTime() &&
+              startDate.getTime() <= r.getReturnDate().getTime()
+            ) ||
+            (
+              endDate.getTime() >= r.getStartDate().getTime() &&
+              endDate.getTime() <= r.getReturnDate().getTime()
+            )
+          )
+        ) {
+          JOptionPane.showMessageDialog(
+            this,
+            "The car is not available on selected date.",
+            "Error Message",
+            JOptionPane.ERROR_MESSAGE
+          );
+          return;
+        }
+        clear();
+        setTable();
+      }
     } catch (ParseException ex) {
       //Display error message if any error
       JOptionPane.showMessageDialog(
@@ -1591,8 +1639,10 @@ public class BookCar extends javax.swing.JFrame {
     CardNum.setText("");
     AccHolder.setText("");
     Bank.setText("");
-    GeneralGetters get = new GeneralGetters();
-    updateTableInformation(get.getAllCar());
+    //Get Table
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    //Clear all rows displayed in table to avoid duplicate record displayed
+    model.setNumRows(0);
   }
 
   /**
