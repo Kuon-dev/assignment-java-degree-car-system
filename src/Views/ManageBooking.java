@@ -934,7 +934,9 @@ public class ManageBooking extends javax.swing.JFrame {
     if (receiptID.isEmpty() && customerIC.isEmpty()) return;
 
     GeneralGetters g = new GeneralGetters();
+    ArrayList<UserCustomer> allUser = g.getAllCustomer();
     ArrayList<RecordBooking> allRecords = g.getAllBooking();
+
     ArrayList<RecordBooking> queryRecords = new ArrayList<>();
     for (RecordBooking r : allRecords) {
       if (
