@@ -116,7 +116,7 @@ public class AdminMenu extends javax.swing.JFrame {
 
     ExitBtn.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
     ExitBtn.setForeground(new java.awt.Color(0, 102, 204));
-    ExitBtn.setText("Exit");
+    ExitBtn.setText("Logout");
     ExitBtn.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,32 +132,6 @@ public class AdminMenu extends javax.swing.JFrame {
     layout.setHorizontalGroup(
       layout
         .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(
-          layout
-            .createSequentialGroup()
-            .addGroup(
-              layout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(
-                  layout
-                    .createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(
-                      ExitBtn,
-                      javax.swing.GroupLayout.PREFERRED_SIZE,
-                      73,
-                      javax.swing.GroupLayout.PREFERRED_SIZE
-                    )
-                )
-                .addGroup(
-                  layout
-                    .createSequentialGroup()
-                    .addGap(50, 50, 50)
-                    .addComponent(Title)
-                )
-            )
-            .addContainerGap(57, Short.MAX_VALUE)
-        )
         .addGroup(
           layout
             .createSequentialGroup()
@@ -211,6 +185,32 @@ public class AdminMenu extends javax.swing.JFrame {
                 )
             )
             .addGap(100, 100, 100)
+        )
+        .addGroup(
+          layout
+            .createSequentialGroup()
+            .addGroup(
+              layout
+                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(
+                  layout
+                    .createSequentialGroup()
+                    .addGap(50, 50, 50)
+                    .addComponent(Title)
+                )
+                .addGroup(
+                  layout
+                    .createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(
+                      ExitBtn,
+                      javax.swing.GroupLayout.PREFERRED_SIZE,
+                      93,
+                      javax.swing.GroupLayout.PREFERRED_SIZE
+                    )
+                )
+            )
+            .addContainerGap(57, Short.MAX_VALUE)
         )
     );
     layout.setVerticalGroup(
@@ -290,6 +290,10 @@ public class AdminMenu extends javax.swing.JFrame {
     //Call the exit system function
     exitSystem exit = new exitSystem();
     exit.exitsystem(adminData);
+    //If the user confirm to logout then go back to login
+    LoginMenu menu = new LoginMenu();
+    menu.setVisible(true);
+    dispose();
   } //GEN-LAST:event_ExitBtnActionPerformed
 
   /**

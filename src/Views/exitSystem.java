@@ -40,7 +40,7 @@ public class exitSystem {
     if (
       JOptionPane.showConfirmDialog(
         frame,
-        "Confirm if you want to exit?",
+        "Confirm if you want to log out?",
         "Confirm Messages",
         JOptionPane.YES_NO_OPTION
       ) ==
@@ -49,8 +49,6 @@ public class exitSystem {
       // log user activity
       GeneralMutation m = new GeneralMutation();
       m.logLogoutActivity(admin);
-      //If the user confirm to exit then end the system
-      System.exit(0);
     }
   }
 
@@ -67,8 +65,6 @@ public class exitSystem {
       // log user activity
       GeneralMutation m = new GeneralMutation();
       m.logLogoutActivity(customer);
-      //If the user confirm to exit then end the system
-      System.exit(0);
     }
   }
 }

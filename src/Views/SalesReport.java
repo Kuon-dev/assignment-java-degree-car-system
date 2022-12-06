@@ -51,7 +51,7 @@ public class SalesReport extends javax.swing.JFrame {
     AdminLoginLab = new javax.swing.JLabel();
     BookingLab = new javax.swing.JLabel();
     BookingLab1 = new javax.swing.JLabel();
-    jButton1 = new javax.swing.JButton();
+    generate = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -132,11 +132,11 @@ public class SalesReport extends javax.swing.JFrame {
     BookingLab1.setForeground(new java.awt.Color(140, 174, 238));
     BookingLab1.setText("Enter year");
 
-    jButton1.setText("Generate");
-    jButton1.addActionListener(
+    generate.setText("Generate");
+    generate.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          jButton1ActionPerformed(evt);
+          generateActionPerformed(evt);
         }
       }
     );
@@ -225,7 +225,7 @@ public class SalesReport extends javax.swing.JFrame {
                   layout
                     .createSequentialGroup()
                     .addGap(152, 152, 152)
-                    .addComponent(jButton1)
+                    .addComponent(generate)
                 )
             )
             .addContainerGap(
@@ -295,7 +295,7 @@ public class SalesReport extends javax.swing.JFrame {
                 )
             )
             .addGap(50, 50, 50)
-            .addComponent(jButton1)
+            .addComponent(generate)
             .addContainerGap(24, Short.MAX_VALUE)
         )
     );
@@ -327,7 +327,7 @@ public class SalesReport extends javax.swing.JFrame {
     // TODO add your handling code here:
   } //GEN-LAST:event_YearActionPerformed
 
-  private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+  private void generateActionPerformed(java.awt.event.ActionEvent evt) {
     // generate report
     // TODO: SANITIZE INPUT
 
@@ -357,7 +357,6 @@ public class SalesReport extends javax.swing.JFrame {
     RecordReport r = new RecordReport();
     if (Month.getSelectedItem() == "None") {
       XYChart chart = r.getAnnualChart(Integer.parseInt(Year.getText()));
-      //frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
       JPanel chartPanel = new XChartPanel(chart);
       // Add content to the window.
       frame.add(chartPanel);
@@ -432,6 +431,6 @@ public class SalesReport extends javax.swing.JFrame {
   private javax.swing.JComboBox<String> Month;
   private javax.swing.JLabel Title;
   private javax.swing.JTextField Year;
-  private javax.swing.JButton jButton1;
+  private javax.swing.JButton generate;
   // End of variables declaration//GEN-END:variables
 }

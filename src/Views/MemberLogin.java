@@ -102,7 +102,7 @@ public class MemberLogin extends javax.swing.JFrame {
 
     ExitBtn2.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
     ExitBtn2.setForeground(new java.awt.Color(0, 102, 204));
-    ExitBtn2.setText("Exit");
+    ExitBtn2.setText("Back");
     ExitBtn2.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -267,9 +267,10 @@ public class MemberLogin extends javax.swing.JFrame {
   } //GEN-LAST:event_jButton1ActionPerformed
 
   private void ExitBtn2ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ExitBtn2ActionPerformed
-    //Call the exit system function
-    exitSystem exit = new exitSystem();
-    exit.exitsystem();
+    //Back to login menu
+    LoginMenu menu = new LoginMenu();
+    menu.setVisible(true);
+    dispose();
   } //GEN-LAST:event_ExitBtn2ActionPerformed
 
   private void LoginBtn2ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_LoginBtn2ActionPerformed
