@@ -45,7 +45,7 @@ public class SalesReport extends javax.swing.JFrame {
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
     Month = new javax.swing.JComboBox<>();
-    jTextField1 = new javax.swing.JTextField();
+    Year = new javax.swing.JTextField();
     Title = new javax.swing.JLabel();
     MenuBut = new javax.swing.JButton();
     AdminLoginLab = new javax.swing.JLabel();
@@ -59,7 +59,6 @@ public class SalesReport extends javax.swing.JFrame {
     Month.setModel(
       new javax.swing.DefaultComboBoxModel<>(
         new String[] {
-          "None",
           "January",
           "Febuary",
           "March",
@@ -97,10 +96,10 @@ public class SalesReport extends javax.swing.JFrame {
       }
     );
 
-    jTextField1.addActionListener(
+    Year.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-          jTextField1ActionPerformed(evt);
+          YearActionPerformed(evt);
         }
       }
     );
@@ -192,7 +191,7 @@ public class SalesReport extends javax.swing.JFrame {
             .createSequentialGroup()
             .addGap(34, 34, 34)
             .addComponent(
-              jTextField1,
+              Year,
               javax.swing.GroupLayout.PREFERRED_SIZE,
               130,
               javax.swing.GroupLayout.PREFERRED_SIZE
@@ -289,7 +288,7 @@ public class SalesReport extends javax.swing.JFrame {
                   javax.swing.GroupLayout.PREFERRED_SIZE
                 )
                 .addComponent(
-                  jTextField1,
+                  Year,
                   javax.swing.GroupLayout.PREFERRED_SIZE,
                   javax.swing.GroupLayout.DEFAULT_SIZE,
                   javax.swing.GroupLayout.PREFERRED_SIZE
@@ -324,16 +323,16 @@ public class SalesReport extends javax.swing.JFrame {
     dispose();
   } //GEN-LAST:event_MenuButActionPerformed
 
-  private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_jTextField1ActionPerformed
+  private void YearActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_YearActionPerformed
     // TODO add your handling code here:
-  } //GEN-LAST:event_jTextField1ActionPerformed
+  } //GEN-LAST:event_YearActionPerformed
 
   private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
     // generate report
     // TODO: SANITIZE INPUT
 
     // Create Chart
-    if (jTextField1.getText().isEmpty() && Month.getSelectedItem() == "None") {
+    if (Year.getText().isEmpty() && Month.getSelectedItem() == "None") {
       JOptionPane.showMessageDialog(
         this,
         "Input is empty",
@@ -344,7 +343,7 @@ public class SalesReport extends javax.swing.JFrame {
     }
 
     Validator v = new Validator();
-    if (!v.isNumber(jTextField1.getText())) {
+    if (!v.isNumber(Year.getText())) {
       JOptionPane.showMessageDialog(
         this,
         "Invalid date inputted",
@@ -357,7 +356,7 @@ public class SalesReport extends javax.swing.JFrame {
     JFrame frame = new JFrame("Sales report");
     RecordReport r = new RecordReport();
     if (Month.getSelectedItem() == "None") {
-      XYChart chart = r.getAnnualChart(Integer.parseInt(jTextField1.getText()));
+      XYChart chart = r.getAnnualChart(Integer.parseInt(Year.getText()));
       //frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
       JPanel chartPanel = new XChartPanel(chart);
       // Add content to the window.
@@ -367,7 +366,7 @@ public class SalesReport extends javax.swing.JFrame {
       frame.setVisible(true);
     } else {
       XYChart chart = r.getMonthlyChart(
-        Integer.parseInt(jTextField1.getText()),
+        Integer.parseInt(Year.getText()),
         Month.getSelectedIndex()
       );
       JPanel chartPanel = new XChartPanel(chart);
@@ -432,7 +431,7 @@ public class SalesReport extends javax.swing.JFrame {
   private javax.swing.JButton MenuBut;
   private javax.swing.JComboBox<String> Month;
   private javax.swing.JLabel Title;
+  private javax.swing.JTextField Year;
   private javax.swing.JButton jButton1;
-  private javax.swing.JTextField jTextField1;
   // End of variables declaration//GEN-END:variables
 }
