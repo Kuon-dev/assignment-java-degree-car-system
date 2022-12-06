@@ -100,7 +100,7 @@ public class ViewCar extends javax.swing.JFrame {
 
     ExitBtn1.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
     ExitBtn1.setForeground(new java.awt.Color(0, 102, 204));
-    ExitBtn1.setText("Exit");
+    ExitBtn1.setText("Back");
     ExitBtn1.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,9 +205,10 @@ public class ViewCar extends javax.swing.JFrame {
   } // </editor-fold>//GEN-END:initComponents
 
   private void ExitBtn1ActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ExitBtn1ActionPerformed
-    //Call the exit system function
-    exitSystem exit = new exitSystem();
-    exit.exitsystem();
+    //If the user confirm to logout then go back to login
+    LoginMenu menu = new LoginMenu();
+    menu.setVisible(true);
+    dispose();
   } //GEN-LAST:event_ExitBtn1ActionPerformed
 
   private void BookCarBtnActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_BookCarBtnActionPerformed

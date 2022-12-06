@@ -4,6 +4,7 @@
  */
 package carrentalsystem;
 
+import java.awt.Dimension;
 import java.io.*;
 import java.math.BigInteger;
 import java.text.*;
@@ -1335,10 +1336,11 @@ public class BookCar extends javax.swing.JFrame {
   private void EmailActionPerformed(java.awt.event.ActionEvent evt) {}
 
   private void BookBtnActionPerformed(java.awt.event.ActionEvent evt) {
+    String receiptId = generateReceiptID();
     try {
       if (!sanitizeInput()) return;
       RecordBooking newBookingData = new RecordBooking(
-        generateReceiptID(),
+        receiptId,
         currentCustomerData,
         tableSelectedCar,
         Integer.parseInt(RentDays.getText()),
@@ -1353,13 +1355,43 @@ public class BookCar extends javax.swing.JFrame {
       );
       GeneralMutation m = new GeneralMutation();
       if (m.addNewBooking(newBookingData)) {
-        clear();
         JOptionPane.showMessageDialog(
           this,
           "Booking has been added sucessfully, an confirmation email will be sent once admin approve your booking.",
           "Information",
           JOptionPane.INFORMATION_MESSAGE
         );
+        JFrame frame = new JFrame("E-Receipt");
+        JLabel lbl1 = new JLabel("Car Rental System");
+        JLabel lbl2 = new JLabel("--------------------");
+        JLabel lbl3 = new JLabel("Bill:" + receiptId);
+        JLabel lbl4 = new JLabel("Car No Plate     Start Date     End Date");
+        JLabel lbl5 = new JLabel(
+          CarNoPlate.getText() +
+          "     " +
+          StartDate.getText() +
+          "     " +
+          ReturnDate.getText()
+        );
+        JLabel lbl6 = new JLabel("--------------------");
+        JLabel lbl7 = new JLabel("Total Amount:" + TotalPrice.getText());
+        JLabel lbl8 = new JLabel("********************");
+        JLabel lbl9 = new JLabel("THANK YOU COME AGAIN");
+        JLabel lbl10 = new JLabel("*******************");
+        frame.add(lbl1);
+        frame.add(lbl2);
+        frame.add(lbl3);
+        frame.add(lbl4);
+        frame.add(lbl5);
+        frame.add(lbl6);
+        frame.add(lbl7);
+        frame.add(lbl8);
+        frame.add(lbl9);
+        frame.add(lbl10);
+        frame.pack();
+        // Display the window.
+        frame.setVisible(true);
+        clear();
       } else {
         JOptionPane.showMessageDialog(
           this,

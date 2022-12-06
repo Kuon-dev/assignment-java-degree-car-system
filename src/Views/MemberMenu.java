@@ -87,7 +87,7 @@ public class MemberMenu extends javax.swing.JFrame {
 
     ExitBtn.setFont(new java.awt.Font("Snap ITC", 0, 14)); // NOI18N
     ExitBtn.setForeground(new java.awt.Color(0, 102, 204));
-    ExitBtn.setText("Exit");
+    ExitBtn.setText("Logout");
     ExitBtn.addActionListener(
       new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,14 +117,9 @@ public class MemberMenu extends javax.swing.JFrame {
                   layout
                     .createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(
-                      ExitBtn,
-                      javax.swing.GroupLayout.PREFERRED_SIZE,
-                      73,
-                      javax.swing.GroupLayout.PREFERRED_SIZE
-                    )
+                    .addComponent(ExitBtn)
                     .addPreferredGap(
-                      javax.swing.LayoutStyle.ComponentPlacement.UNRELATED
+                      javax.swing.LayoutStyle.ComponentPlacement.RELATED
                     )
                     .addComponent(Title)
                 )
@@ -141,7 +136,7 @@ public class MemberMenu extends javax.swing.JFrame {
                     .addComponent(ViewBookingBtn)
                 )
             )
-            .addContainerGap(48, Short.MAX_VALUE)
+            .addContainerGap(42, Short.MAX_VALUE)
         )
         .addGroup(
           javax.swing.GroupLayout.Alignment.TRAILING,
@@ -229,6 +224,10 @@ public class MemberMenu extends javax.swing.JFrame {
     //Call the exit system function
     exitSystem exit = new exitSystem();
     exit.exitsystem(customerData);
+    //If the user confirm to logout then go back to login
+    LoginMenu menu = new LoginMenu();
+    menu.setVisible(true);
+    dispose();
   } //GEN-LAST:event_ExitBtnActionPerformed
 
   /**
