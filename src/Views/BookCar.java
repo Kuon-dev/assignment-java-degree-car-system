@@ -1617,6 +1617,7 @@ public class BookCar extends javax.swing.JFrame {
 
   private void clearButActionPerformed(java.awt.event.ActionEvent evt) {
     clear();
+    setTable();
   }
 
   private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {
