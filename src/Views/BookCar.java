@@ -1392,6 +1392,7 @@ public class BookCar extends javax.swing.JFrame {
         // Display the window.
         frame.setVisible(true);
         clear();
+        setTable();
       } else {
         JOptionPane.showMessageDialog(
           this,
