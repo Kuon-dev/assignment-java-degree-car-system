@@ -1567,7 +1567,11 @@ public class BookCar extends javax.swing.JFrame {
       // check clash for end date
       for (RecordBooking r : allRecords) {
         if (
-          (Car.isEmpty()) ||
+          r
+            .getCar()
+            .getCarNoPlate()
+            .equalsIgnoreCase(tableSelectedCar.getCarNoPlate())
+        ) if (
           (
             startDate.getTime() >= r.getStartDate().getTime() &&
             startDate.getTime() <= r.getReturnDate().getTime()
