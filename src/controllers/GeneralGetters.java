@@ -149,8 +149,6 @@ public class GeneralGetters {
   public GeneralCar getSpecificSingleCar(String carPlate) {
     ArrayList<GeneralCar> allCars = getAllCar();
     for (GeneralCar c : allCars) {
-      System.out.println(carPlate);
-      System.out.println(c.getCarNoPlate());
       if (c.getCarNoPlate().equals(carPlate)) return c;
     }
     // return empty car

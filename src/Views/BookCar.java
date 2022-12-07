@@ -1572,7 +1572,6 @@ public class BookCar extends javax.swing.JFrame {
             .getCarNoPlate()
             .equalsIgnoreCase(tableSelectedCar.getCarNoPlate())
         ) if (
-          (Car.isEmpty()) ||
           (
             startDate.getTime() >= r.getStartDate().getTime() &&
             startDate.getTime() <= r.getReturnDate().getTime()
