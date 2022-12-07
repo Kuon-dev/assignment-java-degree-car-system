@@ -59,6 +59,7 @@ public class SalesReport extends javax.swing.JFrame {
     Month.setModel(
       new javax.swing.DefaultComboBoxModel<>(
         new String[] {
+          "None",
           "January",
           "Febuary",
           "March",
