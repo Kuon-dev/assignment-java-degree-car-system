@@ -1363,21 +1363,31 @@ public class BookCar extends javax.swing.JFrame {
         );
         JFrame frame = new JFrame("E-Receipt");
         JLabel lbl1 = new JLabel("Car Rental System");
-        JLabel lbl2 = new JLabel("--------------------");
+        JLabel lbl2 = new JLabel(
+          "---------------------------------------------------------------"
+        );
         JLabel lbl3 = new JLabel("Bill:" + receiptId);
         JLabel lbl4 = new JLabel("Car No Plate     Start Date     End Date");
         JLabel lbl5 = new JLabel(
           CarNoPlate.getText() +
-          "     " +
+          "         " +
           StartDate.getText() +
-          "     " +
+          "          " +
           ReturnDate.getText()
         );
-        JLabel lbl6 = new JLabel("--------------------");
-        JLabel lbl7 = new JLabel("Total Amount:" + TotalPrice.getText());
-        JLabel lbl8 = new JLabel("********************");
-        JLabel lbl9 = new JLabel("THANK YOU COME AGAIN");
-        JLabel lbl10 = new JLabel("*******************");
+        JLabel lbl6 = new JLabel(
+          "---------------------------------------------------------------"
+        );
+        JLabel lbl7 = new JLabel(
+          "                                        Total Amount:" +
+          TotalPrice.getText()
+        );
+        lbl1.setBounds(10, 10, 500, 50);
+        lbl2.setBounds(10, 50, 500, 50);
+        lbl3.setBounds(10, 110, 500, 50);
+        lbl4.setBounds(10, 160, 500, 50);
+        lbl5.setBounds(10, 210, 500, 50);
+        lbl6.setBounds(10, 250, 500, 50);
         frame.add(lbl1);
         frame.add(lbl2);
         frame.add(lbl3);
@@ -1385,9 +1395,7 @@ public class BookCar extends javax.swing.JFrame {
         frame.add(lbl5);
         frame.add(lbl6);
         frame.add(lbl7);
-        frame.add(lbl8);
-        frame.add(lbl9);
-        frame.add(lbl10);
+        frame.setPreferredSize(new Dimension(500, 650));
         frame.pack();
         // Display the window.
         frame.setVisible(true);
