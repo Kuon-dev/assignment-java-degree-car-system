@@ -49,6 +49,9 @@ public class exitSystem {
       // log user activity
       GeneralMutation m = new GeneralMutation();
       m.logLogoutActivity(admin);
+      //If the user confirm to logout then go back to login
+      LoginMenu menu = new LoginMenu();
+      menu.setVisible(true);
     }
   }
 
@@ -65,6 +68,9 @@ public class exitSystem {
       // log user activity
       GeneralMutation m = new GeneralMutation();
       m.logLogoutActivity(customer);
+      //If the user confirm to logout then go back to login
+      LoginMenu menu = new LoginMenu();
+      menu.setVisible(true);
     }
   }
 }

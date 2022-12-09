@@ -955,6 +955,7 @@ public class ManageBooking extends javax.swing.JFrame {
     endDateEdit.setText("");
     searchIC.setText("");
     searchReceiptID.setText("");
+    jComboBox1.setSelectedItem("Approve");
 
     tableSelectedBooking.clearData();
     clearTableData();

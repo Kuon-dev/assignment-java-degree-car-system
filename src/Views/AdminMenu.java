@@ -290,10 +290,6 @@ public class AdminMenu extends javax.swing.JFrame {
     //Call the exit system function
     exitSystem exit = new exitSystem();
     exit.exitsystem(adminData);
-    //If the user confirm to logout then go back to login
-    LoginMenu menu = new LoginMenu();
-    menu.setVisible(true);
-    dispose();
   } //GEN-LAST:event_ExitBtnActionPerformed
 
   /**

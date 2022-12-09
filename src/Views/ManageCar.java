@@ -123,6 +123,21 @@ public class ManageCar extends javax.swing.JFrame {
     return true;
   }
 
+  private Boolean isCarExist() {
+    Validator v = new Validator();
+    if (v.isCarNoPlateExist(CarNoPlate.getText())) {
+      JOptionPane.showMessageDialog(
+        this,
+        "Car Existed",
+        "Error Message",
+        JOptionPane.ERROR_MESSAGE
+      );
+      CarNoPlate.setText("");
+      return false;
+    }
+    return true;
+  }
+
   /**
    * This method is called from within the constructor to initialize the form.
    * WARNING: Do NOT modify this code. The content of this method is always
@@ -893,7 +908,7 @@ public class ManageCar extends javax.swing.JFrame {
     // if there is an invalid input, stop the function
     if (!sanitizeInput()) return;
     GeneralMutation m = new GeneralMutation();
-
+    if (!isCarExist()) return;
     GeneralCar newCar = new GeneralCar(
       tableSelectedCar.generateCarId(),
       CarNoPlate.getText(), // plate
@@ -1013,7 +1028,7 @@ public class ManageCar extends javax.swing.JFrame {
     Year.setText("");
     FuelType.setSelectedItem("Petron");
     Price.setText("");
-    Status.setSelectedItem("Available");
+    Status.setSelectedItem("AVAILABLE");
   }
 
   private void deleteActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1056,7 +1071,7 @@ public class ManageCar extends javax.swing.JFrame {
     Year.setText("");
     FuelType.setSelectedItem("Petron");
     Price.setText("");
-    Status.setSelectedItem("Available");
+    Status.setSelectedItem("AVAILABLE");
   }
 
   private void YearActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_YearActionPerformed
