@@ -38,7 +38,7 @@ public class ViewCar extends javax.swing.JFrame {
         car.getPrice(),
         car.getState(),
       };
-      if (car.getState().equals("AVAILABLE")) model.addRow(eachCar);
+      model.addRow(eachCar);
     }
   }
 
