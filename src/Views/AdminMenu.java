@@ -289,7 +289,10 @@ public class AdminMenu extends javax.swing.JFrame {
   private void ExitBtnActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ExitBtnActionPerformed
     //Call the exit system function
     exitSystem exit = new exitSystem();
-    exit.exitsystem(adminData);
+    if (!exit.exitsystem(adminData)) return;
+    LoginMenu menu = new LoginMenu();
+    menu.setVisible(true);
+    dispose();
   } //GEN-LAST:event_ExitBtnActionPerformed
 
   /**

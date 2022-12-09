@@ -36,7 +36,7 @@ public class exitSystem {
     }
   }
 
-  public void exitsystem(UserAdmin admin) {
+  public Boolean exitsystem(UserAdmin admin) {
     if (
       JOptionPane.showConfirmDialog(
         frame,
@@ -49,13 +49,13 @@ public class exitSystem {
       // log user activity
       GeneralMutation m = new GeneralMutation();
       m.logLogoutActivity(admin);
+      return true;
       //If the user confirm to logout then go back to login
-      LoginMenu menu = new LoginMenu();
-      menu.setVisible(true);
     }
+    return false;
   }
 
-  public void exitsystem(UserCustomer customer) {
+  public Boolean exitsystem(UserCustomer customer) {
     if (
       JOptionPane.showConfirmDialog(
         frame,
@@ -69,8 +69,8 @@ public class exitSystem {
       GeneralMutation m = new GeneralMutation();
       m.logLogoutActivity(customer);
       //If the user confirm to logout then go back to login
-      LoginMenu menu = new LoginMenu();
-      menu.setVisible(true);
+      return true;
     }
+    return false;
   }
 }
