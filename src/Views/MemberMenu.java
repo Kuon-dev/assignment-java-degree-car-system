@@ -223,7 +223,10 @@ public class MemberMenu extends javax.swing.JFrame {
   private void ExitBtnActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_ExitBtnActionPerformed
     //Call the exit system function
     exitSystem exit = new exitSystem();
-    exit.exitsystem(customerData);
+    if (!exit.exitsystem(customerData)) return;
+    LoginMenu menu = new LoginMenu();
+    menu.setVisible(true);
+    dispose();
   } //GEN-LAST:event_ExitBtnActionPerformed
 
   /**
