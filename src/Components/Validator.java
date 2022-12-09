@@ -183,4 +183,13 @@ public class Validator {
     }
     return false;
   }
+
+  public Boolean isCarNoPlateExist(String CarPlate) {
+    GeneralGetters g = new GeneralGetters();
+    ArrayList<GeneralCar> allCars = g.getAllCar();
+    for (GeneralCar c : allCars) {
+      if (c.getCarNoPlate().equals(CarPlate)) return true;
+    }
+    return false;
+  }
 }
