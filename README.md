@@ -1,6 +1,6 @@
 # JPDegreeAssignment
 
-This is an assignment during Degree Year 2 in APU.
+This is an assignment during Degree Year 2 in APU regarding Car Rental System that is developed in Java Programming language.
 
 ## Prerequisites
 - Netbeans / Maven (build tool)
